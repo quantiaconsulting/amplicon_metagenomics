@@ -116,7 +116,16 @@ So for example if you would like to list the content of the /home/ folder in our
 [User3 ~]: ls ..
 User1/ User2/ User3/
 ```   
-We are now going to copy a Fastq file into our area and investigate it. The file is in the ~/Share folder. 
+
+You can also use "glob patterns" to select specific files:
+ - an asterisk (*) means any string of characters
+ - a question mark (?) means a single character
+ - square brackets ([]) can mean a range of characters
+
+Use this to list all the files that begin "sub"
+
+
+We are now going to copy spome test files into our area and investigate. The file is in the ~/Share/Linux-exercises folder. 
 
 Copying and moving uses a standard format whether it’s within one server or between separate ones:
 ```
@@ -147,7 +156,7 @@ Copy the files to the **test** folder with the command `cp [file to be copied] [
 TIP: you can use `*` as a wildcard to choose all files with a certain suffix, i.e. “*.fastq” or “*.fq”
 If you are in your homespace you can do this, however if you are already inside the test folder then you can use "." to mean "this folder"
 ```
-cp ~/Share/*fastq test/
+cp -R ~/Share/Linux-exercises test/
 ```
 
 **Now, move back to your “test” folder.**
@@ -157,6 +166,7 @@ By typing ls (list) you can see all the contents of the folder you are in.
 All bash commands have a manual page. By typing man [command] you can view it. Within the manual, the space bar will move you down a page and q will quit.
 
 Now, open the manual page for the ls command.
+
 
 ---------------------------------------------------------------------------------------------------------------------
 ### FASTQ format
@@ -177,19 +187,19 @@ We can, however, open a part of the file using the editor `less`.
 
 **Use `less` to view a fastq file**. You can move down through the file with space, and quit back to the Terminal with `q`.
 ```
-less bash_tut.fastq
+less Illumina_1.fastq
 ```
 
 You can also view the top or bottom 10 lines of a file with the commands `head` and `tail`.
 **Use tail to view the bottom 10 lines of a fastq file.**
 ```
-tail bash_tut.fastq
+tail Illumina_1.fastq
 ```
 **Now, use the manual page for `tail` to find out how to view more than 10 lines and use `tail` again to view the bottom 50 lines of a fastq file.**
 ```
 man tail
 
-tail -n 50 bash_tut.fastq
+tail -n 50 Illumina_1.fastq
 ```
 This prints out the lines to the screen.  
 However, we can redirect the output to a file with the `>` symbol. Like this: `[print command] > file.txt`.  
@@ -198,7 +208,7 @@ The double angle bracket, `>>`, does the same thing but appends information to a
 **Use the > to print the last 50 lines of a fastq file to a new file, called tail50.txt
 Open the new file in less with less tail50.txt**
 ```
-tail -n 50 bash_tut.fastq > tail50.txt
+tail -n 50 Illumina_1.fastq > tail50.txt
 less tail50.txt
 ```
 Quit `less`.  
@@ -206,7 +216,7 @@ Quit `less`.
 One of the most useful commands in the Terminal is `grep`. This command searches through a text for lines matching a given argument and prints out only the lines that contain the argument.  
 Try using grep to pull out any read that contains the sequence **CTCCTAC** from a fastq file:
 ```
-grep CTCCTAC bash_tut.fastq
+grep CTCCTAC Illumina_1.fastq
 ```
 Used in combination with other commands, grep can do almost anything. To combine commands, we can use the “pipe”, `|`. It takes the output from one command and feeds it into another command.
 
@@ -216,16 +226,16 @@ cat -b tail50.txt
 ```
 The command `cat` prints a whole text file or combines several files into one and prints to the screen. Using the `–b` flag, you can also count lines.
 ```
-tail -n 50 bash_tut.fastq | grep '^@'
+tail -n 50 Illumina_1.fastq | grep '^@'
 ```
 This will print only the lines starting with `@` symbol, i.e. the identifier lines, out of the last 50 lines of a file. The `ˆ` means "*start with*".  
 Use `grep -c`  to find out how many reads there are in one of the fastq files.
 ```
-grep -c '^@' bash_tut.fastq
+grep -c '^@' Illumina_1.fastq
 ```
-**Use grep to pull out all the identifier lines from samples `bash_tut.fastq` and redirect them into a new file called `identifiers_sample1.txt`**
+**Use grep to pull out all the identifier lines from samples `Illumina_1.fastq` and redirect them into a new file called `identifiers_sample1.txt`**
 ```
-grep '^@' bash_tut.fastq > identifiers_sample1.txt
+grep '^@' Illumina_1.fastq > identifiers_sample1.txt
 ```
 `grep` allows you to search in text file by using the **Regular Expressions*.  
 **What are regular expressions?**  
@@ -238,7 +248,7 @@ For example:
 The Regexp pattern language is unlike most other computing languages. It can be best learned via an interactive service like [](https://regexone.com/) or many others where the pattern and its effect are instantly visualized.  
 *how to convert a fastq file into a fasta in bash*:
 ```
-grep -A1 '^@FCA' bash_tut.fastq > example.fa
+grep -A1 '^@SRR' Illumina_1.fastq > example.fa
 sed -i -e 's/^@/>/g' example.fa
 sed -i -e 's/^--//g' example.fa
 sed -i -e '/^$/d' example.fa
@@ -259,7 +269,7 @@ But even with its flaws, FASTQC is still by far the best FASTQ quality visualiza
 
 Type:
 ````
-fastqc bash_tut.fastq
+fastqc Illumina_1.fastq
 ````
 We now can download the outputted .html file and explore it on our own computers.
 ![](fastqc.png)

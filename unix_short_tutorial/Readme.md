@@ -254,8 +254,54 @@ sed -i -e 's/^--//g' example.fa
 sed -i -e '/^$/d' example.fa
 ```
 
-![](reg1.png)  
-![](reg2.png)
+# Using text editors
+
+Plain text files are important, both as input to bioinformatics programs and as input or configuration files for system programs. We highly recommend that you learn to use a text editor to prepare and edit plain text files.
+
+#Text files, Word Processors and Bioinformatics
+Documents written using a word processor such as Microsoft Word or OpenOffice Write are not plain text documents. If your filename has an extension such as .doc or .odt, it is unlikely to be a plain text document. (Try opening a Word document in notepad or another text editor on Windows if you want proof of this). Word processors are very useful for preparing documents, but you shouldn’t use them for working with bioinformatics-related files.
+
+We recommend that you prepare text files for bioinformatics analyses using Linux-based text editors and not Windows- or Mac-based text editors. This is because Windows- or Mac-based text editors may insert hidden characters that are not handled properly by Linux-based programs.
+
+Some professional programs can be installed locally (i.e. notepad++) but when working on a terminal there are many options which range in ease of use, and each has its pros and cons. In this practical we will briefly look at two editors, nano and vi.
+
+
+#Nano
+Pros
+- Very easy – For example, command options are visible at the bottom of the window
+can be used when logged in without graphical support
+- Fast to start up and use
+Cons
+- It is not completely intuitive for people who are used to graphical word processors
+- Has few features
+
+Vi/vim
+Pros
+- Appears on nearly every Unix system. 
+- Can be very powerful if you take the time to know the key short-cuts
+- Has built in find/replace
+Cons
+- You have to know the shortcuts!
+- There are no menus and no on screen prompts
+
+EXERCISES
+Create a file with nano
+```
+nano test_nano.txt
+# Type some text, exit with ctrl X, save and return to command line
+# Now show the contents of the file you created:
+less test_nano.txt
+```
+
+Create a file with vi
+```
+vi test_vi.txt
+# Type ‘i’ and you can then add text (I for input)
+# Save and exit, first pressing [esc] to exit write mode :wq – (wq for write and quit)
+# Now show the contents of the file you created
+less test_vi.txt
+```
+
 ## How can we visualize FASTQ quality?  <a name="How can we visualize FASTQ quality?"></a>
 The undisputed champion of quality control visualization is a tool named **[FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)** developed by **Babraham Institute**, an independent, charitable life sciences institute involved in biomedical research.  
 Even though it is a de-facto standard of visualization, **its results are not always the simplest to interpret**.  

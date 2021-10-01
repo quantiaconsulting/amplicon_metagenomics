@@ -266,20 +266,24 @@ We recommend that you prepare text files for bioinformatics analyses using Linux
 Some professional programs can be installed locally (i.e. notepad++) but when working on a terminal there are many options which range in ease of use, and each has its pros and cons. In this practical we will briefly look at two editors, nano and vi.
 
 
-#Nano
-Pros
+### Nano
+
+Pros: 
 - Very easy – For example, command options are visible at the bottom of the window
-can be used when logged in without graphical support
+- can be used when logged in without graphical support
 - Fast to start up and use
-Cons
+
+Cons:
 - It is not completely intuitive for people who are used to graphical word processors
 - Has few features
 
-Vi/vim
+### Vi/vim
+
 Pros
 - Appears on nearly every Unix system. 
 - Can be very powerful if you take the time to know the key short-cuts
 - Has built in find/replace
+
 Cons
 - You have to know the shortcuts!
 - There are no menus and no on screen prompts

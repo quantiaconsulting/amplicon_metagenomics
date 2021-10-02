@@ -4,40 +4,25 @@ In this tutorial you’ll use QIIME 2 to perform an analysis of soil samples fro
 
 "The Atacama Desert is one of the most arid locations on Earth, with some areas receiving less than a millimeter of rain per decade. The soil microbiomes profiled in this study follow two east-west transects, **Baquedano** and **Yungay**, across which average soil relative humidity is positively correlated with elevation (higher elevations are less arid and thus have higher average soil relative humidity). Along these transects, pits were dug at each site and soil samples were collected from three depths in each pit.""
 
-![alt text](https://www.nationalgeographic.com/content/dam/travel/2016-digital/chile/atacama/valley-moon-atacama-desert-chile.ngsversion.1483561804450.adapt.1900.1.jpg)
+![Atacama Desert](dsc-5624-cc.jpg)
 
-**Experimental information**:
-![](V4_atacama.png)
+### Experimental information
 *   The v4 region of the 16S rRNA gene was amplified from all community DNA extracts using barcoded primers 515F/806R.
-
+![](V4_atacama.png)
 *   Amplicon sequencing was performed Illumina MiSeq system and MiSeq control software version 2.2.0.
 
+You can find the paper [here](https://msystems.asm.org/content/2/3/e00195-16.abstract) or in the course Reference folder.  
 
-
-
-You can find the paper here:
-[link text](https://msystems.asm.org/content/2/3/e00195-16.abstract)
-
-or in Reference folder of the course.
-
-
-
-
-
-
-
-
-Start by creating a directory to work in.
-
-
+## Obtain Data
+Start by creating a directory to work in. We will call it **qiime2-atacama-tutorial**.  
 ```
 mkdir qiime2-atacama-tutorial
 cd qiime2-atacama-tutorial
 ```
 
-## The Metadata file
+### The Metadata file
 
-Metadata play a key rule in every ecological study. For how is familiar with QIIME 1 this file corresponde to "mapping file" or for R user is the env file in *vegan* package.
+Metadata play a key rule in every ecological study. For how is familiar with QIIME 1 this file correspond to "mapping file" or for R user is the env file in *vegan* package.
 
 QIIME 2 metadata is most commonly stored in a **TSV** (i.e. tab-separated values) file. These files typically have a .tsv or .txt file extension, though it doesn’t matter to QIIME 2 what file extension is used.
 
@@ -51,10 +36,8 @@ wget \
   "https://data.qiime2.org/2020.8/tutorials/atacama-soils/sample_metadata.tsv"
 ```
 
-
-**For avoid rewriting of the file please copy this file in an other folder.**
-
-This *sample-metadata_16S.tsv* file is used throughout the rest of the tutorial.
+**If you would like to play around the sample-metadata.tsv file, please copy it file into another folder and have fun with it.**  
+**Remember this *sample-metadata_16S.tsv* file will be used throughout the rest of the tutorial.**
 
 
 Since there is no universal standard for TSV files, it is important understand how QIIME 2 will interpret the file’s contents to get the most out of your (meta)data!
@@ -64,61 +47,29 @@ Sample and feature metadata files stored in Google Sheets can be validated using
  2. Keemei  
  3. Validate *QIIME 2 metadata file* to validate metadata stored in Google Sheets.  
 
-QIIME 2 will also automatically validate a metadata file anytime it is used by the software. However, using Keemei to validate your metadata is recommended because a report of all validation errors and warnings will be presented each time Keemei is run.
+QIIME 2 will also automatically validate a metadata file anytime it is used by the software.  
+However, using Keemei to validate your metadata is recommended because a report of all validation errors and warnings will 
+be presented each time Keemei is run.
 
 
 
-## Obtain Data
-
-Creating a new folder in the folder qiime2-atacama-tutorial
 
 
-
-```
-mkdir emp-paired-end-sequences
-```
-
-For this tutorial we use a subsample of the real data (10%) that you can find follow the links below:
-
-
-```
-wget \
-  -O "emp-paired-end-sequences/forward.fastq.gz" \
-  "https://data.qiime2.org/2020.8/tutorials/atacama-soils/10p/forward.fastq.gz"
-```
-
-
-```
-wget \
-  -O "emp-paired-end-sequences/reverse.fastq.gz" \
-  "https://data.qiime2.org/2020.8/tutorials/atacama-soils/10p/reverse.fastq.gz"
-```
-
-
-```
-wget \
-  -O "emp-paired-end-sequences/barcodes.fastq.gz" \
-  "https://data.qiime2.org/2020.8/tutorials/atacama-soils/10p/barcodes.fastq.gz"
-```
 
 ## Start QIIME2 session
 
+As we discussed during the introduction to UNIX-based environment, we take advantage of using *virtual environments* to avoid affecting the main OS.  
+So everytime we start a new section, we need to activate the virtual environment containing our qiime2 installation.  
 ```
 source activate qiime2-2020.8
 ```
 
-## Pipeline Overview
-Here is an overview of the general steps of the QIIME2 pipeline:
-
-* **Step 1**: Importing and demultiplex data, summarize the results, and examing quality of the reads.
-* **Step 2**: Quality controlling sequences and building Feature Table and Feature Data
-* **Step 3**: Summarizing Feature Table and Feature Data
-* **Step 4**: Assigning Taxonomy
-* **Step 5**: Generating a phylogenetic tree
-* **Step 6**: Analyzing Alpha and Beta diversities
+### Pipeline Overview
+Here is an overview of the general steps of the QIIME2 pipeline:  
+![](steps.png)
 
 
-## STEP1: Importing and Demultiplex files
+## STEP1: Importing files
 
 The sequences that you just downloaded are defined in QIIME2 as EMPPairedEndSequences. **What that mean?**
 

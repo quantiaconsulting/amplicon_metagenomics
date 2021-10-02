@@ -57,7 +57,7 @@ be presented each time Keemei is run.
 As we discussed during the introduction to UNIX-based environment, we take advantage of using *virtual environments* to avoid affecting the main OS.  
 So everytime we start a new section, we need to activate the virtual environment containing our QIIME2 installation.  
 ```
-source activate qiime2-2020.8
+source activate qiime2-2021.8
 ```
 
 ### Pipeline Overview

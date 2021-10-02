@@ -138,7 +138,7 @@ But remember that all existing provenance will be lost after exporting the files
 
 You can use [https://view.qiime2.org](https://view.qiime2.org) to easily view QIIME2 artifacts and visualizations files (generally .qza and .qzv files (see later)) without requiring a QIIME installation.
 
-Open it and drag and drop your qza or qzv file. 
+Open it and drag and drop your qza or qzv file.   
 *You need to download the `demux-paired-end.qzv` file on your computer and then upload it on the viewer.*  
 
 Automatically, the **Overview** tab is opened and some basic statistics about our data are available.  

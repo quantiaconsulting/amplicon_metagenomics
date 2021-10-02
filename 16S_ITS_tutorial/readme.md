@@ -1,5 +1,5 @@
 # Start the analysis
-In this tutorial you’ll use QIIME 2 to perform an analysis of soil samples from the Atacama Desert in northern Chile.
+In this tutorial you’ll use QIIME2 to perform an analysis of soil samples from the Atacama Desert in northern Chile.
 **You can find the starting tutorial on the official page of QIIME2** ( [link text](https://docs.qiime2.org/2020.2/tutorials/atacama-soils/))
 
 "The Atacama Desert is one of the most arid locations on Earth, with some areas receiving less than a millimeter of rain per decade. The soil microbiomes profiled in this study follow two east-west transects, **Baquedano** and **Yungay**, across which average soil relative humidity is positively correlated with elevation (higher elevations are less arid and thus have higher average soil relative humidity). Along these transects, pits were dug at each site and soil samples were collected from three depths in each pit.""
@@ -24,7 +24,7 @@ cd qiime2-atacama-tutorial
 
 Metadata play a key rule in every ecological study. For how is familiar with QIIME 1 this file correspond to "mapping file" or for R user is the env file in *vegan* package.
 
-QIIME 2 metadata is most commonly stored in a **TSV** (i.e. tab-separated values) file. These files typically have a .tsv or .txt file extension, though it doesn’t matter to QIIME 2 what file extension is used.
+QIIME2 metadata is most commonly stored in a **TSV** (i.e. tab-separated values) file. These files typically have a .tsv or .txt file extension, though it doesn’t matter to QIIME2 what file extension is used.
 
 TSV files are simple text files used to store `tabular data`, and the format is supported by many types of software, such as editing, importing, and exporting from spreadsheet programs and databases. Thus, it’s usually straightforward to manipulate QIIME 2 metadata using a software like Microsoft Excel or (better) Google Sheets to edit and export your metadata files.
 
@@ -40,7 +40,7 @@ wget \
 **Remember this *sample-metadata_16S.tsv* file will be used throughout the rest of the tutorial.**
 
 
-Since there is no universal standard for TSV files, it is important understand how QIIME 2 will interpret the file’s contents to get the most out of your (meta)data!
+Since there is no universal standard for TSV files, it is important understand how QIIME2 will interpret the file’s contents to get the most out of your (meta)data!
 
 Sample and feature metadata files stored in Google Sheets can be validated using **Keemei**:  
  1. Select *Add-ons* 
@@ -55,7 +55,7 @@ be presented each time Keemei is run.
 ## Start QIIME2 session
 
 As we discussed during the introduction to UNIX-based environment, we take advantage of using *virtual environments* to avoid affecting the main OS.  
-So everytime we start a new section, we need to activate the virtual environment containing our qiime2 installation.  
+So everytime we start a new section, we need to activate the virtual environment containing our QIIME2 installation.  
 ```
 source activate qiime2-2020.8
 ```
@@ -67,21 +67,41 @@ Here is an overview of the general steps of the QIIME2 pipeline:
 
 ## STEP1: Importing data, summarize the results, and examining quality of the reads.
 Usually, by applying a *paired ends* sequencing layout we obtain 2 *fastq* file per each processed sample.  
-Technically, it means that our data are already demultiplexed. *What does it means?*.  
+Technically, it means that our data are already demultiplexed. *What does it mean?*.  
 It means we sequenced more samples in a single sequencing run and the machine have already seperated our data according to specific index.  
+
 ---
 
 Take a look as the sequences are (in the most cases) generated:  
 
 ![alt text](https://sfvideo.blob.core.windows.net/sitefinity/images/default-source/product-page-images/next-generation-sequencing/ngs_adapter_designs.png?sfvrsn=8ce20807_8)
 
-For more details have a look here:
+For more details have a look here:  
+- [Illumina support](https://support.illumina.com/content/dam/illumina-support/documents/documentation/system_documentation/miseq/indexed-sequencing-overview-guide-15057455-04.pdf)
+- [earth microbiome 16S protocols](http://www.earthmicrobiome.org/protocols-and-standards/16s/)
 
- [Illumina support](https://support.illumina.com/content/dam/illumina-support/documents/documentation/system_documentation/miseq/indexed-sequencing-overview-guide-15057455-04.pdf)
-
- [earth microbiome 16S protocols](http://www.earthmicrobiome.org/protocols-and-standards/16s/)
 ---
 
+As mentioned during the previous sections, QIIME2 works with specific files called **artifacts**.  
+A QIIME2 artifact contains both data and metadata.
+
+Since QIIME2 works with artifacts instead of data files (e.g. FASTA files), you must create a QIIME2 artifact by importing your data.  
+**In the coming days we will see how to import and export different objects from QIIME2 and we are going always to use artifacts.**
+
+Artifacts enable QIIME 2 to track, in addition to the data itself, the provenance of how the data came to be.  
+With an artifact’s provenance, you can trace back to all previous analyses that were run to produce the artifact, including the input data used at each step.  
+
+So we need to import our demultiplexed raw data into a qiime artifact.  
+```
+qiime tools import \
+    --type 'SampleData[PairedEndSequencesWithQuality]' \
+    --input-path share/raw_data_tutorial \
+    --input-format CasavaOneEightSingleLanePerSampleDirFmt \
+    --output-path demux-paired-end.qza
+```
+
+We used the QIIME2 plugin *tools* and the function *import*, to embed our data into a ``qza`` artifact.  
+To obtain an almost complete list of importable formats type the following line:  
 
 ```
 qiime tools import --show-importable-formats --help
@@ -89,58 +109,44 @@ qiime tools import --show-importable-formats --help
 
 ### Explore QIIME2 Objects
 
-By importing the sequences you have generated your first object in QIIME2:  
-
-`emp-paired-end-sequences.qza`  
-
-Data produced by QIIME 2 exist as QIIME 2 **artifacts**. A QIIME 2 artifact contains data and metadata.
-
-Since QIIME 2 works with artifacts instead of data files (e.g. FASTA files), you must create a QIIME 2 artifact by importing data.  
-In the coming days we will see how to import and export different objects from QIIME2 and we will always use artifacts.
-
-Artifacts enable QIIME 2 to track, in addition to the data itself, the provenance of how the data came to be. With an artifact’s provenance, you can trace back to all previous analyses that were run to produce the artifact, including the input data used at each step.
-
-This requires the sample metadata file, and you must indicate which column in that file contains the **per-sample barcodes**. In this case, that column name is **BarcodeSequence**.
-In this data set, the barcode reads are the reverse complement of those included in the sample metadata file, so we additionally include the  '--p-rev-comp-mapping-barcodes ' parameter.
-
-```
-qiime demux emp-paired \
-  --m-barcodes-file sample-metadata.tsv \
-  --m-barcodes-column barcode-sequence \
-  --p-rev-comp-mapping-barcodes \
-  --i-seqs emp-paired-end-sequences.qza \
-  --o-per-sample-sequences demux-full.qza \
-  --o-error-correction-details demux-details.qza
-```
-
-After demultiplexing, we can generate and view a summary of how many sequences were obtained per sample.
-
+By importing the sequences you have generated your first object in QIIME2: `demux-paired-end.qza`.
+Following we are interested to visualize our data and obtain some specific statistics.
 ```
 qiime demux summarize \
-  --i-data demux-full.qza \
-  --o-visualization demux.qzv
+  --i-data demux-paired-end.qza \
+  --o-visualization demux-paired-end.qzv
 ```
 
-With the command  `demux summarize` you generated a new type of objet: a file with `.qzv` extencion
-
-*Visualizations* are another type of data generated by QIIME 2.  
-Visualizations contain similar types of metadata as QIIME 2 artifacts, including provenance information.
+With the command  `demux summarize` you generated a new type of objet: a file with `.qzv` extension.
+*Visualizations* are another type of data generated by QIIME2.  
+Visualizations contain similar types of metadata as QIIME2 artifacts, including provenance information, but they are designed to allow data showing.   
 
 Both files (`qza` and `qzv`) can be **extracted** with a Compression/Decompression software (ex. gzip or unzip).
 
 Let's look  together,  download on your PC and unzip it. **What's inside?**
 
-There are also different ways to [export QIIME2 objects](https://docs.qiime2.org/2020.2/tutorials/exporting/).
+There are also different ways to [export QIIME2 objects](https://docs.qiime2.org/2021.8/tutorials/exporting/).
 But remember that all existing provenance will be lost after exporting the files.
 
-***In most of cases you can have already demultiplex data...How to import the files? [We will discuss it in the next days](../DataImport_and_Tax_management/readme.md)***
+--- 
+
+***In some cases you can have to manage multiplexed data...How to import the files? [We will discuss it in the next days](../DataImport_and_Tax_management/readme.md)***
+
+---
 
 ### Visualize with QIIME2 viewer
 
-You can use [https://view.qiime2.org](https://view.qiime2.org) to easily view QIIME 2 artifacts and visualizations files (generally .qza and .qzv files (see later)) without requiring a QIIME installation.
+You can use [https://view.qiime2.org](https://view.qiime2.org) to easily view QIIME2 artifacts and visualizations files (generally .qza and .qzv files (see later)) without requiring a QIIME installation.
 
-Open it and drag and drop your qza or qzv file
-(You must download the file you want to upload,on your computer.)
+Open it and drag and drop your qza or qzv file. 
+*You need to download the `demux-paired-end.qzv` file on your computer and then upload it on the viewer.*  
+
+After importing the reads, we’ll look at the sequence quality based randomly selected samples, and then denoise the data.
+
+The plot on the left presents the quality scores for the **forward** reads, and the plot on the right presents the quality scores for the **reverse** reads. We’ll use these plots to determine what trimming parameters we want to use for denoising with DADA2, and then denoise the reads using dada2 denoise-paired.
+
+In this example we have **150-base forward and reverse reads**.  
+
   
 # Step2: Quality controlling sequences and building Feature Table and Feature Data
 
@@ -148,11 +154,6 @@ The polymerase will read through the amplicon, the primer, the barcode, and on i
 
 ## Quality filter of 16S
 
-After demultiplexing reads, we’ll look at the sequence quality based randomly selected samples, and then denoise the data.
-
-The plot on the left presents the quality scores for the **forward** reads, and the plot on the right presents the quality scores for the **reverse** reads. We’ll use these plots to determine what trimming parameters we want to use for denoising with DADA2, and then denoise the reads using dada2 denoise-paired.
-
-In this example we have **150-base forward and reverse reads**.  
 Since we need the reads to be long enough to overlap when joining paired ends, the first thirteen bases of the forward and reverse reads are being trimmed, but no trimming is being applied to the ends of the sequences to avoid reducing the read length by too much.
 
 In this example, the same values are being provided for `--p-trim-left-f` and `--p-trim-left-r` and for `--p-trunc-len-f` and `--p-trunc-len-r`, but that is not a requirement.  

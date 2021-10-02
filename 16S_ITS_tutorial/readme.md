@@ -141,19 +141,20 @@ You can use [https://view.qiime2.org](https://view.qiime2.org) to easily view QI
 Open it and drag and drop your qza or qzv file. 
 *You need to download the `demux-paired-end.qzv` file on your computer and then upload it on the viewer.*  
 
-After importing the reads, we’ll look at the sequence quality based randomly selected samples, and then denoise the data.
-
-The plot on the left presents the quality scores for the **forward** reads, and the plot on the right presents the quality scores for the **reverse** reads. We’ll use these plots to determine what trimming parameters we want to use for denoising with DADA2, and then denoise the reads using dada2 denoise-paired.
-
+Automatically, the **Overview** tab is opened and some basic statistics about our data are available.  
+In the **Interactive quality plot** tab we can access to the quality distributions of our data. The plot on the left represents the quality scores for the **forward** reads and the plot on the right presents the quality scores for the **reverse** reads.  
 In this example we have **150-base forward and reverse reads**.  
+
+We’ll use these plots to determine what trimming parameters we want to use for data denoising with DADA2 by using the **dada2 denoise-paired** plugin.
+
+  
 
   
 # Step2: Quality controlling sequences and building Feature Table and Feature Data
-
-The polymerase will read through the amplicon, the primer, the barcode, and on into the adapter sequence. This is non-biological DNA that will cause major issues downstream, e.g., with sequence classification. So we want to trim primers from either end of the sequence to eliminate read-through issues
+After importing the reads, we have inspected the sequence quality based on randomly selected samples.  
+What we now need is to remove the noise introduced during amplification and sequencing.
 
 ## Quality filter of 16S
-
 Since we need the reads to be long enough to overlap when joining paired ends, the first thirteen bases of the forward and reverse reads are being trimmed, but no trimming is being applied to the ends of the sequences to avoid reducing the read length by too much.
 
 In this example, the same values are being provided for `--p-trim-left-f` and `--p-trim-left-r` and for `--p-trunc-len-f` and `--p-trunc-len-r`, but that is not a requirement.  
@@ -161,18 +162,18 @@ We're also using a multi-threading command to split the processing across multip
 
 ```
 qiime dada2 denoise-paired \
-  --i-demultiplexed-seqs demux-full.qza \
+  --i-demultiplexed-seqs demux-paired-end.qza \
   --p-trim-left-f 13 \
   --p-trim-left-r 13 \
   --p-trunc-len-f 150 \
   --p-trunc-len-r 150 \
-  --o-table table.qza \
   --p-n-threads 2 \
-  --o-representative-sequences rep-seqs.qza \
-  --o-denoising-stats denoising-stats.qza
+  --o-table table_16S.qza \
+  --o-representative-sequences rep-seqs_16S.qza \
+  --o-denoising-stats denoising-stats_16S.qza
 ```
 
-The second command produces a visualisation table of the denoising process so we can see the effect it had on the data.
+Following we need to generate a qzv file containing the a table summarizing the denoising process, so we can discuss the effect it had on the data.
 ```
 qiime metadata tabulate --m-input-file denoising-stats.qza --o-visualization denoising-stats.qzv
 ```

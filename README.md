@@ -32,7 +32,7 @@ __LEARNING OUTCOMES__
 - [ ] [**Brief introduction** about __Metagenomics__ concepts. *What are we going to talk about?*](https://docs.google.com/presentation/d/195VnrPpJibRh5XctEcVdJxjdKM5sfG9flRnp-qIOtlw/edit?usp=sharing)
 - [ ] [**Illumina sequencing technology** and how the sequences are obtained - Presentation](https://docs.google.com/presentation/d/195VnrPpJibRh5XctEcVdJxjdKM5sfG9flRnp-qIOtlw/edit?usp=sharing)
 - [ ] Laptop setting;
-- [ ] [How to connect to the Amazon EC2 service](unix_short_tutorial/how_to_connect.md)  
+  - [ ] [How to connect to the Amazon EC2 service](unix_short_tutorial/how_to_connect.md)  
 - [ ] [A brief introduction to **LINUX** and the **BASH** environment - Presentation](https://drive.google.com/file/d/1vGc8ZsNNo6UpK36p9czREym8vwjiLgGo/view?usp=sharing)
 - [ ] [Introduction to the **BASH** shell](unix_short_tutorial/Readme.md)
 - [ ] [Introduction to the **FASTQ** format and Qiime objects - ppt](https://drive.google.com/file/d/1XvAL2f2PZduU-pXkU83jruMHHTPx5pj2/view?usp=sharing)  

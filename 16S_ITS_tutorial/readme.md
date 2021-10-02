@@ -52,10 +52,6 @@ However, using Keemei to validate your metadata is recommended because a report 
 be presented each time Keemei is run.
 
 
-
-
-
-
 ## Start QIIME2 session
 
 As we discussed during the introduction to UNIX-based environment, we take advantage of using *virtual environments* to avoid affecting the main OS.  
@@ -70,16 +66,16 @@ Here is an overview of the general steps of the QIIME2 pipeline:
 
 
 ## STEP1: Importing data, summarize the results, and examining quality of the reads.
-
 Usually, by applying a *paired ends* sequencing layout we obtain 2 *fastq* file per each processed sample.  
-Technically, it means that our data are already demultiplexed. *What does it means?*. It means we sequenced more samples in a single sequencing run and the machine have already seperated our data according to specific index.  
+Technically, it means that our data are already demultiplexed. *What does it means?*.  
+It means we sequenced more samples in a single sequencing run and the machine have already seperated our data according to specific index.  
 ---
 
-Take a look as the sequences are (in the most cases) generated
+Take a look as the sequences are (in the most cases) generated:  
 
 ![alt text](https://sfvideo.blob.core.windows.net/sitefinity/images/default-source/product-page-images/next-generation-sequencing/ngs_adapter_designs.png?sfvrsn=8ce20807_8)
 
-For more details
+For more details have a look here:
 
  [Illumina support](https://support.illumina.com/content/dam/illumina-support/documents/documentation/system_documentation/miseq/indexed-sequencing-overview-guide-15057455-04.pdf)
 

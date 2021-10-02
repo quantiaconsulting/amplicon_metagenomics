@@ -69,27 +69,10 @@ Here is an overview of the general steps of the QIIME2 pipeline:
 ![](steps.png)
 
 
-## STEP1: Importing files
+## STEP1: Importing data, summarize the results, and examining quality of the reads.
 
-The sequences that you just downloaded are defined in QIIME2 as EMPPairedEndSequences. **What that mean?**
-
-QIIME 2 supports various data formats for sequences files and BIOM tables, however the descriptions of these formats are still being developed. Some common data formats are described in the [Importing data tutorial](https://docs.qiime2.org/2020.2/tutorials/importing/).
-
-
----
-
-
-Paired-end “**Earth Microbiome Project (EMP) protocol**” formatted reads should have **three** fastq.gz files total:
-
-*   one fastq.gz file that contains the forward sequence reads,
-*   one fastq.gz file that contains the reverse sequence reads,
-*   a third fastq.gz file containinig the associated barcode reads.  
-
-In this format, sequence data is still **multiplexed**.  
-
-**The order of the records** in the fastq.gz files defines the association between a sequence read and its barcode read (i.e. the first barcode read corresponds to the first sequence read, the second barcode to the second read, and so on.)
-
-
+Usually, by applying a *paired ends* sequencing layout we obtain 2 *fastq* file per each processed sample.  
+Technically, it means that our data are already demultiplexed. *What does it means?*. It means we sequenced more samples in a single sequencing run and the machine have already seperated our data according to specific index.  
 ---
 
 Take a look as the sequences are (in the most cases) generated
@@ -101,15 +84,7 @@ For more details
  [Illumina support](https://support.illumina.com/content/dam/illumina-support/documents/documentation/system_documentation/miseq/indexed-sequencing-overview-guide-15057455-04.pdf)
 
  [earth microbiome 16S protocols](http://www.earthmicrobiome.org/protocols-and-standards/16s/)
-
-
-
-```
-qiime tools import \
-   --type EMPPairedEndSequences \
-   --input-path emp-paired-end-sequences \
-   --output-path emp-paired-end-sequences.qza
-```
+---
 
 
 ```

@@ -175,8 +175,16 @@ qiime dada2 denoise-paired \
 
 Following we need to generate a qzv file containing the a table summarizing the denoising process, so we can discuss the effect it had on the data.
 ```
-qiime metadata tabulate --m-input-file denoising-stats.qza --o-visualization denoising-stats.qzv
+qiime metadata tabulate \
+  --m-input-file denoising-stats_16S.qza \
+  --o-visualization denoising-stats_16S.qzv
 ```
+
+---
+#### 454 and Ion Torrent data
+To whom it may be interested at this [**link**](https://benjjneb.github.io/dada2/faq.html#can-i-use-dada2-with-my-454-or-ion-torrent-data) you may find some suggestion to apply **DADA2** on 454 and Ion Torrent data.
+
+---
 
 # Step 3: Summarizing Feature Table and Feature Data
 
@@ -186,22 +194,22 @@ You can generate summaries of those as follows.
 
 ```
 qiime feature-table summarize \
-  --i-table table.qza \
-  --o-visualization table.qzv \
+  --i-table table_16S.qza \
+  --o-visualization table_16S.qzv \
   --m-sample-metadata-file sample-metadata.tsv
-
-qiime feature-table tabulate-seqs \
-  --i-data rep-seqs.qza \
-  --o-visualization rep-seqs.qzv
+```
 
 ```
-#### 454 and Ion Torrent data
-To whom it may be interested at this [**link**](https://benjjneb.github.io/dada2/faq.html#can-i-use-dada2-with-my-454-or-ion-torrent-data) you may find some suggestion to apply **DADA2** on 454 and Ion Torrent data.
+qiime feature-table tabulate-seqs \
+  --i-data rep-seqs_16S.qza \
+  --o-visualization rep-seqs.qzv
+```
+
 
 # Step 4 Taxonomy assignment 
 
 ## 16S taxonomy assignment 
-The QIIME 2 plugin [feature-classifier](https://docs.qiime2.org/2020.2/plugins/available/feature-classifier/) supports taxonomic classification of features using a variety of methods, including:  
+The QIIME 2 plugin [feature-classifier](https://docs.qiime2.org/2021.8/plugins/available/feature-classifier/) supports taxonomic classification of features using a variety of methods, including:  
  1. **Naive Bayes**;  
  2. **vsearch**; 
  3. **BLAST+**.  
@@ -215,22 +223,22 @@ The first step in this process is to assign taxonomy to the sequences in our `Fe
 
 ```
 qiime feature-classifier classify-sklearn \
-  --i-classifier ~/Share/SILVA_138_NR99_515F_806R_classifier.qza \
-  --i-reads rep-seqs.qza \
+  --i-classifier ~/Share/silva-138-99-515-806-nb-classifier.qza \
+  --i-reads rep-seqs_16S.qza \
   --o-classification taxonomy_16S_SKLEARN.qza 
 ```
 
-Now create the barplot for data visualization:  
+Once the classification is done we can generate the barplot for data visualization:  
 ```
 qiime metadata tabulate \
-  --m-input-file taxonomy_16S_SKLEARN.qza \
-  --o-visualization taxonomy_16S_SKLEARN.qzv
+  --m-input-file taxonomy_16S.qza \
+  --o-visualization taxonomy_16S.qzv
 ```
 
 ```
 qiime taxa barplot \
-  --i-table table.qza \
-  --i-taxonomy taxonomy_16S_SKLEARN.qza \
+  --i-table table_16S.qza \
+  --i-taxonomy taxonomy_16S.qza \
   --m-metadata-file sample-metadata.tsv \
   --o-visualization taxa-bar-plots_16S_SKLEARN.qzv
 ```
@@ -251,7 +259,7 @@ In addition to counts of features per sample (i.e., the data in the `FeatureTabl
 
 ```
 qiime phylogeny align-to-tree-mafft-fasttree \
-  --i-sequences rep-seqs.qza \
+  --i-sequences rep-seqs_16S.qza \
   --o-alignment aligned-rep-seqs.qza \
   --o-masked-alignment masked-aligned-rep-seq.qza \
   --o-tree unrooted-tree_16S.qza \
@@ -260,11 +268,11 @@ qiime phylogeny align-to-tree-mafft-fasttree \
 
 # Step 6: Analyzing Alpha and Beta diversities
 
-First, lets look at alpha diversity as a function of sequencing depth, as a test of our sequencing run:
+First, lets look at alpha diversity as a function of sequencing depth, as a test of our sequencing run.  
 
 ```
 qiime diversity alpha-rarefaction \
-  --i-table table.qza \
+  --i-table table_16S.qza \
   --i-phylogeny rooted-tree_16S.qza \
   --p-max-depth 8000 \
   --m-metadata-file sample-metadata.tsv \
@@ -290,7 +298,7 @@ An important parameter that needs to be provided to this script is **--p-samplin
 ```
 qiime diversity core-metrics-phylogenetic \
   --i-phylogeny rooted-tree_16S.qza \
-  --i-table table.qza \
+  --i-table table_16S.qza \
   --p-sampling-depth 1000 \
   --m-metadata-file sample-metadata.tsv \
   --output-dir core-metrics-results_16S
@@ -315,8 +323,23 @@ qiime diversity alpha-group-significance \
   --o-visualization core-metrics-results_16S/evenness-group-significance.qzv
 ```
 
+```
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity core-metrics-results_16S/shannon_vector.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --o-visualization core-metrics-results_16S/shannon-group-significance.qzv
+```
+
 Using **Pearson** and **Spearman** correlation it is possible to determine whether numeric sample metadata columns are correlated with
 alpha diversity.
+
+```
+qiime diversity alpha-correlation \
+  --i-alpha-diversity core-metrics-results_16S/shannon_vector.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --p-method spearman \
+  --o-visualization core-metrics-results_16S/shannon_correlation.qzv
+```
 
 ```
 qiime diversity alpha-correlation \
@@ -325,6 +348,7 @@ qiime diversity alpha-correlation \
   --p-method spearman \
   --o-visualization core-metrics-results_16S/faith_pd_correlation.qzv
 ````
+
 
 Next we’ll analyze sample composition in the context of categorical metadata using **PERMANOVA** (first described in [Anderson (2001)](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1442-9993.2001.01070.pp.x)) using the beta-group-significance command. The following commands will test whether distances between samples within a group, are more similar to each other then they are to samples from the other groups. In this case we test only for the Transect_name and for the vegetation
 
@@ -336,6 +360,7 @@ qiime diversity beta-group-significance \
   --o-visualization core-metrics-results_16S/unweighted-unifrac-tran-name-significance.qzv \
   --p-pairwise
 ```
+
 ```
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_16S/unweighted_unifrac_distance_matrix.qza \
@@ -343,6 +368,6 @@ qiime diversity beta-group-significance \
   --m-metadata-column vegetation \
   --o-visualization core-metrics-results_16S/unweighted-unifrac-subject-group-significance.qzv \
   --p-pairwise
-  ```
+ ```
 
 [**Back to the program**](../README.md)  

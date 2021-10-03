@@ -95,7 +95,7 @@ So we need to import our demultiplexed raw data into a qiime artifact.
 ```
 qiime tools import \
     --type 'SampleData[PairedEndSequencesWithQuality]' \
-    --input-path share/raw_data_tutorial \
+    --input-path Share/raw_data_tutorial \
     --input-format CasavaOneEightSingleLanePerSampleDirFmt \
     --output-path demux-paired-end.qza
 ```
@@ -146,8 +146,6 @@ In the **Interactive quality plot** tab we can access to the quality distributio
 In this example we have **150-base forward and reverse reads**.  
 
 We’ll use these plots to determine what trimming parameters we want to use for data denoising with DADA2 by using the **dada2 denoise-paired** plugin.
-
-  
 
   
 # Step2: Quality controlling sequences and building Feature Table and Feature Data
@@ -223,7 +221,7 @@ The first step in this process is to assign taxonomy to the sequences in our `Fe
 
 ```
 qiime feature-classifier classify-sklearn \
-  --i-classifier ~/Share/silva-138-99-515-806-nb-classifier.qza \
+  --i-classifier Share/silva-138-99-515-806-nb-classifier.qza \
   --i-reads rep-seqs_16S.qza \
   --o-classification taxonomy_16S_SKLEARN.qza 
 ```

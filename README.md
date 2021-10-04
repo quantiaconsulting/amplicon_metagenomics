@@ -1,4 +1,4 @@
-<img src="main_data_dir/image.jpg" width="50%" align="middle" alt="None">  
+<img src="main_data_dir/image.jpg" width="50%" alt="None">  
 
 # **16S/ITS METABARCODING OF MICROBIAL COMMUNITIES**  
 

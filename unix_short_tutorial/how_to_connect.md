@@ -58,7 +58,7 @@ In order to use **FileZilla** to download data from the EC2 Amazon instances to 
     * Host: **18.237.136.18**  
     * Logon: **Key File**  
     * User: **the user name used to access the EC2 Amazon instance**  
-    * Key file: **the same .pem file you used for the connection**  
-![](FileZilla.jpg)  
+    * Key file: **the same .pem file you used for the connection**   - NOTE! You have to selct that it is a pem format file when in file browser
+![](Using-Filezilla-pdf.png)  
 
 [**Back to the program**](../README.md)

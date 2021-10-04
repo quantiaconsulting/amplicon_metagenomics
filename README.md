@@ -29,7 +29,7 @@ __LEARNING OUTCOMES__
     - [Daniel Antony Pass](https://scholar.google.com/citations?user=XQml0DQAAAAJ&hl=en)  
     - [Anna Sandionigi](https://scholar.google.com/citations?hl=it&user=DLDuk_EAAAAJ)  
     - [Bruno Fosso](https://scholar.google.com/citations?user=TBeT9pIAAAAJ&hl=it)  
-- [ ] [**Brief introduction** about __Metagenomics__ concepts. *What are we going to talk about?*](https://docs.google.com/presentation/d/195VnrPpJibRh5XctEcVdJxjdKM5sfG9flRnp-qIOtlw/edit?usp=sharing)
+- [ ] [**Brief introduction** about __Metagenomics__ concepts. *What are we going to talk about?*](https://docs.google.com/presentation/d/1JafDY-zalbqZkEA83MLhLHNrCJZ_aqDlfzt22FNKadw/edit?usp=sharing)
 - [ ] [**Illumina sequencing technology** and how the sequences are obtained - Presentation](https://docs.google.com/presentation/d/195VnrPpJibRh5XctEcVdJxjdKM5sfG9flRnp-qIOtlw/edit?usp=sharing)
 - [ ] Laptop setting;
   - [ ] [How to connect to the Amazon EC2 service](unix_short_tutorial/how_to_connect.md)  

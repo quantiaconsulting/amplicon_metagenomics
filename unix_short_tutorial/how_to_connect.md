@@ -9,9 +9,11 @@ Note also that the login name (internet address) for Amazon will change daily. W
 ### Windows users using MobaXterm
 
 1. Download Client: The free client can be downloaded from http://mobaxterm.mobatek.net
-2. Start a new SSH terminal  (1&2). Add the host address (3), username (4), and pem file (5) and press "ok".
-    ![](moba.png)
-3. Moba saves your sessions down the left side of the screen, or can be swapped to a file browser for downloading
+2. Start a new SSH terminal  (1&2). 
+    ![](Moba1.png)
+3. Add the host address (3), username (4), and pem file (5) and press "ok".
+    ![](Moba2.png)
+4. Moba saves your sessions down the left side of the screen, or can be swapped to a file browser for downloading
 
 ### Windows users using Putty
 1. Create a windows key:  

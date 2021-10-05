@@ -1,39 +1,72 @@
 # Some additional Tips
-[Importing Demultiplexed data](#importing-demultiplexed-data)  
+[Importing not demultiplexed data](#importing-not-demultiplexed-data)  
 [Evaluating data quality](#evaluating-data-quality)  
 [Improving the Denoising step](#improving-the-denoising-step)  
 [Collections for taxonomic classification](#collections-for-taxonomic-classification)  
 [Export ASV table to tsv](#export-asv-table-to-tsv)  
-[Import ASV table processed with DADA2 outside QIIME](#import-asv-table-processed-with-dada2-outside-qiime)  
+[Import ASV table processed with DADA2 outside QIIME2](#import-asv-table-processed-with-dada2-outside-qiime)  
 [Filter table to only have those samples in the metadata file](#filter-table-to-only-have-those-samples-in-the-metadata-file)  
 
 Always remember to active QIIME2 environment!!!  
 ```
-source activate qiime2-2020.8
+source activate qiime2-2021.8
 ```
 
-## Importing Demultiplexed data
+## Importing not demultiplexed data
 Let's start with multiplexed sequence reads case.  
-Copy the folder containing demultiplexed data in your **home folder**:  
+*** Check you are in your home folder***  
+Let's create a folder for multiplexed data  in your **home folder**:
 ```
-cp -r Share/data raw_data_tutorial
+mkdir multiplexed_data && cd multiplexed_data
+```  
+Now we need to make a folder that will contain all our data:
 ```
+mkdir emp-paired-end-sequences
+```  
+Let's download the required files:
+```
+wget \
+  -O "emp-paired-end-sequences/forward.fastq.gz" \
+  "https://data.qiime2.org/2020.2/tutorials/atacama-soils/10p/forward.fastq.gz"
 
-To import these data you don't need the sample metadata file, cause there is no need to map the sample to the relevant barcode.
+wget \
+  -O "emp-paired-end-sequences/reverse.fastq.gz" \
+  "https://data.qiime2.org/2020.2/tutorials/atacama-soils/10p/reverse.fastq.gz"
+
+wget \
+  -O "emp-paired-end-sequences/barcodes.fastq.gz" \
+  "https://data.qiime2.org/2020.2/tutorials/atacama-soils/10p/barcodes.fastq.gz"
+```  
+We are also going to reuse the ``sample-metadata.tsv`` file used during the QIIME2 tutorial:  
+```
+cp ~/qiime2-atacama-tutorial/sample-metadata.tsv .
+```
+Now let's import everything as a QIIME2 artifact:  
 ```
 qiime tools import \
---type 'SampleData[PairedEndSequencesWithQuality]' \
---input-path raw_data_tutorial/ \
---input-format CasavaOneEightSingleLanePerSampleDirFmt \
---output-path demux-paired-end.qza
+   --type EMPPairedEndSequences \
+   --input-path emp-paired-end-sequences \
+   --output-path emp-paired-end-sequences.qza
+```
+So we can perform the demultiplexing step:  
+```
+qiime demux emp-paired \
+  --m-barcodes-file sample-metadata.tsv \
+  --m-barcodes-column barcode-sequence \
+  --p-rev-comp-mapping-barcodes \
+  --i-seqs emp-paired-end-sequences.qza \
+  --o-per-sample-sequences demux.qza \
+  --o-error-correction-details demux-details.qza
 ```
 
+Let's visualize our data!!!  
 ```
 qiime demux summarize \
-  --i-data  demux-paired-end.qza \
-  --o-visualization demux_ee.qzv
+  --i-data demux.qza \
+  --o-visualization demux.qzv
 ```
-We may compare the `demux_from_raw.qzv` with the `demux.qzv`generated from multiplexed data and their content should be identical.
+
+We may compare the obtained `demux.qzv` with the `demux-paired-end.qzv` generated during our tutorial.
 
 ## Evaluating data quality
 We are going to evaluate the quality of our sequencing data by using **FastQC**.  
@@ -44,7 +77,7 @@ mkdir fastqc_reports
 Execute FastQC on our raw data. In order to save time we're going to evaluate only `Baquedano`. In our test case, it is simple cause those file names start with `BAQ`.  
    
 ```
-fastqc -t 2 raw_data_tutorial/BAQ* -O fastqc_reports
+fastqc -t 2 ~/Share/raw_data_tutorial/BAQ* -O fastqc_reports
 ```
 FastQC creates a report for each analysed file and it is not so simple to figure out what is overally the quality of our sequencing data.  
 A solution is to apply [**MultiQC**](https://multiqc.info/) a tool allowing to *aggregate results from bioinformatics analyses across many samples into a single report*.    
@@ -58,9 +91,8 @@ Now by using *FileZilla* download on your computers these items:
 ## Improving the Denoising step
 Now let's try to improve our denoising step by modifying **DADA2** import parameters:  
 ```
-cd qiime2-atacama-tutorial
-mkdir denoising_alt
-cd denoising_alt
+cd ~/qiime2-atacama-tutorial
+mkdir denoising_alt && cd denoising_alt
 ```
 
 Now we re-perform the denoising step by modifying the **Expected Error (ee)** threshold.  
@@ -84,9 +116,10 @@ qiime dada2 denoise-paired \
 
 ```
 qiime metadata tabulate --m-input-file denoising-stats_ee.qza --o-visualization denoising-stats_ee.qzv
-
-cd ..
 ```
+
+Now try to compare this results with the one obtained during the QIIME2 tutorial.    
+
 
 ## Collections for taxonomic classification
 In order to perform taxonomic classification in QIIME2 we need to properly import and, eventually, train reference collections:
@@ -99,13 +132,13 @@ If your are interested in metabarcoding analysis based on the **COX1** barcode, 
  
 The easiest case is *SILVA*. QIIME Developers have already created an appropriate version so you can just dowload it:  
 ```
-mkdir tax_import
-cd tax_import
+cd
+mkdir tax_import && cd tax_import
 ```
 So let's start with `qza` data download:  
 ```
-wget --no-check-certificate https://data.qiime2.org/2020.8/common/silva-138-99-seqs.qza
-wget --no-check-certificate https://data.qiime2.org/2020.8/common/silva-138-99-tax.qza
+wget --no-check-certificate https://data.qiime2.org/2021.8/common/silva-138-99-seqs.qza
+wget --no-check-certificate https://data.qiime2.org/2021.8/common/silva-138-99-tax.qza
 ```
 If you plan to use alignment based approaches for taxonomic assigment (i.e. BLAST or VSEARCH), that's enough. You may proceed with ASV classification.  
 Otherwise, if you would like to use the **sklearn** approach you need to train the classifier.  
@@ -142,25 +175,25 @@ cd MIDORI_ref
 ```
 Download MIDORI data. It has been already properly formatted for QIIME2 import:
 ```
-wget --no-check-certificate http://www.reference-midori.info/download/Latest_GenBankRelease240/Qiime/uniq/MIDORI_UNIQ_GB240_CO1_QIIME.fasta.zip
-wget --no-check-certificate http://www.reference-midori.info/download/Latest_GenBankRelease240/Qiime/uniq/MIDORI_UNIQ_GB240_CO1_QIIME.taxon.zip
+wget --no-check-certificate http://www.reference-midori.info/download/Latest_GenBankRelease245/QIIME/uniq/MIDORI_UNIQ_NUC_GB245_CO1_QIIME.fasta.gz;
+wget --no-check-certificate http://www.reference-midori.info/download/Latest_GenBankRelease245/QIIME/uniq/MIDORI_UNIQ_NUC_GB245_CO1_QIIME.taxon.gz;
 ```
 ```
-unzip MIDORI_UNIQ_GB240_CO1_QIIME.fasta.zip 
-unzip MIDORI_UNIQ_GB240_CO1_QIIME.taxon.zip
+unzip MIDORI_UNIQ_NUC_GB245_CO1_QIIME.fasta.gz 
+unzip MIDORI_UNIQ_NUC_GB245_CO1_QIIME.taxon.gz
 ```
 
 ```
 qiime tools import \
-  --input-path MIDORI_UNIQ_GB240_CO1_QIIME.fasta \
-  --output-path MIDORI_UNIQ_GB240_CO1_QIIME.qza \
+  --input-path MIDORI_UNIQ_NUC_GB245_CO1_QIIME.fasta \
+  --output-path MIDORI_UNIQ_NUC_GB245_CO1_QIIME.qza \
   --type 'FeatureData[Sequence]'
   
 qiime tools import \
  --type FeatureData[Taxonomy] \
- --input-path MIDORI_UNIQ_GB240_CO1_QIIME.taxon \
+ --input-path MIDORI_UNIQ_NUC_GB245_CO1_QIIME.taxon \
  --input-format HeaderlessTSVTaxonomyFormat \
- --output-path MIDORI_UNIQ_GB240_CO1_QIIME.taxon.qza
+ --output-path MIDORI_UNIQ_NUC_GB245_CO1_QIIME.taxon.qza
 ```
 
 ## Export ASV table to tsv
@@ -176,13 +209,12 @@ biom convert -i ASV_table_exports/feature-table.biom -o ASV_table_exports/featur
 ```
 Note that this table doesn't currently contain taxonomy information. To merge the tables you can use the ```qiime taxa collapse``` command below at ASV level, or the function in the taxonomy barcharts visualisation.
 
-## Import ASV table processed with DADA2 outside QIIME
+## Import ASV table processed with DADA2 outside QIIME2
 Sometimes it is useful to apply DADA2 outside QIIME2. Nonetheless is always possibile to import DADA2 produced ASV table in QIIME2.
 ```
-cd ~/qiime2-atacama-tutorial
+cd
 
-mkdir dada2_data_import
-cd dada2_data_import
+mkdir dada2_data_import && cd dada2_data_import
 
 cp ~/Share/seqtab-nochim.txt .
 ```
@@ -190,7 +222,7 @@ Let's inspect how `seqtab-nochim.txt` is made:
 ```
 less seqtab-nochim.txt
 ```
-Actually the problem is we have ASV seqeunces instead of md5 in the ASV column. We may convert it by using **Python**.  
+Actually the problem is we have features sequence instead of md5 name in the ASV column. We may convert it by using **Python**.  
 Enter the Python Shell:
 ```
 python
@@ -200,14 +232,9 @@ First of all we import the needed functions:
 import hashlib
 import sys
 ```
-Then we generate the file for ASV table and representative sequences:
+Then we generate the file for ASV table and representative sequences and convert our table:
 ```
-tmp = open("rep-seqs_HEX.fna", "w")
-tab = open("seqtab-nochim_hash.txt", "w")
-```
-Let's convert our table:
-```
-with open("seqtab-nochim.txt","r",encoding='utf-8') as a:
+with open("seqtab-nochim.txt","r",encoding='utf-8') as a, open("rep-seqs_HEX.fna", "w") as tmp, open("seqtab-nochim_hash.txt", "w") as tab:
     line = a.readline()
     tab.write("ASV" + line)
     for line in a:

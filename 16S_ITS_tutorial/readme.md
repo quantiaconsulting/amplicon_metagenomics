@@ -151,7 +151,7 @@ We’ll use these plots to determine what trimming parameters we want to use for
 
   
 # Step2: Quality controlling sequences and building Feature Table and Feature Data
-[**Key concept: OTU or ASV**;](https://docs.google.com/presentation/d/1Rxof51tbTxi45_dMlqtbFkQjpWRLTc76uoI6VH8b3hA/edit?usp=sharing)
+[**Key concept: OTU or ASV**;](https://docs.google.com/presentation/d/1Rxof51tbTxi45_dMlqtbFkQjpWRLTc76uoI6VH8b3hA/edit?usp=sharing)  
 After importing the reads, we have inspected the sequence quality based on randomly selected samples.  
 What we now need is to remove the noise introduced during amplification and sequencing.
 

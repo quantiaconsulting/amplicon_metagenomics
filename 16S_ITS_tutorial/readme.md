@@ -35,7 +35,7 @@ You can find the [file](https://docs.google.com/spreadsheets/d/1a1NFqpBjwb8Ul0c4
 ```
 wget \
   -O "sample-metadata.tsv" \
-  "https://data.qiime2.org/2020.8/tutorials/atacama-soils/sample_metadata.tsv"
+  "https://data.qiime2.org/2021.8/tutorials/atacama-soils/sample_metadata.tsv"
 ```
 
 **If you would like to play around the sample-metadata.tsv file, please copy it file into another folder and have fun with it.**  

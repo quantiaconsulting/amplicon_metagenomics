@@ -244,6 +244,13 @@ qiime metadata tabulate \
 ```
 
 ```
+qiime metadata tabulate \
+  --m-input-file taxonomy_16S.qza  \
+  --m-input-file rep-seqs_16S.qza  \
+  --o-visualization annotated_rep-set_16S.qzv
+```
+
+```
 qiime taxa barplot \
   --i-table table_16S.qza \
   --i-taxonomy taxonomy_16S.qza \

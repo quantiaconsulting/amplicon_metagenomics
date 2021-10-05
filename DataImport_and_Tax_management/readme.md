@@ -306,4 +306,4 @@ qiime taxa collapse \
   --o-collapsed-table table-l4.qza
 ```
 
-[**Back to the program**](../../../corso_NOV_2020/physalia-metabarcoding/README.md)
+[**Back to the program**](../README.md)

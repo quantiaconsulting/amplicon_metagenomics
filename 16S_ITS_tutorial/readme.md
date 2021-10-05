@@ -17,6 +17,8 @@ You can find the paper [here](https://msystems.asm.org/content/2/3/e00195-16.abs
 Start by creating a directory to work in. We will call it **qiime2-atacama-tutorial**.  
 ```
 mkdir qiime2-atacama-tutorial
+```
+```
 cd qiime2-atacama-tutorial
 ```
 
@@ -95,7 +97,7 @@ So we need to import our demultiplexed raw data into a qiime artifact.
 ```
 qiime tools import \
     --type 'SampleData[PairedEndSequencesWithQuality]' \
-    --input-path Share/raw_data_tutorial \
+    --input-path ~/Share/raw_data_tutorial \
     --input-format CasavaOneEightSingleLanePerSampleDirFmt \
     --output-path demux-paired-end.qza
 ```
@@ -217,11 +219,18 @@ We’ll do that using a pre-trained ***Naive Bayes classifier*** and the **q2-fe
 This classifier was trained on the *SILVA 138 NR99 collection*, where the sequences have been trimmed to only include 250 bases from the region of the 16S that was sequenced in this analysis (the V4 region, bound by the 515F/806R primer pair).  
 We’ll apply this classifier to our sequences, and we can generate a visualization of the resulting mapping from sequence to taxonomy.
 
+Initially, we need to download the pre-computed classifier:
+```
+wget \
+  -O "silva-138-99-515-806-nb-classifier.qza" \
+  "https://data.qiime2.org/2021.8/common/silva-138-99-515-806-nb-classifier.qza"
+```
+
 The first step in this process is to assign taxonomy to the sequences in our `FeatureData[Sequence]` QIIME 2 artifact. 
 
 ```
 qiime feature-classifier classify-sklearn \
-  --i-classifier Share/silva-138-99-515-806-nb-classifier.qza \
+  --i-classifier silva-138-99-515-806-nb-classifier.qza \
   --i-reads rep-seqs_16S.qza \
   --o-classification taxonomy_16S_SKLEARN.qza 
 ```

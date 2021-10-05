@@ -239,13 +239,13 @@ qiime feature-classifier classify-sklearn \
 Once the classification is done we can generate the barplot for data visualization:  
 ```
 qiime metadata tabulate \
-  --m-input-file taxonomy_16S.qza \
-  --o-visualization taxonomy_16S.qzv
+  --m-input-file taxonomy_16S_SKLEARN.qza \
+  --o-visualization taxonomy_16S_SKLEARN.qzv
 ```
 
 ```
 qiime metadata tabulate \
-  --m-input-file taxonomy_16S.qza  \
+  --m-input-file taxonomy_16S_SKLEARN.qza  \
   --m-input-file rep-seqs_16S.qza  \
   --o-visualization annotated_rep-set_16S.qzv
 ```

@@ -208,6 +208,12 @@ qiime feature-table tabulate-seqs \
 
 
 # Step 4 Taxonomy assignment 
+<details>
+  <summary markdown="span">Please remember to access the qiime2-atacama-tutorial folder and activate QIIME2</summary> 
+    cd ~/qiime2-atacama-tutorial
+    source activate qiime2-2021.8
+</details>
+
 
 ## 16S taxonomy assignment 
 The QIIME 2 plugin [feature-classifier](https://docs.qiime2.org/2021.8/plugins/available/feature-classifier/) supports taxonomic classification of features using a variety of methods, including:  
@@ -235,6 +241,11 @@ qiime feature-classifier classify-sklearn \
   --i-reads rep-seqs_16S.qza \
   --o-classification taxonomy_16S_SKLEARN.qza 
 ```
+
+<details>
+  <summary markdown="span">If you were not able to complete the taxonomic classification just copy/paste the pre-computed one.</summary> 
+    cp ~/Share/taxonomy_16S.qza .
+</details>
 
 Once the classification is done we can generate the barplot for data visualization:  
 ```

@@ -322,6 +322,7 @@ qiime diversity alpha-rarefaction \
   --i-table table_16S.qza \
   --i-phylogeny rooted-tree_16S.qza \
   --p-max-depth 8000 \
+  --p-n-threads 1 \
   --m-metadata-file sample-metadata.tsv \
   --o-visualization alpha-rarefaction.qzv
 ```
@@ -347,6 +348,7 @@ qiime diversity core-metrics-phylogenetic \
   --i-phylogeny rooted-tree_16S.qza \
   --i-table table_16S.qza \
   --p-sampling-depth 1000 \
+  --p-n-threads 1 \
   --m-metadata-file sample-metadata.tsv \
   --output-dir core-metrics-results_16S
 ````

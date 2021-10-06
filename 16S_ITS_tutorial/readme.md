@@ -1,3 +1,22 @@
+# Table of content
+1. [Start the analysis](#start-the-analysis)
+   1. [Experimental information](#experimental-information)
+      1. [Obtain Data](#obtain-data)
+      2. [The Metadata file](#the-metadata-file)
+      3. [Start QIIME2 session](#start-the-analysis)
+2. [STEP1: Importing data, summarize the results, and examining quality of the reads.](#step1-importing-data-summarize-the-results-and-examining-quality-of-the-reads)
+   1. [Explore QIIME2 Objects](#explore-qiime2-objects)
+3. [STEP2: Quality controlling sequences and building Feature Table and Feature Data](#step2-quality-controlling-sequences-and-building-feature-table-and-feature-data)
+   1. [Quality filter of 16S](#quality-filter-of-16s)
+4. [STEP3: Summarizing Feature Table and Feature Data](#step3-summarizing-feature-table-and-feature-data)
+   1. [Summaraize 16S data](#summaraize-16s-data)
+5. [STEP4: Taxonomy assignment](#step4-taxonomy-assignment)
+   1. [16S taxonomy assignment ](#16s-taxonomy-assignment)
+6. [STEP5: Generating a phylogenetic tree](#step5-generating-a-phylogenetic-tree)
+7. [STEP6: Analyzing Alpha and Beta diversities](#step6-analyzing-alpha-and-beta-diversities)
+   1. [Time to test](#time-to-test)
+
+
 # Start the analysis
 In this tutorial you’ll use QIIME2 to perform an analysis of soil samples from the Atacama Desert in northern Chile.
 **You can find the starting tutorial on the official page of QIIME2** ( [link text](https://docs.qiime2.org/2020.2/tutorials/atacama-soils/))
@@ -6,7 +25,7 @@ In this tutorial you’ll use QIIME2 to perform an analysis of soil samples from
 
 ![Atacama Desert](dsc-5624-cc.jpg)
 
-### Experimental information
+## Experimental information
 *   The v4 region of the 16S rRNA gene was amplified from all community DNA extracts using barcoded primers 515F/806R.
 ![](V4_atacama.png)
 *   Amplicon sequencing was performed Illumina MiSeq system and MiSeq control software version 2.2.0.
@@ -22,7 +41,7 @@ mkdir qiime2-atacama-tutorial
 cd qiime2-atacama-tutorial
 ```
 
-### The Metadata file
+## The Metadata file
 
 Metadata play a key rule in every ecological study. For how is familiar with QIIME 1 this file correspond to "mapping file" or for R user is the env file in *vegan* package.
 
@@ -67,7 +86,7 @@ Here is an overview of the general steps of the QIIME2 pipeline:
 ![](steps.png)
 
 
-## STEP1: Importing data, summarize the results, and examining quality of the reads.
+# STEP1: Importing data, summarize the results, and examining quality of the reads.
 Usually, by applying a *paired ends* sequencing layout we obtain 2 *fastq* file per each processed sample.  
 Technically, it means that our data are already demultiplexed. *What does it mean?*.  
 It means we sequenced more samples in a single sequencing run and the machine have already seperated our data according to specific index.  
@@ -109,7 +128,7 @@ To obtain an almost complete list of importable formats type the following line:
 qiime tools import --show-importable-formats --help
 ```
 
-### Explore QIIME2 Objects
+## Explore QIIME2 Objects
 
 By importing the sequences you have generated your first object in QIIME2: `demux-paired-end.qza`.
 Following we are interested to visualize our data and obtain some specific statistics.
@@ -150,7 +169,7 @@ In this example we have **150-base forward and reverse reads**.
 We’ll use these plots to determine what trimming parameters we want to use for data denoising with DADA2 by using the **dada2 denoise-paired** plugin.
 
   
-# Step2: Quality controlling sequences and building Feature Table and Feature Data
+# STEP2: Quality controlling sequences and building Feature Table and Feature Data
 [**Key concept: OTU or ASV**](https://docs.google.com/presentation/d/1Rxof51tbTxi45_dMlqtbFkQjpWRLTc76uoI6VH8b3hA/edit?usp=sharing)  
 After importing the reads, we have inspected the sequence quality based on randomly selected samples.  
 What we now need is to remove the noise introduced during amplification and sequencing.
@@ -187,7 +206,7 @@ To whom it may be interested at this [**link**](https://benjjneb.github.io/dada2
 
 ---
 
-# Step 3: Summarizing Feature Table and Feature Data
+# STEP3: Summarizing Feature Table and Feature Data
 
 ## Summaraize 16S data
 You  now will have artifacts containing the feature table and corresponding feature sequences.  
@@ -207,7 +226,7 @@ qiime feature-table tabulate-seqs \
 ```
 
 
-# Step 4 Taxonomy assignment 
+# STEP4: Taxonomy assignment 
 <details>
   <summary markdown="span">Please remember to access the qiime2-atacama-tutorial folder and activate QIIME2</summary>
 
@@ -272,7 +291,7 @@ qiime taxa barplot \
   --o-visualization taxa-bar-plots_16S_SKLEARN.qzv
 ```
 
-# Step 5: Generating a phylogenetic tree
+# STEP5: Generating a phylogenetic tree
 We have to generate phylogenetic tree because QIIME2 support different phylogenetic diversity metrics, including Faith’s Phylogenetic Diversity and weighted and unweighted UniFrac. 
 
 In addition to counts of features per sample (i.e., the data in the `FeatureTable[Frequency]` QIIME 2 artifact), these metrics require a rooted phylogenetic tree relating the features to one another. This information will be stored in a `Phylogeny[Rooted]` QIIME 2 artifact. To generate a phylogenetic tree we will use **align-to-tree-mafft-fasttree** pipeline from the q2-phylogeny plugin`.
@@ -295,7 +314,7 @@ qiime phylogeny align-to-tree-mafft-fasttree \
   --o-rooted-tree rooted-tree_16S.qza
 ```
 
-# Step 6: Analyzing Alpha and Beta diversities
+# STEP6: Analyzing Alpha and Beta diversities
 
 First, lets look at alpha diversity as a function of sequencing depth, as a test of our sequencing run.  
 

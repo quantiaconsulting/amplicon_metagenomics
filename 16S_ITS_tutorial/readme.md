@@ -348,7 +348,7 @@ qiime diversity core-metrics-phylogenetic \
   --i-phylogeny rooted-tree_16S.qza \
   --i-table table_16S.qza \
   --p-sampling-depth 1000 \
-  --p-n-threads 1 \
+  --p-n-jobs-or-threads 1 \
   --m-metadata-file sample-metadata.tsv \
   --output-dir core-metrics-results_16S
 ````

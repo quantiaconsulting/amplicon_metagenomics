@@ -210,7 +210,8 @@ qiime feature-table tabulate-seqs \
 # Step 4 Taxonomy assignment 
 <details>
   <summary markdown="span">Please remember to access the qiime2-atacama-tutorial folder and activate QIIME2</summary> 
-    cd ~/qiime2-atacama-tutorial
+    cd ~/qiime2-atacama-tutorial  
+
     source activate qiime2-2021.8
 </details>
 

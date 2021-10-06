@@ -225,7 +225,6 @@ qiime feature-table tabulate-seqs \
   --o-visualization rep-seqs.qzv
 ```
 
-
 # STEP4: Taxonomy assignment 
 <details>
   <summary markdown="span">Please remember to access the qiime2-atacama-tutorial folder and activate QIIME2</summary>
@@ -266,7 +265,7 @@ qiime feature-classifier classify-sklearn \
 <details>
   <summary markdown="span">If you were not able to complete the taxonomic classification just copy/paste the pre-computed one.</summary> 
     
-    cp ~/Share/taxonomy_16S.qza .
+    cp ~/Share/taxonomy_16S_SKLEARN.qza  .
 </details>
 
 Once the classification is done we can generate the barplot for data visualization:  

@@ -1,19 +1,24 @@
 # Some additional Tips
-[Importing not demultiplexed data](#importing-not-demultiplexed-data)  
-[Evaluating data quality](#evaluating-data-quality)  
-[Improving the Denoising step](#improving-the-denoising-step)  
-[Collections for taxonomic classification](#collections-for-taxonomic-classification)  
-[Export ASV table to tsv](#export-asv-table-to-tsv)  
-[Import ASV table processed with DADA2 outside QIIME2](#import-asv-table-processed-with-dada2-outside-qiime)  
-[Filter table to only have those samples in the metadata file](#filter-table-to-only-have-those-samples-in-the-metadata-file)  
+1. [Some example of data import](#some-example-of-data-import)
+   1. [Importing not demultiplexed data](#importing-not-demultiplexed-data)
+   2. [Importing demultiplexed by using the manifest file](#importing-demultiplexed-by-using-the-manifest-file)
+2. [Evaluating data quality](#evaluating-data-quality)
+3. [Improving the Denoising step](#improving-the-denoising-step)
+4. [Collections for taxonomic classification](#collections-for-taxonomic-classification)
+5. [Export ASV table to tsv](#export-asv-table-to-tsv)
+6. [Import ASV table processed with DADA2 outside QIIME2](#import-asv-table-processed-with-dada2-outside-qiime)
+7. [Filter table to only have those samples in the metadata file](#filter-table-to-only-have-those-samples-in-the-metadata-file)  
 
 Always remember to active QIIME2 environment!!!  
 ```
+cd ~/qiime2-atacama-tutorial  
+
 source activate qiime2-2021.8
 ```
 
-## Importing not demultiplexed data
-Let's start with multiplexed sequence reads case.  
+# Some example of data import
+### Importing not demultiplexed data
+During our tutorial we've faced with already demuliplexed data. Sometimes you need to perform the data demultiplexing, so let's demultiplex them!!!    
 *** Check you are in your home folder***  
 Let's create a folder for multiplexed data  in your **home folder**:
 ```
@@ -66,24 +71,72 @@ qiime demux summarize \
   --o-visualization demux.qzv
 ```
 
-We may compare the obtained `demux.qzv` with the `demux-paired-end.qzv` generated during our tutorial.
+### Importing demultiplexed by using the manifest file
+During the mail tutorial we imported the PE fastq files by using:  
+ - **type** `SampleData[PairedEndSequencesWithQuality]`: which means we are using PE fastq files;
+ - **input-format** `CasavaOneEightSingleLanePerSampleDirFmt`: which means the file name are formatted by using the **CASAVA** file format.  
+
+Sometimes our data are not formatted according to **CASAVA** format so we need to use an alternative way to import the data.  
+To import the data we need to generate a **manifest file**.  
+
+Initially we need to create a new folder in our home just because we are going to re-use this data for other stuff.  
+```
+cd
+
+mkdir IJMS_training_test && cd IJMS_training_test
+```    
+Let's have a look to our data:
+```
+ls ~/Share/IJMS_input_data
+```
+
+Now we can create our file named `manifest_file.tsv` (my suggestion is to create it locally on your computer and then upload it on the server):
+
+```
+sample-id	forward-absolute-filepath	reverse-absolute-filepath
+211446F203610	$HOME/Share/IJMS_input_data/211446F203610_S155_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/211446F203610_S155_L001_R2_001.fastq.gz
+211454F203618	$HOME/Share/IJMS_input_data/211454F203618_S163_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/211454F203618_S163_L001_R2_001.fastq.gz
+211456F203620	$HOME/Share/IJMS_input_data/211456F203620_S165_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/211456F203620_S165_L001_R2_001.fastq.gz
+211460F203624	$HOME/Share/IJMS_input_data/211460F203624_S169_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/211460F203624_S169_L001_R2_001.fastq.gz
+214981F203626	$HOME/Share/IJMS_input_data/214981F203626_S2_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/214981F203626_S2_L001_R2_001.fastq.gz
+214991F203636	$HOME/Share/IJMS_input_data/214991F203636_S12_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/214991F203636_S12_L001_R2_001.fastq.gz
+214993F203638	$HOME/Share/IJMS_input_data/214993F203638_S14_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/214993F203638_S14_L001_R2_001.fastq.gz
+214997F203642	$HOME/Share/IJMS_input_data/214997F203642_S18_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/214997F203642_S18_L001_R2_001.fastq.gz
+215001F203646	$HOME/Share/IJMS_input_data/215001F203646_S22_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/215001F203646_S22_L001_R2_001.fastq.gz
+215003F203648	$HOME/Share/IJMS_input_data/215003F203648_S24_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/215003F203648_S24_L001_R2_001.fastq.gz
+```
+Now we're ready to import our data and generate a visualization file:  
+```
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path manifest_file.tsv \
+  --output-path pe-demux.qza \
+  --input-format PairedEndFastqManifestPhred33V2
+  
+qiime demux summarize \
+    --i-data  pe-demux.qza \
+    --o-visualization pe-demux.qzv
+```
 
 ## Evaluating data quality
-We are going to evaluate the quality of our sequencing data by using **FastQC**.  
+We have already learned to use **FastQC**. It is a really useful tool but the main drowback is it generates a report for file for each analysed fastq file.  
+So it is not so simple to figure out what is overall the quality of our raw data.  
+A solution is to apply [**MultiQC**](https://multiqc.info/) a tool allowing to *aggregate results from bioinformatics analyses across many samples into a single report*.  
+
 Create a folder that will contain all the FastQC reports:  
 ```
-mkdir fastqc_reports
+mkdir ~/fastqc_reports && cd ~/fastqc_reports
 ```
 Execute FastQC on our raw data. In order to save time we're going to evaluate only `Baquedano`. In our test case, it is simple cause those file names start with `BAQ`.  
    
 ```
 fastqc -t 2 ~/Share/raw_data_tutorial/BAQ* -O fastqc_reports
 ```
-FastQC creates a report for each analysed file and it is not so simple to figure out what is overally the quality of our sequencing data.  
-A solution is to apply [**MultiQC**](https://multiqc.info/) a tool allowing to *aggregate results from bioinformatics analyses across many samples into a single report*.    
+    
 ```
 multiqc -n sequencing_data_report fastqc_reports/
 ```
+
 Now by using *FileZilla* download on your computers these items:  
 * `sequencing_data_report.html`  
 * `sequencing_data_report_data`  
@@ -96,7 +149,7 @@ mkdir denoising_alt && cd denoising_alt
 ```
 
 Now we re-perform the denoising step by modifying the **Expected Error (ee)** threshold.  
-Just remember **ee** is a way to meausure the number of nucleotides that are probably wrong in our sequences:  
+Just remember **ee** is a way to measure the number of nucleotides that are probably wrong in our sequences:  
 ![](ee-2.png)  
 
 The option we introduce are `--p-max-ee-f` and `--p-max-ee-f`.

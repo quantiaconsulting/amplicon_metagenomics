@@ -285,7 +285,7 @@ qiime metadata tabulate \
 ```
 qiime taxa barplot \
   --i-table table_16S.qza \
-  --i-taxonomy taxonomy_16S.qza \
+  --i-taxonomy taxonomy_16S_SKLEARN.qza \
   --m-metadata-file sample-metadata.tsv \
   --o-visualization taxa-bar-plots_16S_SKLEARN.qzv
 ```

@@ -41,23 +41,23 @@ __LEARNING OUTCOMES__
 
 ## Day 2
 - [X] [Experimental Design: theory and some points on the  Atacama Soil Experiment](https://docs.google.com/presentation/d/1ybw75VKyMK9vJ_yy2SpFYbn8SZMJ7_6yf-BC0gLJ5vg/edit?usp=sharing)
-- [ ] [Atacama Soil Experiment and Loading data](16S_ITS_tutorial/readme.md)
-- [ ] [Lets review](unix_short_tutorial/Readme.md)
-- [ ] [**Key concept: OTU or ASV**;](https://docs.google.com/presentation/d/1Rxof51tbTxi45_dMlqtbFkQjpWRLTc76uoI6VH8b3hA/edit?usp=sharing)
-- [ ] [Denoising and **DADA2**](16S_ITS_tutorial/readme.md#step2-quality-controlling-sequences-and-building-feature-table-and-feature-data);
+- [X] [Atacama Soil Experiment and Loading data](16S_ITS_tutorial/readme.md)
+- [X] [Lets review](unix_short_tutorial/Readme.md)
+- [X] [**Key concept: OTU or ASV**;](https://docs.google.com/presentation/d/1Rxof51tbTxi45_dMlqtbFkQjpWRLTc76uoI6VH8b3hA/edit?usp=sharing)
+- [X] [Denoising and **DADA2**](16S_ITS_tutorial/readme.md#step2-quality-controlling-sequences-and-building-feature-table-and-feature-data);
 
 
 ## Day 3
-- [ ] [Taxonomic assignment](https://drive.google.com/open?id=1oHTCBiJ1HoHAREZIN2NVSHnC63QphDUJr_cPbgqgDs4)
-- [ ] [Taxonomy assignment: **VSEARCH** vs **classify-sklearn**](16S_ITS_tutorial/readme.md#step-3-summarizing-feature-table-and-feature-data);
-- [ ] [Diversity Analysis](https://drive.google.com/file/d/1p7UCmfNe0A44Xb8665eaCBps84P7AYRg/view?usp=sharing)
-- [ ] [Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step-6-analyzing-alpha-and-beta-diversities)
-- [ ] [R tutorial](https://www.datacamp.com/courses/free-introduction-to-r)
+- [X] [Taxonomic assignment](https://drive.google.com/open?id=1oHTCBiJ1HoHAREZIN2NVSHnC63QphDUJr_cPbgqgDs4)
+- [X] [Taxonomy assignment: **VSEARCH** vs **classify-sklearn**](16S_ITS_tutorial/readme.md#step-3-summarizing-feature-table-and-feature-data);
+- [X] [Diversity Analysis](https://drive.google.com/file/d/1p7UCmfNe0A44Xb8665eaCBps84P7AYRg/view?usp=sharing)
+- [X] [Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step-6-analyzing-alpha-and-beta-diversities)
+- [X] [R tutorial](https://www.datacamp.com/courses/free-introduction-to-r)
 
 
  
 ## Day 4
-
+- [ ] [R tutorial - Part 2](https://www.datacamp.com/courses/free-introduction-to-r)
 - [ ] Lecture  - Multivariate Analysis of Ecological Communities  
 - [ ] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  
 - [ ] Multivariate Tests for differences in microbial community composition  

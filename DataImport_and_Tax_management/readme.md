@@ -284,20 +284,19 @@ First of all we import the needed functions:
 ```
 import hashlib
 import sys
+import pandas as pd
 ```
 Then we generate the file for ASV table and representative sequences and convert our table:
 ```
-with open("seqtab-nochim.txt","r",encoding='utf-8') as a, open("rep-seqs_HEX.fna", "w") as tmp, open("seqtab-nochim_hash.txt", "w") as tab:
-    line = a.readline()
-    tab.write("ASV" + line)
-    for line in a:
-        s = list(map(str.strip, line.split("\t")))
-        m = hashlib.md5()
-        m.update(str(s[0]).encode('utf-8'))
-        tmp.write(">%s\n" % m.hexdigest())
-        tmp.write("%s\n" % s[0])
-        s[0] = m.hexdigest()
-        tab.write("%s\n" % "\t".join(s))
+df = pd.read_csv("seqtab-nochim.txt", sep = "\t", index_col = 0, header = 0)
+with open("rep-seqs_HEX.fna", "w") as tmp:
+    new_asv = []
+    for i in df.index:
+      m = hashlib.md5()
+      m.update(i.encode('utf-8'))
+      tmp.write(">{}\n{}\n".format(m.hexdigest(), i))
+      new_asv.append(m.hexdigest())
+    df.index = new_asv
 ```
 Close files to avoid any loss of data:
 ```

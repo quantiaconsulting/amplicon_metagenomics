@@ -155,7 +155,7 @@ Just remember **ee** is a way to measure the number of nucleotides that are prob
 The option we introduce are `--p-max-ee-f` and `--p-max-ee-f`.
 ```
 qiime dada2 denoise-paired \
-  --i-demultiplexed-seqs ../demux-full.qza \
+  --i-demultiplexed-seqs ../demux-paired-end.qza \
   --p-trim-left-f 13 \
   --p-trim-left-r 13 \
   --p-trunc-len-f 150 \
@@ -278,7 +278,7 @@ less seqtab-nochim.txt
 Actually the problem is we have features sequence instead of md5 name in the ASV column. We may convert it by using **Python**.  
 Enter the Python Shell:
 ```
-python
+ipython
 ```
 First of all we import the needed functions:  
 ```
@@ -297,18 +297,15 @@ with open("rep-seqs_HEX.fna", "w") as tmp:
       tmp.write(">{}\n{}\n".format(m.hexdigest(), i))
       new_asv.append(m.hexdigest())
     df.index = new_asv
+df.to_csv("seqtab-nochim_hash.txt", sep="\t",quoting=False)
 ```
-Close files to avoid any loss of data:
-```
-tmp.close()
-tab.close()
-```
-Close Python;
+
+Finally close Python;
 ```
 quit()
 ```
 Now we're ready to import data in QIIME2!!!
-First import the table:
+First convert the textual table into a biom table:
 ```
 biom convert -i seqtab-nochim_hash.txt -o seqtab-nochim.biom --table-type="OTU table" --to-hdf5
 
@@ -324,6 +321,12 @@ qiime tools import \
 --input-path rep-seqs_HEX.fna \
 --type 'FeatureData[Sequence]' \
 --output-path rep-seqs.qza
+```
+Finally, we may inspect our feature table:
+```
+qiime feature-table summarize \
+   --i-table feature-table.qza \
+   --o-visualization feature-table.qzv 
 ```
 
 ## Filter table to only have those samples in the metadata file

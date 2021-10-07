@@ -1,0 +1,840 @@
+---
+title: "Introduction to R"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+
+
+
+# Installing R
+
+### Windows:
+
+1. Open an internet browser and go to [www.r-project.org](www.r-project.org).
+2. Click the “download R” link in the middle of the page under “Getting Started.”
+3. Select a CRAN location (a mirror site) and click the corresponding link.
+4. Click on the “Download R for Windows” link at the top of the page.
+5. Click on the “install R for the first time” link at the top of the page.
+6. Click “Download R for Windows” and save the executable file somewhere on your computer. 
+7. Run the .exe file and follow the installation instructions.
+
+### Mac OS X:
+
+1. Open an internet browser and go to [www.r-project.org]([www.r-project.org).
+2. Click the “download R” link in the middle of the page under “Getting Started.”
+3. Select a CRAN location (a mirror site) choose the one closest to you for maximal efficiency (although any of them will work), and click the corresponding link.
+4. Click on the “Download R for (Mac) OS X” link at the top of the page.
+5. Save the .pkg file, double-click it to open, and follow the installation instructions.
+6. Install XQuartz
+
+
+
+## Get RStudio:
+In addition to R, it is highly recommended that you install RStudio. 
+
+### Windows:
+1. Go to [www.rstudio.com]() and click on the “Download RStudio” button.
+2. Click on “Download RStudio Desktop”, which is found under the Open Source Edition column.
+3. The next screen will tell you to “Choose your version of RStudio”
+4. Click on the version recommended for your system, or the latest Windows version, and save the executable file. Run the .exe file and follow the installation instructions.
+
+
+### Mac OS X:
+1. Go to [www.rstudio.com]() and click on the “Download RStudio” button.
+2. Click on “Download RStudio Desktop” which is found under the Open Source Edition column.
+3. The next screen will tell you to “Choose your version of RStudio” Go to the latest version recommended for your system, or the latest Mac version, save the .dmg file on your computer, double-click it to open, and then drag and drop it to your applications folder.
+
+
+#Basic Building Blocks
+R can be used as an interactive calculator. Open R (Not RStudio) and Type:
+
+```{r}
+56+42
+```
+but the power to use a programming language is the possibility of the automate the process.
+So we can store our result in a variable.
+```{r}
+x <- 56+42
+```
+In R the assignment operator is ‘less than, symbol followed by a ‘minus’ sign
+To view the contents of the variable *x*, just type *x* and press *Enter*.
+
+```{r}
+x
+```
+Now, store the result of x*5 in a new variable called y.
+
+```{r}
+
+```
+
+
+### Rules for variable names
+* names can not start with a number
+* names can not contain spaces, use _ intead
+* names can not contain any of these symbols:
+
+      :'",<>/?|\!@#%^&*~-+
+       
+* it's considered best practice that names are lowercase with underscores
+* avoid using Python built-in keywords like `list` and `str`
+* avoid using the single characters `l` (lowercase letter el), `O` (uppercase letter oh) and `I` (uppercase letter eye) as they can be confused with `1` and `0`
+
+
+
+
+
+Now, let’s create a small collection of numbers called a **vector**. 
+
+Any object that contains data is called a data structure and numeric vectors are the simplest type of data structure in R. 
+
+In fact, even a single number is considered a vector of length one.
+The easiest way to create a vector is with the `c()` function, which stands for ‘concatenate’ or ‘combine’. To create a vector containing the number 1, 76 and 5.14, type:
+```{r}
+z <- c(3,76,5.14)
+```
+
+
+You can combine vectors to make a new vector. Create a new vector that contains z, 555, then z again in that order.
+
+```{r}
+c(z, 555, z)
+```
+
+Numeric vectors can be used in arithmetic expressions.
+```{r}
+z +4 *2
+```
+
+Other common arithmetic operators are `+`, `-`, `/`, and `^` (where x² means ‘x squared’). To take the square root, use the `sqrt()` function and to take the absolute value, use the `abs()`function.
+
+```{r}
+my_sqrt <- sqrt(z-1)
+my_sqrt
+```
+
+Now, create a new variable called my_div that gets the value of z divided by my_sqrt
+
+```{r}
+my_div <- z/my_sqrt
+my_div
+```
+
+When given two vectors of the same length, R simply performs the specified arithmetic operation (`+`, `-`, `*`, etc.) **element-by-element**.
+If the vectors are of different lengths, R ‘recycles’ the shorter vector until it is the same length as the longer vector. When we did z\*2+100 in our earlier example, z was a vector of length 3, but technically 2 and 100 are each vectors of length 1. 
+
+Behind the scenes, R is **recycling** the 2 to make a vector of 2s and the 100 to make a vector of 100s. In other words, when you ask R to compute z * 2 + 100, what it really computes is this: z * c(2, 2, 2) + c(100, 100, 100).
+
+```{r}
+c(1,2,3,4)+c(0,10,100)
+```
+
+If the length of the shorter vector does not divide evenly into the length of the longer vector, R will still apply the ‘recycling’ method, but will throw a warning to let you know something fishy might be going on.
+
+# Workspace & Files
+
+R provides a common API (a common set of commands) for interacting with files, that way your code will work across different kinds of computers.
+
+First step is determine which directory your R session is using as its current working directory using:
+```{r}
+getwd()
+```
+
+List all the objects in your local workspace using:
+```{r}
+ls()
+```
+
+List all the files in your working directory using
+```{r}
+list.files() #or you can also do dir()
+```
+
+\# is used to add comments in R language. When you see \# sign in the code block read the information but don’t write it in the console.
+Using the *args()* function on a function name is also a handy way to see what arguments a function can take.
+
+```{r}
+args(list.files)
+```
+
+or more help with:
+```{r}
+
+?list.files
+
+```
+
+You can also store values from functions into variables like:
+```{r}
+old.dir <- getwd() #will add current working directory to variable
+
+```
+
+To create a directory called testdir in the current directory, type:
+```{r}
+dir.create("testdir")
+
+```
+
+We will do all the work in this new directory and then delete it after we are done. 
+
+Set your working directory to testdir with the *setwd()* command.
+
+```{r}
+setwd("testdir")
+```
+We now create a file in our working directory called *mytest.R*:
+```{r}
+file.create("mytest.R")
+
+```
+Let’s check this new file by listing all the files in the current directory by typing dir()
+
+```{r}
+list.files()
+```
+```{r}
+file.exists('mytest.R')
+```
+```{r}
+file.info('mytest.R')
+#file.info('mytest.R')$mode
+```
+
+change the name of the file
+```{r}
+file.rename("mytest.R","mytest2.R")
+```
+
+```{r}
+file.remove("mytest.R")
+```
+why didn't it work?
+
+make a copy
+```{r}
+file.copy("mytest2.R","mytest3.R")
+```
+
+and provide the relative path to the file
+```{r}
+file.path('mytest3.R')
+```
+
+
+Delete the testdir directory and everything in it
+```{r}
+unlink("testdir", recursive = TRUE)
+```
+
+
+# Missing Values
+
+Missing values play an important role in statistics and data analysis. Often, missing values must not be ignored, but rather they should be carefully studied to see it there’s an underlying pattern or cause for their missingness.
+
+In R, NA is used to represent any value that is ‘not available’ or ‘missing’ (in statistical sense). In this topic we’ll explore missing values further. Any operation involving NA generally yields NA as the result. Let’s see an example:
+
+```{r}
+x <- c(44, NA, 5, NA)
+```
+
+```{r}
+
+x*3
+```
+Notice that the elements of the resulting vector that correspond with the NA values in x are also NA. TO make things a little more interesting, lets create a vector containing 1000 draws from a standard normal distribution:
+
+```{r}
+y <- rnorm(1000)
+
+```
+
+rnorm is used to generate n normal random numbers.
+Now let’s generate a vector of 1000 NAs.
+
+
+```{r}
+z <- rep(NA, 1000)
+
+```
+
+let’s select 100 elements at random from these 2000 values (combining y and z) such that we don’t know how many NAs we’ll wind up with or what positions they’ll occupy in our final vector :
+
+```{r}
+my_data <- sample(c(y,z),100)
+
+```
+
+Let’s first ask the question of where our NAs are located in our data The is.na() functions tells us wether each element of a vector is NA.
+
+```{r}
+my_na <- is.na(my_data)
+```
+```{r}
+my_na
+```
+
+Now that we have a vector, my_na, that has a TRUE for every NA and FALSE for every numeric value, we can compute the total number of NAs in our data.
+```{r}
+sum(my_na, TRUE)
+```
+
+Now that we’ve got NAs down pat, let’s look at a second type of missing value — NaN, which stands for ‘not a number’. To generate NaN, try dividing (using a forward slash) 0 by 0 now.
+```{r}
+0/0
+#Inf-Inf
+```
+
+Na and NaN are some common missing values types.
+
+# Subsetting Vectors
+
+How to extract elements from a vector based on some conditions that we specify.
+```{r}
+#Create a vector
+
+rand_nums <- rnorm(1000) #Random numbers
+nas <- rep(NA, 1000) #NAs
+x <- sample(c(rand_nums,nas),40) #getting a sample of 40
+x #print
+```
+
+The way you tell R that you want to select some particular elements (i.e. a ‘subset’) from a vector is by placing an ‘index vector’ in square brackets immediately following the name of the vector.
+```{r}
+x[1:10]
+```
+One common scenario when working with real-world data is that we want to extract all elements of a vector that are not NA (i.e. missing data). 
+
+Recall that is.na(x) yields a vector of logical values the same length as x, with TRUEs corresponding to NA values in x and FALSEs corresponding to non-NA values in x.
+```{r}
+x[is.na(x)]
+```
+what happens?
+
+Recall that ! gives us the negation of a logical expression, so !isna(x) can be read as `is not NA`. Therefore, if we want to create a vector called y that contains all of the non-NA values from x, we can use:
+```{r}
+y <- x[!is.na(x)]
+```
+
+Now that we have a non-NA vector y, we can subset it as we please. Like if we want all the positive elements (i.e. greater than zero) we can do:
+
+```{r}
+y[y>0]
+```
+
+```{r}
+x[x>0]
+```
+
+Since NA is not a value, but rather a placeholder for an unknown quantity, the expression NA > 0 evaluates to NA. Hence we get a bunch of NAs mixed in with our positive numbers when we do this.
+
+**Many programming languages use what’s called ‘zero-based indexing’, which means that the first element of a vector is considered element 0. R uses ‘one-based indexing’, which means the first element of a vector is considered element 1.**
+
+
+To further understand the `one-based indexing` of R let’s consider this:
+```{r}
+
+x[0]
+x[3000]
+
+```
+
+ **R doesn’t prevent us from asking fro it. You should always make sure that what you are asking for is within the bounds of the vector you’re working with.**
+ 
+
+R accepts negative integer indexes. Where x[c(2, 10)] gives us ONLY the 2nd and 10th element of x, x[c(-2, -10)] gives us all elements of x EXCEPT for 2nd and 10th elements.
+
+```{r}
+x[c(-2,-10)]
+
+```
+ 
+ Let's introduce the naed element
+```{r}
+vect <- c(foo = 11, bar = 2, norf = NA)
+# When we print vect to the console, you'll see that each element #has a name.
+```
+```{r}
+vect
+```
+
+We can also get the names of vect by passing vect as an argument to the names()
+```{r}
+names(vect)
+```
+
+If we want to get the element named “bar” (i.e. the second element of vect), we will do:
+```{r}
+vect["bar"]
+```
+Likewise, we can specify a vector of names with:
+```{r}
+vect[c("foo","bar")]
+```
+
+# Matrices & Data Frames
+
+Matrices and Data frames represents ‘rectangular’ data types, meaning that they are used to store tabular data, with rows and columns.
+
+**The main difference, is that matrices can only contain a single class of data, while data frames can consist of many different classes of data.**
+
+Let’s create a vector:
+```{r}
+my_vector <- 1:20 #Contains number 1 through 20
+my_vector
+```
+
+The dim() function tells us the ‘dimensions’ of an object. So if we do:
+```{r}
+dim(my_vector)
+
+```
+Since my_vector is a vector, it doesn’t have a dim attribute (so it’s just NULL), but we can find it’s length using the length(my_vect) we will get 20 which is what we wanted
+
+```{r}
+dim(my_vector) <- c(4,5)
+```
+
+Just like in math class, when dealing with a 2-dimensional object (think rectangular table), the first number is the number of rows and the second is the number of columns. Therefore, we just gave my_vector 4 rows and 5 columns.
+But now ia a matrix!
+
+
+
+```{r}
+my_vector
+```
+
+Now, let’s confirm it’s actually a matrix by using the class() function.
+
+```{r}
+class(my_vector)
+```
+We should store it in a new variable that helps us remember what it is.
+```{r}
+my_matrix <- my_vector
+```
+
+Now, imagine that the numbers in our table represent some measurements from a clinical experiment, where each row represents one patient and each column represents one variable for which measurements were taken. We may want to label the rows, so that we know which numbers belong to each patient in the experiment.
+
+
+One way to do this is to add a column to the matrix, which contains the names of all four people. SO let’s create a character vector containing names of our patients:
+
+```{r}
+patients <- c("Gino", "Giorgia", "Sarah", "Peter")
+
+```
+
+we’ll use the cbind() function to ‘combine columns’.
+```{r}
+cbind(patients, my_matrix)
+```
+
+But combining the character vector with our matrix of numbers caused everything to be enclosed in double quotes. This means we’re left with a matrix of character strings, which is no good.
+
+Matrices can only contain ONE class of data. Therefore, when we tried to combine a character vector with a numeric matrix, R was forced to ‘coerce’ the numbers to characters, hence the double quotes. This is called ‘implicit coercion`, because we didn’t ask for it. It just happened.
+
+So how to include the names of out patients in the matrix?
+
+```{r}
+my_data <- data.frame(patients, my_matrix)
+
+```
+
+
+data.frame() function allowed us to store our character vector of names right alongside our matrix of numbers
+Behind the scenes, the data.frame() takes any number of arguments and returns a single object of class data.frame that is composed of the original objects. You can confirm this class by calling:
+
+```{r}
+class(my_data)
+```
+Now we assigning names to the columns of our data frame so that we know what type of measurement each column represents.
+```{r}
+cnames <- c("patient","age","weight","bp","rating","test")
+
+```
+Now, use the colnames() function to set the colnames attribute for our data frame. This is similar to the way we used the dim() function earlier.
+
+```{r}
+colnames(my_data) <- cnames
+#my_data
+```
+
+# Looking at Data
+
+Back to  questions:
+
+*What is the format of the data? What are the dimensions? What are the variable names? How are the variables stored? Are there missing data? Are there any flaws in the data?*
+
+Let’s load it in our R program first. 
+
+```{r}
+map_file<- read.table(file = 'sample-metadata.tsv', sep = '\t', header = TRUE)
+```
+
+
+```{r}
+head(map_file)
+```
+
+```{r}
+head(map_file, 10)
+
+```
+```{r}
+tail(map_file, 15)
+```
+
+
+```{r}
+dim(map_file)
+#nrow(map_file)
+#ncol(map_file)
+```
+If you are curious as to how much space the dataset is occupying in memory, you can use:
+```{r}
+object.size(map_file)
+```
+Print the variable name
+```{r}
+names(map_file)
+```
+
+After reviewing the top and bottom of the data, you probably noticed lots of NAs, which are R’s placeholders for missing values. Use summary() function to get a better feel for how each variable is distributed and how much of the dataset is missing.
+
+```{r}
+summary(map_file)
+```
+
+We can see how many times each value actually occurs in the categorical variable with:
+
+```{r}
+table(map_file$site.name)
+```
+
+Each of the functions we’ve introduced so far has its place in helping you better understand the structure of your data.
+
+The most useful and concise function for understanding the *str*ucture of your data is str().
+
+```{r}
+str(map_file)
+```
+
+str() is actually a very general function that you can use on most objects in R. Any time you want to understand the structure of something (a dataset. function, etc.), str() is a good place to start.
+
+
+
+
+# Basic operation on dataframe object
+
+### Selecting (Keeping) Variables
+```{r}
+# select 1st and 5th thru 10th variables
+newdata <- map_file[c(1,5:10)]
+```
+
+```{r}
+dim(newdata)
+```
+
+```{r}
+# select variables "sample.id ", "toc", "vegetation"
+myvars <- c("sample.id", "toc", "vegetation")
+newdata <- map_file[myvars]
+names(newdata)
+```
+
+### Excluding (DROPPING) Variables
+```{r}
+# exclude 3rd and 5th variable
+newdata <- mydata[c(-3,-5)]
+```
+
+```{r}
+# exclude variables "sample.id", "toc", "vegetation"
+myvars <- names(map_file) %in% c("sample.id", "toc", "vegetation")
+newdata <- map_file[!myvars]
+```
+
+
+### Selecting Observations
+```{r}
+# first 5 observations
+newdata <- map_file[1:5,]
+```
+
+
+### Selection using the Subset Function
+```{r}
+# using subset function
+newdata <- subset(map_file, ph >= 3 | toc < 300,
+select=c(sample.id, barcode.sequence))
+```
+
+### Rename a variable name
+
+First solution
+```{r}
+# Rename column where names is "Sepal.Length"
+names(map_file)[names(map_file) == "sample.id"] <- "SampleID"
+
+map_file
+```
+
+```{r}
+library(dplyr)
+map_file %>% 
+  rename(
+    sample.id = SampleID,
+    )
+
+
+map_file
+```
+
+
+#Introduction to basic statistics concepts using R
+In this part of the notebook we will introduce some basic concepts and definitions needed to tackle the analysis part
+
+
+# Some of lexicon
+
+In statistics, the set of all individuals relevant to a particular statistical question is called a **population**.
+
+A smaller group selected from a population is called a **sample**. When we select a smaller group from a population we do **sampling**. 
+
+Whether a set of data is a sample or a population depends on the question we're trying to answer.
+
+Populations do not necessarily consist of people! The individual elements of a population or a sample go under many names. You'll often see the elements of a population referred to as individuals, units, events, observations. These are all used interchangeably and refer to the same thing: the individual parts of a population. 
+
+In the case of a sample, you'll often see this terminology used interchangeably: `sample unit, sample point, sample individual, or sample observation.`
+
+## Example
+
+We collected data about the weight of all the animals in a zoo.
+
+
+
+```{r}
+zoo <- read.csv("~/Documents/GitHub/data_exploration/dataset_data_exploration/animal_weights.csv")
+```
+
+explore again
+
+```{r}
+head(zoo)
+```
+
+Based on this data, we want to answer a series of questions. Depending on the question, our data is either a sample or a population.
+
+
+
+* What's the average weight of the individuals in our zoo that are animals?
+
+* What's the proportion of individuals in the zoo having body weight under 7000 Kg?
+
+* What's the minimum Brain_weight in the mammals? 
+
+* What's the maximum Body_weight in the entire zoo? 
+
+* What's the proportion of Brain weight under 100 gr in the entire zoo?
+
+
+
+For every statistical question we want to answer, we should try to use the population. In practice, that's not always possible because the populations of interest usually vary from large to extremely large. Also, getting data is generally not an easy task, so small populations often pose problems too.
+
+These problems can be solved by sampling from the population that interests us.
+
+But remember that a sample is by definition an incomplete set of data for the question we're trying to answer. For this reason, there's almost always some difference between the metrics of a population and the metrics of a sample. This difference it's called sampling error because can be seen as an error resulting from the sampling process.
+
+`sampling error = parameter - statistic`
+
+A metric specific to a population is called a **parameter**, while one specific to a sample is called a **statistic**.
+
+## Example
+
+Let's calculate the average of the Body weight in our population (the entire zoo):
+
+```{r}
+mean(zoo$BodyWeight_Kg)
+```
+
+now only of the animals that have a body weight less than 1000 Kg
+
+```{r}
+mean(zoo$BodyWeight_Kg[zoo$BodyWeight_Kg < 1000])
+```
+let's measure the `sampling error` in our animal dataset. We use the `BodyWeight_Kg` column to find the maximum weight of the animals and we assign the value to a variable called `parameter`.
+```{r}
+parameter = max(zoo$BodyWeight_Kg)
+```
+
+```{r}
+parameter
+```
+
+Take a random sample of size 12 from a dataset map_file and sample without replacement
+```{r}
+mysample <- zoo[sample(1:nrow(zoo), 12,replace=FALSE),]
+mysample
+```
+
+```{r}
+dim(mysample)
+```
+```{r}
+statistic = max(mysample$BodyWeight_Kg)
+```
+```{r}
+sampling_error = parameter - statistic
+```
+
+When we sample we want to minimize the sampling error as much as possible. We want our sample to mirror the population as closely as possible.
+
+If we sampled to measure the height mean of adults in Italy, we'd like our sample statistic (sample height mean) to get as close as possible to the population's parameter (population mean height). For this to happen, we need the individuals in our sample to form a group that is similar in structure with the group forming the population.
+
+In statistical terms, we want our samples to be **representative** of their corresponding populations. If a sample is representative, then the sampling error is low.
+
+To make our samples representative, we can try to give every individual in the population an equal chance to be selected in our samples.
+
+To give every individual an equal chance of being picked, we need to sample **randomly**. 
+
+--------------------------
+
+Practical statistical analysis revolves entirely around the distinction between a population and a sample. When we're doing statistics in practice, our goal is either to describe a sample or a population, or to use a sample to draw conclusions about the population to which it belongs (or a mix of these two goals).
+
+When we describe a sample or a population (by measuring averages, proportions, and other metrics; by visualizing properties of the data through graphs; etc.), we do **descriptive statistics**.
+
+When we try to use a sample to draw conclusions about a population, we do **inferential statistics** (we infer information from the sample about the population).
+
+Let's back to our map file in the Atcama case study:
+
+```{r}
+head(map_file)
+```
+
+
+
+### Variables
+
+The properties with varying values we call **variables**. The `elevation` property in our dataset is an example of a variable. In fact, all the properties described in our dataset are variables.
+
+A row in our dataset describes the actual values that each variable takes for a given individual.
+
+Notice that this particular meaning of the "variable" concept is restricted to the domain of statistics. A variable in statistics is not the same as a variable in programming, or other domains.
+
+### Type of variables
+Generally, a variable that describes how much there is of something describes a quantity, and, for this reason, it's called a **quantitative variable**.
+
+Variables that describe qualities are called qualitative variables or categorical variables. Generally, **qualitative variables** describe what or how something is.
+
+### Scale of measurement
+
+The system of rules that define how each variable is measured is called scale of measurement or, less often, level of measurement.
+
+### Nominal scale
+
+The  *transect.name* variable is an example of a variable measured on a **nominal scale**. For any variable measured on a nominal scale:
+
+* We can tell whether two samples are different or not (with respect to that variable).
+
+* We can't say anything about the direction and the size of the difference. 
+
+* We know that it can only describe qualities.
+
+
+### Ordinal scale
+
+In a putative 'Size' variable  labels can be  "small", "big". By examining the values of this  variable, we can tell whether two individuals are different or not. But, unlike in the case of a nominal scale, we can also tell the direction of the difference. Someone who is assigned the label "big" has a bigger weight than someone assigned the label "small".
+
+Generally, for any variable measured on an ordinal scale, we can tell whether individuals are different or not, we can also tell the direction of the difference, but we still can't determine the size of the difference.
+
+Common examples of variables measured on ordinal scales include ranks: ranks of athletes, of horses in a race, of people in various competitions, etc.
+
+The values of the variables measured on an ordinal scale can be both **words** and **numbers**. When the values are numbers, they are usually ranks. But we still can't use the numbers to compute the size of the difference. We can't say how much faster an athlete was than another by simply comparing their ranks.
+
+In our dataset the depth variable is an ordinal variable
+
+```{r}
+summary(map_file['depth'])
+```
+
+
+### Ratio scale/interval scale
+
+A variable measured on a scale that preserves the order between values and has well-defined intervals using real numbers is an example of a variable measured either on an **interval scale**, or on a **ratio scale**.
+
+In practice, variables measured on interval or ratio scales are very common, if not the most common. Examples include:
+
+* Height measured with a numerical unit of measurement (like centimeters).
+
+* Weight measured with a numerical unit of measurement (multiples and submultiples of grams, for instance).
+
+* Time measured with a numerical unit of measurement (multiples and submultiple of seconds, for example).
+
+* The price of various products measured with a numerical unit of measurement (like euros, pounds, etc.).
+
+What sets apart ratio scales from interval scales is the nature of the **zero point**.
+
+On a ratio scale, the zero point means **no quantity**. For example, the a Weight variable is measured on a ratio scale, which means that 0 grams indicate the absence of weight.
+
+On an interval scale, however, the zero point doesn't indicate the absence of a quantity. It actually indicates the presence of a quantity.
+
+
+Another important difference between the two scales is given by the way we can measure the **size of the differences**.
+
+On a ratio scale, we can quantify the difference in two ways. One way is to measure a distance between any two points by simply subtracting one from another. The other way is to measure the difference in terms of ratios.
+
+
+
+Another common example has to do with measuring temperature. In day to day life, we usually measure temperature on a Celsius or a Fahrenheit scale. These scales are examples of interval scales.
+
+Because temperature is measured on an interval scale, we need to avoid quantifying the difference in terms of ratio. For example, 0°C or 0°F are arbitrarily set zero points and don't indicate the absence of temperature. If 0°C or 0°F were meaningful zero points, temperatures below 0°C or 0°F wouldn't be possible. But we know that we can go way below 0°C or 0°F.
+
+If yesterday was 10°C, and today is 20°C, we can't say that today is twice as hot as yesterday. We can say, however, that today's temperature is 10°C more compared to yesterday.
+
+## Discrete variable
+
+Let's imagine a new variable `water_points`. This variable describe the number of 'water_point' detected on sampling site.
+
+
+```{r}
+set.seed(333)
+map_file$water_point <- sample(20, size = nrow(map_file), replace = TRUE)
+
+map_file
+```
+
+The first sampling site have 14 and 9 water points, respectively. Between 14 and 9 there's no possible intermediate value. Provided the measurements are correct, it's impossible to find a sampling point with 11.5 water points. 
+
+
+
+Generally, if there's no possible intermediate value between any two adjacent values of a variable, we call that variable **discrete**.
+
+## Continuous variable
+
+In our dataset we can see that the first sampling point have an elevation of  1370 m, and the fourth 1552 m. Between 1370 m and 1552 m, there's an infinity of possible values. In fact, between any two values of the elevation variable, there's an infinity of values.
+
+Generally, if there's an infinity of values between any two values of a variable, we call that variable **continuous**.
+
+##REMEBER
+
+**Whether a variable is discrete or continuous is determined by the underlying nature of the variable being considered, and not by the values obtained from the measurement. If the elevation variable don't have decimal number this doesn't make the `elevation` variable discrete. It just tells us that the elevation is not measured with a great degree of precision.**
+
+Generally, every value of a continuous variable is an interval, no matter how precise the value is. The boundaries of an interval are sometimes called **real limits**. The lower boundary of the interval is called l**ower real limit**, and the upper boundary is called **upper real limit**
+

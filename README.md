@@ -53,6 +53,7 @@ __LEARNING OUTCOMES__
 - [X] [Diversity Analysis](https://drive.google.com/file/d/1p7UCmfNe0A44Xb8665eaCBps84P7AYRg/view?usp=sharing)
 - [X] [Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step-6-analyzing-alpha-and-beta-diversities)
 - [X] [R tutorial](https://www.datacamp.com/courses/free-introduction-to-r)
+  - [X] [Datacamp R tutorial](https://www.datacamp.com/courses/free-introduction-to-r)
 
 
  
@@ -61,7 +62,7 @@ __LEARNING OUTCOMES__
 - [ ] [Lecture  - Multivariate Analysis of Ecological Communities](https://docs.google.com/presentation/d/1SEXLnsAk71ghWJFBjvnSL9-JIU5kHyYi/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true)  
 - [ ] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  
 - [ ] Multivariate Tests for differences in microbial community composition  
-- [ ] Lab  - Multivariate Statistics  
+- [ ] [Lab  - Multivariate Statistics]((https://glcdn.githack.com/bfosso/physalia_metabarcoding_oct2021/raw/main/Day4_5_material/Physalia-Metabarcoding-Course-Oct21.html))  
     - [ ] Data import & preparation (normalisations, transformations, metadata)  
     - [ ] Alpha Diversity (indices of diversity, rarefaction curves)  
     - [ ] Heatmaps to visualise microbial community differences  

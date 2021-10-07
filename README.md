@@ -58,7 +58,7 @@ __LEARNING OUTCOMES__
  
 ## Day 4
 - [ ] [R tutorial - Part 2](https://www.datacamp.com/courses/free-introduction-to-r)
-- [ ] Lecture  - Multivariate Analysis of Ecological Communities  
+- [ ] [Lecture  - Multivariate Analysis of Ecological Communities](https://docs.google.com/presentation/d/1SEXLnsAk71ghWJFBjvnSL9-JIU5kHyYi/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true)  
 - [ ] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  
 - [ ] Multivariate Tests for differences in microbial community composition  
 - [ ] Lab  - Multivariate Statistics  

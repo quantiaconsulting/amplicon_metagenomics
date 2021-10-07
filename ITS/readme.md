@@ -34,9 +34,8 @@ Considering both scenarios pictured above typically occur within the same ITS da
 
 Create a new folder  
 ```
-conda activate qiime2-2020.8
-mkdir fungi_ITS_tutorial 
-cd fungi_ITS_tutorial 
+conda activate qiime2-2021.8
+mkdir fungi_ITS_tutorial && cd fungi_ITS_tutorial 
 ```
 *In BASH, the `&&` allows you to perform two action on the same line*  
 

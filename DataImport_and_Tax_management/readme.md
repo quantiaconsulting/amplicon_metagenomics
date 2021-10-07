@@ -6,17 +6,18 @@
 3. [Improving the Denoising step](#improving-the-denoising-step)
 4. [Collections for taxonomic classification](#collections-for-taxonomic-classification)
 5. [Export ASV table to tsv](#export-asv-table-to-tsv)
-6. [Import ASV table processed with DADA2 outside QIIME2](#import-asv-table-processed-with-dada2-outside-qiime)
-7. [Filter table to only have those samples in the metadata file](#filter-table-to-only-have-those-samples-in-the-metadata-file)  
+6. [Filter table to only have those samples in the metadata file](#filter-table-to-only-have-those-samples-in-the-metadata-file)
+7. [Import ASV table obtaiend outside QIIME2 into it](#import-asv-table-obtaiend-outside-qiime2-into-it)  
 
-Always remember to active QIIME2 environment!!!  
+---
+***Always remember to active QIIME2 environment!!!***
+
 ```
-cd ~/qiime2-atacama-tutorial  
-
 source activate qiime2-2021.8
 ```
+---
 
-# Some example of data import
+## Some example of data import
 ### Importing not demultiplexed data
 During our tutorial we've faced with already demuliplexed data. Sometimes you need to perform the data demultiplexing, so let's demultiplex them!!!    
 *** Check you are in your home folder***  
@@ -173,7 +174,6 @@ qiime metadata tabulate --m-input-file denoising-stats_ee.qza --o-visualization 
 
 Now try to compare this results with the one obtained during the QIIME2 tutorial.    
 
-
 ## Collections for taxonomic classification
 In order to perform taxonomic classification in QIIME2 we need to properly import and, eventually, train reference collections:
 The available in databases [**QIIME2 Data resoruces**](https://docs.qiime2.org/2020.8/data-resources/) are:  
@@ -262,7 +262,39 @@ biom convert -i ASV_table_exports/feature-table.biom -o ASV_table_exports/featur
 ```
 Note that this table doesn't currently contain taxonomy information. To merge the tables you can use the ```qiime taxa collapse``` command below at ASV level, or the function in the taxonomy barcharts visualisation.
 
-## Import ASV table processed with DADA2 outside QIIME2
+## Filter table to only have those samples in the metadata file
+Filtering only certain samples or features. Useful to remove anomalies, negative/positive controls or failed samples, or subset data for specific analysis
+```
+qiime feature-table filter-samples \
+  --i-table table.qza \
+  --m-metadata-file my_metadata.csv \
+  --o-filtered-table table-select.qza
+
+## Filter table by a metadata column 
+qiime feature-table filter-samples \
+  --i-table table.qza \
+  --m-metadata-file my_metadata.csv \
+  --p-where "[transect-nam]='Baquedano'" \
+  --o-filtered-table table-selected.qza
+  
+## Remove features with less than 100 reads in at least 4 samples
+qiime feature-table filter-features \
+  --i-table table.qza \
+  --p-min-frequency 100 \
+  --p-min-samples 4 \
+  --o-filtered-table table-selected.qza
+```
+
+Collapse the whole table into a taxonomy level (i.e. family) and include taxonomy description
+```
+qiime taxa collapse \
+  --i-table table.qza \
+  --i-taxonomy taxonomy.qza \
+  --p-level 4 \
+  --o-collapsed-table table-l4.qza
+```
+
+## Import ASV table obtaiend outside QIIME2 into it
 Sometimes it is useful to apply DADA2 outside QIIME2. Nonetheless is always possibile to import DADA2 produced ASV table in QIIME2.
 ```
 cd
@@ -329,36 +361,6 @@ qiime feature-table summarize \
    --o-visualization feature-table.qzv 
 ```
 
-## Filter table to only have those samples in the metadata file
-Filtering only certain samples or features. Useful to remove anomalies, negative/positive controls or failed samples, or subset data for specific analysis
-```
-qiime feature-table filter-samples \
-  --i-table table.qza \
-  --m-metadata-file my_metadata.csv \
-  --o-filtered-table table-select.qza
 
-## Filter table by a metadata column 
-qiime feature-table filter-samples \
-  --i-table table.qza \
-  --m-metadata-file my_metadata.csv \
-  --p-where "[transect-nam]='Baquedano'" \
-  --o-filtered-table table-selected.qza
-  
-## Remove features with less than 100 reads in at least 4 samples
-qiime feature-table filter-features \
-  --i-table table.qza \
-  --p-min-frequency 100 \
-  --p-min-samples 4 \
-  --o-filtered-table table-selected.qza
-```
-
-Collapse the whole table into a taxonomy level (i.e. family) and include taxonomy description
-```
-qiime taxa collapse \
-  --i-table table.qza \
-  --i-taxonomy taxonomy.qza \
-  --p-level 4 \
-  --o-collapsed-table table-l4.qza
-```
 
 [**Back to the program**](../README.md)

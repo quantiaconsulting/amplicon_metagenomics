@@ -265,21 +265,34 @@ Note that this table doesn't currently contain taxonomy information. To merge th
 ## Filter table to only have those samples in the metadata file
 Filtering only certain samples or features. Useful to remove anomalies, negative/positive controls or failed samples, or subset data for specific analysis
 ```
-qiime feature-table filter-samples \
-  --i-table table.qza \
-  --m-metadata-file my_metadata.csv \
-  --o-filtered-table table-select.qza
+cd ~/qiime2-atacama-tutorial
+```
 
-## Filter table by a metadata column 
+Let's create ad small metadata file containing only 8 files. 
+```
+head -n 10 sample-metadata.tsv > my_metadata.csv
+```
+
+```
 qiime feature-table filter-samples \
-  --i-table table.qza \
+  --i-table table_16S.qza \
   --m-metadata-file my_metadata.csv \
-  --p-where "[transect-nam]='Baquedano'" \
-  --o-filtered-table table-selected.qza
-  
-## Remove features with less than 100 reads in at least 4 samples
+  --o-filtered-table my_table.qza
+```
+
+Filter table by a specific metadata column value: 
+```
+qiime feature-table filter-samples \
+  --i-table table_16S.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --p-where "[transect-name]='Baquedano'" \
+  --o-filtered-table Baquedano.qza
+```
+
+Remove features with less than 100 reads in at least 4 samples
+```
 qiime feature-table filter-features \
-  --i-table table.qza \
+  --i-table table_16S.qza \
   --p-min-frequency 100 \
   --p-min-samples 4 \
   --o-filtered-table table-selected.qza
@@ -288,8 +301,8 @@ qiime feature-table filter-features \
 Collapse the whole table into a taxonomy level (i.e. family) and include taxonomy description
 ```
 qiime taxa collapse \
-  --i-table table.qza \
-  --i-taxonomy taxonomy.qza \
+  --i-table table_16S.qza \
+  --i-taxonomy taxonomy_16S_SKLEARN.qza \
   --p-level 4 \
   --o-collapsed-table table-l4.qza
 ```

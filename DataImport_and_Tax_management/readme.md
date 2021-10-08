@@ -132,12 +132,12 @@ Create a folder that will contain all the FastQC reports:
 ```
 cd
 
-mkdir ~/fastqc_reports && cd ~/fastqc_reports
+mkdir ~/fastqc_reports 
 ```
 Execute FastQC on our raw data. In order to save time we're going to evaluate only `Baquedano`. In our test case, it is simple cause those file names start with `BAQ`.  
    
 ```
-fastqc -t 2 ~/Share/raw_data_tutorial/BAQ* -O fastqc_reports
+fastqc  ~/Share/raw_data_tutorial/BAQ2420* -O fastqc_reports
 ```
     
 ```

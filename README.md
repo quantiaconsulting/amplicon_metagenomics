@@ -19,7 +19,7 @@ __LEARNING OUTCOMES__
   
   
 :exclamation: :exclamation: :exclamation: **All the papers discussed during the course are available in this [Google Drive Folder](https://drive.google.com/open?id=1FLkzwWiBYlIG2FrpceDrgL-ru_A8ZO6_)** :exclamation: :exclamation: :exclamation:    
-  
+:exclamation: :exclamation: :exclamation: **Xav has collected all the papers cited during his talks and the links shared in the Slack chat regarding the statistical analysis. You find it [here](https://drive.google.com/drive/folders/1t0eRmPyfRp0rsgh_sE54K2Dkvk2RHxYv?usp=sharing)** :exclamation: :exclamation: :exclamation:  
 
 ## Program
 [Physalia Welcome](https://drive.google.com/open?id=1zAqld5-NcofYez4QYsGGvX0ZtJGphRNQHCBVwUgYNVE)

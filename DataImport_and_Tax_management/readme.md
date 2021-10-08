@@ -106,6 +106,10 @@ echo 214997F203642,$HOME/Share/IJMS_data/IJMS_input_data/214997F203642_S18_L001_
 echo 215001F203646,$HOME/Share/IJMS_data/IJMS_input_data/215001F203646_S22_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/215001F203646_S22_L001_R2_001.fastq.gz >> manifest_file.tsv
 echo 215003F203648,$HOME/Share/IJMS_data/IJMS_input_data/215003F203648_S24_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/215003F203648_S24_L001_R2_001.fastq.gz >> manifest_file.tsv
 ```
+A little trick for our manifest file.  
+```
+sed -i -e 's/,/\t/g' manifest_file.tsv 
+```
 Now we're ready to import our data and generate a visualization file:  
 ```
 qiime tools import \
@@ -126,6 +130,8 @@ A solution is to apply [**MultiQC**](https://multiqc.info/) a tool allowing to *
 
 Create a folder that will contain all the FastQC reports:  
 ```
+cd
+
 mkdir ~/fastqc_reports && cd ~/fastqc_reports
 ```
 Execute FastQC on our raw data. In order to save time we're going to evaluate only `Baquedano`. In our test case, it is simple cause those file names start with `BAQ`.  

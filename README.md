@@ -76,9 +76,9 @@ __LEARNING OUTCOMES__
   - [X] Unconstrained and Constrained Ordination (PCoA, NMDS, CCA, DCA)  
   - [X] Multivariate tests for differences in community composition (PERMANOVA, PERMDISP)
 - [X] [Lecture - Differential Abundance Analysis of Microbial Communities](https://docs.google.com/presentation/d/1Z2F2_goIAuuKXQQ7ocClOgq8x6tbpClW/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true) 
-- [ ] Lab: Differential Abundance Analysis with DESeq2  
-- [ ] Analysis of Other Microbiome Datasets  
-- [ ] Combining Microbiome data and life history data  
-- [ ] [Some additional Tips](DataImport_and_Tax_management/readme.md)
-- [ ] [ITS sequence analysis](ITS/readme.md)
-- [ ] [Resuming paper data](human_cancer/readme.md)
+- [X] Lab: Differential Abundance Analysis with DESeq2  
+- [X] Analysis of Other Microbiome Datasets  
+- [X] Combining Microbiome data and life history data  
+- [X] [Some additional Tips](DataImport_and_Tax_management/readme.md)
+- [X] [ITS sequence analysis](ITS/readme.md)
+- [X] [Resuming paper data](human_cancer/readme.md)

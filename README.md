@@ -1,4 +1,4 @@
-<img src="main_data_dir/image.jpg" width="50%" alt="None">  
+<img src="main_data_dir/image.jpg" width="940" alt="None">  
 
 # **16S/ITS METABARCODING OF MICROBIAL COMMUNITIES**  
 
@@ -49,9 +49,9 @@ __LEARNING OUTCOMES__
 
 ## Day 3
 - [X] [Taxonomic assignment](https://drive.google.com/open?id=1oHTCBiJ1HoHAREZIN2NVSHnC63QphDUJr_cPbgqgDs4)
-- [X] [Taxonomy assignment: **VSEARCH** vs **classify-sklearn**](16S_ITS_tutorial/readme.md#step-3-summarizing-feature-table-and-feature-data);
+- [X] [Taxonomy assignment: **VSEARCH** vs **classify-sklearn**](16S_ITS_tutorial/readme.md#step3-summarizing-feature-table-and-feature-data);
 - [X] [Diversity Analysis](https://drive.google.com/file/d/1p7UCmfNe0A44Xb8665eaCBps84P7AYRg/view?usp=sharing)
-- [X] [Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step-6-analyzing-alpha-and-beta-diversities)
+- [X] [Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step6-analyzing-alpha-and-beta-diversities)
 - [X] [R tutorial](https://glcdn.githack.com/bfosso/physalia_metabarcoding_oct2021/raw/main/R_tutorial/Introduction_to%20_R.nb.html)
   - [X] [DataCamp R tutorial](https://www.datacamp.com/courses/free-introduction-to-r)
 

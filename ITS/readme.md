@@ -165,9 +165,9 @@ qiime feature-table tabulate-seqs \
   --o-visualization dada2-single-end-rep-seqs_ITS.qzv
 ```
 
-# Step 4 Taxonomy assignment 
+# Step 4 Taxonomic assignment 
 
-## ITS taxonomy assignment 
+## ITS taxonomcic assignment 
 The QIIME 2 plugin [feature-classifier](https://docs.qiime2.org/2019.1/plugins/available/feature-classifier/) 
 supports taxonomic classification of features using a variety of methods, including Naive Bayes, vsearch, and BLAST+.
 

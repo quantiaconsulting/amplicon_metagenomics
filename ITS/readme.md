@@ -263,9 +263,10 @@ qiime taxa barplot \
   --m-metadata-file mock-25-sample-metadata.tsv \
   --o-visualization taxa-bar-plots_ITS_SKELARN.qzv
 ```
+---
+**Are the obtained classifications comparable? Have a look [here](https://docs.google.com/spreadsheets/d/1e8AI8fgcDECRfXP5uMz1hpZyEoOMRx0Yo0DveuGl4PI/edit?usp=sharing).**
 
-# Are the obtained classifications comparable? Have a look [here](https://docs.google.com/spreadsheets/d/1e8AI8fgcDECRfXP5uMz1hpZyEoOMRx0Yo0DveuGl4PI/edit?usp=sharing).
-
+---
 [^1]: [https://journal.embnet.org/index.php/embnetjournal/article/view/200/479](https://journal.embnet.org/index.php/embnetjournal/article/view/200/479)
 
 [**Back to the program**](../README.md)

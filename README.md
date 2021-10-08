@@ -71,10 +71,10 @@ __LEARNING OUTCOMES__
 
 
 ## Day 5
-- [ ] [Lab  - Multivariate Statistics](https://glcdn.githack.com/bfosso/physalia_metabarcoding_oct2021/raw/main/Day4_5_material/Physalia-Metabarcoding-Course-Oct21.html)
-  - [ ] Heatmaps to visualise microbial community differences  
-  - [ ] Unconstrained and Constrained Ordination (PCoA, NMDS, CCA, DCA)  
-  - [ ] Multivariate tests for differences in community composition (PERMANOVA, PERMDISP)
+- [X] [Lab  - Multivariate Statistics](https://glcdn.githack.com/bfosso/physalia_metabarcoding_oct2021/raw/main/Day4_5_material/Physalia-Metabarcoding-Course-Oct21.html)
+  - [X] Heatmaps to visualise microbial community differences  
+  - [X] Unconstrained and Constrained Ordination (PCoA, NMDS, CCA, DCA)  
+  - [X] Multivariate tests for differences in community composition (PERMANOVA, PERMDISP)
 - [ ] Lecture - Differential Abundance Analysis of Microbial Communities 
 - [ ] Lab: Differential Abundance Analysis with DESeq2  
 - [ ] Analysis of Other Microbiome Datasets  

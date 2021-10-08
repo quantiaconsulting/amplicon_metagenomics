@@ -88,23 +88,23 @@ mkdir IJMS_training_test && cd IJMS_training_test
 ```    
 Let's have a look to our data:
 ```
-ls ~/Share/IJMS_input_data
+ls ~/Share/IJMS_data/IJMS_input_data
 ```
 
-Now we can create our file named `manifest_file.tsv` (my suggestion is to create it locally on your computer and then upload it on the server):
+Now we can create our file named `manifest_file.tsv`:
 
 ```
-sample-id	forward-absolute-filepath	reverse-absolute-filepath
-211446F203610	$HOME/Share/IJMS_input_data/211446F203610_S155_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/211446F203610_S155_L001_R2_001.fastq.gz
-211454F203618	$HOME/Share/IJMS_input_data/211454F203618_S163_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/211454F203618_S163_L001_R2_001.fastq.gz
-211456F203620	$HOME/Share/IJMS_input_data/211456F203620_S165_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/211456F203620_S165_L001_R2_001.fastq.gz
-211460F203624	$HOME/Share/IJMS_input_data/211460F203624_S169_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/211460F203624_S169_L001_R2_001.fastq.gz
-214981F203626	$HOME/Share/IJMS_input_data/214981F203626_S2_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/214981F203626_S2_L001_R2_001.fastq.gz
-214991F203636	$HOME/Share/IJMS_input_data/214991F203636_S12_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/214991F203636_S12_L001_R2_001.fastq.gz
-214993F203638	$HOME/Share/IJMS_input_data/214993F203638_S14_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/214993F203638_S14_L001_R2_001.fastq.gz
-214997F203642	$HOME/Share/IJMS_input_data/214997F203642_S18_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/214997F203642_S18_L001_R2_001.fastq.gz
-215001F203646	$HOME/Share/IJMS_input_data/215001F203646_S22_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/215001F203646_S22_L001_R2_001.fastq.gz
-215003F203648	$HOME/Share/IJMS_input_data/215003F203648_S24_L001_R1_001.fastq.gz	$HOME/Share/IJMS_input_data/215003F203648_S24_L001_R2_001.fastq.gz
+echo sample-id,forward-absolute-filepath,reverse-absolute-filepath > manifest_file.tsv
+echo 211446F203610,$HOME/Share/IJMS_data/IJMS_input_data/211446F203610_S155_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/211446F203610_S155_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 211454F203618,$HOME/Share/IJMS_data/IJMS_input_data/211454F203618_S163_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/211454F203618_S163_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 211456F203620,$HOME/Share/IJMS_data/IJMS_input_data/211456F203620_S165_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/211456F203620_S165_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 211460F203624,$HOME/Share/IJMS_data/IJMS_input_data/211460F203624_S169_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/211460F203624_S169_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 214981F203626,$HOME/Share/IJMS_data/IJMS_input_data/214981F203626_S2_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/214981F203626_S2_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 214991F203636,$HOME/Share/IJMS_data/IJMS_input_data/214991F203636_S12_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/214991F203636_S12_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 214993F203638,$HOME/Share/IJMS_data/IJMS_input_data/214993F203638_S14_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/214993F203638_S14_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 214997F203642,$HOME/Share/IJMS_data/IJMS_input_data/214997F203642_S18_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/214997F203642_S18_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 215001F203646,$HOME/Share/IJMS_data/IJMS_input_data/215001F203646_S22_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/215001F203646_S22_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 215003F203648,$HOME/Share/IJMS_data/IJMS_input_data/215003F203648_S24_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/215003F203648_S24_L001_R2_001.fastq.gz >> manifest_file.tsv
 ```
 Now we're ready to import our data and generate a visualization file:  
 ```

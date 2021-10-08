@@ -81,3 +81,4 @@ __LEARNING OUTCOMES__
 - [ ] Combining Microbiome data and life history data  
 - [ ] [Some additional Tips](DataImport_and_Tax_management/readme.md)
 - [ ] [ITS sequence analysis](ITS/readme.md)
+- [ ] [Resuming paper data](human_cancer/readme.md)

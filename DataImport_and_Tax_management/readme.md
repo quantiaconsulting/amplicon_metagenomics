@@ -260,7 +260,7 @@ Sometimes you need to export you ASV table to TSV:
 ```
 cd ~/qiime2-atacama-tutorial
 
-qiime tools export --input-path table.qza --output-path ASV_table_exports/
+qiime tools export --input-path table_16S.qza --output-path ASV_table_exports/
 ```
 We obtain the ASV table in [BIOM]() format. Let's convert it in tsv.
 ```

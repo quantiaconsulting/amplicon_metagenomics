@@ -226,7 +226,7 @@ qiime feature-classifier fit-classifier-naive-bayes  \
 In some cases, you also need to import reference sequences and taxonomy in QIIME2.
 Let's try to import MIDORI data in QIIME2:
 ```
-cd ..
+cd
 
 mkdir MIDORI_ref
 

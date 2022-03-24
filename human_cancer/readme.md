@@ -140,11 +140,6 @@ qiime taxa barplot \
 ## Filter out mitochondrion and chloroplast
 Cause we notice that there are 16S labelled as mitochondrion and chloroplast we need to remove those ASVs from subsequent analysis.  
 ```
-  --i-table table_16S.qza \
-  --i-taxonomy taxonomy_16S_SKLEARN.qza \
-  --p-exclude mitochondria,chloroplast \
-  --o-filtered-table table-no-mitochondria-no-chloroplast.qza
-
 qiime taxa filter-seqs \
   --i-sequences rep-seqs_16S.qza \
   --i-taxonomy taxonomy_16S_SKLEARN.qza \

@@ -155,29 +155,17 @@ qiime taxa filter-seqs \
 ### Phylogenetic tree inference
 Now we are ready to generate a rooted tree and rarefaction curves.  
 ```
-  --i-table table_16S.qza \
-  --i-taxonomy taxonomy_16S_SKLEARN.qza \
-  --p-exclude mitochondria,chloroplast \
-  --o-filtered-table table-no-mitochondria-no-chloroplast.qza
-
-qiime taxa filter-seqs \
-  --i-sequences rep-seqs_16S.qza \
-  --i-taxonomy taxonomy_16S_SKLEARN.qza \
-  --p-exclude mitochondria,chloroplast \
-  --o-filtered-sequences rep-seqs-mitochondria-no-chloroplast.qza
-```
-
-## Alpha e Beta Diversity
-Time to infer Alpha and Beta diversity and run some tests.  
-```
 qiime phylogeny align-to-tree-mafft-fasttree \
   --i-sequences rep-seqs-mitochondria-no-chloroplast.qza \
   --o-alignment aligned-rep-seqs_16S.qza \
   --o-masked-alignment masked-aligned-rep-seqs_16S.qza \
   --o-tree unrooted-tree_16S.qza \
   --o-rooted-tree rooted-tree_16S.qza
+```
 
-
+## Alpha e Beta Diversity
+Time to infer Alpha and Beta diversity and run some tests.  
+```
 qiime diversity alpha-rarefaction \
     --i-table table-no-mitochondria-no-chloroplast.qza \
     --i-phylogeny rooted-tree_16S.qza \

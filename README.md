@@ -50,8 +50,10 @@ __LEARNING OUTCOMES__
 - [ ] [Diversity Analysis](https://drive.google.com/file/d/1p7UCmfNe0A44Xb8665eaCBps84P7AYRg/view?usp=sharing)
 - [ ] [Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step6-analyzing-alpha-and-beta-diversities)
 - [ ] [Some additional Tips](DataImport_and_Tax_management/readme.md)
-- [ ] [_It's Case studies Time!!!_]
+- [ ] _It's Case studies Time!!!_
   - [ ] [Human microbiome data](human_cancer/readme.md)
+  - [ ] [Zoological]()
+  - [ ] [Water]()
 
 ## Day 4
 - [ ] [ITS sequence analysis](ITS/readme.md)

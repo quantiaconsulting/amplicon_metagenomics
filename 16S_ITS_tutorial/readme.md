@@ -450,8 +450,8 @@ Next, we will retain feature observed in at least the 10% of our samples.
 ```
 qiime feature-table filter-features \
   --i-table table_16S.qza \
-  --p-min-frequency 20 \
-  --p-min-samples 15 \
+  --p-min-frequency 5 \
+  --p-min-samples 10 \
   --o-filtered-table filtered_table_16S.qza
 ```
 

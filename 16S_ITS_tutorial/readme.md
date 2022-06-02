@@ -18,7 +18,7 @@
 
 
 # Start the analysis
-In this tutorial you’ll use QIIME2 to perform an analysis of soil samples from the Atacama Desert in northern Chile.
+In this tutorial you will use QIIME2 to perform an analysis of soil samples from the Atacama Desert in northern Chile.
 **You can find the starting tutorial on the official page of QIIME2** ( [link text](https://docs.qiime2.org/2020.2/tutorials/atacama-soils/))
 
 "The Atacama Desert is one of the most arid locations on Earth, with some areas receiving less than a millimeter of rain per decade. The soil microbiomes profiled in this study follow two east-west transects, **Baquedano** and **Yungay**, across which average soil relative humidity is positively correlated with elevation (higher elevations are less arid and thus have higher average soil relative humidity). Along these transects, pits were dug at each site and soil samples were collected from three depths in each pit.""
@@ -52,9 +52,8 @@ TSV files are simple text files used to store `tabular data`, and the format is 
 You can find the [file](https://docs.google.com/spreadsheets/d/1a1NFqpBjwb8Ul0c4O68IVFb9JUn5BjLdyHr422LMfE0/edit#gid=1988763045) in the Lab folder of today or download it directly from qiime to the server by running the command:
 
 ```
-wget \
-  -O "sample-metadata.tsv" \
-  "https://data.qiime2.org/2021.8/tutorials/atacama-soils/sample_metadata.tsv"
+wget -O "sample-metadata.tsv" \
+  "https://data.qiime2.org/2022.2/tutorials/atacama-soils/sample_metadata.tsv"
 ```
 
 **If you would like to play around the sample-metadata.tsv file, please copy it file into another folder and have fun with it.**  
@@ -78,7 +77,7 @@ be presented each time Keemei is run.
 As we discussed during the introduction to UNIX-based environment, we take advantage of using *virtual environments* to avoid affecting the main OS.  
 So everytime we start a new section, we need to activate the virtual environment containing our QIIME2 installation.  
 ```
-source activate qiime2-2021.8
+conda activate qiime2-2022.2
 ```
 
 ### Pipeline Overview

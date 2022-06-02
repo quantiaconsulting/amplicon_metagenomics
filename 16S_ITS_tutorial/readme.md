@@ -15,6 +15,7 @@
 6. [STEP5: Generating a phylogenetic tree](#step5-generating-a-phylogenetic-tree)
 7. [STEP6: Analyzing Alpha and Beta diversities](#step6-analyzing-alpha-and-beta-diversities)
    1. [Time to test](#time-to-test)
+8. [STEP7: Differential abundance analysis in QIIME2](#step7-differential-abundance-analysis-in-qiime2)
 
 
 # Start the analysis
@@ -321,7 +322,6 @@ qiime diversity alpha-rarefaction \
   --i-table table_16S.qza \
   --i-phylogeny rooted-tree_16S.qza \
   --p-max-depth 8000 \
-  --p-n-threads 1 \
   --m-metadata-file sample-metadata.tsv \
   --o-visualization alpha-rarefaction.qzv
 ```
@@ -416,6 +416,38 @@ qiime diversity beta-group-significance \
   --m-metadata-column vegetation \
   --o-visualization core-metrics-results_16S/unweighted-unifrac-subject-group-significance.qzv \
   --p-pairwise
- ```
+```
 
+# STEP7: Differential Abundance Analysis in QIIME2
+Sometimes you are also interested in testing whether individual ASVs or taxa are more or less abundant in different sample groups.  
+Microbiome data are challenging and conventional methods (i.e. t-test) are not appropriated for this task.  
+Microbiome abundance data are inherently sparse (have a lot of zeros) and compositional (everything adds up to 1). 
+ANCOM relies on a compositionally aware approach allowing to identify differentially abundant features. Have a look to the [ANCOM paper](https://www.ncbi.nlm.nih.gov/pubmed/26028277).
+
+First we are going to remove low abundant features in order to improve our ability in inferring features that are really differentially abundant.  
+Next, we will retain feature observed in at least the 10% of our samples.
+
+```
+qiime feature-table filter-features \
+  --i-table table_16S.qza \
+  --p-min-frequency 20 \
+  --p-min-samples 15 \
+  --o-filtered-table filtered_table_16S.qza
+```
+
+ANCOM relies on a _log-transform_ so we need to add pseudocounts to our table. We are adding a *1* to each item of our table in order to perform the log-transform.  
+
+```
+qiime composition add-pseudocount \
+  --i-table filtered_table_16S.qza \
+  --o-composition-table filtered_table_16S_pc.qza
+```
+
+```
+qiime composition ancom \
+  --i-table filtered_table_16S_pc.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --m-metadata-column transect-name \
+  --o-visualization ancom_transect-name.qzv
+```
 [**Back to the program**](../README.md)  

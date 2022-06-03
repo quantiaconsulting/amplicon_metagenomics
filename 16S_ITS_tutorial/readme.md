@@ -122,7 +122,7 @@ So we need to import our demultiplexed raw data into a qiime artifact.
 ```
 qiime tools import \
     --type 'SampleData[PairedEndSequencesWithQuality]' \
-    --input-path ~/Share/raw_data_tutorial \
+    --input-path /home/Share/raw_data_tutorial \
     --input-format CasavaOneEightSingleLanePerSampleDirFmt \
     --output-path demux-paired-end.qza
 ```
@@ -207,7 +207,7 @@ We're also using a multi-threading command to split the processing across multip
 
 Let's import our already done data.  
 ```
-cp ~/Share/{table_16S.qza,rep-seqs_16S.qza,denoising-stats_16S.qza}  . 
+cp /home/Share/qiime2-atacama-tutorial/{table_16S.qza,rep-seqs_16S.qza,denoising-stats_16S.qza}  . 
 ```
 
 Following we need to generate a qzv file containing the table summarizing the denoising process, so we can discuss the effect it had on the data.
@@ -276,7 +276,7 @@ The first step in this process is to assign taxonomy to the sequences in our `Fe
 
 
 ```
-cp ~/Share/taxonomy_16S_SKLEARN.qza  . 
+cp /home/Share/qiime2-atacama-tutorial/taxonomy_16S_SKLEARN.qza  . 
 ```
 
 <details>
@@ -442,7 +442,7 @@ qiime diversity beta-group-significance \
 Sometimes you are also interested in testing whether individual ASVs or taxa are more or less abundant in different sample groups.  
 Microbiome data are challenging and conventional methods (i.e. t-test) are not appropriated for this task.  
 Microbiome abundance data are inherently sparse (have a lot of zeros) and compositional (everything adds up to 1). 
-ANCOM relies on a compositionally aware approach allowing to identify differentially abundant features. Have a look to the [ANCOM paper](https://www.ncbi.nlm.nih.gov/pubmed/26028277).
+ANCOM relies on a compositional aware approach allowing to identify differentially abundant features. Have a look to the [ANCOM paper](https://www.ncbi.nlm.nih.gov/pubmed/26028277).
 
 First we are going to remove low abundant features in order to improve our ability in inferring features that are really differentially abundant.  
 Next, we will retain feature observed in at least the 10% of our samples.
@@ -462,6 +462,10 @@ qiime composition add-pseudocount \
   --i-table filtered_table_16S.qza \
   --o-composition-table filtered_table_16S_pc.qza
 ```
+
+The ANCOM visualizations is a volcano plot showing the ANCOM W statistic to the CLR (center log transform) for the groups.  
+The W statistic is the number of ANCOM sub-hypotheses that have passed for each individual taxon, indicating that the ratios of that taxon’s relative abundance to the relative abundances of W other taxa were detected to be significantly different (typically FDR-adjusted p < 0.05).  
+Because differential abundance in ANCOM is based on the ratio between tests, it does not produce a traditional p-value.
 
 ```
 qiime composition ancom \

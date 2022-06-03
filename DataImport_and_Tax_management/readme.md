@@ -13,13 +13,21 @@
 ***Always remember to active QIIME2 environment!!!***
 
 ```
-source activate qiime2-2021.8
+conda activate qiime2-2022.2
 ```
 ---
 
+In order to avoid to make confusion about different stuffs, we are going to generate new folders.  
+First of all just get back in our `home` folder:  
+
+```
+cd
+```
+
 ## Some example of data import
 ### Importing not demultiplexed data
-During our tutorial we've faced with already demuliplexed data. Sometimes you need to perform the data demultiplexing, so let's demultiplex them!!!    
+During our tutorial we've faced with already demuliplexed data.  
+Sometimes you need to perform the data demultiplexing, so let's demultiplex them!!!    
 *** Check you are in your home folder***  
 Let's create a folder for multiplexed data  in your **home folder**:
 ```
@@ -31,17 +39,18 @@ mkdir emp-paired-end-sequences
 ```  
 Let's download the required files:
 ```
-wget \
-  -O "emp-paired-end-sequences/forward.fastq.gz" \
-  "https://data.qiime2.org/2020.2/tutorials/atacama-soils/10p/forward.fastq.gz"
+wget -O "emp-paired-end-sequences/forward.fastq.gz" \
+  "https://data.qiime2.org/2022.2/tutorials/atacama-soils/10p/forward.fastq.gz"
+```
 
-wget \
-  -O "emp-paired-end-sequences/reverse.fastq.gz" \
-  "https://data.qiime2.org/2020.2/tutorials/atacama-soils/10p/reverse.fastq.gz"
+```
+wget -O "emp-paired-end-sequences/reverse.fastq.gz" \
+  "https://data.qiime2.org/2022.2/tutorials/atacama-soils/10p/reverse.fastq.gz"
+```
 
-wget \
-  -O "emp-paired-end-sequences/barcodes.fastq.gz" \
-  "https://data.qiime2.org/2020.2/tutorials/atacama-soils/10p/barcodes.fastq.gz"
+```
+wget -O "emp-paired-end-sequences/barcodes.fastq.gz" \
+  "https://data.qiime2.org/2022.2/tutorials/atacama-soils/10p/barcodes.fastq.gz"
 ```  
 We are also going to reuse the ``sample-metadata.tsv`` file used during the QIIME2 tutorial:  
 ```
@@ -61,26 +70,26 @@ qiime demux emp-paired \
   --m-barcodes-column barcode-sequence \
   --p-rev-comp-mapping-barcodes \
   --i-seqs emp-paired-end-sequences.qza \
-  --o-per-sample-sequences demux.qza \
+  --o-per-sample-sequences demux-full.qza \
   --o-error-correction-details demux-details.qza
 ```
 
 Let's visualize our data!!!  
 ```
 qiime demux summarize \
-  --i-data demux.qza \
-  --o-visualization demux.qzv
+  --i-data demux-full.qza \
+  --o-visualization demux-full.qzv
 ```
 
 ### Importing demultiplexed by using the manifest file
-During the mail tutorial we imported the PE fastq files by using:  
+During the main tutorial we imported the PE fastq files by using:  
  - **type** `SampleData[PairedEndSequencesWithQuality]`: which means we are using PE fastq files;
  - **input-format** `CasavaOneEightSingleLanePerSampleDirFmt`: which means the file name are formatted by using the **CASAVA** file format.  
 
-Sometimes our data are not formatted according to **CASAVA** format so we need to use an alternative way to import the data.  
+Sometimes our data are not formatted according to **CASAVA** format, so we need to use an alternative way to import the data.  
 To import the data we need to generate a **manifest file**.  
 
-Initially we need to create a new folder in our home just because we are going to re-use this data for other stuff.  
+Initially we need to create a new folder in our home just because we could re-use this data for other stuff.  
 ```
 cd
 
@@ -88,28 +97,31 @@ mkdir IJMS_training_test && cd IJMS_training_test
 ```    
 Let's have a look to our data:
 ```
-ls ~/Share/IJMS_data/IJMS_input_data
+ls /home/Share/IJMS_data/IJMS_input_data
 ```
 
 Now we can create our file named `manifest_file.tsv`:
 
 ```
 echo sample-id,forward-absolute-filepath,reverse-absolute-filepath > manifest_file.tsv
-echo 211446F203610,$HOME/Share/IJMS_data/IJMS_input_data/211446F203610_S155_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/211446F203610_S155_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 211454F203618,$HOME/Share/IJMS_data/IJMS_input_data/211454F203618_S163_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/211454F203618_S163_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 211456F203620,$HOME/Share/IJMS_data/IJMS_input_data/211456F203620_S165_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/211456F203620_S165_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 211460F203624,$HOME/Share/IJMS_data/IJMS_input_data/211460F203624_S169_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/211460F203624_S169_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 214981F203626,$HOME/Share/IJMS_data/IJMS_input_data/214981F203626_S2_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/214981F203626_S2_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 214991F203636,$HOME/Share/IJMS_data/IJMS_input_data/214991F203636_S12_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/214991F203636_S12_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 214993F203638,$HOME/Share/IJMS_data/IJMS_input_data/214993F203638_S14_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/214993F203638_S14_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 214997F203642,$HOME/Share/IJMS_data/IJMS_input_data/214997F203642_S18_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/214997F203642_S18_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 215001F203646,$HOME/Share/IJMS_data/IJMS_input_data/215001F203646_S22_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/215001F203646_S22_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 215003F203648,$HOME/Share/IJMS_data/IJMS_input_data/215003F203648_S24_L001_R1_001.fastq.gz,$HOME/Share/IJMS_data/IJMS_input_data/215003F203648_S24_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 211446F203610,/home/Share/IJMS_data/IJMS_input_data/211446F203610_S155_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/211446F203610_S155_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 211454F203618,/home/Share/IJMS_data/IJMS_input_data/211454F203618_S163_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/211454F203618_S163_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 211456F203620,/home/Share/IJMS_data/IJMS_input_data/211456F203620_S165_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/211456F203620_S165_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 211460F203624,/home/Share/IJMS_data/IJMS_input_data/211460F203624_S169_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/211460F203624_S169_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 214981F203626,/home/Share/IJMS_data/IJMS_input_data/214981F203626_S2_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/214981F203626_S2_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 214991F203636,/home/Share/IJMS_data/IJMS_input_data/214991F203636_S12_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/214991F203636_S12_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 214993F203638,/home/Share/IJMS_data/IJMS_input_data/214993F203638_S14_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/214993F203638_S14_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 214997F203642,/home/Share/IJMS_data/IJMS_input_data/214997F203642_S18_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/214997F203642_S18_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 215001F203646,/home/Share/IJMS_data/IJMS_input_data/215001F203646_S22_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/215001F203646_S22_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 215003F203648,/home/Share/IJMS_data/IJMS_input_data/215003F203648_S24_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/215003F203648_S24_L001_R2_001.fastq.gz >> manifest_file.tsv
 ```
 A little trick for our manifest file.  
 ```
 sed -i -e 's/,/\t/g' manifest_file.tsv 
 ```
+
+Obviously you can also use **Excel** or **Google Sheet** to generate the tabular file. You just need to export the file as a _tabular text file_.
+
 Now we're ready to import our data and generate a visualization file:  
 ```
 qiime tools import \
@@ -117,6 +129,9 @@ qiime tools import \
   --input-path manifest_file.tsv \
   --output-path pe-demux.qza \
   --input-format PairedEndFastqManifestPhred33V2
+```
+
+```
   
 qiime demux summarize \
     --i-data  pe-demux.qza \
@@ -132,12 +147,12 @@ Create a folder that will contain all the FastQC reports:
 ```
 cd
 
-mkdir ~/fastqc_reports 
+mkdir fastqc_reports 
 ```
 Execute FastQC on our raw data. In order to save time we're going to evaluate only `Baquedano`. In our test case, it is simple cause those file names start with `BAQ`.  
    
 ```
-fastqc  ~/Share/raw_data_tutorial/BAQ2420* -O fastqc_reports
+fastqc  /home/Share/raw_data_tutorial/BAQ2420* -O fastqc_reports
 ```
     
 ```
@@ -196,27 +211,31 @@ mkdir tax_import && cd tax_import
 ```
 So let's start with `qza` data download:  
 ```
-wget --no-check-certificate https://data.qiime2.org/2021.8/common/silva-138-99-seqs.qza
-wget --no-check-certificate https://data.qiime2.org/2021.8/common/silva-138-99-tax.qza
+wget --no-check-certificate https://data.qiime2.org/2022.2/common/silva-138-99-seqs.qza
+wget --no-check-certificate https://data.qiime2.org/2022.2/common/silva-138-99-tax.qza
 ```
 If you plan to use alignment based approaches for taxonomic assigment (i.e. BLAST or VSEARCH), that's enough. You may proceed with ASV classification.  
 Otherwise, if you would like to use the **sklearn** approach you need to train the classifier.  
 For 16S data, it is recommended to firstly extract the region you're interested in by using your primer sequences:  
 In the **EXAMPLE** below we are extracting the V3-V4 hyper-variable regions from SILVA 16S full-lenght sequences by using Illumina V3V4 primers.   
 
+Both the following two steps are quite time-consuming so, we are just going to discuss how to do that.  
+Initially, we extract from our reference collection, only the regions in which we are interested:  
+
 ```
 qiime feature-classifier extract-reads \
   --i-sequences silva-138-99-seqs.qza \
   --p-f-primer CCTACGGGNGGCWGCAG \
   --p-r-primer GGACTACNVGGGTWTCTAAT \
+  --p-n-jobs 20 \
   --o-reads v3v4.ref-seqs.qza
 ```
 
-There are some additional options you may consider:
+There are some additional options you could consider:
  * `--p-min-length`: min amplicon length  
  * `--p-max-length`: max amplicon length  
 
-And finally, let's train the classifier:
+Finally, we are ready to train a classifier specifically designed for the V3V4 region:  
 ```
 qiime feature-classifier fit-classifier-naive-bayes  \
     --i-reference-reads v3v4.ref-seqs.qza \
@@ -228,15 +247,13 @@ Let's try to import MIDORI data in QIIME2:
 ```
 cd
 
-mkdir MIDORI_ref
-
-cd MIDORI_ref 
+mkdir MIDORI_ref && cd MIDORI_ref 
 ```
 Download MIDORI data. It has been already properly formatted for QIIME2 import:
 ```
-wget --no-check-certificate http://www.reference-midori.info/download/Latest_GenBankRelease245/QIIME/uniq/MIDORI_UNIQ_NUC_GB245_CO1_QIIME.fasta.gz;
-wget --no-check-certificate http://www.reference-midori.info/download/Latest_GenBankRelease245/QIIME/uniq/MIDORI_UNIQ_NUC_GB245_CO1_QIIME.taxon.gz;
-```
+wget --no-check-certificate http://www.reference-midori.info/download/Databases/GenBank249/QIIME/uniq/MIDORI_UNIQ_NUC_GB249_CO1_QIIME.fasta.gz
+wget --no-check-certificate http://www.reference-midori.info/download/Databases/GenBank249/QIIME/uniq/MIDORI_UNIQ_NUC_GB249_CO1_QIIME.taxon.gz
+
 ```
 unzip MIDORI_UNIQ_NUC_GB245_CO1_QIIME.fasta.gz 
 unzip MIDORI_UNIQ_NUC_GB245_CO1_QIIME.taxon.gz

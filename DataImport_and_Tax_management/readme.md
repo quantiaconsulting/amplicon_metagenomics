@@ -5,8 +5,12 @@
 2. [Evaluating data quality](#evaluating-data-quality)
 3. [Improving the Denoising step](#improving-the-denoising-step)
 4. [Collections for taxonomic classification](#collections-for-taxonomic-classification)
+   1. [Train a classifier for a specific 16S region](#train-a-classifier-for-a-specific-16s-region)
+   2. [Importing a reference collection in QIIME2 and train the classifier](#importing-a-reference-collection-in-qiime2-and-train-the-classifier)
 5. [Export ASV table to tsv](#export-asv-table-to-tsv)
 6. [Filter table to only have those samples in the metadata file](#filter-table-to-only-have-those-samples-in-the-metadata-file)
+   1. [Filter the table according to a specific samples subset](#filter-the-table-according-to-a-specific-samples-subset)
+   2. [Filter the table according to a specific feature]()
 7. [Import ASV table obtaiend outside QIIME2 into it](#import-asv-table-obtaiend-outside-qiime2-into-it)  
 
 ---
@@ -202,6 +206,7 @@ The available in databases [**QIIME2 Data resoruces**](https://docs.qiime2.org/2
 * [GreenGenes](https://www.nature.com/articles/ismej2011139)  
 * [UNITE](https://unite.ut.ee/)  
 
+### Train a classifier for a specific 16S region
 If your are interested in metabarcoding analysis based on the **COX1** barcode, you may consider [**MIDORI**](http://www.reference-midori.info/).  
  
 The easiest case is *SILVA*. QIIME Developers have already created an appropriate version so you can just dowload it:  
@@ -242,6 +247,8 @@ qiime feature-classifier fit-classifier-naive-bayes  \
     --i-reference-taxonomy silva-138-99-tax.qza \
     --o-classifier vv34.SILVA_138_NR_99_classifier.qza
 ```
+
+### Importing a reference collection in QIIME2 and train the classifier
 In some cases, you also need to import reference sequences and taxonomy in QIIME2.
 Let's try to import MIDORI data in QIIME2:
 ```
@@ -253,23 +260,36 @@ Download MIDORI data. It has been already properly formatted for QIIME2 import:
 ```
 wget --no-check-certificate http://www.reference-midori.info/download/Databases/GenBank249/QIIME/uniq/MIDORI_UNIQ_NUC_GB249_CO1_QIIME.fasta.gz
 wget --no-check-certificate http://www.reference-midori.info/download/Databases/GenBank249/QIIME/uniq/MIDORI_UNIQ_NUC_GB249_CO1_QIIME.taxon.gz
-
 ```
-unzip MIDORI_UNIQ_NUC_GB245_CO1_QIIME.fasta.gz 
-unzip MIDORI_UNIQ_NUC_GB245_CO1_QIIME.taxon.gz
+Then we need un unpack the downloaded data.  
+```
+gzip -d MIDORI_UNIQ_NUC_GB249_CO1_QIIME.fasta.gz 
+gzip -d MIDORI_UNIQ_NUC_GB249_CO1_QIIME.taxon.gz
 ```
 
+Now we are ready to import the reference collection data. We begin by importing the fasta file:  
 ```
 qiime tools import \
-  --input-path MIDORI_UNIQ_NUC_GB245_CO1_QIIME.fasta \
-  --output-path MIDORI_UNIQ_NUC_GB245_CO1_QIIME.qza \
+  --input-path MIDORI_UNIQ_NUC_GB249_CO1_QIIME.fasta \
+  --output-path MIDORI_UNIQ_NUC_GB249_CO1_QIIME.qza \
   --type 'FeatureData[Sequence]'
-  
+```
+
+Finally, we import also the taxonomic annotation of the reference sequences:  
+```
 qiime tools import \
  --type FeatureData[Taxonomy] \
- --input-path MIDORI_UNIQ_NUC_GB245_CO1_QIIME.taxon \
+ --input-path MIDORI_UNIQ_NUC_GB249_CO1_QIIME.taxon \
  --input-format HeaderlessTSVTaxonomyFormat \
- --output-path MIDORI_UNIQ_NUC_GB245_CO1_QIIME.taxon.qza
+ --output-path MIDORI_UNIQ_NUC_GB249_CO1_QIIME.taxon.qza
+```
+
+The final step is to train the classifier:
+```
+qiime feature-classifier fit-classifier-naive-bayes  \
+    --i-reference-reads MIDORI_UNIQ_NUC_GB249_CO1_QIIME.qza \
+    --i-reference-taxonomy MIDORI_UNIQ_NUC_GB249_CO1_QIIME.taxon.qza \
+    --o-classifier MIDORI_UNIQ_NUC_GB249_CO1_QIIME_classifier.qza
 ```
 
 ## Export ASV table to tsv
@@ -279,7 +299,7 @@ cd ~/qiime2-atacama-tutorial
 
 qiime tools export --input-path table_16S.qza --output-path ASV_table_exports/
 ```
-We obtain the ASV table in [BIOM]() format. Let's convert it in tsv.
+We obtain the ASV table in [BIOM](http://biom-format.org) format. Let's convert it in tsv.
 ```
 biom convert -i ASV_table_exports/feature-table.biom -o ASV_table_exports/feature-table.txt --to-tsv
 ```
@@ -289,25 +309,27 @@ Note that this table doesn't currently contain taxonomy information. To merge th
 Filtering only certain samples or features. Useful to remove anomalies, negative/positive controls or failed samples, or subset data for specific analysis
 ```
 cd ~/qiime2-atacama-tutorial
-```
 
-Let's create ad small metadata file containing only 8 files. 
+mkdir data_filtering && cd data_filtering 
 ```
-head -n 10 sample-metadata.tsv > my_metadata.csv
+### Filter the table according to a specific samples subset
+Let's create ad small metadata file containing only 10 samples. 
+```
+head -n 11 ../sample-metadata.tsv > my_metadata.csv
 ```
 
 ```
 qiime feature-table filter-samples \
-  --i-table table_16S.qza \
+  --i-table ../table_16S.qza \
   --m-metadata-file my_metadata.csv \
   --o-filtered-table my_table.qza
 ```
-
+### Filter the table according to a specific feature
 Filter table by a specific metadata column value: 
 ```
 qiime feature-table filter-samples \
-  --i-table table_16S.qza \
-  --m-metadata-file sample-metadata.tsv \
+  --i-table ../table_16S.qza \
+  --m-metadata-file ../sample-metadata.tsv \
   --p-where "[transect-name]='Baquedano'" \
   --o-filtered-table Baquedano.qza
 ```
@@ -315,29 +337,29 @@ qiime feature-table filter-samples \
 Remove features with less than 100 reads in at least 4 samples
 ```
 qiime feature-table filter-features \
-  --i-table table_16S.qza \
+  --i-table ../table_16S.qza \
   --p-min-frequency 100 \
   --p-min-samples 4 \
   --o-filtered-table table-selected.qza
 ```
 
-Collapse the whole table into a taxonomy level (i.e. family) and include taxonomy description
+Collapse the whole table to a specific taxonomy level (i.e. family) and include taxonomy description:  
 ```
 qiime taxa collapse \
-  --i-table table_16S.qza \
-  --i-taxonomy taxonomy_16S_SKLEARN.qza \
-  --p-level 4 \
-  --o-collapsed-table table-l4.qza
+  --i-table ../table_16S.qza \
+  --i-taxonomy ../taxonomy_16S_SKLEARN.qza \
+  --p-level 5 \
+  --o-collapsed-table table-l5.qza
 ```
 
-## Import ASV table obtaiend outside QIIME2 into it
-Sometimes it is useful to apply DADA2 outside QIIME2. Nonetheless is always possibile to import DADA2 produced ASV table in QIIME2.
+## Import ASV table obtained outside QIIME2 into it
+Sometimes it is useful to apply DADA2 outside QIIME2. Nonetheless, it is always possibile to import DADA2 ASVs table in QIIME2.
 ```
 cd
 
 mkdir dada2_data_import && cd dada2_data_import
 
-cp ~/Share/seqtab-nochim.txt .
+cp /home/Share/seqtab-nochim.txt .
 ```
 Let's inspect how `seqtab-nochim.txt` is made:
 ```
@@ -368,7 +390,7 @@ with open("rep-seqs_HEX.fna", "w") as tmp:
 df.to_csv("seqtab-nochim_hash.txt", sep="\t",quoting=False)
 ```
 
-Finally close Python;
+Finally, close Python;
 ```
 quit()
 ```
@@ -376,14 +398,16 @@ Now we're ready to import data in QIIME2!!!
 First convert the textual table into a biom table:
 ```
 biom convert -i seqtab-nochim_hash.txt -o seqtab-nochim.biom --table-type="OTU table" --to-hdf5
-
+```
+Now we cam import the BIOM table into a `qza` artifact.  
+```
 qiime tools import \
 --input-path seqtab-nochim.biom \
 --type 'FeatureTable[Frequency]' \
 --input-format BIOMV210Format \
 --output-path feature-table.qza
 ```
-Then import your sequences:
+Then import your ASVs sequences:
 ```
 qiime tools import \
 --input-path rep-seqs_HEX.fna \
@@ -396,7 +420,5 @@ qiime feature-table summarize \
    --i-table feature-table.qza \
    --o-visualization feature-table.qzv 
 ```
-
-
 
 [**Back to the program**](../README.md)

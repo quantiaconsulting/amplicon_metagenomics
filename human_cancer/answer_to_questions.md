@@ -1,4 +1,10 @@
-# Some reasonable actions to address the assigned tasks
+Some reasonable actions to address the assigned tasks
+=========
+- [Working with Alpha Diversity data](#working-with-alpha-diversity-data)
+- [Working with Beta Diversity data](#working-with-beta-diversity-data)
+- [Differential Abundant Analysis](#differential-abundance-analysis)
+  - [DA on ASVs](#da-on-asvs)
+  - [Da on Genera](#da-in-genera)
 
 ## Working with Alpha Diversity data
 First, we try to verify whether there is any relevant difference in alpha diversity distribution
@@ -107,4 +113,6 @@ qiime composition ancom \
 ```
 
 
-Now just download the results and discuss about it.  
+Now just download the results and discuss it.  
+
+[Back to the top](../README.md) 

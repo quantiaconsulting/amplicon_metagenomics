@@ -22,7 +22,7 @@ composition in **signet-ring cell carcinoma (SRCC)** and **adenocarcinoma (ADC)*
 We are going to explain the analysis already performed on a subset of the paper data. In particular, we will analyse:  
 - 5 SRCC samples;  
 - 5 ADC samples;  
-The V3-V4 amplicon was amplified and sequenced.     
+The V3-V4 amplicon was amplified and sequenced by using the _Illumina MiSeq platform_ wuth a 2x300 layout.       
 **Considering the available time, data were pre-computed. So start to copy the folder:**
 ```
 cd
@@ -152,7 +152,7 @@ qiime metadata tabulate \
 qiime taxa barplot \
     --i-table table_16S.qza \
     --i-taxonomy taxonomy_16S_SKLEARN.qza \
-    --m-metadata-file IJMS_input_data/ijms_metadata.tsv  \
+    --m-metadata-file ijms_metadata.tsv  \
     --o-visualization taxa-bar-plots_16S_SKLEARN.qzv
 ```
 
@@ -164,6 +164,14 @@ qiime taxa filter-seqs \
   --i-taxonomy taxonomy_16S_SKLEARN.qza \
   --p-exclude mitochondria,chloroplast \
   --o-filtered-sequences rep-seqs-mitochondria-no-chloroplast.qza
+```
+
+```
+qiime taxa filter-table \
+  --i-table table_16S.qza \
+  --i-taxonomy  taxonomy_16S_SKLEARN.qza \
+  --p-exclude mitochondria,chloroplast \
+  --o-filtered-table table-no-mitochondria-no-chloroplast.qza
 ```
 
 ### Phylogenetic tree inference
@@ -184,7 +192,7 @@ qiime diversity alpha-rarefaction \
     --i-table table-no-mitochondria-no-chloroplast.qza \
     --i-phylogeny rooted-tree_16S.qza \
     --p-max-depth 50000 \
-    --m-metadata-file IJMS_input_data/ijms_metadata.tsv \
+    --m-metadata-file ijms_metadata.tsv \
     --o-visualization alpha-rarefaction.qzv
 ```
 Actually we cannot identify a depth value that completely satisfy us, so we decide to set up a sort of compromise among
@@ -195,7 +203,7 @@ qiime diversity core-metrics-phylogenetic \
   --i-table table-no-mitochondria-no-chloroplast.qza \
   --p-sampling-depth 15000 \
   --p-n-jobs-or-threads 2 \
-  --m-metadata-file IJMS_input_data/ijms_metadata.tsv \
+  --m-metadata-file ijms_metadata.tsv \
   --output-dir core-metrics-results_16S
 ```
 

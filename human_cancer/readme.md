@@ -15,12 +15,13 @@ Human microbiome in gastric cancer
 ## Abstract
 Gastric Cancer (GC) is the fifth most prevalent cancer worldwide and the third leading cause of global cancer mortality.  
 Recently, the involvement of the microbiota in gastric carcinogenesis has been described.  
-To deepen this aspect [Ravegnini et al. IJMS 2021](https://www.mdpi.com/1422-0067/21/24/9735) compared microbiota composition in **signet-ring cell carcinoma (SRCC)** and **adenocarcinoma (ADC)**.  
+To deepen this aspect [Ravegnini et al. IJMS 2021](https://www.mdpi.com/1422-0067/21/24/9735) compared microbiota 
+composition in **signet-ring cell carcinoma (SRCC)** and **adenocarcinoma (ADC)**. They used 40 FFPE samples corresponding to tumor and paired healty tissues. 
 
 ## Data Analysis
-We are going to show the analysis and the results of a subset of data used in the paper. In particular, we will analyse:  
+We are going to explain the analysis already performed on a subset of the paper data. In particular, we will analyse:  
 - 5 SRCC samples;  
-- 4 ADC samples;  
+- 5 ADC samples;  
 The V3-V4 amplicon was amplified and sequenced.     
 **Considering the available time, data were pre-computed. So start to copy the folder:**
 ```
@@ -140,9 +141,9 @@ qiime feature-classifier fit-classifier-naive-bayes  \
 Now we are ready to classify
 ```
 qiime feature-classifier classify-sklearn \
-  --i-classifier v3v4.SILVA_138_NR_99_classifier.qza \
   --i-reads rep-seqs_16S.qza \
-  --o-classification taxonomy_16S_SKLEARN.qza 
+  --o-classification taxonomy_16S_SKLEARN.qza \
+  --i-classifier v3v4.SILVA_138_NR_99_classifier.qza 
 
 qiime metadata tabulate \
     --m-input-file taxonomy_16S_SKLEARN.qza \

@@ -245,7 +245,7 @@ Finally, we are ready to train a classifier specifically designed for the V3V4 r
 qiime feature-classifier fit-classifier-naive-bayes  \
     --i-reference-reads v3v4.ref-seqs.qza \
     --i-reference-taxonomy silva-138-99-tax.qza \
-    --o-classifier vv34.SILVA_138_NR_99_classifier.qza
+    --o-classifier v3v4.SILVA_138_NR_99_classifier.qza
 ```
 
 ### Importing a reference collection in QIIME2 and train the classifier

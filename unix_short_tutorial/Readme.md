@@ -1,7 +1,7 @@
 # Introduction to the BASH shell and the FASTQ format
 
 1. [Rationale](#Rationale)  
-2. [Some infos about Operative System](#Some infos about Operative System)  
+2. [Some info about Operative System](#Some info about Operative System)  
 3. [Bash Tips](#Bash tips)
 4. [How can we visualize FASTQ quality?](#How can we visualize FASTQ quality?)
 5. [FASTQ quality control](#FASTQ quality control)
@@ -45,7 +45,7 @@ Below are some exercises intended to help you understand how bash commands work,
 ## Bash tips <a name="Bash tips"></a>
 You are now located in your home directory (denoted *~*, **Please keep in mind this symbol**). [Every users has his own **home**.]   
 You can always type `pwd` (present working directory) to locate yourself in your file system. The `pwd` command gives you the **path** of your current position in the system.
-![](folders.png)
+![](FileStructure.png)
 ```
 [User3 ~]: pwd
 /home/User3
@@ -131,41 +131,42 @@ Copying and moving uses a standard format whether it’s within one server or be
 ```
 command      source      destination
 ```
-For example, to move a file named RNAseq_1.fastq into a new folder that exists in this directory named exp1:
+![](LinuxCommands.png)
+For example, to move a file named Illumina_1.fastq into a new folder that exists in this directory named exp1:
 ```
-EXAMPLE mv RNAseq_1.fastq exp1
+EXAMPLE mv Illumina_1.fastq exp1
 ```
 To move it to a location somewhere else on the server you can use the full path
 ```
-EXAMPLE mv RNAseq_1.fastq /mnt/clusters/test/experiment1
+EXAMPLE mv Illumina_1.fastq /mnt/clusters/test/experiment1
 ```
 Or alternatively “move” a file from one name to another. This is a common way to rename your files:
 ```
-EXAMPLE mv RNAseq_1.fastq LRubellus_1.fastq
+EXAMPLE mv Illumina_1.fastq LRubellus_1.fastq
 ```
 To copy, use the cp command. You could copy a file from another directory to “here” like so, remembering that a full-stop means “the folder I’m currently in”:
 ```
-EXAMPLE cp ~/classdata/RNAseq_1.fastq  .
+EXAMPLE cp ~/classdata/Illumina_1.fastq  .
 ```
 Often you’ll want to copy a whole folder (directory), and you will need the -r parameter for “recursive”.
 ```
 EXAMPLE cp -r /home/data/all_fastqs NewExperiment/testdata/
 ```
 
-Copy the files to the **test** folder with the command `cp [file to be copied] [destination folder]`.  
+Copy the files to a new folder named **test** with the command `cp [file/folder to be copied] [destination folder]`.  
 TIP: you can use `*` as a wildcard to choose all files with a certain suffix, i.e. “*.fastq” or “*.fq”
 If you are in your homespace you can do this, however if you are already inside the test folder then you can use "." to mean "this folder"
 ```
 cp -R ~/Share/Linux-exercises test/
 ```
 
-**Now, move back to your “test” folder.**
+**Now, move into your “test” folder.**
 
 By typing ls (list) you can see all the contents of the folder you are in.
 
 All bash commands have a manual page. By typing man [command] you can view it. Within the manual, the space bar will move you down a page and q will quit.
 
-Now, open the manual page for the ls command.
+Now, open the manual page for the ls command. Note that some programs might use a different option for showing the manual i.e. -h or --help. It varys based on the coder that wrote the program!
 
 
 ---------------------------------------------------------------------------------------------------------------------
@@ -189,8 +190,9 @@ We can, however, open a part of the file using the editor `less`.
 ```
 less Illumina_1.fastq
 ```
+You also have various files you can inspect including a fasta, genome information (embl), and plain text map file to look at.
 
-You can also view the top or bottom 10 lines of a file with the commands `head` and `tail`.
+You can view the top or bottom 10 lines of a file with the commands `head` and `tail`.
 **Use tail to view the bottom 10 lines of a fastq file.**
 ```
 tail Illumina_1.fastq
@@ -203,7 +205,7 @@ tail -n 50 Illumina_1.fastq
 ```
 This prints out the lines to the screen.  
 However, we can redirect the output to a file with the `>` symbol. Like this: `[print command] > file.txt`.  
-The double angle bracket, `>>`, does the same thing but appends information to a file rather than overwriting it.
+The double angle bracket, `>>`, does the same thing but appends information to the end of a file rather than overwriting it.
 
 **Use the > to print the last 50 lines of a fastq file to a new file, called tail50.txt
 Open the new file in less with less tail50.txt**
@@ -265,28 +267,13 @@ We recommend that you prepare text files for bioinformatics analyses using Linux
 
 Some professional programs can be installed locally (i.e. notepad++) but when working on a terminal there are many options which range in ease of use, and each has its pros and cons. In this practical we will briefly look at two editors, nano and vi.
 
-
-### Nano
-
-Pros: 
-- Very easy – For example, command options are visible at the bottom of the window
-- can be used when logged in without graphical support
-- Fast to start up and use
-
-Cons:
-- It is not completely intuitive for people who are used to graphical word processors
-- Has few features
-
-### Vi/vim
-
-Pros
-- Appears on nearly every Unix system. 
-- Can be very powerful if you take the time to know the key short-cuts
-- Has built in find/replace
-
-Cons
-- You have to know the shortcuts!
-- There are no menus and no on screen prompts
+|    | Nano | Vi/Vim |
+|----|:----:|:------:|
+|Pros| Very easy – For example, command options are visible at the bottom of the window | Appears on nearly every Unix system |
+|    | Can be used when logged in without graphical support                             | Can be very powerful if you take the time to know the key short-cuts |
+|    | Fast to start up and use                                                         | Has built in find/replace |
+|Cons| It is not completely intuitive for people who are used to graphical word processors | You have to know the shortcuts! |
+|    | Has few features                                                                    | There are no menus and no on screen prompts |
 
 EXERCISES
 Create a file with nano

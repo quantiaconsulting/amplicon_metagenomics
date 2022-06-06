@@ -1,6 +1,6 @@
 <img src="main_data_dir/image.jpg" width="940" alt="None">  
 
-# **16S/ITS METABARCODING OF MICROBIAL COMMUNITIES**  
+# **METABARCODING OF MICROBIAL COMMUNITIES**  
 
 ## ***Rationale***
 This course will provide a thorough introduction to the application of metabarcoding techniques in microbial ecology.  

@@ -265,7 +265,7 @@ cp ../ITSxpress_ITS_tutorial/{sequences.qza,mapping.txt} .
 *Note that we trim the forward primer and the reverse complement of the reverse primer from the forward reads 
 (the forward primers have already been trimmed in the raw reads, but we will demonstrate forward + reverse trimming here since attempting to trim the forward read will not hurt).
 We trim the reverse primer and reverse complement of the forward primer from the reverse reads.*
-The primer trimming is performed by using the tool `cutadapt`[^1].  
+The primer trimming is performed by using the tool [**cutadapt**](https://journal.embnet.org/index.php/embnetjournal/article/view/200/479).  
 
 |Primer|Sequence|Reverse-Complement|
 |:-:|:-:||
@@ -380,8 +380,8 @@ Now we're also going to use the _sklearn_ classifier.
 :stop_sign:  
 ```
 qiime feature-classifier classify-sklearn \
-  --i-classifier unite_ref/sh_refs_qiime_ver8_99_10.05.2021_classifier.qza \
-  --i-reads dada2-single-end-rep-seqs_ITS.qza \
+  --i-classifier ../ITSxpress_ITS_tutorial/classifier.qza \
+  --i-reads dada2-repseq_ITS.qza \
   --o-classification taxonomy_ITS_sklearn.qza 
 ```
 Let's copy results and visualize them:  
@@ -393,16 +393,15 @@ qiime metadata tabulate \
     --m-input-file taxonomy_ITS_sklearn.qza \
     --o-visualization taxonomy_ITS_sklearn.qzv
 
-  qiime taxa barplot \
-  --i-table dada2-single-end-table_ITS.qza \
+qiime taxa barplot \
+  --i-table dada2-table_ITS.qza \
   --i-taxonomy taxonomy_ITS_sklearn.qza \
-  --m-metadata-file mock-25-sample-metadata.tsv \
+  --m-metadata-file mapping.txt \
   --o-visualization taxa-bar-plots_ITS_SKELARN.qzv
 ```
 ---
 **Are the obtained classifications comparable? Have a look [here](https://docs.google.com/spreadsheets/d/1e8AI8fgcDECRfXP5uMz1hpZyEoOMRx0Yo0DveuGl4PI/edit?usp=sharing).**
 
 ---
-[^1]: [https://journal.embnet.org/index.php/embnetjournal/article/view/200/479](https://journal.embnet.org/index.php/embnetjournal/article/view/200/479)
 
 [**Back to the program**](../README.md)

@@ -20,7 +20,7 @@ Every unix-based system (**it is hard to say but also Mac are UNIX-based systems
 ***(If you are Linux or Mac users and do you want to repeat the tutorial you can find the Terminal under Applications/Utilities.)***
 
 ## Some infos about Operative System
-The Operative System (OS) id the environment in which the programs are executed. Consequently it allows the access to computational and storage resources.
+The Operative System (OS) is the environment in which the programs are executed. Consequently, it allows the access to computational and storage resources.
 It is possible to define some common characteristics of OSs:
 - User interface: today almost all the OS have two interfaces
     - *Command line interface* (**CLI**) <-- ***This is exactly what we are going to talk about***
@@ -30,7 +30,8 @@ It is possible to define some common characteristics of OSs:
 - Communication between processes;
 - Tracking of errors.
 
-The **CLI** allows you to give commands directly to the OS. Its function is to translate the user choice in the machine language. It is exactly what happens when you use the *Google Translator*.   
+The **CLI** allows you to give commands directly to the OS. Its function is to translate the user choice into the machine language. 
+It is exactly what happens when you use the *Google Translator*.   
 We are going to use the **bash** shell, but just to say there are others **terminal shell**, such as **csh** or **ksh**.    
 Most of the bash commands used in the Terminal can also be used on Linux or in a Linux emulator, like for example Cygwin, running under Windows.
 
@@ -43,7 +44,7 @@ All bash programs shows a similar usage.
 Below are some exercises intended to help you understand how bash commands work, and what the advantages are.
 
 ## Bash tips <a name="Bash tips"></a>
-You are now located in your home directory (denoted *~*, **Please keep in mind this symbol**). [Every users has his own **home**.]   
+You are now located in your home directory (denoted **~**, **Please keep in mind this symbol**). :arrow_right: _Every user has his own **home**._     
 You can always type `pwd` (present working directory) to locate yourself in your file system. The `pwd` command gives you the **path** of your current position in the system.
 ![](FileStructure.png)
 ```
@@ -79,11 +80,10 @@ total 0
 drwxr-xr-x    3 User3  User3     96 Mar 30 11:27 Share/
 ```
 The `ls -l` command prints out permissions for each file in a folder, like this:
-drwxr-xr-x, where the *d*, if present, means that the item is a directory and r=read, w=write, x=execute (for programs).  
+**drwxr-xr-x**, where the *d*, if present, means that the item is a directory and r=read, w=write, x=execute (for executable).  
 The permissions are listed in the following order: *User*, *Group* and *All*.  
 It means the User (who created the folder) can read, write and execute, while Group and All may only read and execute.  
 In Unix system to make accessible files and programs to different users, the **System Administrator** may create **Groups**. In this way it is possible to facilitate data usage and optimize the storage.
-
 
 
 To create new folders and to copy or move files we usually use Finder on a Mac, but this can be done also with the Terminal.
@@ -111,13 +111,13 @@ Just to make it complete clear `cd` without any object move you to the *user hom
 There are other *shortcuts* you need to keep in mind:  
     - `..` means previous folder;  
     - `.`  current previous folder;
-So for example if you would like to list the content of the /home/ folder in our example you may just type:
+So for example if you would like to list the content of the `/home/` folder in our example you may just type:
 ```
 [User3 ~]: ls ..
 User1/ User2/ User3/
 ```   
 
-You can also use "glob patterns" to select specific files:
+You can also use `"glob patterns"` to select specific files:
  - an asterisk (*) means any string of characters
  - a question mark (?) means a single character
  - square brackets ([]) can mean a range of characters
@@ -125,7 +125,7 @@ You can also use "glob patterns" to select specific files:
 Use this to list all the files that begin "sub"
 
 
-We are now going to copy spome test files into our area and investigate. The file is in the ~/Share/Linux-exercises folder. 
+We are now going to copy some test files into our area and investigate. The file is in the /home/Share/Linux-exercises folder. 
 
 Copying and moving uses a standard format whether it’s within one server or between separate ones:
 ```
@@ -133,6 +133,7 @@ command      source      destination
 ```
 ![](LinuxCommands.png)
 For example, to move a file named Illumina_1.fastq into a new folder that exists in this directory named exp1:
+
 ```
 EXAMPLE mv Illumina_1.fastq exp1
 ```
@@ -157,7 +158,7 @@ Copy the files to a new folder named **test** with the command `cp [file/folder 
 TIP: you can use `*` as a wildcard to choose all files with a certain suffix, i.e. “*.fastq” or “*.fq”
 If you are in your homespace you can do this, however if you are already inside the test folder then you can use "." to mean "this folder"
 ```
-cp -R ~/Share/Linux-exercises test/
+cp -R /home/Share/Linux-exercises/* test/
 ```
 
 **Now, move into your “test” folder.**

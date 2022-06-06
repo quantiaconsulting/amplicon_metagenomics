@@ -400,7 +400,7 @@ qiime taxa barplot \
   --o-visualization taxa-bar-plots_ITS_SKELARN.qzv
 ```
 ---
-**Are the obtained classifications comparable? Have a look [here](https://docs.google.com/spreadsheets/d/1e8AI8fgcDECRfXP5uMz1hpZyEoOMRx0Yo0DveuGl4PI/edit?usp=sharing).**
+**Are the obtained classifications comparable? Have a look [here](https://docs.google.com/spreadsheets/d/1EasIv_X48qz-XKsVzGWhZyZLveJItp3QUujFc-NTBmw/edit#gid=1672135698).**
 
 ---
 

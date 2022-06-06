@@ -8,6 +8,10 @@ QIIME2 analysis of ITS data
    3. [Summarizing Feature Table and Feature Data](#step-3-summarizing-feature-table-and-feature-data)
    4. [Taxonomy assignment](#step-4-taxonomy-assignment)
 3. [Primer trimming based tutorial](#primer-trimming-based-tutorial)
+   1. [Step 1: Import data](#step-1-import-data) 
+   2. [Step 2: Primer trimming](#step-2-primer-trimming) 
+   3. [Step 3: Step 3: Denoising and Summarizing Data](#step-3-denoising-and-summarizing-data) 
+   4. [Step 4: Taxonomic assignment](#step-4-taxonomic-assignment)
 
 
 # Rationale
@@ -56,6 +60,7 @@ The ITS1 fungal region was amplified by using the [ITS1f/ITS2 primer pair](https
 
 # ITSxpress based tutorial
 ***Considering the whole workflow requires more than 1 hour, we are just going to discuss the main steps and copy already processed data for time-consuming steps.***  
+:walking:  
 ```
 cd 
 
@@ -63,13 +68,15 @@ mkdir ITSxpress_ITS_tutorial && cd ITSxpress_ITS_tutorial
 ```
 *In BASH, the `&&` allows you to perform two action on the same line*  
 
-If not already active, remember to activate the QIIME2 environment:
+If not already active, remember to activate the QIIME2 environment:  
+:walking:  
 ```
 conda activate qiime2-2021.8
 ```
  
 ## Step1: Import ITS data
-Let's start by downloading the data:
+Let's start by downloading the data:  
+:walking:  
 ```
 wget https://github.com/USDA-ARS-GBRU/itsxpress-tutorial/raw/master/data/sample1_r1.fq.gz
 wget https://github.com/USDA-ARS-GBRU/itsxpress-tutorial/raw/master/data/sample1_r2.fq.gz
@@ -78,20 +85,21 @@ wget https://github.com/USDA-ARS-GBRU/itsxpress-tutorial/raw/master/data/sample2
 wget https://raw.githubusercontent.com/USDA-ARS-GBRU/itsxpress-tutorial/master/data/manifest.txt
 ```
 
-Finally, copy the `mapping.txt` file containing the samples metadata:
+Finally, copy the `mapping.txt` file containing the samples metadata:  
+:walking:  
 ```
 cp /home/Share/ITSxpress_ITS_tutorial/mapping.txt .
 ```
 
 Now we can import the **FASTQ** data into a QIIME2 artifact:   
+:walking:  
 ```
 qiime tools import \
   --type SampleData[PairedEndSequencesWithQuality] \
   --input-format PairedEndFastqManifestPhred33\
   --input-path manifest.txt \
   --output-path sequences.qza
-```
-```
+
 qiime demux summarize \
   --i-data sequences.qza \
   --o-visualization sequences.qzv
@@ -118,7 +126,7 @@ Briefly, it works as follows:
 3. Identifies ITS start and stop sites using **hmmsearch**  on the representative sequences;
 4. Trims each original, merged sequence with quality scores, returning the merged or unmerged sequences with quality scores in a .qza file;  
 
-To install ITSexpress plugin in QIIME2 you need to use the following code. Of course we've already installed it for you:  
+To install ITSexpress plugin in QIIME2 you need to use the following code. Of course we've already installed it for you:    
 :stop_sign:  
 ```
 conda install -c bioconda itsxpress
@@ -138,12 +146,14 @@ qiime itsxpress trim-pair-output-unmerged\
   --o-trimmed trimmed.qza
 ```
 
-To import the processed data just type the following line
+To import the processed data just type the following line:  
+:walking:  
 ```
 cp /home/Share/ITSxpress_ITS_tutorial/trimmed.qza .
 ```
 
 Let's visualize whether something is changed in our sequences:  
+:walking:  
 ```
 qiime demux summarize \
  --i-data trimmed.qza \
@@ -160,7 +170,8 @@ qiime dada2 denoise-paired \
   --p-n-threads 20 \
   --output-dir dada2out
 ```
-To import the processed data just type the following line
+To import the processed data just type the following line:
+:walking:  
 ```
 cp -r /home/Share/ITSxpress_ITS_tutorial/dada2out .
 ```
@@ -169,6 +180,7 @@ cp -r /home/Share/ITSxpress_ITS_tutorial/dada2out .
 ## Step 3: Summarizing Feature Table and Feature Data
 We have just generated the artifacts containing the feature table and corresponding feature sequences.  
 Let's tabulate all the data:  
+:walking:  
 ```
 qiime feature-table summarize \
   --i-table dada2out/table.qza \
@@ -188,7 +200,7 @@ supports taxonomic classification of features using a variety of methods, includ
 We are going to use the Naive Bayes classifier that we've pre-trained by using the [**UNITE**](https://unite.ut.ee/repository.php) collection.
 Following is listed the applied procedure on the files obtained from the UNITE repository and how the taxonomic classification was performed:  
 **DO NOT EXECUTE THE FOLLOWING CHUNK OF CODE**.  
-:stop_sign:  
+:stop_sign:    
 ```
 tar xvfz C5547B97AAA979E45F79DC4C8C4B12113389343D7588716B5AD330F8BDB300C9.tgz
 
@@ -214,7 +226,8 @@ qiime feature-classifier classify-sklearn \
   --o-classification taxonomy.qza
 ```
 
-No we are ready to copy the performed taxonomic classification and generate visualization files:
+No we are ready to copy the performed taxonomic classification and generate visualization files:  
+:walking:  
 ```
 cp /home/Share/ITSxpress_ITS_tutorial/taxonomy.qza .
 
@@ -234,14 +247,16 @@ qiime taxa barplot \
 
 ## Step 1: Import data
 
-Create a new folder  
+Create a new folder.  
+:walking:  
 ```
 cd
 
 mkdir PT_ITS_tutorial && cd PT_ITS_tutorial
 ```
 
-We are going to reuse soil samples of the _ITSexpress tutorial_: 
+We are going to reuse soil samples of the _ITSexpress tutorial_:  
+:walking:  
 ```
 cp ../ITSxpress_ITS_tutorial/{sequences.qza,mapping.txt} .
 ```
@@ -257,6 +272,7 @@ The primer trimming is performed by using the tool `cutadapt`[^1].
 |Forward|CTTGGTCATTTAGAGGAAGTAA|TTACTTCCTCTAAATGACCAAG|  
 |Reverse|GCTGCGTTCTTCATCGATGC|GCATCGATGAAGAACGCAGC|  
 
+:walking:  
 ```
 qiime cutadapt trim-paired \
   --i-demultiplexed-sequences sequences.qza \
@@ -266,9 +282,7 @@ qiime cutadapt trim-paired \
   --p-adapter-r TTACTTCCTCTAAATGACCAAG \
   --p-cores 20 \
   --o-trimmed-sequences sequences-trimmed.qza
-```
 
-```
 qiime demux summarize \
  --i-data sequences-trimmed.qza \
  --o-visualization sequences-trimmed.qzv
@@ -285,7 +299,7 @@ qiime demux summarize \
 
 </details>
 
-## Step 3: Summarizing Feature Table and Feature Data
+## Step 3: Denoising and Summarizing Data
 So let's denoise our data!!!  
 **DO NOT EXECUTE THE FOLLOWING CHUNK OF CODE**.  
 :stop_sign:  
@@ -303,6 +317,7 @@ qiime dada2 denoise-paired \
 ```
 
 Let's copy pre-processed data and tabulate all the available info:  
+:walking:  
 ```
 cp /home/share/PT_ITS_tutorial/dada2-* .
 
@@ -333,7 +348,7 @@ These methods take reference database `FeatureData[Taxonomy]` and `FeatureData[S
 The first step in this process is to assign taxonomy to the sequences in our `FeatureData[Sequence]` QIIME 2 artifact. 
 
 We will initially perform the taxonomic classification by using [**classify-consensus-vsearch**](https://docs.qiime2.org/2019.1/plugins/available/feature-classifier/classify-consensus-vsearch/).
-***Like the previous time-consuming step, we show you the used line but we are just copyng the pre-computed results.***  
+***Like the previous time-consuming step, we show you the used line, but we are just copyng the pre-computed results.***  
 :stop_sign:  
 ```
 qiime feature-classifier classify-consensus-vsearch \
@@ -345,7 +360,8 @@ qiime feature-classifier classify-consensus-vsearch \
   --p-threads 20 \
   --o-classification vsearch_taxonomy_ITS.qza
 ```
-Now copy the produced data and generate visualization files:
+Now copy the produced data and generate visualization files:  
+:walking:  
 ```
 cp /home/share/PT_ITS_tutorial/vsearch_taxonomy_ITS.qza .
 
@@ -361,16 +377,15 @@ qiime taxa barplot \
 ```
 
 Now we're also going to use the _sklearn_ classifier.  
-
-:stop_sign: 
+:stop_sign:  
 ```
 qiime feature-classifier classify-sklearn \
   --i-classifier unite_ref/sh_refs_qiime_ver8_99_10.05.2021_classifier.qza \
   --i-reads dada2-single-end-rep-seqs_ITS.qza \
   --o-classification taxonomy_ITS_sklearn.qza 
 ```
-
 Let's copy results and visualize them:  
+:walking:  
 ```
 cp /home/share/PT_ITS_tutorial/taxonomy_ITS_sklearn.qza .
 

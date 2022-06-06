@@ -63,7 +63,7 @@ though it does not matter to QIIME2 what file extension is used.
 TSV files are simple text files used to store `tabular data`, and the format is supported by many types of software, such as editing, importing, and exporting from spreadsheet programs and databases. 
 Thus, it’s usually straightforward to manipulate QIIME 2 metadata using a software like Microsoft Excel or (better) Google Sheets to edit and export your metadata files.
 
-You can find the [file](https://docs.google.com/spreadsheets/d/1a1NFqpBjwb8Ul0c4O68IVFb9JUn5BjLdyHr422LMfE0/edit#gid=1988763045) in the Lab folder of today or download it directly from QIIME2 to your working area by running the command:
+You can find the [file](https://docs.google.com/spreadsheets/d/1a1NFqpBjwb8Ul0c4O68IVFb9JUn5BjLdyHr422LMfE0/edit#gid=1988763045) in the Lab folder of today or download it directly from QIIME2 to your working area by running the command:  
 :walking:  
 ```
 wget -O "sample-metadata.tsv" \
@@ -287,7 +287,7 @@ wget \
 The first step in this process is to assign taxonomy to the sequences in our `FeatureData[Sequence]` QIIME 2 artifact.
 **Now considering this step is quite long, and we are not interested in waiting it to complete, we have already classified our ASVs.**  
 
-
+:walking:  
 ```
 cp /home/Share/qiime2-atacama-tutorial/taxonomy_16S_SKLEARN.qza  . 
 ```
@@ -459,7 +459,7 @@ Microbiome abundance data are inherently sparse (have a lot of zeros) and compos
 ANCOM relies on a compositional aware approach allowing to identify differentially abundant features. Have a look to the [ANCOM paper](https://www.ncbi.nlm.nih.gov/pubmed/26028277).
 
 First we are going to remove low abundant features in order to improve our ability in inferring features that are really differentially abundant.  
-Next, we will retain feature observed in at least the 10% of our samples.
+Next, we will retain feature observed in at least the 10% of our samples.  
 :walking:  
 ```
 qiime feature-table filter-features \
@@ -479,7 +479,7 @@ qiime composition add-pseudocount \
 
 The ANCOM visualizations is a volcano plot showing the ANCOM W statistic to the CLR (center log transform) for the groups.  
 The W statistic is the number of ANCOM sub-hypotheses that have passed for each individual taxon, indicating that the ratios of that taxon’s relative abundance to the relative abundances of W other taxa were detected to be significantly different (typically FDR-adjusted p < 0.05).  
-Because differential abundance in ANCOM is based on the ratio between tests, it does not produce a traditional p-value.
+Because differential abundance in ANCOM is based on the ratio between tests, it does not produce a traditional p-value.  
 :walking:  
 ```
 qiime composition ancom \

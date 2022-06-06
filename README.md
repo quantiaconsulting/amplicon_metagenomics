@@ -56,7 +56,7 @@ __LEARNING OUTCOMES__
   - [ ] [Water]()
 
 ## Day 4
-- [ ] [ITS sequence analysis](ITS/readme.md)
+- [ ] [ITS sequence analysis](ITS/ITS_readme.md)
 - [ ] [experimental design with R](https://glcdn.githack.com/bfosso/physalia_metabarcoding_oct2021/raw/main/R_tutorial/Introduction_to%20_R.nb.html)
 - [ ] [Lecture  - Multivariate Analysis of Ecological Communities](https://docs.google.com/presentation/d/1SEXLnsAk71ghWJFBjvnSL9-JIU5kHyYi/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true)  
   - [ ] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  

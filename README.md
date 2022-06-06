@@ -30,7 +30,7 @@ __LEARNING OUTCOMES__
     - [Anna Sandionigi](https://scholar.google.com/citations?hl=it&user=DLDuk_EAAAAJ)  
     - [Bruno Fosso](https://scholar.google.com/citations?user=TBeT9pIAAAAJ&hl=it)  
 - [ ] [**Brief introduction** about __Metagenomics__ concepts. *What are we going to talk about?*](https://docs.google.com/presentation/d/1JafDY-zalbqZkEA83MLhLHNrCJZ_aqDlfzt22FNKadw/edit?usp=sharing)
-- [ ] [**Experimental design part 1  - Presentation](https://docs.google.com/presentation/d/1BGdfq3lH9avWzLAmXq6RMiOr_F5GEy9i9gyphj6JaYk/edit?usp=sharing)
+- [ ] [**Experimental design part 1**  - Presentation](https://docs.google.com/presentation/d/1BGdfq3lH9avWzLAmXq6RMiOr_F5GEy9i9gyphj6JaYk/edit?usp=sharing)
 - [ ] Laptop setting;
   - [ ] [How to connect to the Amazon EC2 service](unix_short_tutorial/how_to_connect.md)  
 - [ ] [A brief introduction to **LINUX** and the **BASH** environment - Presentation](https://drive.google.com/file/d/1vGc8ZsNNo6UpK36p9czREym8vwjiLgGo/view?usp=sharing)

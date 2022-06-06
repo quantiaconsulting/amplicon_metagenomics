@@ -17,6 +17,12 @@
    1. [Time to test](#time-to-test)
 8. [STEP7: Differential abundance analysis in QIIME2](#step7-differential-abundance-analysis-in-qiime2)
 
+---
+**Basic Advice**: before the chunk of command line you will find two emoticons:  
+1. :green_circle: The chunk of code must be executed.
+2. :stop_sign: The chunk of code must not be executed, but you just need to the prepared results.   
+
+---
 
 # Start the analysis
 In this tutorial you will use QIIME2 to perform an analysis of soil samples from the Atacama Desert in northern Chile.
@@ -38,6 +44,7 @@ You can find the paper [here](https://msystems.asm.org/content/2/3/e00195-16.abs
 
 ## Obtain Data
 Start by creating a directory to work in. We will call it **qiime2-atacama-tutorial**.  
+:green_circle:  
 ```
 mkdir qiime2-atacama-tutorial
 ```
@@ -57,7 +64,7 @@ TSV files are simple text files used to store `tabular data`, and the format is 
 Thus, it’s usually straightforward to manipulate QIIME 2 metadata using a software like Microsoft Excel or (better) Google Sheets to edit and export your metadata files.
 
 You can find the [file](https://docs.google.com/spreadsheets/d/1a1NFqpBjwb8Ul0c4O68IVFb9JUn5BjLdyHr422LMfE0/edit#gid=1988763045) in the Lab folder of today or download it directly from QIIME2 to your working area by running the command:
-
+:green_circle:  
 ```
 wget -O "sample-metadata.tsv" \
   "https://data.qiime2.org/2022.2/tutorials/atacama-soils/sample_metadata.tsv"
@@ -83,6 +90,7 @@ be presented each time Keemei is run.
 
 As we discussed during the introduction to UNIX-based environment, we take advantage of using *virtual environments* to avoid affecting the main OS.  
 So everytime we start a new session, we need to activate the virtual environment containing our QIIME2 installation.  
+:green_circle:  
 ```
 conda activate qiime2-2022.2
 ```
@@ -119,6 +127,7 @@ Artifacts enable QIIME 2 to track, in addition to the data itself, the provenanc
 With an artifact’s provenance, you can trace back to all previous analyses that were run to produce the artifact, including the input data used at each step.  
 
 So we need to import our demultiplexed raw data into a qiime artifact.    
+:green_circle:  
 ```
 qiime tools import \
     --type 'SampleData[PairedEndSequencesWithQuality]' \
@@ -129,7 +138,7 @@ qiime tools import \
 
 We used the QIIME2 plugin *tools* and the function *import*, to embed our data into a ``qza`` artifact.  
 To obtain an almost complete list of importable formats type the following line:  
-
+:green_circle:  
 ```
 qiime tools import --show-importable-formats --help
 ```
@@ -138,6 +147,7 @@ qiime tools import --show-importable-formats --help
 
 By importing the sequences you have generated your first object in QIIME2: `demux-paired-end.qza`.
 Following we are interested to visualize our data and obtain some specific statistics.
+:green_circle:  
 ```
 qiime demux summarize \
   --i-data demux-paired-end.qza \
@@ -190,27 +200,29 @@ In this example, the same values are provided for `--p-trim-left-f` and `--p-tri
 We are also setting the same values to `--p-trunc-len-f` and `--p-trunc-len-r` options. Actually, it is not strictly necessary considering we are not applying any trimming to reads 3' ends.  
 We're also using a multi-threading command to split the processing across multiple CPUs, which will be very useful when performing your own analysis with larger datasets.  
 
-<details>
-  <summary markdown="span">Following are listed the lines to perform denoising. But considering it takes a while to complete we are going to use pre-computed data.</summary> 
-    
-    qiime dada2 denoise-paired \
-     --i-demultiplexed-seqs demux-paired-end.qza \
-     --p-trim-left-f 13 \
-     --p-trim-left-r 13 \
-     --p-trunc-len-f 150 \
-     --p-trunc-len-r 150 \
-     --p-n-threads 2 \
-     --o-table table_16S.qza \
-     --o-representative-sequences rep-seqs_16S.qza \
-     --o-denoising-stats denoising-stats_16S.qza
-</details>
+Following are listed the lines to perform denoising. But considering it takes a while to complete we are going to use pre-computed data. 
+:stop_sign:  
+```  
+ qiime dada2 denoise-paired \
+  --i-demultiplexed-seqs demux-paired-end.qza \
+  --p-trim-left-f 13 \
+  --p-trim-left-r 13 \
+  --p-trunc-len-f 150 \
+  --p-trunc-len-r 150 \
+  --p-n-threads 2 \
+  --o-table table_16S.qza \
+  --o-representative-sequences rep-seqs_16S.qza \
+  --o-denoising-stats denoising-stats_16S.qza
+```
 
 Let's import our already done data.  
+:green_circle:
 ```
 cp /home/Share/qiime2-atacama-tutorial/{table_16S.qza,rep-seqs_16S.qza,denoising-stats_16S.qza}  . 
 ```
 
 Following we need to generate a qzv file containing the table summarizing the denoising process, so we can discuss the effect it had on the data.
+:green_circle:  
 ```
 qiime metadata tabulate \
   --m-input-file denoising-stats_16S.qza \
@@ -228,7 +240,7 @@ To whom it may be interested at this [**link**](https://benjjneb.github.io/dada2
 ## Summaraize 16S data
 You have also produced two artifacts containing the feature table and corresponding feature sequences.  
 You can generate summaries also for those as follows.
-
+:green_circle:
 ```
 qiime feature-table summarize \
   --i-table table_16S.qza \
@@ -265,6 +277,7 @@ This classifier was trained on the *SILVA 138 NR99 collection*, where the sequen
 We’ll apply this classifier to our sequences, and we can generate a visualization of the resulting mapping from sequence to taxonomy.
 
 Initially, we need to download the pre-computed classifier:
+:green_circle:  
 ```
 wget \
   -O "silva-138-99-515-806-nb-classifier.qza" \
@@ -279,16 +292,17 @@ The first step in this process is to assign taxonomy to the sequences in our `Fe
 cp /home/Share/qiime2-atacama-tutorial/taxonomy_16S_SKLEARN.qza  . 
 ```
 
-<details>
-  <summary markdown="span">By the way the line we've used to taxonomically annotated our ASV is the following.</summary> 
-    
-    qiime feature-classifier classify-sklearn \
-      --i-classifier silva-138-99-515-806-nb-classifier.qza \
-      --i-reads rep-seqs_16S.qza \
-      --o-classification taxonomy_16S_SKLEARN.qza
-</details>
+By the way the line we've used to taxonomically annotated our ASV are the following. 
+:stop_sign:  
+```
+qiime feature-classifier classify-sklearn \
+   --i-classifier silva-138-99-515-806-nb-classifier.qza \
+   --i-reads rep-seqs_16S.qza \
+   --o-classification taxonomy_16S_SKLEARN.qza
+```
 
 Once the classification is done we can generate the barplot for data visualization:  
+:green_circle:  
 ```
 qiime metadata tabulate \
   --m-input-file taxonomy_16S_SKLEARN.qza \
@@ -323,7 +337,7 @@ In addition to counts of features per sample (i.e., the data in the `FeatureTabl
 
 * The final step in this section midpoint **rooting** is applied to place the root of the tree at the midpoint of the longest tip-to-tip distance in the unrooted tree.
 
-
+:green_circle:  
 ```
 qiime phylogeny align-to-tree-mafft-fasttree \
   --i-sequences rep-seqs_16S.qza \
@@ -336,7 +350,7 @@ qiime phylogeny align-to-tree-mafft-fasttree \
 # STEP6: Analyzing Alpha and Beta diversities
 
 First, lets look at alpha diversity as a function of sequencing depth, as a test of our sequencing run.  
-
+:green_circle:  
 ```
 qiime diversity alpha-rarefaction \
   --i-table table_16S.qza \
@@ -361,7 +375,7 @@ QIIME 2’s diversity analyses are available through the [`q2-diversity plugin`]
 * weighted UniFrac distance (a quantitative measure of community dissimilarity that incorporates phylogenetic relationships between the features)
 
 An important parameter that needs to be provided to this script is **--p-sampling-depth**, which is the even sampling (i.e. rarefaction) depth.
-
+:green_circle:  
 ```
 qiime diversity core-metrics-phylogenetic \
   --i-phylogeny rooted-tree_16S.qza \
@@ -376,7 +390,7 @@ From these outputs, a range of datasets and visualisations are generated that ca
 ## Time to test
 
 We’ll first test for associations between **categorical** metadata columns and alpha diversity data. We’ll do that here for the Faith Phylogenetic Diversity (a measure of community richness) and evenness metrics.
-
+:green_circle:  
 ```
 qiime diversity alpha-group-significance \
   --i-alpha-diversity core-metrics-results_16S/faith_pd_vector.qza \
@@ -400,7 +414,7 @@ qiime diversity alpha-group-significance \
 
 Using **Pearson** and **Spearman** correlation it is possible to determine whether numeric sample metadata columns are correlated with
 alpha diversity.
-
+:green_circle:  
 ```
 qiime diversity alpha-correlation \
   --i-alpha-diversity core-metrics-results_16S/shannon_vector.qza \
@@ -419,7 +433,7 @@ qiime diversity alpha-correlation \
 
 
 Next we’ll analyze sample composition in the context of categorical metadata using **PERMANOVA** (first described in [Anderson (2001)](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1442-9993.2001.01070.pp.x)) using the beta-group-significance command. The following commands will test whether distances between samples within a group, are more similar to each other then they are to samples from the other groups. In this case we test only for the Transect_name and for the vegetation
-
+:green_circle:  
 ```
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_16S/unweighted_unifrac_distance_matrix.qza \
@@ -446,7 +460,7 @@ ANCOM relies on a compositional aware approach allowing to identify differential
 
 First we are going to remove low abundant features in order to improve our ability in inferring features that are really differentially abundant.  
 Next, we will retain feature observed in at least the 10% of our samples.
-
+:green_circle:  
 ```
 qiime feature-table filter-features \
   --i-table table_16S.qza \
@@ -456,7 +470,7 @@ qiime feature-table filter-features \
 ```
 
 ANCOM relies on a _log-transform_ so we need to add pseudocounts to our table. We are adding a *1* to each item of our table in order to perform the log-transform.  
-
+:green_circle:  
 ```
 qiime composition add-pseudocount \
   --i-table filtered_table_16S.qza \
@@ -466,7 +480,7 @@ qiime composition add-pseudocount \
 The ANCOM visualizations is a volcano plot showing the ANCOM W statistic to the CLR (center log transform) for the groups.  
 The W statistic is the number of ANCOM sub-hypotheses that have passed for each individual taxon, indicating that the ratios of that taxon’s relative abundance to the relative abundances of W other taxa were detected to be significantly different (typically FDR-adjusted p < 0.05).  
 Because differential abundance in ANCOM is based on the ratio between tests, it does not produce a traditional p-value.
-
+:green_circle:  
 ```
 qiime composition ancom \
   --i-table filtered_table_16S_pc.qza \

@@ -31,9 +31,10 @@ The steps to import fastq files, denoise using dada2, assign taxonomy using SKLE
 Copy these files to your local folder:
 ```
 mkdir BEE-analysis
+cd BEE-analysis
 cp /home/Share/BEE/* .
 ```
-You should have these files to use for your analysis:
+You should now have these files to use for your analysis:
 ```
 table99.qza
 taxonomy99.qza

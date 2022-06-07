@@ -293,7 +293,7 @@ The first step in this process is to assign taxonomy to the sequences in our `Fe
 cp /home/Share/qiime2-atacama-tutorial/taxonomy_16S_SKLEARN.qza  . 
 ```
 
-By the way the line we've used to taxonomically annotated our ASV are the following. 
+By the way the line we've used to taxonomically annotated our ASV are the following.   
 :stop_sign:  
 ```
 qiime feature-classifier classify-sklearn \

@@ -53,7 +53,7 @@ __LEARNING OUTCOMES__
 - [ ] [Some additional Tips](DataImport_and_Tax_management/readme.md)
 - [ ] :arrow_right: _It's Case studies Time!!!_
   - [ ] [Human microbiome data](human_cancer/readme.md)
-  - [ ] [Zoological](Bee_microbiome/readme.md)
+  - [ ] [Zoological(Bees bees bees!)](Bee_microbiome/readme.md)
   - [ ] [Water]()
 
 ## Day 4

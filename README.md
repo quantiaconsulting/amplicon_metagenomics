@@ -48,17 +48,17 @@ __LEARNING OUTCOMES__
 
 ## Day 3
 - [ ] [Taxonomy assignment:**classify-sklearn**](16S_ITS_tutorial/readme.md#step3-summarizing-feature-table-and-feature-data)
-- [ ] [**Experimental Design part 2**](https://docs.google.com/presentation/d/1ybw75VKyMK9vJ_yy2SpFYbn8SZMJ7_6yf-BC0gLJ5vg/edit?usp=sharing)
 - [ ] [Diversity Analysis](https://drive.google.com/file/d/1p7UCmfNe0A44Xb8665eaCBps84P7AYRg/view?usp=sharing)
 - [ ] [Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step6-analyzing-alpha-and-beta-diversities)
 - [ ] [Some additional Tips](DataImport_and_Tax_management/readme.md)
 - [ ] :arrow_right: _It's Case studies Time!!!_
   - [ ] [Human microbiome data](human_cancer/readme.md)
-  - [ ] [Zoological]()
+  - [ ] [Zoological](Bee_microbiome/readme.md)
   - [ ] [Water]()
 
 ## Day 4
 - [ ] [ITS sequence analysis](ITS/ITS_readme.md)
+- [ ] [**Experimental Design part 2**](https://docs.google.com/presentation/d/1ybw75VKyMK9vJ_yy2SpFYbn8SZMJ7_6yf-BC0gLJ5vg/edit?usp=sharing)
 - [ ] [experimental design with R](https://glcdn.githack.com/bfosso/physalia_metabarcoding_oct2021/raw/main/R_tutorial/Introduction_to%20_R.nb.html)
 - [ ] [Lecture  - Multivariate Analysis of Ecological Communities](https://docs.google.com/presentation/d/1SEXLnsAk71ghWJFBjvnSL9-JIU5kHyYi/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true)  
   - [ ] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  

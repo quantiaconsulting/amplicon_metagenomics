@@ -237,7 +237,7 @@ To whom it may be interested at this [**link**](https://benjjneb.github.io/dada2
 
 # STEP3: Summarizing Feature Table and Feature Data
 
-## Summaraize 16S data
+## Summarize 16S data
 You have also produced two artifacts containing the feature table and corresponding feature sequences.  
 You can generate summaries also for those as follows.
 :walking:
@@ -276,8 +276,8 @@ In our tutorial we are going to use the **q2-feature-classifier plugin** by usin
 This classifier was trained on the *SILVA 138 NR99 collection*, where the sequences have been trimmed to only include 300 bases from the region of the 16S that was sequenced in this analysis (the V4 region, bound by the 515F/806R primer pair).  
 We’ll apply this classifier to our sequences, and we can generate a visualization of the resulting mapping from sequence to taxonomy.
 
-Initially, we need to download the pre-computed classifier:
-:walking:  
+Initially, we need to download the pre-computed classifier:  
+:stop_sign:  
 ```
 wget \
   -O "silva-138-99-515-806-nb-classifier.qza" \

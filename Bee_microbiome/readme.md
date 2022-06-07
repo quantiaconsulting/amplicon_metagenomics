@@ -2,10 +2,11 @@ Differences in honey bee bacterial diversity and composition in agricultural and
 ==============
 - [Abstract](#abstract)
 - [Data Analysis](#data-analysis)
+  - [Visualise taxonomically](#visualise-taxonomically)
   - [Filter out chloroplast and mitochondria](#filter-out-chloroplast-and-mitochondria)
-  - [Phylogenetic tree inference](#phylogenetic-tree-inference)
-  - [Rarefaction](#rarefaction)
-- [Task to complete](#task-to-complete)
+  - [Subsetting your data](#Create-a-subset-of-your-data)
+  - [Diversity processing and testing](#diversity)
+- [Questions to answer](#now-your-go)
 
 
 ## Abstract
@@ -92,7 +93,7 @@ qiime taxa barplot \
 ```
 Q -  What is causing the large variation within the Agricultural gut samples?
 
-## Decide what read number to calculate diversity at
+## Diversity
 Lets use all our samples for now
 ### Rarefaction
 Let's perform rarefaction curves to decide the most appropriate rarefaction depth.    
@@ -127,10 +128,14 @@ qiime diversity beta-correlation
 You could run these tests on just a subset (i.e. just bee guts with no problems)
 
 ## Now your go!
-Use the diversity calculations and taxonomic plots to answer questions about your data. Choose either gut, brood, or Bee-Bread (collected pollen)
-Q - Is there a significant difference in alpha diversity between Pristine and Agricultural environments?
-Q - Is there a difference in community structure using unifrac distance? Is it significant?
-Q - Are there any significanlty associated ASVs?
-Q - What effect are the samples labelled "problem" causing? Should they be removed?
+
+Use the diversity calculations and taxonomic plots to answer questions about your data. 
+*Choose either gut, brood, or Bee-Bread (collected pollen)*
+
+
+- Is there a significant difference in alpha diversity between Pristine and Agricultural environments?
+- Is there a difference in community structure using unifrac distance? Is it significant?
+- Are there any significanlty associated ASVs? (using ANCOM to test)
+- What effect are the samples labelled "problem" causing? Should they be removed?
 
 

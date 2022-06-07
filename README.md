@@ -32,10 +32,10 @@ __LEARNING OUTCOMES__
     - [Bruno Fosso](https://scholar.google.com/citations?user=TBeT9pIAAAAJ&hl=it)  
 - [X] [**Brief introduction** about __Metagenomics__ concepts. *What are we going to talk about?*](https://docs.google.com/presentation/d/1JafDY-zalbqZkEA83MLhLHNrCJZ_aqDlfzt22FNKadw/edit?usp=sharing)
 - [X] [**Experimental design part 1**  - Presentation](https://docs.google.com/presentation/d/1BGdfq3lH9avWzLAmXq6RMiOr_F5GEy9i9gyphj6JaYk/edit?usp=sharing)
-- [ ] Laptop setting;
-  - [ ] [How to connect to the Amazon EC2 service](unix_short_tutorial/how_to_connect.md)  
-- [ ] [A brief introduction to **LINUX** and the **BASH** environment - Presentation](https://drive.google.com/file/d/1vGc8ZsNNo6UpK36p9czREym8vwjiLgGo/view?usp=sharing)
-- [ ] [Introduction to the **BASH** shell](unix_short_tutorial/Readme.md)
+- [X] Laptop setting;
+  - [X] [How to connect to the Amazon EC2 service](unix_short_tutorial/how_to_connect.md)  
+- [X] [A brief introduction to **LINUX** and the **BASH** environment - Presentation](https://drive.google.com/file/d/1vGc8ZsNNo6UpK36p9czREym8vwjiLgGo/view?usp=sharing)
+- [X] [Introduction to the **BASH** shell](unix_short_tutorial/Readme.md)
 - [ ] [Introduction to the **FASTQ** format and Qiime objects - ppt](https://drive.google.com/file/d/1XvAL2f2PZduU-pXkU83jruMHHTPx5pj2/view?usp=sharing)  
 
 ## Day 2

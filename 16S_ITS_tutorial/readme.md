@@ -278,6 +278,7 @@ We’ll apply this classifier to our sequences, and we can generate a visualizat
 
 Initially, we need to download the pre-computed classifier:  
 :stop_sign:  
+
 ```
 wget \
   -O "silva-138-99-515-806-nb-classifier.qza" \

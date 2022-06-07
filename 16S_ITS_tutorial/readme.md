@@ -456,7 +456,7 @@ qiime diversity beta-group-significance \
 Sometimes you are also interested in testing whether individual ASVs or taxa are more or less abundant in different sample groups.  
 Microbiome data are challenging and conventional methods (i.e. t-test) are not appropriated for this task.  
 Microbiome abundance data are inherently sparse (have a lot of zeros) and compositional (everything adds up to 1). 
-ANCOM relies on a compositional aware approach allowing to identify differentially abundant features. Have a look to the [ANCOM paper](https://www.ncbi.nlm.nih.gov/pubmed/26028277).
+***ANCOM (Analysis of Composition of Microbiomes)*** relies on a compositional aware approach allowing to identify differentially abundant features. Have a look to the [ANCOM paper](https://www.ncbi.nlm.nih.gov/pubmed/26028277).
 
 First we are going to remove low abundant features in order to improve our ability in inferring features that are really differentially abundant.  
 Next, we will retain feature observed in at least the 10% of our samples.  

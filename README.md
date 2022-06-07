@@ -36,9 +36,9 @@ __LEARNING OUTCOMES__
   - [X] [How to connect to the Amazon EC2 service](unix_short_tutorial/how_to_connect.md)  
 - [X] [A brief introduction to **LINUX** and the **BASH** environment - Presentation](https://drive.google.com/file/d/1vGc8ZsNNo6UpK36p9czREym8vwjiLgGo/view?usp=sharing)
 - [X] [Introduction to the **BASH** shell](unix_short_tutorial/Readme.md)
-- [ ] [Introduction to the **FASTQ** format and Qiime objects - ppt](https://drive.google.com/file/d/1XvAL2f2PZduU-pXkU83jruMHHTPx5pj2/view?usp=sharing)  
 
 ## Day 2
+- [ ] [Introduction to the **FASTQ** format and Qiime objects - ppt](https://drive.google.com/file/d/1XvAL2f2PZduU-pXkU83jruMHHTPx5pj2/view?usp=sharing)
 - [ ] [Experimental Design part2: theory and some points on the  Atacama Soil Experiment](https://docs.google.com/presentation/d/1ybw75VKyMK9vJ_yy2SpFYbn8SZMJ7_6yf-BC0gLJ5vg/edit?usp=sharing)
 - [ ] [Atacama Soil Experiment and Loading data](16S_ITS_tutorial/readme.md)
 - [ ] [Lets review](unix_short_tutorial/Readme.md)

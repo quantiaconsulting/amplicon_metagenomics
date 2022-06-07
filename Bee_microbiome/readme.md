@@ -130,6 +130,7 @@ You could run these tests on just a subset (i.e. just bee guts with no problems)
 ## Now your go!
 
 Use the diversity calculations and taxonomic plots to answer questions about your data. 
+
 *Choose either gut, brood, or Bee-Bread (collected pollen)*
 
 

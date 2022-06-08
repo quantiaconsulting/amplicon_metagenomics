@@ -54,9 +54,10 @@ __LEARNING OUTCOMES__
   - [X] [Human microbiome data](human_cancer/readme.md)
   - [X] [Zoological(Bees bees bees!)](Bee_microbiome/readme.md)
   - [X] [Water-mosquito](water_mosquito/readme.md)
-- [ ] [Some additional Tips](DataImport_and_Tax_management/readme.md)
+- [X] [Some additional Tips](DataImport_and_Tax_management/readme.md)
 
 ## Day 4
+- [ ] [Some additional Tips: The revenge :volcano: ](DataImport_and_Tax_management/readme.md#evaluating-data-quality)
 - [ ] [ITS sequence analysis](ITS/ITS_readme.md)
 - [ ] [**Experimental Design part 2**](https://docs.google.com/presentation/d/1ybw75VKyMK9vJ_yy2SpFYbn8SZMJ7_6yf-BC0gLJ5vg/edit?usp=sharing)
 - [ ] [A (very) short introduction to R](https://glcdn.githack.com/bfosso/physalia_metabarcoding_oct2021/raw/main/R_tutorial/Introduction_to%20_R.nb.html)

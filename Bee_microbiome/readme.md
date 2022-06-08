@@ -16,7 +16,7 @@ Muñoz-Colmenero et. al, 2020
 https://link.springer.com/article/10.1007/s13592-020-00779-w
 
 ## Data Analysis
-We have a collection of samples to the following conditions, with 3x replicates per hive (some samples have failed sequencing and been filtered out).
+We have a collection of samples to the following conditions, with 3x replicates per hive (some samples have failed sequencing and been filtered out). Note that in addition to the environment (clean vs agricultural) and sample types (Gut, Brood, Bee-Bread) there is also Hive internal air (not mentioned in the paper) and additional metadata regarding samples with detected infections. Think about how that could affect your results!
 
 ### Input data
 Number of hives included
@@ -28,9 +28,13 @@ Brood | 3 |	5 |	9 |
 Bee-bread “with blocking”	| 6 | 5 | 11 |
 Bee-bread “without blocking” | 6 | 5 | 11 |
 
-The steps to import fastq files, denoise using dada2, assign taxonomy using SKLEARN and the SILVA database, and generate a rooted tree have been performed for you in advance. 
+The following steps have already been performed for you to save time:
+- import fastq files
+- denoise using dada2
+- assign taxonomy using SKLEARN and the SILVA database
+- generate a rooted tree
 
-Copy these files to your local folder:
+Therefore you can copy these files to your local folder and begin your analysis
 ```
 mkdir BEE-analysis
 cd BEE-analysis

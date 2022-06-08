@@ -15,6 +15,9 @@ Note also that the login name (internet address) for Amazon will change daily. W
     ![](Moba2.png)
 4. Moba saves your sessions down the left side of the screen, or can be swapped to a file browser for downloading
 
+## NOTE: You do not need to repeat this when the server IP address changes. You just right-click and select "edit session" and change the IP address
+
+
 ### Windows users using Putty
 1. Create a windows key:  
     We need to convert the key file to a format that is compatible with Windows. We do this using **PuTTYGen**.  
@@ -60,5 +63,11 @@ In order to use **FileZilla** to download data from the EC2 Amazon instances to 
     * User: **the user name used to access the EC2 Amazon instance**  
     * Key file: **the same .pem file you used for the connection**   - NOTE! You have to selct that it is a pem format file when in file browser
 ![](Using-Filezilla-pdf.png)  
+
+## To change the IP address for a new day all you need to do is edit the Host field with the new number
+![](image (2).png)  
+
+
+
 
 [**Back to the program**](../README.md)

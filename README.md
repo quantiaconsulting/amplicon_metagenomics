@@ -54,7 +54,7 @@ __LEARNING OUTCOMES__
 - [ ] :arrow_right: _It's Case studies Time!!!_
   - [ ] [Human microbiome data](human_cancer/readme.md)
   - [ ] [Zoological(Bees bees bees!)](Bee_microbiome/readme.md)
-  - [ ] [Water](water_mosquito/readme.md)
+  - [ ] [Water-mosquito](water_mosquito/readme.md)
 
 ## Day 4
 - [ ] [ITS sequence analysis](ITS/ITS_readme.md)

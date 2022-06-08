@@ -73,6 +73,17 @@ Generate the new "summarize-table.qzv" so that you get the information you need 
 
 "The microbiota of breeding site water (W), larval (L), and adult (A) Ae. albopictus samples was examined by sequencing of the bacterial 16S rRNA gene. Sequences of a total of ... libraries (i.e., ... water samples; ... CR and ... FO larval samples; ... CR and ... FO adults, respectively; two DNA extraction negative controls)"
 
+
+Generate the "summarize-table.qzv" to explore the data.
+```
+qiime feature-table summarize \
+  --i-table table_h2o_host_CR12.qza \
+  --o-visualization table_water_mosquito_filtered.qzv \
+  --m-sample-metadata-file map_water_mosquito.tsv
+```
+
+
+
 ## Visualise taxonomically 
 
 ### Create taxonomic bar plot visuals

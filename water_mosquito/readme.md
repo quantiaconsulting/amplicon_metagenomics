@@ -1,4 +1,4 @@
-Exploring Changes in the Microbiota of Aedes albopictus: Comparison Among Breeding Site Water, Larvae, and Adults
+## Exploring Changes in the Microbiota of <em>Aedes albopictus</em>: Comparison Among Breeding Site Water, Larvae, and Adults
 
 ==============
 - [Abstract](#abstract)

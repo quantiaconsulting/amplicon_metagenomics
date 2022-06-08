@@ -15,7 +15,8 @@ Note also that the login name (internet address) for Amazon will change daily. W
     ![](Moba2.png)
 4. Moba saves your sessions down the left side of the screen, or can be swapped to a file browser for downloading
 
-## NOTE: You do not need to repeat this when the server IP address changes. You just right-click and select "edit session" and change the IP address
+### NOTE: You do not need to repeat this when the server IP address changes. You just right-click and select "edit session" and change the IP address
+![](moba-update.png)
 
 
 ### Windows users using Putty

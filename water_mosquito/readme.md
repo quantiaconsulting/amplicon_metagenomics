@@ -3,8 +3,8 @@
 ==============
 - [Abstract](#abstract)
 - [Data Analysis](#data-analysis)
+  - [Descriptive statistics](#descriptive-statistics)
   - [Visualise taxonomically](#visualise-taxonomically)
-  - [Filter out wolbachia](#filter-out-wolbachia)
   - [Diversity processing and testing](#diversity)
 - [Questions](#questions)
 

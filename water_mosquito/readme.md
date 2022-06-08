@@ -51,6 +51,13 @@ rep_set_water_mosquito
 
 ## Descriptive statistics
 Generate the "summarize-table.qzv" to explore the data.
+```
+qiime feature-table summarize \
+  --i-table table_water_mosquito.qza \
+  --o-visualization table_water_mosquito.qzv \
+  --m-sample-metadata-file map_water_mosquito.tsv
+```
+
 
 
 ### Filter site CR1 and Cr2

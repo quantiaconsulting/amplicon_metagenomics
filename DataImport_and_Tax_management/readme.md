@@ -1,4 +1,6 @@
-# Some additional Tips
+Some additional Tips
+====
+
 1. [Some example of data import](#some-example-of-data-import)
    1. [Importing not demultiplexed data](#importing-not-demultiplexed-data)
    2. [Importing demultiplexed by using the manifest file](#importing-demultiplexed-by-using-the-manifest-file)
@@ -22,14 +24,14 @@ conda activate qiime2-2022.2
 ---
 
 In order to avoid to make confusion about different stuffs, we are going to generate new folders.  
-First of all just get back in our `home` folder:  
+First just get back in your `home` folder:  
 :walking:  
 ```
 cd
 ```
 
-## Some example of data import
-### Importing not demultiplexed data
+# Some example of data import
+## Importing not demultiplexed data
 During our tutorial we've faced with already demuliplexed data.  
 Sometimes you need to perform the data demultiplexing, so let's demultiplex them!!!    
 *** Check you are in your home folder***  
@@ -88,7 +90,7 @@ qiime demux summarize \
   --o-visualization demux-full.qzv
 ```
 
-### Importing demultiplexed by using the manifest file
+## Importing demultiplexed by using the manifest file
 During the main tutorial we imported the PE fastq files by using:  
  - **type** `SampleData[PairedEndSequencesWithQuality]`: which means we are using PE fastq files;
  - **input-format** `CasavaOneEightSingleLanePerSampleDirFmt`: which means the file name are formatted by using the **CASAVA** file format.  
@@ -145,8 +147,8 @@ qiime demux summarize \
     --o-visualization pe-demux.qzv
 ```
 
-## Evaluating data quality
-We have already learned to use **FastQC**. It is a really useful tool but the main drowback is it generates a report for file for each analysed fastq file.  
+# Evaluating data quality
+We have already discussed **FastQC**. It is a really useful tool but the main drawback is it generates a report for file for each analysed fastq file.  
 So it is not so simple to figure out what is overall the quality of our raw data.  
 A solution is to apply [**MultiQC**](https://multiqc.info/) a tool allowing to *aggregate results from bioinformatics analyses across many samples into a single report*.  
 
@@ -182,7 +184,7 @@ mkdir denoising_alt && cd denoising_alt
 Now we re-perform the denoising step by modifying the **Expected Error (ee)** threshold.  
 Just remember **ee** is a way to measure the number of nucleotides that are probably wrong in our sequences:  
 ![](ee-2.png)  
-:walking:  
+:stop_sign:  
 The option we introduce are `--p-max-ee-f` and `--p-max-ee-f`.
 ```
 qiime dada2 denoise-paired \
@@ -197,10 +199,69 @@ qiime dada2 denoise-paired \
   --o-representative-sequences rep-seqs_ee.qza \
   --o-denoising-stats denoising-stats_ee.qza
 
-qiime metadata tabulate --m-input-file denoising-stats_ee.qza --o-visualization denoising-stats_ee.qzv
+qiime metadata tabulate \
+   --m-input-file denoising-stats_ee.qza \
+   --o-visualization denoising-stats_ee.qzv
+
+qiime feature-table summarize \
+  --i-table table_ee.qza \
+  --o-visualization table_ee.qzv \
+  --m-sample-metadata-file ../sample-metadata.tsv
+  
+qiime feature-table tabulate-seqs \
+  --i-data rep-seqs_ee.qza \
+  --o-visualization rep-seqs_ee.qzv
 ```
 
-Now try to compare this results with the one obtained during the QIIME2 tutorial.    
+Now copy the obtained results and try to compare them by using [QIIME2 view](https://view.qiime2.org/).    
+```
+cp /home/Share/qiime2-atacama-tutorial/denoising_alt/{denoising-stats_ee.qzv,table_ee.qzv,rep-seqs_ee.qzv} .
+```  
+
+Now considering the length of the ASVs we've obtained yesterday, probably we should trim our raw reads:  
+:stop_sign:  
+The option we are going to modify are  introduce are `--p-trunc-len-f` and `--p-trunc-len-r`.
+```
+qiime dada2 denoise-paired \
+  --i-demultiplexed-seqs ../demux-paired-end.qza \
+  --p-trim-left-f 13 \
+  --p-trim-left-r 13 \
+  --p-trunc-len-f 145 \
+  --p-trunc-len-r 130 \
+  --o-table table_ee_tt.qza \
+  --p-max-ee-f 3 \
+  --p-max-ee-r 3 \
+  --o-representative-sequences rep-seqs_ee_tt.qza \
+  --o-denoising-stats denoising-stats_ee_tt.qza
+
+qiime metadata tabulate \
+   --m-input-file denoising-stats_ee_tt.qza \
+   --o-visualization denoising-stats_ee_tt.qzv
+
+qiime feature-table summarize \
+  --i-table table_ee_tt.qza \
+  --o-visualization table_ee_tt.qzv \
+  --m-sample-metadata-file ../sample-metadata.tsv
+  
+qiime feature-table tabulate-seqs \
+  --i-data rep-seqs_ee_tt.qza \
+  --o-visualization rep-seqs_ee_tt.qzv
+```
+Now copy the obtained results and try to compare them by using [QIIME2 view](https://view.qiime2.org/).    
+```
+cp /home/Share/qiime2-atacama-tutorial/denoising_alt/{denoising-stats_ee_tt.qzv,table_ee_tt.qzv,rep-seqs_ee_tt.qzv} .
+```  
+
+Just to resume the results:  
+
+|    | 16S Tutorial | EE | EE + Trim |
+|----|:---------:|:--------:|:-----:|
+|ASVs| 2,934 | 2,947 | 4,189|
+|% filtered | 89.6 |	96.6 |	97.7 |
+|% denoised| 57.1 | 59.4 | 67.7 |
+
+![denosing results](compare_methods.png)
+
 
 ## Collections for taxonomic classification
 In order to perform taxonomic classification in QIIME2 we need to properly import and, eventually, train reference collections:
@@ -295,14 +356,7 @@ qiime tools import \
  --output-path MIDORI_UNIQ_NUC_GB249_CO1_QIIME.taxon.qza
 ```
 
-The final step is to train the classifier:
-:stop_sign:  
-```
-qiime feature-classifier fit-classifier-naive-bayes  \
-    --i-reference-reads MIDORI_UNIQ_NUC_GB249_CO1_QIIME.qza \
-    --i-reference-taxonomy MIDORI_UNIQ_NUC_GB249_CO1_QIIME.taxon.qza \
-    --o-classifier MIDORI_UNIQ_NUC_GB249_CO1_QIIME_classifier.qza
-```
+The final step is to train use these data for alignement based approaches for the taxonomic classification.  
 
 ## Export ASV table to tsv
 Sometimes you need to export you ASV table to TSV:  

@@ -36,7 +36,7 @@ The following steps have already been performed for you to save time:
 
 Therefore you can copy these files to your local folder and begin your analysis
 ```
-mkdir wate_mosquito
+mkdir water_mosquito
 cd water_mosquito
 cp /home/Share/water_mosquito/* .
 ```

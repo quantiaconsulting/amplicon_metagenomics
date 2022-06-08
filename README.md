@@ -47,14 +47,14 @@ __LEARNING OUTCOMES__
 
 
 ## Day 3
-- [ ] [Taxonomy assignment:**classify-sklearn**](16S_ITS_tutorial/readme.md#step3-summarizing-feature-table-and-feature-data)
-- [ ] [Diversity Analysis](https://drive.google.com/file/d/1p7UCmfNe0A44Xb8665eaCBps84P7AYRg/view?usp=sharing)
-- [ ] [Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step6-analyzing-alpha-and-beta-diversities)
-- [ ] [Some additional Tips](DataImport_and_Tax_management/readme.md)
+- [X] [Taxonomy assignment:**classify-sklearn**](16S_ITS_tutorial/readme.md#step3-summarizing-feature-table-and-feature-data)
+- [X] [Diversity Analysis](https://drive.google.com/file/d/1p7UCmfNe0A44Xb8665eaCBps84P7AYRg/view?usp=sharing)
+- [X] [Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step6-analyzing-alpha-and-beta-diversities)
 - [ ] :arrow_right: _It's Case studies Time!!!_
   - [ ] [Human microbiome data](human_cancer/readme.md)
   - [ ] [Zoological(Bees bees bees!)](Bee_microbiome/readme.md)
   - [ ] [Water-mosquito](water_mosquito/readme.md)
+- [ ] [Some additional Tips](DataImport_and_Tax_management/readme.md)
 
 ## Day 4
 - [ ] [ITS sequence analysis](ITS/ITS_readme.md)

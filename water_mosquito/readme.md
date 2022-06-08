@@ -3,8 +3,8 @@
 ==============
 - [Abstract](#abstract)
 - [Data Analysis](#data-analysis)
+  - [Descriptive statistics](#descriptive-statistics)
   - [Visualise taxonomically](#visualise-taxonomically)
-  - [Descriptive statistics](#Descriptive statistics)
   - [Diversity processing and testing](#diversity)
 - [Questions](#questions)
 

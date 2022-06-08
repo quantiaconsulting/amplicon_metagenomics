@@ -4,7 +4,7 @@
 - [Abstract](#abstract)
 - [Data Analysis](#data-analysis)
   - [Visualise taxonomically](#visualise-taxonomically)
-  - [Filter out wolbachia](#filter-out-wolbachia)
+  - [Descriptive statistics](#Descriptive statistics)
   - [Diversity processing and testing](#diversity)
 - [Questions](#questions)
 

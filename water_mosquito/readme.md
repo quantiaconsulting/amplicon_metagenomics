@@ -67,33 +67,28 @@ qiime taxa barplot \
   --o-visualization taxa_bar_plots.qzv
 ```
 ### Filter out wolbachia sequences
+Find the right name to put in the qiime script.
+
 Why do you think it was necessary to filter the sequences?  
 ```
 qiime taxa filter-seqs \
   --i-sequences rep-seqs99.qza \
   --i-taxonomy taxonomy99.qza \
-  --p-exclude wolbachia \
+  --p-exclude .... \
   --o-filtered-sequences rep-seqs-no_wolbachia.qza
 ```
 
-```
-qiime taxa filter-table \
-  --i-table table99.qza \
-  --i-taxonomy  taxonomy99.qza \
-  --p-exclude mitochondria,chloroplast \
-  --o-filtered-table table-no wolbachia.qza
-```
 
-create another taxa barplot and compare it with the previous one.
+- create another taxa barplot and compare it with the previous one.
 
 How does the presence or absence of Wolbachia change the reading of your data?
 
 ## Diversity
-Lets use all our samples for now
-### Rarefaction
+
 Let's perform rarefaction curves to decide the most appropriate rarefaction depth.    
 
-You have to decide the sampling depht. What is a good value to set sampling depth for? Would it be different based on which conditions you're testing?
+You have to decide the sampling depht. What is a good value to set sampling depth for?
+Please discuss your choise
 
 ```
 qiime diversity alpha-rarefaction \
@@ -109,7 +104,7 @@ First off lets run the core diversity metrics, then you can test the outputs!
  ```
 qiime diversity core-metrics-phylogenetic \
   --i-phylogeny rooted-tree.qza \
-  --i-table table-no-mitochondria-no-chloroplast.qza \
+  --i-table table-no_wolbachia.qza \
   --p-sampling-depth xxxx \
   --p-n-jobs-or-threads 2 \
   --m-metadata-file water-metadata.txt \

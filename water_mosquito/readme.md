@@ -41,11 +41,9 @@ cp /home/Share/water_mosquito/* .
 ```
 You should now have these files to use for your analysis:
 ```
-table99.qza
-taxonomy99.qza
-rep-seqs99.qza
-rooted-tree.qza
-water-metadata.tsv
+table_water_mosquito.qza
+taxonomy_water_mosquito.qza
+map_water_mosquito.tsv
 ```
 
 ## Descriptive statistics

@@ -44,14 +44,26 @@ You should now have these files to use for your analysis:
 table_water_mosquito.qza
 taxonomy_water_mosquito.qza
 map_water_mosquito.tsv
+rooted_tree_water_mosquito
+rep_set_water_mosquito
 ```
 
 ## Descriptive statistics
-Generate the "summarize-table.qzv" so that you get the information you need to fill the sentence below:
+Generate the "summarize-table.qzv" to explore the data.
+
+
+### Filter site CR1 and Cr2
+
+```
+qiime feature-table filter-samples \
+  --i-table xxx \
+  --m-metadata-file xxx \
+  --p-where "type_water IN ('CR1', 'CR2')" \
+  --o-filtered-table table_h2o_host_CR12.qza
+```
+Generate the new "summarize-table.qzv" so that you get the information you need to fill the sentence below:
 
 "The microbiota of breeding site water (W), larval (L), and adult (A) Ae. albopictus samples was examined by sequencing of the bacterial 16S rRNA gene. Sequences of a total of ... libraries (i.e., ... water samples; ... CR and ... FO larval samples; ... CR and ... FO adults, respectively; two DNA extraction negative controls)"
-
-
 
 ## Visualise taxonomically 
 
@@ -59,27 +71,16 @@ Generate the "summarize-table.qzv" so that you get the information you need to f
 Use this to get a view of the taxonomic make up of your range of samples
 ```
 qiime taxa barplot \
-  --i-table table99.qza \
-  --i-taxonomy taxonomy99.qza \
-  --m-metadata-file water-metadata.txt \
-  --o-visualization taxa_bar_plots.qzv
-```
-### Filter out wolbachia sequences
-Find the right name to put in the qiime script.
-
-Why do you think it was necessary to filter the sequences?  
-```
-qiime taxa filter-seqs \
-  --i-sequences rep-seqs99.qza \
-  --i-taxonomy taxonomy99.qza \
-  --p-exclude .... \
-  --o-filtered-sequences rep-seqs-no_wolbachia.qza
+  --i-table xxx \
+  --i-taxonomy xxx \
+  --m-metadata-file xxx \
+  --o-visualization taxa_bar_plots_water.qzv
 ```
 
 
-- create another taxa barplot and compare it with the previous one.
 
-How does the presence or absence of Wolbachia change the reading of your data?
+
+
 
 ## Diversity
 
@@ -90,10 +91,10 @@ Please discuss your choise
 
 ```
 qiime diversity alpha-rarefaction \
-    --i-table table-no_wolbachia.qza \
-    --i-phylogeny rooted-tree.qza \
+    --i-table xxx \
+    --i-phylogeny xxx \
     --p-max-depth xxx \
-    --m-metadata-file water-metadata.txt \
+    --m-metadata-file xxxx \
     --o-visualization alpha-rarefaction.qzv
 ```
 
@@ -101,11 +102,11 @@ qiime diversity alpha-rarefaction \
 First off lets run the core diversity metrics, then you can test the outputs!
  ```
 qiime diversity core-metrics-phylogenetic \
-  --i-phylogeny rooted-tree.qza \
-  --i-table table-no_wolbachia.qza \
+  --i-phylogeny xxx \
+  --i-table xxx \
   --p-sampling-depth xxxx \
   --p-n-jobs-or-threads 2 \
-  --m-metadata-file water-metadata.txt \
+  --m-metadata-file xxx \
   --output-dir core-metrics-results
 ```
 Now run some tests on these outputs using commands such as:

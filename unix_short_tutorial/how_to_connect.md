@@ -65,7 +65,7 @@ In order to use **FileZilla** to download data from the EC2 Amazon instances to 
 ![](Using-Filezilla-pdf.png)  
 
 ## To change the IP address for a new day all you need to do is edit the Host field with the new number
-![](image (2).png)  
+![](filezilla-update.png)  
 
 
 

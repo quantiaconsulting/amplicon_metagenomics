@@ -446,7 +446,7 @@ Enter the Python Shell:
 ```
 ipython
 ```
-First of all we import the needed functions:  
+First, we import the needed functions:  
 ```
 import hashlib
 import sys

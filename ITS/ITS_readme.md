@@ -261,10 +261,10 @@ The primer trimming is performed by using the tool [**cutadapt**](https://journa
 ![alt text](https://image.slidesharecdn.com/suryasahametagenomicstools-130507160129-phpapp02/95/tools-for-metagenomics-with-16sits-and-whole-genome-shotgun-sequences-3-638.jpg?cb=1369657346)  
 
 
-|Primer|Sequence|Reverse-Complement|  
-|:-:|:-:|  
-|Forward|CTTGGTCATTTAGAGGAAGTAA|TTACTTCCTCTAAATGACCAAG|    
-|Reverse|GCTGCGTTCTTCATCGATGC|GCATCGATGAAGAACGCAGC|  
+|Primer|Sequence|Reverse-Complement|
+|:-:|:-:|
+|Forward|CTTGGTCATTTAGAGGAAGTAA|TTACTTCCTCTAAATGACCAAG|
+|Reverse|GCTGCGTTCTTCATCGATGC|GCATCGATGAAGAACGCAGC|
 
 :walking:  
 ```

@@ -59,8 +59,7 @@ __LEARNING OUTCOMES__
 ## Day 4
 - [ ] [Some additional Tips: The revenge :volcano: ](DataImport_and_Tax_management/readme.md#evaluating-data-quality)
 - [ ] [ITS sequence analysis](ITS/ITS_readme.md)
-- [ ] [**Experimental Design part 2**](https://docs.google.com/presentation/d/1ybw75VKyMK9vJ_yy2SpFYbn8SZMJ7_6yf-BC0gLJ5vg/edit?usp=sharing)
-- [ ] [A (very) short introduction to R](https://glcdn.githack.com/bfosso/physalia_metabarcoding_oct2021/raw/main/R_tutorial/Introduction_to%20_R.nb.html)
+- [ ] [Experimental Design part 2 and short introduction to R](https://docs.google.com/presentation/d/1ybw75VKyMK9vJ_yy2SpFYbn8SZMJ7_6yf-BC0gLJ5vg/edit?usp=sharing)
 - [ ] [Lecture  - Multivariate Analysis of Ecological Communities](https://docs.google.com/presentation/d/1SEXLnsAk71ghWJFBjvnSL9-JIU5kHyYi/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true)  
   - [ ] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  
   - [ ] Multivariate Tests for differences in microbial community composition  

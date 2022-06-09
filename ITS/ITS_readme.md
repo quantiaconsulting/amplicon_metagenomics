@@ -258,7 +258,7 @@ cp ../ITSxpress_ITS_tutorial/{sequences.qza,mapping.txt} .
 We trim the reverse primer and reverse complement of the forward primer from the reverse reads.*
 The primer trimming is performed by using the tool [**cutadapt**](https://journal.embnet.org/index.php/embnetjournal/article/view/200/479).  
 
-![alt text](https://image.slidesharecdn.com/suryasahametagenomicstools-130507160129-phpapp02/95/tools-for-metagenomics-with-16sits-and-whole-genome-shotgun-sequences-3-638.jpg?cb=1369657346)
+![alt text](https://image.slidesharecdn.com/suryasahametagenomicstools-130507160129-phpapp02/95/tools-for-metagenomics-with-16sits-and-whole-genome-shotgun-sequences-3-638.jpg?cb=1369657346)  
 
 |Primer|Sequence|Reverse-Complement|
 |:-:|:-:|

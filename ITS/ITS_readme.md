@@ -16,7 +16,7 @@ QIIME2 analysis of ITS data
 
 # Rationale
 To focus on the individual steps we decided to follow the 16S case study (ATACAMA) as the main workflow.  
-In general, this pipeline can be used for any marker in metabarcoding investigation but in some steps the biological 
+In general, this pipeline can be used for any marker in DNA-metabarcoding investigations but in some steps the biological 
 characteristics (and therefore the issues) of certain marker must be considered.
 
 We therefore decided to show the differences between the workflow to be used for the 16S or ITS.  
@@ -47,7 +47,7 @@ Considering both the scenarios pictured above typically occur within the same IT
 workflows is the removal of primers on the forward and reverse reads, in a way that accounts for the possibility of read-through into the opposite primer.  
 
 Since the differences mainly concern steps required to properly prepare your raw data we will focus only on two soil samples (PRJNA483055).  
-We are going to reuse the sane data Adam Rivers proposed in its [tutorial](https://forum.qiime2.org/t/q2-itsxpress-a-tutorial-on-a-qiime-2-plugin-to-trim-its-sequences/5780).
+We are going to reuse the same data _Adam Rivers_ proposed in its [tutorial](https://forum.qiime2.org/t/q2-itsxpress-a-tutorial-on-a-qiime-2-plugin-to-trim-its-sequences/5780).
 This is to simplify the interpretation of the results as much as possible. By avoiding ecological problems we can focus on the differences given only by the nature of the marker itself.  
 
 The ITS1 fungal region was amplified by using the [ITS1f/ITS2 primer pair](https://earthmicrobiome.org/protocols-and-standards/its/).  
@@ -71,25 +71,16 @@ mkdir ITSxpress_ITS_tutorial && cd ITSxpress_ITS_tutorial
 If not already active, remember to activate the QIIME2 environment:  
 :walking:  
 ```
-conda activate qiime2-2021.8
+conda activate qiime2-2022.2
 ```
  
 ## Step1: Import ITS data
-Let's start by downloading the data:  
+Let's start by copying the raw data, the manifest and the metadata file in our folder:  
 :walking:  
 ```
-wget https://github.com/USDA-ARS-GBRU/itsxpress-tutorial/raw/master/data/sample1_r1.fq.gz
-wget https://github.com/USDA-ARS-GBRU/itsxpress-tutorial/raw/master/data/sample1_r2.fq.gz
-wget https://github.com/USDA-ARS-GBRU/itsxpress-tutorial/raw/master/data/sample2_r1.fq.gz
-wget https://github.com/USDA-ARS-GBRU/itsxpress-tutorial/raw/master/data/sample2_r2.fq.gz
-wget https://raw.githubusercontent.com/USDA-ARS-GBRU/itsxpress-tutorial/master/data/manifest.txt
+cp /home/Share/ITSxpress_ITS_tutorial/{sample*,manifest.txt,mapping.txt} .
 ```
 
-Finally, copy the `mapping.txt` file containing the samples metadata:  
-:walking:  
-```
-cp /home/Share/ITSxpress_ITS_tutorial/mapping.txt .
-```
 
 Now we can import the **FASTQ** data into a QIIME2 artifact:   
 :walking:  
@@ -122,11 +113,11 @@ This is particularly true for ITS1 sequences as highlighted by [Nilsson R.H., et
 In order to extract exclusively the ITS1 region we are going to apply [**ITSxpress**](https://doi.org/10.12688/f1000research.15704.1).  
 Briefly, it works as follows:
 1. Merges reads (if paired-end) using **BBMerge**;
-2. Temporarily clusters highly similar sequences that are common in amplicon data using **VSEARCH**;
+2. Dereplicates sequences using **VSEARCH**;
 3. Identifies ITS start and stop sites using **hmmsearch**  on the representative sequences;
-4. Trims each original, merged sequence with quality scores, returning the merged or unmerged sequences with quality scores in a .qza file;  
+4. Trims both original PE reads and merged sequence with quality scores, returning the merged or unmerged sequences with quality scores in a .qza file;  
 
-To install ITSexpress plugin in QIIME2 you need to use the following code. Of course we've already installed it for you:    
+To install **ITSexpress** plugin in QIIME2 you need to use the following code. Of course, we've already installed it for you:    
 :stop_sign:  
 ```
 conda install -c bioconda itsxpress
@@ -187,7 +178,7 @@ qiime feature-table summarize \
   --o-visualization tableviz.qzv
 ```
 ```
-  qiime metadata tabulate \
+qiime metadata tabulate \
   --m-input-file dada2out/denoising_stats.qza \
   --o-visualization denoising_stats.qzv
 ```
@@ -267,6 +258,8 @@ cp ../ITSxpress_ITS_tutorial/{sequences.qza,mapping.txt} .
 We trim the reverse primer and reverse complement of the forward primer from the reverse reads.*
 The primer trimming is performed by using the tool [**cutadapt**](https://journal.embnet.org/index.php/embnetjournal/article/view/200/479).  
 
+![alt text](https://image.slidesharecdn.com/suryasahametagenomicstools-130507160129-phpapp02/95/tools-for-metagenomics-with-16sits-and-whole-genome-shotgun-sequences-3-638.jpg?cb=1369657346)
+
 |Primer|Sequence|Reverse-Complement|
 |:-:|:-:||
 |Forward|CTTGGTCATTTAGAGGAAGTAA|TTACTTCCTCTAAATGACCAAG|  
@@ -276,11 +269,10 @@ The primer trimming is performed by using the tool [**cutadapt**](https://journa
 ```
 qiime cutadapt trim-paired \
   --i-demultiplexed-sequences sequences.qza \
-  --p-front-f CTTGGTCATTTAGAGGAAGTAA \ 
-  --p-adapter-f GCATCGATGAAGAACGCAGC \ 
-  --p-front-r GCTGCGTTCTTCATCGATGC \   
+  --p-front-f CTTGGTCATTTAGAGGAAGTAA \
+  --p-adapter-f GCATCGATGAAGAACGCAGC \
+  --p-front-r GCTGCGTTCTTCATCGATGC \
   --p-adapter-r TTACTTCCTCTAAATGACCAAG \
-  --p-cores 20 \
   --o-trimmed-sequences sequences-trimmed.qza
 
 qiime demux summarize \
@@ -291,7 +283,7 @@ qiime demux summarize \
 ***Why didn't we just cut the primers using length?***
 
 <details>
-  <summary markdown="span">Let's try to compare our data pre- and post trimming. Are there any difference?</summary>
+  <summary markdown="span">Let's try to compare our data pre- and post trimming. Are you able to find any difference?</summary>
 
     According to Taylor et al. 2016 71, the ITS amplicon length should range among 267-511 bp.  
     So with the read lengths we are using here (250 nt) we should not see any read-through.
@@ -319,7 +311,7 @@ qiime dada2 denoise-paired \
 Let's copy pre-processed data and tabulate all the available info:  
 :walking:  
 ```
-cp /home/share/PT_ITS_tutorial/dada2-* .
+cp /home/Share/PT_ITS_tutorial/dada2-* .
 
 qiime metadata tabulate \
   --m-input-file dada2-stats_ITS.qza \
@@ -363,7 +355,7 @@ qiime feature-classifier classify-consensus-vsearch \
 Now copy the produced data and generate visualization files:  
 :walking:  
 ```
-cp /home/share/PT_ITS_tutorial/vsearch_taxonomy_ITS.qza .
+cp /home/Share/PT_ITS_tutorial/vsearch_taxonomy_ITS.qza .
 
 qiime metadata tabulate \
   --m-input-file vsearch_taxonomy_ITS.qza \
@@ -387,7 +379,7 @@ qiime feature-classifier classify-sklearn \
 Let's copy results and visualize them:  
 :walking:  
 ```
-cp /home/share/PT_ITS_tutorial/taxonomy_ITS_sklearn.qza .
+cp /home/Share/PT_ITS_tutorial/taxonomy_ITS_sklearn.qza .
 
 qiime metadata tabulate \
     --m-input-file taxonomy_ITS_sklearn.qza \

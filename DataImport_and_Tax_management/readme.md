@@ -12,7 +12,8 @@ Some additional Tips
 5. [Export ASV table to tsv](#export-asv-table-to-tsv)
 6. [Filter table to only have those samples in the metadata file](#filter-table-to-only-have-those-samples-in-the-metadata-file)
    1. [Filter the table according to a specific samples subset](#filter-the-table-according-to-a-specific-samples-subset)
-   2. [Filter the table according to a specific feature]()
+   2. [Filter the table according to a specific feature](#filter-the-table-according-to-a-specific-samples-subset)
+      1. [Filtering like a boss!!!](#filtering-like-a-boss)
 7. [Import ASV table obtaiend outside QIIME2 into it](#import-asv-table-obtaiend-outside-qiime2-into-it)  
 
 ---
@@ -424,6 +425,86 @@ qiime taxa collapse \
   --p-level 5 \
   --o-collapsed-table table-l5.qza
 ```
+
+#### Filtering like a boss!!!
+Just to clarify the usage of the `--p-where` option below it is shown its caption:  
+`` 
+--p-where TEXT       SQLite WHERE clause specifying sample metadata criteria that must be met to be included in the
+                       filtered feature table. If not provided, all samples in `metadata` that are also in the feature 
+                       table will be retained.
+``
+
+Following the list of useful operators:  
+
+|Operator|Meaning|
+|:-:|:-:|
+|=|Equal|	
+|>|Greater than|	
+|<|Less than|	
+|>=|Greater than or equal|	
+|<=|Less than or equal|
+|<>|Not equal. Note: In some versions of SQL this operator may be written as !=|	
+|BETWEEN|Between a certain range|	
+|LIKE|Search for a pattern|	
+|IN|To specify multiple possible values for a column|  	
+
+For instance, I would like to filter _Baquedano_ samples with an elevation higher than 2000 mt.   
+
+```
+qiime feature-table filter-samples \
+  --i-table ../table_16S.qza \
+  --m-metadata-file ../sample-metadata.tsv \
+  --p-where "[transect-name]='Baquedano' AND [elevation]>=2000" \
+  --o-filtered-table Baquedano_2000.qza
+```
+
+Following are listed the selected samples and the associated elevation:
+
+|Sample_id|elevation|
+|:-:|:-:|
+|BAQ2420.1.1|2420|
+|BAQ2420.1.2|2420|
+|BAQ2420.1.3|2420|
+|BAQ2420.1.2|2420|
+|BAQ2420.2|2420|
+|BAQ2420.3|2420|
+|BAQ2420.3|2420|
+|BAQ2420.1.3|2420|
+|BAQ2462.1|2462|
+|BAQ2462.1|2462|
+|BAQ2462.2|2462|
+|BAQ2462.3|2462|
+|BAQ2462.3|2462|
+|BAQ2687.1|2687|
+|BAQ2687.1|2687|
+|BAQ2687.2|2687|
+|BAQ2687.3|2687|
+|BAQ2687.3|2687|
+|BAQ2838.1|2838|
+|BAQ2838.1|2838|
+|BAQ2838.2|2838|
+|BAQ2838.3|2838|
+|BAQ2838.3|2838|
+|BAQ3473.1|3473|
+|BAQ3473.1|3473|
+|BAQ3473.2|3473|
+|BAQ3473.3|3473|
+|BAQ3473.3|3473|
+|BAQ4166.1.1|4166|
+|BAQ4166.1.2|4166|
+|BAQ4166.1.3|4166|
+|BAQ4166.1.2|4166|
+|BAQ4166.2|4166|
+|BAQ4166.3|4166|
+|BAQ4166.3|4166|
+|BAQ4166.1.3|4166|
+|BAQ4697.1|4697|
+|BAQ4697.1|4697|
+|BAQ4697.2|4697|
+|BAQ4697.3|4697|
+|BAQ4697.3|4697|
+
+
 
 ## Import ASV table obtained outside QIIME2 into it
 Sometimes it is useful to apply DADA2 outside QIIME2. Nonetheless, it is always possibile to import DADA2 ASVs table in QIIME2.  

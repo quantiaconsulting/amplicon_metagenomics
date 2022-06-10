@@ -60,19 +60,20 @@ __LEARNING OUTCOMES__
 - [X] [Some additional Tips: The revenge :volcano: ](DataImport_and_Tax_management/readme.md#evaluating-data-quality)
 - [X] [ITS sequence analysis](ITS/ITS_readme.md)
 - [X] [Experimental Design part 2 and short introduction to R](https://docs.google.com/presentation/d/1ybw75VKyMK9vJ_yy2SpFYbn8SZMJ7_6yf-BC0gLJ5vg/edit?usp=sharing)
-- [ ] [Lecture  - Multivariate Analysis of Ecological Communities](https://docs.google.com/presentation/d/1SEXLnsAk71ghWJFBjvnSL9-JIU5kHyYi/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true)  
-  - [ ] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  
-  - [ ] Multivariate Tests for differences in microbial community composition  
-- [ ] [Lab  - Multivariate Statistics](https://glcdn.githack.com/bfosso/physalia_metabarcoding_oct2021/raw/main/Day4_5_material/Physalia-Metabarcoding-Course-Oct21.html)  
-    - [ ] Data import & preparation (normalisations, transformations, metadata)  
-    - [ ] Alpha Diversity (indices of diversity, rarefaction curves)  
-    - [ ] Heatmaps to visualise microbial community differences  
-    - [ ] Unconstrained and Constrained Ordination (PCoA, NMDS, CCA, DCA)  
-    - [ ] Multivariate tests for differences in community composition (PERMANOVA, PERMDISP)  
+- [X] [Lecture  - Multivariate Analysis of Ecological Communities](https://docs.google.com/presentation/d/1SEXLnsAk71ghWJFBjvnSL9-JIU5kHyYi/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true)  
+  - [X] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  
+  - [X] Multivariate Tests for differences in microbial community composition  
+- [X] [Lab  - Multivariate Statistics](https://glcdn.githack.com/bfosso/physalia_metabarcoding_oct2021/raw/main/Day4_5_material/Physalia-Metabarcoding-Course-Oct21.html)  
+    - [X] Data import & preparation (normalisations, transformations, metadata)  
+      
 
 
 ## Day 5
 - [ ] [Lab  - Multivariate Statistics](https://glcdn.githack.com/bfosso/physalia_metabarcoding_oct2021/raw/main/Day4_5_material/Physalia-Metabarcoding-Course-Oct21.html)
+  - [ ] Alpha Diversity (indices of diversity, rarefaction curves)  
+  - [ ] Heatmaps to visualise microbial community differences  
+  - [ ] Unconstrained and Constrained Ordination (PCoA, NMDS, CCA, DCA)  
+  - [ ] Multivariate tests for differences in community composition (PERMANOVA, PERMDISP)
   - [ ] Heatmaps to visualise microbial community differences  
   - [ ] Unconstrained and Constrained Ordination (PCoA, NMDS, CCA, DCA)  
   - [ ] Multivariate tests for differences in community composition (PERMANOVA, PERMDISP)

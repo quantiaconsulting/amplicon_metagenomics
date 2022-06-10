@@ -74,8 +74,8 @@ __LEARNING OUTCOMES__
   - [X] Heatmaps to visualise microbial community differences  
   - [X] Unconstrained and Constrained Ordination (PCoA, NMDS, CCA, DCA)  
   - [X] Multivariate tests for differences in community composition (PERMANOVA, PERMDISP)
-- [ ] [Lecture - Differential Abundance Analysis of Microbial Communities](https://docs.google.com/presentation/d/1Z2F2_goIAuuKXQQ7ocClOgq8x6tbpClW/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true) 
-- [ ] Lab: Differential Abundance Analysis with DESeq2  
-- [ ] Analysis of Other Microbiome Datasets  
-- [ ] Combining Microbiome data and life history data
-- [ ] Beer Time :beers: :beers: :beers:
+- [X] [Lecture - Differential Abundance Analysis of Microbial Communities](https://docs.google.com/presentation/d/1Z2F2_goIAuuKXQQ7ocClOgq8x6tbpClW/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true) 
+- [X] Lab: Differential Abundance Analysis with DESeq2  
+- [X] Analysis of Other Microbiome Datasets  
+- [X] Combining Microbiome data and life history data
+- [X] Beer Time :beers: :beers: :beers:

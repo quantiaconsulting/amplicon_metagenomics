@@ -70,7 +70,7 @@ __LEARNING OUTCOMES__
 
 ## Day 5
 - [ ] [Lab  - Multivariate Statistics](https://glcdn.githack.com/bfosso/physalia_metabarcoding_oct2021/raw/main/Day4_5_material/Physalia-Metabarcoding-Course-Oct21.html)
-  - [ ] Alpha Diversity (indices of diversity, rarefaction curves)  
+  - [X] Alpha Diversity (indices of diversity, rarefaction curves)  
   - [ ] Heatmaps to visualise microbial community differences  
   - [ ] Unconstrained and Constrained Ordination (PCoA, NMDS, CCA, DCA)  
   - [ ] Multivariate tests for differences in community composition (PERMANOVA, PERMDISP)

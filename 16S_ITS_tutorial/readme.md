@@ -92,7 +92,7 @@ As we discussed during the introduction to UNIX-based environment, we take advan
 So everytime we start a new session, we need to activate the virtual environment containing our QIIME2 installation.  
 :walking:  
 ```
-conda activate qiime2-2022.2
+conda activate qiime2-2022.11
 ```
 
 ### Pipeline Overview
@@ -202,8 +202,8 @@ We're also using a multi-threading command to split the processing across multip
 
 Following are listed the lines to perform denoising. But considering it takes a while to complete we are going to use pre-computed data.  
 :stop_sign:  
-```  
- qiime dada2 denoise-paired \
+ 
+>qiime dada2 denoise-paired \
   --i-demultiplexed-seqs demux-paired-end.qza \
   --p-trim-left-f 13 \
   --p-trim-left-r 13 \
@@ -213,7 +213,7 @@ Following are listed the lines to perform denoising. But considering it takes a 
   --o-table table_16S.qza \
   --o-representative-sequences rep-seqs_16S.qza \
   --o-denoising-stats denoising-stats_16S.qza
-```
+
 
 Let's import our already done data.  
 :walking:
@@ -295,12 +295,12 @@ cp /home/Share/qiime2-atacama-tutorial/taxonomy_16S_SKLEARN.qza  .
 
 By the way the line we've used to taxonomically annotated our ASV are the following.   
 :stop_sign:  
-```
-qiime feature-classifier classify-sklearn \
+
+>qiime feature-classifier classify-sklearn \
    --i-classifier silva-138-99-515-806-nb-classifier.qza \
    --i-reads rep-seqs_16S.qza \
    --o-classification taxonomy_16S_SKLEARN.qza
-```
+
 
 Once the classification is done we can generate the barplot for data visualization:  
 :walking:  

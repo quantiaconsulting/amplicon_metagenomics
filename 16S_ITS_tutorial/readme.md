@@ -244,8 +244,8 @@ You can generate summaries also for those as follows.
 ```
 qiime feature-table summarize \
   --i-table table_16S.qza \
-  --o-visualization table_16S.qzv \
-  --m-sample-metadata-file sample-metadata.tsv
+  --m-sample-metadata-file sample-metadata.tsv \
+  --o-visualization table_16S.qzv
 ```
 
 ```
@@ -260,7 +260,7 @@ qiime feature-table tabulate-seqs \
 
     cd ~/qiime2-atacama-tutorial  
 
-    source activate qiime2-2021.8
+    source activate qiime2-2022.11
 </details>
 
 
@@ -282,7 +282,7 @@ Initially, we need to download the pre-computed classifier:
 ```
 wget \
   -O "silva-138-99-515-806-nb-classifier.qza" \
-  "https://data.qiime2.org/2021.8/common/silva-138-99-515-806-nb-classifier.qza"
+  "https://data.qiime2.org/2022.11/common/silva-138-99-515-806-nb-classifier.qza"
 ```
 
 The first step in this process is to assign taxonomy to the sequences in our `FeatureData[Sequence]` QIIME 2 artifact.

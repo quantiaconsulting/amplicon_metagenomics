@@ -30,12 +30,12 @@ __LEARNING OUTCOMES__
     - [Bruno Fosso](https://scholar.google.com/citations?user=TBeT9pIAAAAJ&hl=it)  
 - [ ] [**Brief introduction** about __Metagenomics__ concepts. *What are we going to talk about?*](https://docs.google.com/presentation/d/1JafDY-zalbqZkEA83MLhLHNrCJZ_aqDlfzt22FNKadw/edit?usp=sharing)
 - [ ] [**Experimental design part 1**  - Presentation](https://docs.google.com/presentation/d/1BGdfq3lH9avWzLAmXq6RMiOr_F5GEy9i9gyphj6JaYk/edit?usp=sharing)
-- [ ] Laptop setting: - connecting to the server in Posit (formerly known as RStudio); 
+- [ ] Laptop setting: - connecting to the server in Posit (formerly known as RStudio)  
 - [ ] [A brief introduction to **LINUX** and the **BASH** environment - Presentation](https://drive.google.com/file/d/1vGc8ZsNNo6UpK36p9czREym8vwjiLgGo/view?usp=sharing)
 - [ ] [Introduction to the **BASH** shell](unix_short_tutorial/Readme.md)
 
 ## Day 2
-- [ ] [Introduction to the **FASTQ** format and QIIME objects - ppt](https://drive.google.com/file/d/1XvAL2f2PZduU-pXkU83jruMHHTPx5pj2/view?usp=sharing)
+- [ ] [Introduction to the **FASTQ** format and QIIME objects - ppt](https://docs.google.com/presentation/d/1RowyRGCLqAgt6Oxa_h3c33r4SI9reZlq6ZheRv-HAks/edit?usp=sharing)
 - [ ] [Atacama Soil Experiment and Loading data](16S_ITS_tutorial/readme.md)
 - [ ] [Loading data in Qiime]
   - Understanding and Assessing your raw data 

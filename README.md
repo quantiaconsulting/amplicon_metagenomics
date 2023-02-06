@@ -30,8 +30,8 @@ __LEARNING OUTCOMES__
     - [Anna Sandionigi](https://scholar.google.com/citations?hl=it&user=DLDuk_EAAAAJ)  
     - [Bruno Fosso](https://scholar.google.com/citations?user=TBeT9pIAAAAJ&hl=it)  
 - [X] [**Brief introduction** about __Metagenomics__ concepts. *What are we going to talk about?*](https://docs.google.com/presentation/d/1Pei27F-JkJUiJXL7nCe5WaWffws7EHWk5EA3AfyrV-Q/edit?usp=share_link)
-- [ ] [**Experimental design part 1**  - Presentation](https://docs.google.com/presentation/d/1BGdfq3lH9avWzLAmXq6RMiOr_F5GEy9i9gyphj6JaYk/edit?usp=sharing)
-- [ ] [Laptop setting: - connecting to the server in Posit (formerly known as RStudio)](https://docs.google.com/presentation/d/1yA5ytQFu-npecFNrh3KDEk6IzHjG4KLotiGIXSruMuo/edit?usp=share_link)  
+- [X] [**Experimental design part 1**  - Presentation](https://docs.google.com/presentation/d/1BGdfq3lH9avWzLAmXq6RMiOr_F5GEy9i9gyphj6JaYk/edit?usp=sharing)
+- [X] [Laptop setting: - connecting to the server in Posit (formerly known as RStudio)](https://docs.google.com/presentation/d/1yA5ytQFu-npecFNrh3KDEk6IzHjG4KLotiGIXSruMuo/edit?usp=share_link)  
 - [ ] [Introduction to the **BASH** shell](unix_short_tutorial/Readme.md)
 
 ## Day 2

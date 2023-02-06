@@ -1,10 +1,10 @@
 # Introduction to the BASH shell and the FASTQ format
 
-1. [Rationale](#Rationale)  
-2. [Some info about Operative System](#Some info about Operative System)  
-3. [Bash Tips](#Bash tips)
-4. [How can we visualize FASTQ quality?](#How can we visualize FASTQ quality?)
-5. [FASTQ quality control](#FASTQ quality control)
+1. [Rationale](#rationale-a-namerationalea)  
+2. [Some info about Operative System](#some-infos-about-operative-system)  
+3. [Bash Tips](#bash-tips-a-namebash-tipsa)
+4. [How can we visualize FASTQ quality?](#how-can-we-visualize-fastq-quality--a-namehow-can-we-visualize-fastq-qualitya)
+5. [FASTQ quality control](#fastq-quality-control-a-namefastq-quality-controla)
 
 ## Rationale <a name="Rationale"></a>
 
@@ -13,7 +13,7 @@ It can be a little **intimidating** at first, but once you understand how it wor
 The command line allows you to interact with your computer through an entirely text-based interface, allowing you to easily perform repeated operations on different datasets or to perform these analyses on a cluster of computers or on a remote machine for large scale tasks.  
 :scream: ***Don't be scared!!! We will start with basic concepts*** :smirk:
 
-Every unix-based system (**it is hard to say but also Mac are UNIX-based systems**) has a **Terminal** and it usually uses a command-line system called ***bash***.    
+Every Unix-based system (**it is hard to say but also Mac are UNIX-based systems**) has a **Terminal** and, it usually uses a command-line system called ***bash***.    
 ![](Unix_history-simple.svg)
 *[https://it.wikipedia.org/wiki/Unix](https://it.wikipedia.org/wiki/Unix)*
 
@@ -37,15 +37,15 @@ Most of the bash commands used in the Terminal can also be used on Linux or in a
 
 All bash programs shows a similar usage.  
 
-|    Program    | Options (Flags) | Object |
-|---------------|-----------------|--------|
-| Program name  | Options modify the program output|the object on which the program is executed|
+| Program      | Options (Flags)                   | Object                                      |
+|--------------|-----------------------------------|---------------------------------------------|
+| Program name | Options modify the program output | the object on which the program is executed |
 
 Below are some exercises intended to help you understand how bash commands work, and what the advantages are.
 
 ## Bash tips <a name="Bash tips"></a>
 You are now located in your home directory (denoted **~**, **Please keep in mind this symbol**). :arrow_right: _Every user has his own **home**._     
-You can always type `pwd` (present working directory) to locate yourself in your file system. The `pwd` command gives you the **path** of your current position in the system.
+You can always type `pwd` (present working directory) to locate yourself in your file system. The `pwd` command shows the **path** of your current position in the system.
 ![](FileStructure.png)
 ```
 [User3 ~]: pwd
@@ -156,7 +156,7 @@ EXAMPLE cp -r /home/data/all_fastqs NewExperiment/testdata/
 
 Copy the files to a new folder named **test** with the command `cp [file/folder to be copied] [destination folder]`.  
 TIP: you can use `*` as a wildcard to choose all files with a certain suffix, i.e. “*.fastq” or “*.fq”
-If you are in your homespace you can do this, however if you are already inside the test folder then you can use "." to mean "this folder"
+If you are in your home folder you can do this, however if you are already inside the test folder then you can use "." to mean "this folder"
 ```
 cp -R /home/Share/Linux-exercises/* test/
 ```
@@ -191,7 +191,7 @@ We can, however, open a part of the file using the editor `less`.
 ```
 less Illumina_1.fastq
 ```
-You also have various files you can inspect including a fasta, genome information (embl), and plain text map file to look at.
+You also have various files you can inspect including a fasta, genome information (EMBL), and plain text map file to look at.
 
 You can view the top or bottom 10 lines of a file with the commands `head` and `tail`.
 **Use tail to view the bottom 10 lines of a fastq file.**
@@ -268,13 +268,13 @@ We recommend that you prepare text files for bioinformatics analyses using Linux
 
 Some professional programs can be installed locally (i.e. notepad++) but when working on a terminal there are many options which range in ease of use, and each has its pros and cons. In this practical we will briefly look at two editors, nano and vi.
 
-|    | Nano | Vi/Vim |
-|----|:----:|:------:|
-|Pros| Very easy – For example, command options are visible at the bottom of the window | Appears on nearly every Unix system |
-|    | Can be used when logged in without graphical support                             | Can be very powerful if you take the time to know the key short-cuts |
-|    | Fast to start up and use                                                         | Has built in find/replace |
-|Cons| It is not completely intuitive for people who are used to graphical word processors | You have to know the shortcuts! |
-|    | Has few features                                                                    | There are no menus and no on screen prompts |
+|      |                                        Nano                                         |                                Vi/Vim                                |
+|------|:-----------------------------------------------------------------------------------:|:--------------------------------------------------------------------:|
+| Pros |  Very easy – For example, command options are visible at the bottom of the window   |                 Appears on nearly every Unix system                  |
+|      |                Can be used when logged in without graphical support                 | Can be very powerful if you take the time to know the key short-cuts |
+|      |                              Fast to start up and use                               |                      Has built in find/replace                       |
+| Cons | It is not completely intuitive for people who are used to graphical word processors |                   You have to know the shortcuts!                    |
+|      |                                  Has few features                                   |             There are no menus and no on screen prompts              |
 
 EXERCISES
 Create a file with nano

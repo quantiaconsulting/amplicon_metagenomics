@@ -14,7 +14,7 @@ Some additional Tips
    1. [Filter the table according to a specific samples subset](#filter-the-table-according-to-a-specific-samples-subset)
    2. [Filter the table according to a specific feature](#filter-the-table-according-to-a-specific-samples-subset)
       1. [Filtering like a boss!!!](#filtering-like-a-boss)
-7. [Import ASV table obtaiend outside QIIME2 into it](#import-asv-table-obtaiend-outside-qiime2-into-it)  
+7. [Import ASV table obtaiend outside QIIME2](#import-asv-table-obtained-outside-qiime2)  
 
 ---
 ***Always remember to active QIIME2 environment!!!***  
@@ -147,6 +147,8 @@ qiime demux summarize \
     --i-data  pe-demux.qza \
     --o-visualization pe-demux.qzv
 ```
+
+Back to the main [tutorial](../16S_ITS_tutorial/readme.md)
 
 # Evaluating data quality
 We have already discussed **FastQC**. It is a really useful tool but the main drawback is it generates a report for file for each analysed fastq file.  
@@ -506,7 +508,7 @@ Following are listed the selected samples and the associated elevation:
 
 
 
-## Import ASV table obtained outside QIIME2 into it
+## Import ASV table obtained outside QIIME2
 Sometimes it is useful to apply DADA2 outside QIIME2. Nonetheless, it is always possibile to import DADA2 ASVs table in QIIME2.  
 :walking:  
 ```

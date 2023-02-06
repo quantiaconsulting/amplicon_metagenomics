@@ -143,6 +143,10 @@ To obtain an almost complete list of importable formats type the following line:
 qiime tools import --show-importable-formats --help
 ```
 
+Actually this is only one of the possible ways to import data into QIIME.  For instance, we may import different type of files.  
+
+
+
 ## Explore QIIME2 Objects
 
 By importing the sequences you have generated your first object in QIIME2: `demux-paired-end.qza`.

@@ -23,8 +23,9 @@ __LEARNING OUTCOMES__
 
 ## Program
 [Physalia Welcome](https://drive.google.com/open?id=1zAqld5-NcofYez4QYsGGvX0ZtJGphRNQHCBVwUgYNVE)
+[Course participants introduction]
 ## Day 1
-- [ ] [Introduction to the course idea and Instructors](Welcome.pptx):
+- [X] [Introduction to the course idea and Instructors](Welcome.pptx):
     - [Daniel Antony Pass](https://scholar.google.com/citations?user=XQml0DQAAAAJ&hl=en)  
     - [Anna Sandionigi](https://scholar.google.com/citations?hl=it&user=DLDuk_EAAAAJ)  
     - [Bruno Fosso](https://scholar.google.com/citations?user=TBeT9pIAAAAJ&hl=it)  

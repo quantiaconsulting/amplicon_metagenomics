@@ -219,7 +219,7 @@ Quit `less`.
 One of the most useful commands in the Terminal is `grep`. This command searches through a text for lines matching a given argument and prints out only the lines that contain the argument.  
 Try using grep to pull out any read that contains the sequence **CTCCTAC** from a fastq file:
 ```
-grep CTCCTAC Illumina_1.fastq
+grep ACGGGAGG Illumina_1.fastq
 ```
 Used in combination with other commands, grep can do almost anything. To combine commands, we can use the “pipe”, `|`. It takes the output from one command and feeds it into another command.
 
@@ -251,7 +251,7 @@ For example:
 The Regexp pattern language is unlike most other computing languages. It can be best learned via an interactive service like [](https://regexone.com/) or many others where the pattern and its effect are instantly visualized.  
 *how to convert a fastq file into a fasta in bash*:
 ```
-grep -A1 '^@SRR' Illumina_1.fastq > example.fa
+grep -A1 '^@M03156' Illumina_1.fastq > example.fa
 sed -i -e 's/^@/>/g' example.fa
 sed -i -e 's/^--//g' example.fa
 sed -i -e '/^$/d' example.fa

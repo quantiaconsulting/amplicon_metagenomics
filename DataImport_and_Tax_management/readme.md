@@ -2,7 +2,7 @@ Some additional Tips
 ====
 
 1. [Some example of data import](#some-example-of-data-import)
-   1. [Importing not demultiplexed data](#importing-not-demultiplexed-data)
+   1. [Importing multiplexed data](#importing-multiplexed-data)
    2. [Importing demultiplexed by using the manifest file](#importing-demultiplexed-by-using-the-manifest-file)
 2. [Evaluating data quality](#evaluating-data-quality)
 3. [Improving the Denoising step](#improving-the-denoising-step)
@@ -20,7 +20,7 @@ Some additional Tips
 ***Always remember to active QIIME2 environment!!!***  
 :walking:  
 ```
-conda activate qiime2-2022.2
+source activate qiime2-2022.11
 ```
 ---
 
@@ -32,11 +32,14 @@ cd
 ```
 
 # Some example of data import
-## Importing not demultiplexed data
-During our tutorial we've faced with already demuliplexed data.  
+## Importing multiplexed data
+During our tutorial we've faced with already multiplexed data.  
 Sometimes you need to perform the data demultiplexing, so let's demultiplex them!!!    
 *** Check you are in your home folder***  
 Let's create a folder for multiplexed data  in your **home folder**:  
+
+We are going to import data produced following the **EMP** protocol.  
+
 :walking:  
 ```
 mkdir multiplexed_data && cd multiplexed_data
@@ -50,13 +53,13 @@ Let's download the required files:
 :walking:  
 ```
 wget -O "emp-paired-end-sequences/forward.fastq.gz" \
-  "https://data.qiime2.org/2022.2/tutorials/atacama-soils/10p/forward.fastq.gz"
+  "https://data.qiime2.org/2022.11/tutorials/atacama-soils/10p/forward.fastq.gz"
 
 wget -O "emp-paired-end-sequences/reverse.fastq.gz" \
-  "https://data.qiime2.org/2022.2/tutorials/atacama-soils/10p/reverse.fastq.gz"
+  "https://data.qiime2.org/2022.11/tutorials/atacama-soils/10p/reverse.fastq.gz"
 
 wget -O "emp-paired-end-sequences/barcodes.fastq.gz" \
-  "https://data.qiime2.org/2022.2/tutorials/atacama-soils/10p/barcodes.fastq.gz"
+  "https://data.qiime2.org/2022.11/tutorials/atacama-soils/10p/barcodes.fastq.gz"
 ```  
 We are also going to reuse the ``sample-metadata.tsv`` file used during the QIIME2 tutorial:  
 :walking:  
@@ -290,7 +293,7 @@ Just to resume the results:
 | % filtered |     89.6     | 	96.6 |   	97.7   |
 | % denoised |     57.1     | 59.4  |   67.7    |
 
-![denosing results](compare_methods.png)
+![denoising results](compare_methods.png)
 
 
 ## Collections for taxonomic classification
@@ -401,7 +404,8 @@ We obtain the ASV table in [BIOM](http://biom-format.org) format. Let's convert 
 ```
 biom convert -i ASV_table_exports/feature-table.biom -o ASV_table_exports/feature-table.txt --to-tsv
 ```
-Note that this table doesn't currently contain taxonomy information. To merge the tables you can use the ```qiime taxa collapse``` command below at ASV level, or the function in the taxonomy barcharts visualisation.
+Note that this table doesn't currently contain taxonomy information. To merge the tables you can use the 
+```qiime taxa collapse``` command below at ASV level, or the function in the taxonomy bar-charts visualisation.
 
 ## Filter table to only have those samples in the metadata file
 Filtering only certain samples or features. Useful to remove anomalies, negative/positive controls or failed samples, or subset data for specific analysis  

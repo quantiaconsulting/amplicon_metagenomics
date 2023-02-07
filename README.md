@@ -38,7 +38,7 @@ __LEARNING OUTCOMES__
 - [X] [Few concepts about Negative and Positive controls](unix_short_tutorial/controls.md)
 - [X] [Introduction to the **FASTQ** format and QIIME objects](https://docs.google.com/presentation/d/1RowyRGCLqAgt6Oxa_h3c33r4SI9reZlq6ZheRv-HAks/edit?usp=share_link)
 - [X] [Atacama Soil Experiment and Loading data](16S_ITS_tutorial/readme.md) 
-- [ ] [**Key concept: OTU or ASV**;](https://docs.google.com/presentation/d/1XHQGInyWt9SGmyH6C4UA2-flloR3vQghIzJ2MDAKsqY/edit?usp=sharing)
+- [X] [**Key concept: OTU or ASV**;](https://docs.google.com/presentation/d/1XHQGInyWt9SGmyH6C4UA2-flloR3vQghIzJ2MDAKsqY/edit?usp=sharing)
   - Different Sequencing Technologies and different denoising approaches
 - [ ] [Lets review](unix_short_tutorial/Readme.md)
 - [ ] [Denoising and **DADA2**](16S_ITS_tutorial/readme.md#step2-quality-controlling-sequences-and-building-feature-table-and-feature-data);

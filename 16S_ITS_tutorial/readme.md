@@ -200,10 +200,10 @@ What we now need is to remove the noise introduced during amplification and sequ
 
 ## Quality filter of 16S
 Since we need the reads to be long enough to overlap when joining paired ends, we are just going to remove the first 13 bases of both forward and reverse reads, 
-but no trimming is applied to reads 3' end.
+but no trimming is applied with reads 3' end.
 
 In this example, the same values are provided for `--p-trim-left-f` and `--p-trim-left-r`.  
-We are also setting the same values to `--p-trunc-len-f` and `--p-trunc-len-r` options. Actually, it is not strictly necessary considering we are not applying any trimming to reads 3' ends.  
+We are also setting the same values to `--p-trunc-len-f` and `--p-trunc-len-r` options. Actually, it is not strictly necessary considering we are not applying any trimming with reads 3' ends.  
 We're also using a multi-threading command to split the processing across multiple CPUs, which will be very useful when performing your own analysis with larger datasets.  
 
 Following are listed the lines to perform denoising. But considering it takes a while to complete we are going to use pre-computed data.  
@@ -340,7 +340,7 @@ In addition to counts of features per sample (i.e., the data in the `FeatureTabl
 
 * Next, the pipeline **masks** (or filters) the alignment to remove positions that are highly variable. These positions are generally considered to add noise to a resulting phylogenetic tree. 
 
-* Following that, the pipeline applies **FastTree** to generate a phylogenetic tree from the masked alignment. The FastTree program creates an unrooted tree
+* Following that, the pipeline applies **FastTree** to generate a phylogenetic tree from the masked alignment. The FastTree program creates an uprooted tree
 
 * The final step in this section midpoint **rooting** is applied to place the root of the tree at the midpoint of the longest tip-to-tip distance in the unrooted tree.
 

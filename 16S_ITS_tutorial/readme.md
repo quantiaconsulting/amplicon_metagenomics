@@ -9,7 +9,7 @@
 3. [STEP2: Quality controlling sequences and building Feature Table and Feature Data](#step2-quality-controlling-sequences-and-building-feature-table-and-feature-data)
    1. [Quality filter of 16S](#quality-filter-of-16s)
 4. [STEP3: Summarizing Feature Table and Feature Data](#step3-summarizing-feature-table-and-feature-data)
-   1. [Summaraize 16S data](#summaraize-16s-data)
+   1. [Summarize 16S data](#summarize-16s-data)
 5. [STEP4: Taxonomy assignment](#step4-taxonomy-assignment)
    1. [16S taxonomy assignment ](#16s-taxonomy-assignment)
 6. [STEP5: Generating a phylogenetic tree](#step5-generating-a-phylogenetic-tree)
@@ -439,7 +439,8 @@ qiime diversity alpha-correlation \
 ````
 
 
-Next we’ll analyze sample composition in the context of categorical metadata using **PERMANOVA** (first described in [Anderson (2001)](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1442-9993.2001.01070.pp.x)) using the beta-group-significance command. The following commands will test whether distances between samples within a group, are more similar to each other then they are to samples from the other groups. In this case we test only for the Transect_name and for the vegetation
+Next we’ll analyze sample composition in the context of categorical metadata using **PERMANOVA** (first described in [Anderson (2001)](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1442-9993.2001.01070.pp.x)) using the beta-group-significance command.  
+The following commands will test whether distances between samples within a group, are more similar to each other, then they are compared to samples from the other groups. In this case we test only for the Transect_name and for the vegetation
 :walking:  
 ```
 qiime diversity beta-group-significance \
@@ -476,7 +477,7 @@ qiime feature-table filter-features \
   --o-filtered-table filtered_table_16S.qza
 ```
 
-ANCOM relies on a _log-transform_ so we need to add pseudocounts to our table. We are adding a *1* to each item of our table in order to perform the log-transform.  
+ANCOM relies on a _log-transform_, so we need to add pseudocounts to our table. We are adding a *1* to each item of our table in order to perform the log-transform.  
 :walking:  
 ```
 qiime composition add-pseudocount \

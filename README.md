@@ -38,7 +38,7 @@ __LEARNING OUTCOMES__
 - [X] [Few concepts about Negative and Positive controls](unix_short_tutorial/controls.md)
 - [X] [Introduction to the **FASTQ** format and QIIME objects](https://docs.google.com/presentation/d/1RowyRGCLqAgt6Oxa_h3c33r4SI9reZlq6ZheRv-HAks/edit?usp=share_link)
 - [X] [Atacama Soil Experiment and Loading data](16S_ITS_tutorial/readme.md) 
-- [ ] [**Key concept: OTU or ASV**;](https://docs.google.com/presentation/d/1XHQGInyWt9SGmyH6C4UA2-flloR3vQghIzJ2MDAKsqY/edit?usp=sharing)
+- [X] [**Key concept: OTU or ASV**;](https://docs.google.com/presentation/d/1XHQGInyWt9SGmyH6C4UA2-flloR3vQghIzJ2MDAKsqY/edit?usp=sharing)
   - Different Sequencing Technologies and different denoising approaches
 - [ ] [Lets review](unix_short_tutorial/Readme.md)
 - [ ] [Denoising and **DADA2**](16S_ITS_tutorial/readme.md#step2-quality-controlling-sequences-and-building-feature-table-and-feature-data);
@@ -47,16 +47,15 @@ __LEARNING OUTCOMES__
 ## Day 3
 - [ ] [Taxonomic assignment](https://drive.google.com/open?id=1oHTCBiJ1HoHAREZIN2NVSHnC63QphDUJr_cPbgqgDs4)
 - [ ] [Taxonomy assignment:**classify-sklearn**](16S_ITS_tutorial/readme.md#step3-summarizing-feature-table-and-feature-data)
-  [ ] [Diversity Analysis](https://drive.google.com/file/d/1p7UCmfNe0A44Xb8665eaCBps84P7AYRg/view?usp=sharing)
-- [ ] [Running Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step6-analyzing-alpha-and-beta-diversities)
 - [ ] [ITS sequence analysis](ITS/ITS_readme.md)
-
+- [ ] [Diversity Analysis](https://drive.google.com/file/d/1p7UCmfNe0A44Xb8665eaCBps84P7AYRg/view?usp=sharing)
+- [ ] [Running Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step6-analyzing-alpha-and-beta-diversities)
 
 ## Day 4
+- [ ] [Some additional Tips :volcano: ](DataImport_and_Tax_management/readme.md)
+  - [ ] Alternative loading methods in Qiime
+  - [ ] Further Understanding and Assessing your raw data
 - [ ] [Experimental Design part 2 and short introduction to R](https://docs.google.com/presentation/d/1ybw75VKyMK9vJ_yy2SpFYbn8SZMJ7_6yf-BC0gLJ5vg/edit?usp=sharing)
- [ ] [Some additional Tips :volcano: ](DataImport_and_Tax_management/readme.md)
-- - [ ] Alternative loading methods in Qiime
-- - [ ] Further Understanding and Assessing your raw data
 - [ ] [Lecture  - Multivariate Analysis of Ecological Communities](https://docs.google.com/presentation/d/1SEXLnsAk71ghWJFBjvnSL9-JIU5kHyYi/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true)  
   - [ ] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  
   - [ ] Multivariate Tests for differences in microbial community composition  

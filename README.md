@@ -39,7 +39,7 @@ __LEARNING OUTCOMES__
 - [ ] [Atacama Soil Experiment and Loading data](16S_ITS_tutorial/readme.md)
 - [ ] [Loading data in Qiime]
   - Understanding and Assessing your raw data 
-- [ ] [**Key concept: OTU or ASV**;](https://docs.google.com/presentation/d/1Rxof51tbTxi45_dMlqtbFkQjpWRLTc76uoI6VH8b3hA/edit?usp=sharing)
+- [ ] [**Key concept: OTU or ASV**;](https://docs.google.com/presentation/d/1XHQGInyWt9SGmyH6C4UA2-flloR3vQghIzJ2MDAKsqY/edit?usp=sharing)
   - Different Sequencing Technologies and different denoising approaches
 - [ ] [Lets review](unix_short_tutorial/Readme.md)
 - [ ] [Denoising and **DADA2**](16S_ITS_tutorial/readme.md#step2-quality-controlling-sequences-and-building-feature-table-and-feature-data);

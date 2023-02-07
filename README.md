@@ -35,6 +35,7 @@ __LEARNING OUTCOMES__
 - [X] [Introduction to the **BASH** shell](unix_short_tutorial/Readme.md)
 
 ## Day 2
+- [X] [Few concepts about Negative and Positive controls](unix_short_tutorial/controls.md)
 - [ ] [Introduction to the **FASTQ** format and QIIME objects](https://docs.google.com/presentation/d/1RowyRGCLqAgt6Oxa_h3c33r4SI9reZlq6ZheRv-HAks/edit?usp=share_link)
 - [ ] [Atacama Soil Experiment and Loading data](16S_ITS_tutorial/readme.md)
 - [ ] [Loading data in Qiime]
@@ -44,7 +45,7 @@ __LEARNING OUTCOMES__
 - [ ] [Lets review](unix_short_tutorial/Readme.md)
 - [ ] [Denoising and **DADA2**](16S_ITS_tutorial/readme.md#step2-quality-controlling-sequences-and-building-feature-table-and-feature-data);
   - DADA2 - in Qiime, in R
-- [ ] [Few concepts about Negative and Positive controls](unix_short_tutorial/controls.md)
+
 
 ## Day 3
 - [ ] [Taxonomic assignment](https://drive.google.com/open?id=1oHTCBiJ1HoHAREZIN2NVSHnC63QphDUJr_cPbgqgDs4)

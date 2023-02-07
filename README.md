@@ -44,8 +44,8 @@ __LEARNING OUTCOMES__
 - [ ] [Lets review](unix_short_tutorial/Readme.md)
 - [ ] [Denoising and **DADA2**](16S_ITS_tutorial/readme.md#step2-quality-controlling-sequences-and-building-feature-table-and-feature-data);
   - DADA2 - in Qiime, in R
-- [ ] [Few concepts about Negative and Positive controls](unix_short_tutorial/controls.png)
-- 
+- [ ] [Few concepts about Negative and Positive controls](unix_short_tutorial/controls.md)
+
 ## Day 3
 - [ ] [Taxonomic assignment](https://drive.google.com/open?id=1oHTCBiJ1HoHAREZIN2NVSHnC63QphDUJr_cPbgqgDs4)
 - [ ] [Taxonomy assignment:**classify-sklearn**](16S_ITS_tutorial/readme.md#step3-summarizing-feature-table-and-feature-data)

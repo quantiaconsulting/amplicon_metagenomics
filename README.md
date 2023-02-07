@@ -36,7 +36,7 @@ __LEARNING OUTCOMES__
 
 ## Day 2
 - [X] [Few concepts about Negative and Positive controls](unix_short_tutorial/controls.md)
-- [ ] [Introduction to the **FASTQ** format and QIIME objects](https://docs.google.com/presentation/d/1RowyRGCLqAgt6Oxa_h3c33r4SI9reZlq6ZheRv-HAks/edit?usp=share_link)
+- [X] [Introduction to the **FASTQ** format and QIIME objects](https://docs.google.com/presentation/d/1RowyRGCLqAgt6Oxa_h3c33r4SI9reZlq6ZheRv-HAks/edit?usp=share_link)
 - [ ] [Atacama Soil Experiment and Loading data](16S_ITS_tutorial/readme.md)
 - [ ] [Loading data in Qiime]
   - Understanding and Assessing your raw data 

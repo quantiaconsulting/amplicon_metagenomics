@@ -92,7 +92,7 @@ As we discussed during the introduction to UNIX-based environment, we take advan
 So everytime we start a new session, we need to activate the virtual environment containing our QIIME2 installation.  
 :walking:  
 ```
-conda activate qiime2-2022.11
+source activate qiime2-2022.11
 ```
 
 ### Pipeline Overview
@@ -131,7 +131,7 @@ So we need to import our demultiplexed raw data into a qiime artifact.
 ```
 qiime tools import \
     --type 'SampleData[PairedEndSequencesWithQuality]' \
-    --input-path /home/Share/raw_data_tutorial \
+    --input-path ~/Share/raw_data_tutorial \
     --input-format CasavaOneEightSingleLanePerSampleDirFmt \
     --output-path demux-paired-end.qza
 ```
@@ -224,7 +224,7 @@ Following are listed the lines to perform denoising. But considering it takes a 
 Let's import our already done data.  
 :walking:
 ```
-cp /home/Share/qiime2-atacama-tutorial/{table_16S.qza,rep-seqs_16S.qza,denoising-stats_16S.qza}  . 
+cp ~/qiime2-atacama-tutorial/{table_16S.qza,rep-seqs_16S.qza,denoising-stats_16S.qza}  . 
 ```
 
 Following we need to generate a qzv file containing the table summarizing the denoising process, so we can discuss the effect it had on the data.
@@ -296,7 +296,7 @@ The first step in this process is to assign taxonomy to the sequences in our `Fe
 
 :walking:  
 ```
-cp /home/Share/qiime2-atacama-tutorial/taxonomy_16S_SKLEARN.qza  . 
+cp ~/qiime2-atacama-tutorial/taxonomy_16S_SKLEARN.qza  . 
 ```
 
 By the way the line we've used to taxonomically annotated our ASV are the following.   

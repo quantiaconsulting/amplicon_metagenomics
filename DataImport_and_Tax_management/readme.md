@@ -14,7 +14,7 @@ Some additional Tips
    1. [Filter the table according to a specific samples subset](#filter-the-table-according-to-a-specific-samples-subset)
    2. [Filter the table according to a specific feature](#filter-the-table-according-to-a-specific-samples-subset)
       1. [Filtering like a boss!!!](#filtering-like-a-boss)
-7. [Import ASV table obtaiend outside QIIME2](#import-asv-table-obtained-outside-qiime2)  
+7. [Import ASV table obtained outside QIIME2](#import-asv-table-obtained-outside-qiime2)  
 
 ---
 ***Always remember to active QIIME2 environment!!!***  
@@ -151,6 +151,33 @@ qiime demux summarize \
 Back to the main [tutorial](../16S_ITS_tutorial/readme.md)
 
 # Evaluating data quality
+The undisputed champion of quality control visualization is a tool named **[FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)** developed by **Babraham Institute**, an independent, charitable life sciences institute involved in biomedical research.  
+Even though it is a de-facto standard of visualization, **its results are not always the simplest to interpret**.  
+On  the positive side, the tool is easy to run (requires only Java), simple, reasonably efficient (though it is tuned for the Illumina platform and may be unstable on other types of data) and produces aesthetically pleasing plots.   
+On the downside, some of its beautiful charts are uninformative and occasionally confusing. For example, in some cases, charts will switch from non-binned to binned columns within the same panel, easily misleading casual observers.  
+Then there are plots, such as the **K-MER** plot and the **Overrepresented Sequences** plot, that don't show what most people assume they do.   
+There is also the difficulty of having to open HTML files one by one for result interpretation. In the current state of the field, where dozens of samples are being investigated in any given sequencing run, even just opening the results of the QC analysis becomes exceedingly tedious.  
+The seemingly simple task to check the data quality requires clicking and scrolling through each file individually. To some extent, even the tool's name is confusing.   
+**FASTQC does not perform quality control: it only  visualizes the quality of the data.**  
+But even with its flaws, FASTQC is still by far the best FASTQ quality visualization tool. It is one of the tools that scientific funding agencies should seek to fund even if the author were not to apply for funding.
+
+Always remember to activate the virtual environment:
+```
+source activate qiime2-2022.11 
+```
+
+Type:
+```
+fastqc test/Illumina_1.fastq 
+```
+We now can download the outputted .html file and explore it on our own computers.
+![](../unix_short_tutorial/fastqc.png)
+*Illumina vs PacBio*  
+
+## FASTQ quality control <a name="FASTQ quality control"></a>
+List of tools for FASTQ Quality Control
+![](../unix_short_tutorial/qc_list.png)
+
 We have already discussed **FastQC**. It is a really useful tool but the main drawback is it generates a report for file for each analysed fastq file.  
 So it is not so simple to figure out what is overall the quality of our raw data.  
 A solution is to apply [**MultiQC**](https://multiqc.info/) a tool allowing to *aggregate results from bioinformatics analyses across many samples into a single report*.  
@@ -165,7 +192,7 @@ mkdir fastqc_reports
 Execute FastQC on our raw data. In order to save time we're going to evaluate only `Baquedano`. In our test case, it is simple cause those file names start with `BAQ`.  
 :walking:     
 ```
-fastqc  /home/Share/raw_data_tutorial/BAQ2420* -O fastqc_reports
+fastqc  ~/Share/raw_data_tutorial/BAQ2420* -O fastqc_reports
 ```
 :walking:      
 ```
@@ -218,7 +245,7 @@ qiime feature-table tabulate-seqs \
 
 Now copy the obtained results and try to compare them by using [QIIME2 view](https://view.qiime2.org/).    
 ```
-cp /home/Share/qiime2-atacama-tutorial/denoising_alt/{denoising-stats_ee.qzv,table_ee.qzv,rep-seqs_ee.qzv} .
+cp ~/qiime2-atacama-tutorial/denoising_alt/{denoising-stats_ee.qzv,table_ee.qzv,rep-seqs_ee.qzv} .
 ```  
 
 Now considering the length of the ASVs we've obtained yesterday, probably we should trim our raw reads:  
@@ -252,31 +279,31 @@ qiime feature-table tabulate-seqs \
 ```
 Now copy the obtained results and try to compare them by using [QIIME2 view](https://view.qiime2.org/).    
 ```
-cp /home/Share/qiime2-atacama-tutorial/denoising_alt/{denoising-stats_ee_tt.qzv,table_ee_tt.qzv,rep-seqs_ee_tt.qzv} .
+cp ~/qiime2-atacama-tutorial/denoising_alt/{denoising-stats_ee_tt.qzv,table_ee_tt.qzv,rep-seqs_ee_tt.qzv} .
 ```  
 
 Just to resume the results:  
 
-|    | 16S Tutorial | EE | EE + Trim |
-|----|:---------:|:--------:|:-----:|
-|ASVs| 2,934 | 2,947 | 4,189|
-|% filtered | 89.6 |	96.6 |	97.7 |
-|% denoised| 57.1 | 59.4 | 67.7 |
+|            | 16S Tutorial |  EE   | EE + Trim |
+|------------|:------------:|:-----:|:---------:|
+| ASVs       |    2,934     | 2,947 |   4,189   |
+| % filtered |     89.6     | 	96.6 |   	97.7   |
+| % denoised |     57.1     | 59.4  |   67.7    |
 
 ![denosing results](compare_methods.png)
 
 
 ## Collections for taxonomic classification
 In order to perform taxonomic classification in QIIME2 we need to properly import and, eventually, train reference collections:
-The available in databases [**QIIME2 Data resoruces**](https://docs.qiime2.org/2020.8/data-resources/) are:  
+The available in databases [**QIIME2 Data resources**](https://docs.qiime2.org/2020.11/data-resources/) are:  
 * [SILVA](https://www.arb-silva.de/)
 * [GreenGenes](https://www.nature.com/articles/ismej2011139)  
 * [UNITE](https://unite.ut.ee/)  
 
 ### Train a classifier for a specific 16S region
-If your are interested in metabarcoding analysis based on the **COX1** barcode, you may consider [**MIDORI**](http://www.reference-midori.info/).  
+If you are interested in metabarcoding analysis based on the **COX1** barcode, you may consider [**MIDORI**](http://www.reference-midori.info/).  
  
-The easiest case is *SILVA*. QIIME Developers have already created an appropriate version so you can just dowload it:
+The easiest case is *SILVA*. QIIME Developers have already created an appropriate version, so you can just download it:
 :stop_sign:  
 ```
 cd
@@ -291,7 +318,7 @@ wget --no-check-certificate https://data.qiime2.org/2022.2/common/silva-138-99-t
 If you plan to use alignment based approaches for taxonomic assigment (i.e. BLAST or VSEARCH), that's enough. You may proceed with ASV classification.  
 Otherwise, if you would like to use the **sklearn** approach you need to train the classifier.  
 For 16S data, it is recommended to firstly extract the region you're interested in by using your primer sequences:  
-In the **EXAMPLE** below we are extracting the V3-V4 hyper-variable regions from SILVA 16S full-lenght sequences by using Illumina V3V4 primers.   
+In the **EXAMPLE** below we are extracting the V3-V4 hyper-variable regions from SILVA 16S full-length sequences by using Illumina V3V4 primers.   
 
 Both the following two steps are quite time-consuming so, we are just going to discuss how to do that.  
 Initially, we extract from our reference collection, only the regions in which we are interested:  
@@ -330,8 +357,8 @@ mkdir MIDORI_ref && cd MIDORI_ref
 Download MIDORI data. It has been already properly formatted for QIIME2 import:  
 :walking:  
 ```
-wget --no-check-certificate http://www.reference-midori.info/download/Databases/GenBank249/QIIME/uniq/MIDORI_UNIQ_NUC_GB249_CO1_QIIME.fasta.gz
-wget --no-check-certificate http://www.reference-midori.info/download/Databases/GenBank249/QIIME/uniq/MIDORI_UNIQ_NUC_GB249_CO1_QIIME.taxon.gz
+wget --no-check-certificate https://www.reference-midori.info/download/Databases/GenBank249/QIIME/uniq/MIDORI_UNIQ_NUC_GB249_CO1_QIIME.fasta.gz
+wget --no-check-certificate https://www.reference-midori.info/download/Databases/GenBank249/QIIME/uniq/MIDORI_UNIQ_NUC_GB249_CO1_QIIME.taxon.gz
 ```
 Then we need un unpack the downloaded data.  
 :walking:  
@@ -359,7 +386,7 @@ qiime tools import \
  --output-path MIDORI_UNIQ_NUC_GB249_CO1_QIIME.taxon.qza
 ```
 
-The final step is to train use these data for alignement based approaches for the taxonomic classification.  
+The final step is to train use these data for alignment based approaches for the taxonomic classification.  
 
 ## Export ASV table to tsv
 Sometimes you need to export you ASV table to TSV:  
@@ -560,7 +587,7 @@ First convert the textual table into a biom table:
 ```
 biom convert -i seqtab-nochim_hash.txt -o seqtab-nochim.biom --table-type="OTU table" --to-hdf5
 ```
-Now we cam import the BIOM table into a `qza` artifact.  
+Now we can import the BIOM table into a `qza` artifact.  
 :walking:  
 ```
 qiime tools import \

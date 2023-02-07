@@ -4,7 +4,6 @@
 2. [Some info about Operative System](#some-infos-about-operative-system)  
 3. [Bash Tips](#bash-tips-a-namebash-tipsa)
 4. [How can we visualize FASTQ quality?](#how-can-we-visualize-fastq-quality--a-namehow-can-we-visualize-fastq-qualitya)
-5. [FASTQ quality control](#fastq-quality-control-a-namefastq-quality-controla)
 
 ## Rationale <a name="Rationale"></a>
 
@@ -158,7 +157,7 @@ Copy the files to a new folder named **test** with the command `cp [file/folder 
 TIP: you can use `*` as a wildcard to choose all files with a certain suffix, i.e. “*.fastq” or “*.fq”
 If you are in your home folder you can do this, however if you are already inside the test folder then you can use "." to mean "this folder"
 ```
-cp -R /home/Share/Linux-exercises/* test/
+cp -R ~/Share/Linux-exercises/* test/
 ```
 
 **Now, move into your “test” folder.**
@@ -293,29 +292,5 @@ vi test_vi.txt
 # Now show the contents of the file you created
 less test_vi.txt
 ```
-
-## How can we visualize FASTQ quality?  <a name="How can we visualize FASTQ quality?"></a>
-The undisputed champion of quality control visualization is a tool named **[FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)** developed by **Babraham Institute**, an independent, charitable life sciences institute involved in biomedical research.  
-Even though it is a de-facto standard of visualization, **its results are not always the simplest to interpret**.  
-On  the positive side, the tool is easy to run (requires only Java), simple, reasonably efficient (though it is tuned for the Illumina platform and may be unstable on other types of data) and produces aesthetically pleasing plots.   
-On the downside, some of its beautiful charts are uninformative and occasionally confusing. For example, in some cases, charts will switch from non-binned to binned columns within the same panel, easily misleading casual observers.  
-Then there are plots, such as the **K-MER** plot and the **Overrepresented Sequences** plot, that don't show what most people assume they do.   
-There is also the difficulty of having to open HTML files one by one for result interpretation. In the current state of the field, where dozens of samples are being investigated in any given sequencing run, even just opening the results of the QC analysis becomes exceedingly tedious.  
-The seemingly simple task to check the data quality requires clicking and scrolling through each file individually. To some extent, even the tool's name is confusing.   
-**FASTQC does not perform quality control: it only  visualizes the quality of the data.**  
-But even with its flaws, FASTQC is still by far the best FASTQ quality visualization tool. It is one of the tools that scientific funding agencies should seek to fund even if the author were not to apply for funding.
-
-Type:
-````
-fastqc Illumina_1.fastq
-````
-We now can download the outputted .html file and explore it on our own computers.
-![](fastqc.png)
-*Illumina vs PacBio*  
-
-## FASTQ quality control <a name="FASTQ quality control"></a>
-List of tools for FASTQ Quality Control
-![](qc_list.png)
-
 
 [**Back to the program**](../README.md)

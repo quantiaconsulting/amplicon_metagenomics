@@ -48,7 +48,7 @@ __LEARNING OUTCOMES__
 ## Day 3
 - [ ] [Taxonomic assignment](https://drive.google.com/open?id=1oHTCBiJ1HoHAREZIN2NVSHnC63QphDUJr_cPbgqgDs4)
 - [ ] [Taxonomy assignment:**classify-sklearn**](16S_ITS_tutorial/readme.md#step3-summarizing-feature-table-and-feature-data)
-- [ ] [Visualizing taxonomy data]
+  - [ ] Visualizing taxonomy data
 - [ ] [Some additional Tips :volcano: ](DataImport_and_Tax_management/readme.md)
 - [ ] [ITS sequence analysis](ITS/ITS_readme.md)
 

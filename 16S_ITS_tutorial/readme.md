@@ -224,7 +224,7 @@ Following are listed the lines to perform denoising. But considering it takes a 
 Let's import our already done data.  
 :walking:
 ```
-cp ~/qiime2-atacama-tutorial/{table_16S.qza,rep-seqs_16S.qza,denoising-stats_16S.qza}  . 
+cp ~/Share/qiime2-atacama-tutorial/{table_16S.qza,rep-seqs_16S.qza,denoising-stats_16S.qza}  . 
 ```
 
 Following we need to generate a qzv file containing the table summarizing the denoising process, so we can discuss the effect it had on the data.
@@ -296,7 +296,7 @@ The first step in this process is to assign taxonomy to the sequences in our `Fe
 
 :walking:  
 ```
-cp ~/qiime2-atacama-tutorial/taxonomy_16S_SKLEARN.qza  . 
+cp ~/Share/qiime2-atacama-tutorial/taxonomy_16S_SKLEARN.qza  . 
 ```
 
 By the way the line we've used to taxonomically annotated our ASV are the following.   

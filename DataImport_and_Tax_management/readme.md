@@ -1,9 +1,9 @@
 Some additional Tips
 ====
-
-1. [Some example of data import](#some-example-of-data-import)
-   1. [Importing multiplexed data](#importing-multiplexed-data)
-   2. [Importing demultiplexed by using the manifest file](#importing-demultiplexed-by-using-the-manifest-file)
+​
+1. [Alternative methods of importing data](#alternative-methods-of-importing-data)
+   1. [Importing demultiplexed data using a manifest file](#importing-demultiplexed-data-using-a-manifest-file)
+   2. [Importing not demultiplexed data](#importing-not-demultiplexed-data)
 2. [Evaluating data quality](#evaluating-data-quality)
 3. [Improving the Denoising step](#improving-the-denoising-step)
 4. [Collections for taxonomic classification](#collections-for-taxonomic-classification)
@@ -14,32 +14,95 @@ Some additional Tips
    1. [Filter the table according to a specific samples subset](#filter-the-table-according-to-a-specific-samples-subset)
    2. [Filter the table according to a specific feature](#filter-the-table-according-to-a-specific-samples-subset)
       1. [Filtering like a boss!!!](#filtering-like-a-boss)
-7. [Import ASV table obtained outside QIIME2](#import-asv-table-obtained-outside-qiime2)  
-
+7. [Import ASV table obtaiend outside QIIME2 into it](#import-asv-table-obtaiend-outside-qiime2-into-it)  
+​
 ---
 ***Always remember to active QIIME2 environment!!!***  
 :walking:  
 ```
-source activate qiime2-2022.11
+conda activate qiime2-2022.2
 ```
 ---
-
-In order to avoid to make confusion about different stuffs, we are going to generate new folders.  
+​
+In order to avoid confusion about different analyses we are going to first generate new folders.  
 First just get back in your `home` folder:  
 :walking:  
 ```
 cd
 ```
-
-# Some example of data import
-## Importing multiplexed data
-During our tutorial we've faced with already multiplexed data.  
+​
+# Alternative methods of importing data
+## Importing demultiplexed data using a manifest file
+During the main tutorial we imported the PE fastq files by using:  
+ - **type** `SampleData[PairedEndSequencesWithQuality]`: which means we are using PE fastq files;
+ - **input-format** `CasavaOneEightSingleLanePerSampleDirFmt`: which means the file name are formatted by using the **CASAVA** file format.  
+​
+Sometimes our data are not formatted according to **CASAVA** format but are independent fastq files, so we need to use an alternative way to import the data.  
+To import the data we need to generate a **manifest file**.
+​
+A manifest file uses the following format:
+```
+sample-id     forward-absolute-filepath       reverse-absolute-filepath
+sample-1      fastq_files/sample0_R1.fastq.gz  fastq_files/sample1_R2.fastq.gz
+sample-2      fastq_files/sample2_R1.fastq.gz  fastq_files/sample2_R2.fastq.gz
+sample-3      fastq_files/sample3_R1.fastq.gz  fastq_files/sample3_R2.fastq.gz
+sample-4      fastq_files/sample4_R1.fastq.gz  fastq_files/sample4_R2.fastq.gz
+```
+​
+Initially we need to create a new folder in our home just because we could re-use this data for other stuff.  
+:walking:  
+```
+cd
+​
+mkdir IJMS_training_test && cd IJMS_training_test
+```    
+Let's have a look to our data:
+:walking:  
+```
+ls /home/Share/IJMS_data/IJMS_input_data
+```
+​
+Now we can create our file named `manifest_file.tsv`:  
+:walking:  
+```
+echo sample-id,forward-absolute-filepath,reverse-absolute-filepath > manifest_file.tsv
+echo 211446F203610,/home/Share/IJMS_data/IJMS_input_data/211446F203610_S155_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/211446F203610_S155_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 211454F203618,/home/Share/IJMS_data/IJMS_input_data/211454F203618_S163_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/211454F203618_S163_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 211456F203620,/home/Share/IJMS_data/IJMS_input_data/211456F203620_S165_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/211456F203620_S165_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 211460F203624,/home/Share/IJMS_data/IJMS_input_data/211460F203624_S169_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/211460F203624_S169_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 214981F203626,/home/Share/IJMS_data/IJMS_input_data/214981F203626_S2_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/214981F203626_S2_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 214991F203636,/home/Share/IJMS_data/IJMS_input_data/214991F203636_S12_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/214991F203636_S12_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 214993F203638,/home/Share/IJMS_data/IJMS_input_data/214993F203638_S14_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/214993F203638_S14_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 214997F203642,/home/Share/IJMS_data/IJMS_input_data/214997F203642_S18_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/214997F203642_S18_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 215001F203646,/home/Share/IJMS_data/IJMS_input_data/215001F203646_S22_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/215001F203646_S22_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 215003F203648,/home/Share/IJMS_data/IJMS_input_data/215003F203648_S24_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/215003F203648_S24_L001_R2_001.fastq.gz >> manifest_file.tsv
+```
+A little trick for our manifest file using a linux command to change commas for tabs: 
+```
+sed -i -e 's/,/\t/g' manifest_file.tsv 
+```
+​
+Obviously you can also use **Excel** or **Google Sheet** to generate the tabular file. You just need to export the file as a _tabular text file_.
+​
+Now we're ready to import our data and generate a visualization file:  
+:walking:  
+```
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path manifest_file.tsv \
+  --output-path pe-demux.qza \
+  --input-format PairedEndFastqManifestPhred33V2
+  
+qiime demux summarize \
+    --i-data  pe-demux.qza \
+    --o-visualization pe-demux.qzv
+```
+​
+## Importing not demultiplexed data
+During our tutorial we've worked with data that has already been demultiplexed.  
 Sometimes you need to perform the data demultiplexing, so let's demultiplex them!!!    
 *** Check you are in your home folder***  
 Let's create a folder for multiplexed data  in your **home folder**:  
-
-We are going to import data produced following the **EMP** protocol.  
-
 :walking:  
 ```
 mkdir multiplexed_data && cd multiplexed_data
@@ -53,13 +116,13 @@ Let's download the required files:
 :walking:  
 ```
 wget -O "emp-paired-end-sequences/forward.fastq.gz" \
-  "https://data.qiime2.org/2022.11/tutorials/atacama-soils/10p/forward.fastq.gz"
-
+  "https://data.qiime2.org/2022.2/tutorials/atacama-soils/10p/forward.fastq.gz"
+​
 wget -O "emp-paired-end-sequences/reverse.fastq.gz" \
-  "https://data.qiime2.org/2022.11/tutorials/atacama-soils/10p/reverse.fastq.gz"
-
+  "https://data.qiime2.org/2022.2/tutorials/atacama-soils/10p/reverse.fastq.gz"
+​
 wget -O "emp-paired-end-sequences/barcodes.fastq.gz" \
-  "https://data.qiime2.org/2022.11/tutorials/atacama-soils/10p/barcodes.fastq.gz"
+  "https://data.qiime2.org/2022.2/tutorials/atacama-soils/10p/barcodes.fastq.gz"
 ```  
 We are also going to reuse the ``sample-metadata.tsv`` file used during the QIIME2 tutorial:  
 :walking:  
@@ -85,7 +148,7 @@ qiime demux emp-paired \
   --o-per-sample-sequences demux-full.qza \
   --o-error-correction-details demux-details.qza
 ```
-
+​
 Let's visualize our data!!!  
 :walking:  
 ```
@@ -93,65 +156,9 @@ qiime demux summarize \
   --i-data demux-full.qza \
   --o-visualization demux-full.qzv
 ```
-
-## Importing demultiplexed by using the manifest file
-During the main tutorial we imported the PE fastq files by using:  
- - **type** `SampleData[PairedEndSequencesWithQuality]`: which means we are using PE fastq files;
- - **input-format** `CasavaOneEightSingleLanePerSampleDirFmt`: which means the file name are formatted by using the **CASAVA** file format.  
-
-Sometimes our data are not formatted according to **CASAVA** format, so we need to use an alternative way to import the data.  
-To import the data we need to generate a **manifest file**.  
-
-Initially we need to create a new folder in our home just because we could re-use this data for other stuff.  
-:walking:  
-```
-cd
-
-mkdir IJMS_training_test && cd IJMS_training_test
-```    
-Let's have a look to our data:
-:walking:  
-```
-ls /home/Share/IJMS_data/IJMS_input_data
-```
-
-Now we can create our file named `manifest_file.tsv`:  
-:walking:  
-```
-echo sample-id,forward-absolute-filepath,reverse-absolute-filepath > manifest_file.tsv
-echo 211446F203610,/home/Share/IJMS_data/IJMS_input_data/211446F203610_S155_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/211446F203610_S155_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 211454F203618,/home/Share/IJMS_data/IJMS_input_data/211454F203618_S163_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/211454F203618_S163_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 211456F203620,/home/Share/IJMS_data/IJMS_input_data/211456F203620_S165_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/211456F203620_S165_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 211460F203624,/home/Share/IJMS_data/IJMS_input_data/211460F203624_S169_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/211460F203624_S169_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 214981F203626,/home/Share/IJMS_data/IJMS_input_data/214981F203626_S2_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/214981F203626_S2_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 214991F203636,/home/Share/IJMS_data/IJMS_input_data/214991F203636_S12_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/214991F203636_S12_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 214993F203638,/home/Share/IJMS_data/IJMS_input_data/214993F203638_S14_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/214993F203638_S14_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 214997F203642,/home/Share/IJMS_data/IJMS_input_data/214997F203642_S18_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/214997F203642_S18_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 215001F203646,/home/Share/IJMS_data/IJMS_input_data/215001F203646_S22_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/215001F203646_S22_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 215003F203648,/home/Share/IJMS_data/IJMS_input_data/215003F203648_S24_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/215003F203648_S24_L001_R2_001.fastq.gz >> manifest_file.tsv
-```
-A little trick for our manifest file.  
-```
-sed -i -e 's/,/\t/g' manifest_file.tsv 
-```
-
-Obviously you can also use **Excel** or **Google Sheet** to generate the tabular file. You just need to export the file as a _tabular text file_.
-
-Now we're ready to import our data and generate a visualization file:  
-:walking:  
-```
-qiime tools import \
-  --type 'SampleData[PairedEndSequencesWithQuality]' \
-  --input-path manifest_file.tsv \
-  --output-path pe-demux.qza \
-  --input-format PairedEndFastqManifestPhred33V2
-  
-qiime demux summarize \
-    --i-data  pe-demux.qza \
-    --o-visualization pe-demux.qzv
-```
-
+​
 Back to the main [tutorial](../16S_ITS_tutorial/readme.md)
+​
 
 # Evaluating data quality
 The undisputed champion of quality control visualization is a tool named **[FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)** developed by **Babraham Institute**, an independent, charitable life sciences institute involved in biomedical research.  

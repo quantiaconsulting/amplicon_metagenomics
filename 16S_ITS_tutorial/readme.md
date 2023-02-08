@@ -15,7 +15,7 @@
 6. [STEP5: Generating a phylogenetic tree](#step5-generating-a-phylogenetic-tree)
 7. [STEP6: Analyzing Alpha and Beta diversities](#step6-analyzing-alpha-and-beta-diversities)
    1. [Time to test](#time-to-test)
-8. [STEP7: Differential abundance analysis in QIIME2](#step7-differential-abundance-analysis-in-qiime2)
+8. [BONUS: Differential abundance analysis in QIIME2](#bonus-differential-abundance-analysis-in-qiime2)
 
 ---
 **Basic Advice**: before the chunk of command line you will find two emoticons:  
@@ -460,7 +460,7 @@ qiime diversity beta-group-significance \
   --p-pairwise
 ```
 
-# STEP7: Differential Abundance Analysis in QIIME2
+# BONUS: Differential Abundance Analysis in QIIME2
 Sometimes you are also interested in testing whether individual ASVs or taxa are more or less abundant in different sample groups.  
 Microbiome data are challenging and conventional methods (i.e. t-test) are not appropriated for this task.  
 Microbiome abundance data are inherently sparse (have a lot of zeros) and compositional (everything adds up to 1). 

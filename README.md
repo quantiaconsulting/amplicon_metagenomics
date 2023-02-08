@@ -40,8 +40,8 @@ __LEARNING OUTCOMES__
 - [X] [Atacama Soil Experiment and Loading data](16S_ITS_tutorial/readme.md) 
 - [X] [**Key concept: OTU or ASV**;](https://docs.google.com/presentation/d/1XHQGInyWt9SGmyH6C4UA2-flloR3vQghIzJ2MDAKsqY/edit?usp=sharing)
   - Different Sequencing Technologies and different denoising approaches
-- [ ] [Lets review](unix_short_tutorial/Readme.md)
-- [ ] [Denoising and **DADA2**](16S_ITS_tutorial/readme.md#step2-quality-controlling-sequences-and-building-feature-table-and-feature-data);
+- [X] [Lets review](unix_short_tutorial/Readme.md)
+- [X] [Denoising and **DADA2**](16S_ITS_tutorial/readme.md#step2-quality-controlling-sequences-and-building-feature-table-and-feature-data);
   - DADA2 - in Qiime, in R
 
 ## Day 3
@@ -54,7 +54,7 @@ __LEARNING OUTCOMES__
 ## Day 4
 - [ ] [Some additional Tips :volcano: ](DataImport_and_Tax_management/readme.md)
   - [ ] Alternative loading methods in Qiime
-  - [ ] Further Understanding and Assessing your raw data
+  - [ ] Further, Understanding and Assessing your raw data
 - [ ] [Experimental Design part 2 and short introduction to R](https://docs.google.com/presentation/d/1ybw75VKyMK9vJ_yy2SpFYbn8SZMJ7_6yf-BC0gLJ5vg/edit?usp=sharing)
 - [ ] [Lecture  - Multivariate Analysis of Ecological Communities](https://docs.google.com/presentation/d/1SEXLnsAk71ghWJFBjvnSL9-JIU5kHyYi/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true)  
   - [ ] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  

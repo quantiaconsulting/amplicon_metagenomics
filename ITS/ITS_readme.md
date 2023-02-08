@@ -266,7 +266,6 @@ The primer trimming is performed by using the tool [**cutadapt**](https://journa
 |Forward|CTTGGTCATTTAGAGGAAGTAA| TTACTTCCTCTAAATGACCAAG  |
 |Reverse|GCTGCGTTCTTCATCGATGC|  GCATCGATGAAGAACGCAGC   |
 
-
 :walking:  
 ```
 qiime cutadapt trim-paired \

@@ -20,7 +20,7 @@ Some additional Tips
 ***Always remember to active QIIME2 environment!!!***  
 :walking:  
 ```
-conda activate qiime2-2022.2
+conda activate qiime2-2022.11
 ```
 ---
 ​
@@ -52,30 +52,28 @@ sample-4      fastq_files/sample4_R1.fastq.gz  fastq_files/sample4_R2.fastq.gz
 Initially we need to create a new folder in our home just because we could re-use this data for other stuff.  
 :walking:  
 ```
-cd
-​
 mkdir IJMS_training_test && cd IJMS_training_test
 ```    
 Let's have a look to our data:
 :walking:  
 ```
-ls /home/Share/IJMS_data/IJMS_input_data
+ls ~/Share/IJMS_data/IJMS_input_data
 ```
 ​
 Now we can create our file named `manifest_file.tsv`:  
 :walking:  
 ```
 echo sample-id,forward-absolute-filepath,reverse-absolute-filepath > manifest_file.tsv
-echo 211446F203610,/home/Share/IJMS_data/IJMS_input_data/211446F203610_S155_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/211446F203610_S155_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 211454F203618,/home/Share/IJMS_data/IJMS_input_data/211454F203618_S163_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/211454F203618_S163_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 211456F203620,/home/Share/IJMS_data/IJMS_input_data/211456F203620_S165_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/211456F203620_S165_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 211460F203624,/home/Share/IJMS_data/IJMS_input_data/211460F203624_S169_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/211460F203624_S169_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 214981F203626,/home/Share/IJMS_data/IJMS_input_data/214981F203626_S2_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/214981F203626_S2_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 214991F203636,/home/Share/IJMS_data/IJMS_input_data/214991F203636_S12_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/214991F203636_S12_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 214993F203638,/home/Share/IJMS_data/IJMS_input_data/214993F203638_S14_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/214993F203638_S14_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 214997F203642,/home/Share/IJMS_data/IJMS_input_data/214997F203642_S18_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/214997F203642_S18_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 215001F203646,/home/Share/IJMS_data/IJMS_input_data/215001F203646_S22_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/215001F203646_S22_L001_R2_001.fastq.gz >> manifest_file.tsv
-echo 215003F203648,/home/Share/IJMS_data/IJMS_input_data/215003F203648_S24_L001_R1_001.fastq.gz,/home/Share/IJMS_data/IJMS_input_data/215003F203648_S24_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 211446F203610,/home/ubuntu/Share/IJMS_data/IJMS_input_data/211446F203610_0_L001_R1_001.fastq.gz,/home/ubuntu/Share/IJMS_data/IJMS_input_data/211446F203610_10_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 211454F203618,/home/ubuntu/Share/IJMS_data/IJMS_input_data/211454F203618_1_L001_R1_001.fastq.gz,/home/ubuntu/Share/IJMS_data/IJMS_input_data/211454F203618_11_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 211456F203620,/home/ubuntu/Share/IJMS_data/IJMS_input_data/211456F203620_2_L001_R1_001.fastq.gz,/home/ubuntu/Share/IJMS_data/IJMS_input_data/211456F203620_12_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 211460F203624,/home/ubuntu/Share/IJMS_data/IJMS_input_data/211460F203624_3_L001_R1_001.fastq.gz,/home/ubuntu/Share/IJMS_data/IJMS_input_data/211460F203624_13_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 214981F203626,/home/ubuntu/Share/IJMS_data/IJMS_input_data/214981F203626_4_L001_R1_001.fastq.gz,/home/ubuntu/Share/IJMS_data/IJMS_input_data/214981F203626_14_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 214991F203636,/home/ubuntu/Share/IJMS_data/IJMS_input_data/214991F203636_5_L001_R1_001.fastq.gz,/home/ubuntu/Share/IJMS_data/IJMS_input_data/214991F203636_15_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 214993F203638,/home/ubuntu/Share/IJMS_data/IJMS_input_data/214993F203638_6_L001_R1_001.fastq.gz,/home/ubuntu/Share/IJMS_data/IJMS_input_data/214993F203638_16_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 214997F203642,/home/ubuntu/Share/IJMS_data/IJMS_input_data/214997F203642_7_L001_R1_001.fastq.gz,/home/ubuntu/Share/IJMS_data/IJMS_input_data/214997F203642_17_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 215001F203646,/home/ubuntu/Share/IJMS_data/IJMS_input_data/215001F203646_8_L001_R1_001.fastq.gz,/home/ubuntu/Share/IJMS_data/IJMS_input_data/215001F203646_18_L001_R2_001.fastq.gz >> manifest_file.tsv
+echo 215003F203648,/home/ubuntu/Share/IJMS_data/IJMS_input_data/215003F203648_9_L001_R1_001.fastq.gz,/home/ubuntu/Share/IJMS_data/IJMS_input_data/215003F203648_19_L001_R2_001.fastq.gz >> manifest_file.tsv
 ```
 A little trick for our manifest file using a linux command to change commas for tabs: 
 ```
@@ -105,6 +103,8 @@ Sometimes you need to perform the data demultiplexing, so let's demultiplex them
 Let's create a folder for multiplexed data  in your **home folder**:  
 :walking:  
 ```
+cd 
+
 mkdir multiplexed_data && cd multiplexed_data
 ```  
 Now we need to make a folder that will contain all our data:  

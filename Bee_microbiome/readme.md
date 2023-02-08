@@ -141,7 +141,7 @@ Use the diversity calculations and taxonomic plots to answer questions about you
 
 - Is there a significant difference in alpha diversity between Pristine and Agricultural environments?
 - Is there a difference in community structure using unifrac distance? Is it significant?
-- Are there any significanlty associated ASVs? (using ANCOM to test)
+- Are there any significantly associated ASVs? (using ANCOM to test)
 - What effect are the samples labelled "problem" causing? Should they be removed?
 
 

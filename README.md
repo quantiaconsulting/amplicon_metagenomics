@@ -52,6 +52,9 @@ __LEARNING OUTCOMES__
 
 ## Day 4
 - [ ] [ITS sequence analysis](ITS/ITS_readme.md)
+- [ ] [Some additional processing Tips :volcano: ](DataImport_and_Tax_management/readme.md)
+  - [ ] Alternative loading methods in Qiime
+  - [ ] Further, Understanding and Assessing your raw data
 - [ ] [Experimental Design part 2 and short introduction to R](https://docs.google.com/presentation/d/1ybw75VKyMK9vJ_yy2SpFYbn8SZMJ7_6yf-BC0gLJ5vg/edit?usp=sharing)
 - [ ] [Lecture  - Multivariate Analysis of Ecological Communities](https://docs.google.com/presentation/d/1SEXLnsAk71ghWJFBjvnSL9-JIU5kHyYi/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true)  
   - [ ] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  
@@ -63,9 +66,6 @@ __LEARNING OUTCOMES__
   - [ ] Lab: Differential Abundance Analysis with DESeq2
 
 ## Day 5
-- [ ] [Some additional processing Tips :volcano: ](DataImport_and_Tax_management/readme.md)
-  - [ ] Alternative loading methods in Qiime
-  - [ ] Further, Understanding and Assessing your raw data
 - [ ] :arrow_right: _It's Case studies Time!!!_
   - [ ] [Human microbiome data](human_cancer/readme.md)
   - [ ] [Zoological(Bees bees bees!)](Bee_microbiome/readme.md)

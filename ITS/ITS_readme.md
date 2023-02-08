@@ -71,14 +71,14 @@ mkdir ITSxpress_ITS_tutorial && cd ITSxpress_ITS_tutorial
 If not already active, remember to activate the QIIME2 environment:  
 :walking:  
 ```
-conda activate qiime2-2022.2
+source activate qiime2-2022.11
 ```
  
 ## Step1: Import ITS data
 Let's start by copying the raw data, the manifest and the metadata file in our folder:  
 :walking:  
 ```
-cp /home/Share/ITSxpress_ITS_tutorial/{sample*,manifest.txt,mapping.txt} .
+cp ~/Share/ITSxpress_ITS_tutorial/{sample*,manifest.txt,mapping.txt} .
 ```
 
 
@@ -90,7 +90,9 @@ qiime tools import \
   --input-format PairedEndFastqManifestPhred33\
   --input-path manifest.txt \
   --output-path sequences.qza
+```
 
+```
 qiime demux summarize \
   --i-data sequences.qza \
   --o-visualization sequences.qzv
@@ -114,7 +116,7 @@ In order to extract exclusively the ITS1 region we are going to apply [**ITSxpre
 Briefly, it works as follows:
 1. Merges reads (if paired-end) using **BBMerge**;
 2. Dereplicates sequences using **VSEARCH**;
-3. Identifies ITS start and stop sites using **hmmsearch**  on the representative sequences;
+3. Identifies ITS start and stop sites using **hmmsearch** on the representative sequences;
 4. Trims both original PE reads and merged sequence with quality scores, returning the merged or unmerged sequences with quality scores in a .qza file;  
 
 To install **ITSexpress** plugin in QIIME2 you need to use the following code. Of course, we've already installed it for you:    
@@ -140,7 +142,7 @@ qiime itsxpress trim-pair-output-unmerged\
 To import the processed data just type the following line:  
 :walking:  
 ```
-cp /home/Share/ITSxpress_ITS_tutorial/trimmed.qza .
+cp ~/Share/ITSxpress_ITS_tutorial/trimmed.qza .
 ```
 
 Let's visualize whether something is changed in our sequences:  
@@ -164,9 +166,8 @@ qiime dada2 denoise-paired \
 To import the processed data just type the following line:
 :walking:  
 ```
-cp -r /home/Share/ITSxpress_ITS_tutorial/dada2out .
+cp -r ~/Share/ITSxpress_ITS_tutorial/dada2out .
 ```
-
 
 ## Step 3: Summarizing Feature Table and Feature Data
 We have just generated the artifacts containing the feature table and corresponding feature sequences.  
@@ -185,7 +186,7 @@ qiime metadata tabulate \
 
 # Step 4 Taxonomic assignment 
 
-## ITS taxonomcic assignment 
+## ITS taxonomic assignment 
 The QIIME 2 plugin [feature-classifier](https://docs.qiime2.org/2019.1/plugins/available/feature-classifier/) 
 supports taxonomic classification of features using a variety of methods, including Naive Bayes, vsearch, and BLAST+.
 We are going to use the Naive Bayes classifier that we've pre-trained by using the [**UNITE**](https://unite.ut.ee/repository.php) collection.
@@ -220,12 +221,11 @@ qiime feature-classifier classify-sklearn \
 No we are ready to copy the performed taxonomic classification and generate visualization files:  
 :walking:  
 ```
-cp /home/Share/ITSxpress_ITS_tutorial/taxonomy.qza .
+cp ~/Share/ITSxpress_ITS_tutorial/taxonomy.qza .
 
 qiime metadata tabulate \
   --m-input-file taxonomy.qza \
   --o-visualization taxonomy.qzv
-
 
 qiime taxa barplot \
   --i-table dada2out/table.qza  \
@@ -312,7 +312,7 @@ qiime dada2 denoise-paired \
 Let's copy pre-processed data and tabulate all the available info:  
 :walking:  
 ```
-cp /home/Share/PT_ITS_tutorial/dada2-* .
+cp ~/Share/PT_ITS_tutorial/dada2-* .
 
 qiime metadata tabulate \
   --m-input-file dada2-stats_ITS.qza \
@@ -330,11 +330,11 @@ qiime feature-table tabulate-seqs \
 
 ## Step 4 Taxonomic assignment 
 
-## ITS taxonomcic assignment 
+## ITS taxonomic assignment 
 The QIIME 2 plugin [feature-classifier](https://docs.qiime2.org/2019.1/plugins/available/feature-classifier/) 
 supports taxonomic classification of features using a variety of methods, including Naive Bayes, vsearch, and BLAST+.
 
-`q2-feature-classifier` contains several different classification methods: **classify-consensus-blast** and 
+`q2-feature-classifier` contains different classification methods: **classify-consensus-blast** and 
 **classify-consensus-vsearch** are both **alignment-based methods** that find a consensus assignment across N top hits.  
 These methods take reference database `FeatureData[Taxonomy]` and `FeatureData[Sequence]` files directly, and do not need to be pre-trained.
 
@@ -356,7 +356,7 @@ qiime feature-classifier classify-consensus-vsearch \
 Now copy the produced data and generate visualization files:  
 :walking:  
 ```
-cp /home/Share/PT_ITS_tutorial/vsearch_taxonomy_ITS.qza .
+cp ~/Share/PT_ITS_tutorial/vsearch_taxonomy_ITS.qza .
 
 qiime metadata tabulate \
   --m-input-file vsearch_taxonomy_ITS.qza \
@@ -380,7 +380,7 @@ qiime feature-classifier classify-sklearn \
 Let's copy results and visualize them:  
 :walking:  
 ```
-cp /home/Share/PT_ITS_tutorial/taxonomy_ITS_sklearn.qza .
+cp ~/Share/PT_ITS_tutorial/taxonomy_ITS_sklearn.qza .
 
 qiime metadata tabulate \
     --m-input-file taxonomy_ITS_sklearn.qza \

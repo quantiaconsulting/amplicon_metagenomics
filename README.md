@@ -47,14 +47,11 @@ __LEARNING OUTCOMES__
 ## Day 3
 - [ ] [Taxonomic assignment](https://drive.google.com/open?id=1oHTCBiJ1HoHAREZIN2NVSHnC63QphDUJr_cPbgqgDs4)
 - [ ] [Taxonomy assignment:**classify-sklearn**](16S_ITS_tutorial/readme.md#step3-summarizing-feature-table-and-feature-data)
-- [ ] [ITS sequence analysis](ITS/ITS_readme.md)
 - [ ] [Diversity Analysis](https://docs.google.com/presentation/d/1wvxFCYMiQW-RH669eK1l6EcmcBqd0q7l2oF4do7okI8/edit?usp=share_link)
 - [ ] [Running Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step6-analyzing-alpha-and-beta-diversities)
 
 ## Day 4
-- [ ] [Some additional Tips :volcano: ](DataImport_and_Tax_management/readme.md)
-  - [ ] Alternative loading methods in Qiime
-  - [ ] Further, Understanding and Assessing your raw data
+- [ ] [ITS sequence analysis](ITS/ITS_readme.md)
 - [ ] [Experimental Design part 2 and short introduction to R](https://docs.google.com/presentation/d/1ybw75VKyMK9vJ_yy2SpFYbn8SZMJ7_6yf-BC0gLJ5vg/edit?usp=sharing)
 - [ ] [Lecture  - Multivariate Analysis of Ecological Communities](https://docs.google.com/presentation/d/1SEXLnsAk71ghWJFBjvnSL9-JIU5kHyYi/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true)  
   - [ ] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  
@@ -66,8 +63,12 @@ __LEARNING OUTCOMES__
   - [ ] Lab: Differential Abundance Analysis with DESeq2
 
 ## Day 5
+- [ ] [Some additional processing Tips :volcano: ](DataImport_and_Tax_management/readme.md)
+  - [ ] Alternative loading methods in Qiime
+  - [ ] Further, Understanding and Assessing your raw data
 - [ ] :arrow_right: _It's Case studies Time!!!_
   - [ ] [Human microbiome data](human_cancer/readme.md)
   - [ ] [Zoological(Bees bees bees!)](Bee_microbiome/readme.md)
   - [ ] [Water-mosquito](water_mosquito/readme.md)
+- [ ] [Record your Case Study findings](https://drive.google.com/drive/folders/1jwEfH0Urm_TjR2lVEO03L1EStmCSWyoC?usp=sharing)
 - [ ] Beer Time :beers: :beers: :beers:

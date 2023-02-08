@@ -6,7 +6,7 @@ QIIME2 analysis of ITS data
    1. [Import ITS data](#step1-import-its-data)
    2. [Quality controlling sequences and building Feature Table and Feature Data](#step2-quality-controlling-sequences-and-building-feature-table-and-feature-data)
    3. [Summarizing Feature Table and Feature Data](#step-3-summarizing-feature-table-and-feature-data)
-   4. [Taxonomy assignment](#step-4-taxonomy-assignment)
+   4. [Taxonomy assignment](#step-4-taxonomic-classification)
 3. [Primer trimming based tutorial](#primer-trimming-based-tutorial)
    1. [Step 1: Import data](#step-1-import-data) 
    2. [Step 2: Primer trimming](#step-2-primer-trimming) 
@@ -119,7 +119,7 @@ Briefly, it works as follows:
 3. Identifies ITS start and stop sites using **hmmsearch** on the representative sequences;
 4. Trims both original PE reads and merged sequence with quality scores, returning the merged or unmerged sequences with quality scores in a .qza file;  
 
-To install **ITSexpress** plugin in QIIME2 you need to use the following code. Of course, we've already installed it for you:    
+To install **ITSXpress** plugin in QIIME2 you need to use the following code. Of course, we've already installed it for you:    
 :stop_sign:  
 ```
 conda install -c bioconda itsxpress
@@ -184,7 +184,7 @@ qiime metadata tabulate \
   --o-visualization denoising_stats.qzv
 ```
 
-# Step 4 Taxonomic assignment 
+# Step 4 Taxonomic classification 
 
 ## ITS taxonomic assignment 
 The QIIME 2 plugin [feature-classifier](https://docs.qiime2.org/2019.1/plugins/available/feature-classifier/) 
@@ -261,10 +261,11 @@ The primer trimming is performed by using the tool [**cutadapt**](https://journa
 ![alt text](https://image.slidesharecdn.com/suryasahametagenomicstools-130507160129-phpapp02/95/tools-for-metagenomics-with-16sits-and-whole-genome-shotgun-sequences-3-638.jpg?cb=1369657346)  
 
 
-|Primer|Sequence|Reverse-Complement|
-|:-:|:-:|
-|Forward|CTTGGTCATTTAGAGGAAGTAA|TTACTTCCTCTAAATGACCAAG|
-|Reverse|GCTGCGTTCTTCATCGATGC|GCATCGATGAAGAACGCAGC|
+|Primer|Sequence|   Reverse-Complement    |
+|:----:|:------:|:-----------------------:|
+|Forward|CTTGGTCATTTAGAGGAAGTAA| TTACTTCCTCTAAATGACCAAG  |
+|Reverse|GCTGCGTTCTTCATCGATGC|  GCATCGATGAAGAACGCAGC   |
+
 
 :walking:  
 ```
@@ -341,7 +342,7 @@ These methods take reference database `FeatureData[Taxonomy]` and `FeatureData[S
 The first step in this process is to assign taxonomy to the sequences in our `FeatureData[Sequence]` QIIME 2 artifact. 
 
 We will initially perform the taxonomic classification by using [**classify-consensus-vsearch**](https://docs.qiime2.org/2019.1/plugins/available/feature-classifier/classify-consensus-vsearch/).
-***Like the previous time-consuming step, we show you the used line, but we are just copyng the pre-computed results.***  
+***Like the previous time-consuming step, we show you the used line, but we are just copying the pre-computed results.***  
 :stop_sign:  
 ```
 qiime feature-classifier classify-consensus-vsearch \

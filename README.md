@@ -47,8 +47,8 @@ __LEARNING OUTCOMES__
 ## Day 3
 - [X] [Taxonomic assignment](https://drive.google.com/open?id=1oHTCBiJ1HoHAREZIN2NVSHnC63QphDUJr_cPbgqgDs4)
 - [X] [Taxonomy assignment:**classify-sklearn**](16S_ITS_tutorial/readme.md#step3-summarizing-feature-table-and-feature-data)
-- [ ] [Diversity Analysis](https://docs.google.com/presentation/d/1wvxFCYMiQW-RH669eK1l6EcmcBqd0q7l2oF4do7okI8/edit?usp=share_link)
-- [ ] [Running Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step6-analyzing-alpha-and-beta-diversities)
+- [X] [Diversity Analysis](https://docs.google.com/presentation/d/1wvxFCYMiQW-RH669eK1l6EcmcBqd0q7l2oF4do7okI8/edit?usp=share_link)
+- [X] [Running Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step6-analyzing-alpha-and-beta-diversities)
 
 ## Day 4
 - [ ] [ITS sequence analysis](ITS/ITS_readme.md)

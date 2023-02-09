@@ -39,6 +39,9 @@ We could observe three different situations:
 - The amplified ITS1 region is longer than the read lengths, the forward and reverse reads do not overlap to capture the full amplified ITS region. **This is the worst condition**. _Actually it is quite unlike to happen with fungi_ (b); 
 - The amplified ITS1 region is shorter than the read lengths, and the forward and reverse reads extend into the opposite primers which will appear in their reverse complement form towards the ends of those reads (c).    
 
+So we can obtain reads with the following situation:  
+![reads](reads_schema.png)  
+
 
 **PAY ATTENTION**: if the amplified region is longer than about 580 nt we are unable to merge reads.
 

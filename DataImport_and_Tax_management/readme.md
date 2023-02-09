@@ -469,7 +469,7 @@ qiime taxa collapse \
 ```
 
 #### Filtering like a boss!!!
-![Alt Text](https://media.giphy.com/media/O8dBu8Qp3ZV6Cw21dw/giphy.gif)  
+![Alt Text](https://media.giphy.com/media/4QFAH0qZ0LQnIwVYKT/giphy.gif)  
 
 Just to clarify the usage of the `--p-where` option below it is shown its caption:  
 

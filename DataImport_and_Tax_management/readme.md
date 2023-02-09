@@ -469,7 +469,8 @@ qiime taxa collapse \
 ```
 
 #### Filtering like a boss!!!
-![boss](https://gfycat.com/uglyadeptankolewatusi)
+![boss](https://gfycat.com/uglyadeptankolewatusi)  
+
 Just to clarify the usage of the `--p-where` option below it is shown its caption:  
 `` 
 --p-where TEXT       SQLite WHERE clause specifying sample metadata criteria that must be met to be included in the

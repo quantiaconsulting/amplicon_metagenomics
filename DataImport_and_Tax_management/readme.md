@@ -559,7 +559,7 @@ cd
 
 mkdir dada2_data_import && cd dada2_data_import
 
-cp /home/Share/seqtab-nochim.txt .
+cp ~/Share/dada2_data_import/seqtab-nochim.txt .
 ```
 Let's inspect how `seqtab-nochim.txt` is made:  
 :walking:  

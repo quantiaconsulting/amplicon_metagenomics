@@ -31,7 +31,7 @@ Usually, just the ITS1 or the ITS2 are amplified and sequenced.
 ***We are going to focus on an example based on ITS1***
 
 Before starting to analyse fungal ITS data just a couple of consideration:
-![its]()  
+![its](ITS_region_schema.png)  
 
 
 We could observe three different situations:  

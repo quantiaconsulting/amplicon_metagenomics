@@ -25,7 +25,7 @@ This mock community is composed by 8 fungal species represented in uneven abunda
 It is also available in NCBI SRA as study [SRR4070093](https://www.ncbi.nlm.nih.gov/sra/?term=SRR4070093) and referred as Mock B in the paper.
 
 Before starting to analyse fungal ITS data just a couple of consideration:
-![its](../../course_data/ITS_region_schema.png)
+![its](ITS_region_schema.png)
 *[https://benjjneb.github.io/dada2/ITS_workflow.html](https://benjjneb.github.io/dada2/ITS_workflow.html)*  
 
 We could observe three different situations:  

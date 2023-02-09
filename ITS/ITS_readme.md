@@ -100,7 +100,7 @@ qiime demux summarize \
 
 ## Step2: Quality controlling sequences and building Feature Table and Feature Data
   
-### Quality filter of ITS (optional for Friday groups)
+### Quality filter of ITS 
 One issue with ITS (and other marker genes with vast length variability) is *read-through*, which occurs when read lengths are longer than the amplicon itself!
 Also in this case we want to trim primers from either end of the sequence to eliminate read-through issues.
 The polymerase will read through the amplicon, the primer, the barcode, and on into the adapter sequence.  
@@ -121,23 +121,23 @@ Briefly, it works as follows:
 
 To install **ITSXpress** plugin in QIIME2 you need to use the following code. Of course, we've already installed it for you:    
 :stop_sign:  
-```
-conda install -c bioconda itsxpress
-pip install q2-itsxpress
 
-qiime dev refresh-cache
-```
+>conda install -c bioconda itsxpress
+>pip install q2-itsxpress
+
+>qiime dev refresh-cache
+
 
 Following it is shown the applied command line. **DO NOT EXECUTE IT, BECAUSE IT IS QUITE SLOW**.  
 :stop_sign:  
-```
-qiime itsxpress trim-pair-output-unmerged\
+
+>qiime itsxpress trim-pair-output-unmerged\
   --i-per-sample-sequences sequences.qza \
   --p-region ITS1 \
   --p-taxa F \
   --p-cluster-id 1.0 \
   --o-trimmed trimmed.qza
-```
+
 
 To import the processed data just type the following line:  
 :walking:  
@@ -155,14 +155,14 @@ qiime demux summarize \
 
 We are ready to apply DADA2 and obtain ASVs.  **DO NOT EXECUTE IT, BECAUSE IT IS QUITE SLOW**.  
 :stop_sign:  
-```
-qiime dada2 denoise-paired \
+
+>qiime dada2 denoise-paired \
   --i-demultiplexed-seqs trimmed.qza \
   --p-trunc-len-r 0 \
   --p-trunc-len-f 0 \
   --p-n-threads 20 \
   --output-dir dada2out
-```
+
 To import the processed data just type the following line:
 :walking:  
 ```

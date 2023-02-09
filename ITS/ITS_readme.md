@@ -31,13 +31,13 @@ Usually, just the ITS1 or the ITS2 are amplified and sequenced.
 ***We are going to focus on an example based on ITS1***
 
 Before starting to analyse fungal ITS data just a couple of consideration:
-![its](ITS_region_schema.png)  
+![its](../../course_data/ITS_region_schema.png)  
 
 
 We could observe three different situations:  
-- The amplified ITS1 region is longer than the read lengths, the forward and reverse reads overlap to capture the full amplified ITS region, but do not read into the opposite primer;
-- The amplified ITS1 region is longer than the read lengths, the forward and reverse reads do not overlap to capture the full amplified ITS region. **This is the worst condition**. _Actually it is quite unlike to happen with fungi_; 
-- The amplified ITS1 region is shorter than the read lengths, and the forward and reverse reads extend into the opposite primers which will appear in their reverse complement form towards the ends of those reads.    
+- The amplified ITS1 region is longer than the read lengths, the forward and reverse reads overlap to capture the full amplified ITS region, but do not read into the opposite primer (a);
+- The amplified ITS1 region is longer than the read lengths, the forward and reverse reads do not overlap to capture the full amplified ITS region. **This is the worst condition**. _Actually it is quite unlike to happen with fungi_ (b); 
+- The amplified ITS1 region is shorter than the read lengths, and the forward and reverse reads extend into the opposite primers which will appear in their reverse complement form towards the ends of those reads (c).    
 
 
 **PAY ATTENTION**: if the amplified region is longer than about 580 nt we are unable to merge reads.

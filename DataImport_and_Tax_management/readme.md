@@ -106,7 +106,7 @@ qiime demux summarize \
 ```
 ​
 ## Importing not demultiplexed data
-During our tutorial we've worked with data that has already been demultiplexed.  
+During our tutorial we've worked with data that has been already demultiplexed.  
 Sometimes you need to perform the data demultiplexing, so let's demultiplex them!!!    
 *** Check you are in your home folder***  
 Let's create a folder for multiplexed data  in your **home folder**:  
@@ -184,10 +184,16 @@ Always remember to activate the virtual environment:
 ```
 source activate qiime2-2022.11 
 ```
+Fastq quality evaluation:
+```
+cd 
+
+mkdir quaility_eval && cd  quaility_eval
+```
 
 Type:
 ```
-fastqc test/Illumina_1.fastq 
+fastqc ~/test/Illumina_1.fastq 
 ```
 We now can download the outputted .html file and explore it on our own computers.
 ![](../unix_short_tutorial/fastqc.png)
@@ -197,7 +203,7 @@ We now can download the outputted .html file and explore it on our own computers
 List of tools for FASTQ Quality Control
 ![](../unix_short_tutorial/qc_list.png)
 
-We have already discussed **FastQC**. It is a really useful tool but the main drawback is it generates a report for file for each analysed fastq file.  
+**FastQC** is a really useful tool but the main drawback is it generates a report for file for each analysed fastq file.  
 So it is not so simple to figure out what is overall the quality of our raw data.  
 A solution is to apply [**MultiQC**](https://multiqc.info/) a tool allowing to *aggregate results from bioinformatics analyses across many samples into a single report*.  
 
@@ -236,8 +242,8 @@ Just remember **ee** is a way to measure the number of nucleotides that are prob
 
 :stop_sign:  
 The option we introduce are `--p-max-ee-f` and `--p-max-ee-f`.
-```
-qiime dada2 denoise-paired \
+
+>qiime dada2 denoise-paired \
   --i-demultiplexed-seqs ../demux-paired-end.qza \
   --p-trim-left-f 13 \
   --p-trim-left-r 13 \
@@ -249,30 +255,32 @@ qiime dada2 denoise-paired \
   --o-representative-sequences rep-seqs_ee.qza \
   --o-denoising-stats denoising-stats_ee.qza
 
-qiime metadata tabulate \
+>qiime metadata tabulate \
    --m-input-file denoising-stats_ee.qza \
    --o-visualization denoising-stats_ee.qzv
 
-qiime feature-table summarize \
+>qiime feature-table summarize \
   --i-table table_ee.qza \
   --o-visualization table_ee.qzv \
   --m-sample-metadata-file ../sample-metadata.tsv
   
-qiime feature-table tabulate-seqs \
+>qiime feature-table tabulate-seqs \
   --i-data rep-seqs_ee.qza \
   --o-visualization rep-seqs_ee.qzv
-```
 
-Now copy the obtained results and try to compare them by using [QIIME2 view](https://view.qiime2.org/).    
+
+Just copy the obtained results and try to compare them by using [QIIME2 view](https://view.qiime2.org/).    
 ```
-cp ~/qiime2-atacama-tutorial/denoising_alt/{denoising-stats_ee.qzv,table_ee.qzv,rep-seqs_ee.qzv} .
+cp ~/Share/qiime2-atacama-tutorial/denoising_alt/{denoising-stats_ee.qzv,table_ee.qzv,rep-seqs_ee.qzv} .
 ```  
 
 Now considering the length of the ASVs we've obtained yesterday, probably we should trim our raw reads:  
+![V4](../16S_ITS_tutorial/V4_atacama.png)
+
 :stop_sign:  
-The option we are going to modify are  introduce are `--p-trunc-len-f` and `--p-trunc-len-r`.
-```
-qiime dada2 denoise-paired \
+The option we are going to modify are `--p-trunc-len-f` and `--p-trunc-len-r`.
+
+>qiime dada2 denoise-paired \
   --i-demultiplexed-seqs ../demux-paired-end.qza \
   --p-trim-left-f 13 \
   --p-trim-left-r 13 \
@@ -284,22 +292,22 @@ qiime dada2 denoise-paired \
   --o-representative-sequences rep-seqs_ee_tt.qza \
   --o-denoising-stats denoising-stats_ee_tt.qza
 
-qiime metadata tabulate \
+>qiime metadata tabulate \
    --m-input-file denoising-stats_ee_tt.qza \
    --o-visualization denoising-stats_ee_tt.qzv
 
-qiime feature-table summarize \
+>qiime feature-table summarize \
   --i-table table_ee_tt.qza \
   --o-visualization table_ee_tt.qzv \
   --m-sample-metadata-file ../sample-metadata.tsv
   
-qiime feature-table tabulate-seqs \
+>qiime feature-table tabulate-seqs \
   --i-data rep-seqs_ee_tt.qza \
   --o-visualization rep-seqs_ee_tt.qzv
+
+Copy the obtained results and try to compare them by using [QIIME2 view](https://view.qiime2.org/).    
 ```
-Now copy the obtained results and try to compare them by using [QIIME2 view](https://view.qiime2.org/).    
-```
-cp ~/qiime2-atacama-tutorial/denoising_alt/{denoising-stats_ee_tt.qzv,table_ee_tt.qzv,rep-seqs_ee_tt.qzv} .
+cp ~/Share/qiime2-atacama-tutorial/denoising_alt/{denoising-stats_ee_tt.qzv,table_ee_tt.qzv,rep-seqs_ee_tt.qzv} .
 ```  
 
 Just to resume the results:  

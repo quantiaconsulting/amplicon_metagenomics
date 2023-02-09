@@ -107,8 +107,8 @@ qiime demux summarize \
 ​
 ## Importing not demultiplexed data
 During our tutorial we've worked with data that has been already demultiplexed.  
-Sometimes you need to perform the data demultiplexing, so let's demultiplex them!!!    
-*** Check you are in your home folder***  
+Sometimes you need to perform the data demultiplexing, so let's demultiplex them!!!  
+** Check you are in your home folder**  
 Let's create a folder for multiplexed data  in your **home folder**:  
 :walking:  
 ```

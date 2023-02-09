@@ -469,7 +469,7 @@ qiime taxa collapse \
 ```
 
 #### Filtering like a boss!!!
-![boss](https://gfycat.com/uglyadeptankolewatusi)  
+<iframe src='https://gfycat.com/ifr/UglyAdeptAnkolewatusi' frameborder='0' scrolling='no' allowfullscreen width='640' height='353'></iframe><p> <a href="https://gfycat.com/uglyadeptankolewatusi">via Gfycat</a></p>  
 
 Just to clarify the usage of the `--p-where` option below it is shown its caption:  
 `` 

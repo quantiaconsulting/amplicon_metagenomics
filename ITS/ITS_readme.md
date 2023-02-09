@@ -300,8 +300,8 @@ qiime demux summarize \
 So let's denoise our data!!!  
 **DO NOT EXECUTE THE FOLLOWING CHUNK OF CODE**.  
 :stop_sign:  
-```
-qiime dada2 denoise-paired \
+
+>qiime dada2 denoise-paired \
   --i-demultiplexed-seqs sequences-trimmed.qza \
   --p-trunc-len-f 0 \
   --p-trunc-len-r 0 \
@@ -311,7 +311,7 @@ qiime dada2 denoise-paired \
   --o-representative-sequences dada2-repseq_ITS.qza \
   --o-table dada2-table_ITS.qza \
   --o-denoising-stats dada2-stats_ITS.qza
-```
+
 
 Let's copy pre-processed data and tabulate all the available info:  
 :walking:  
@@ -347,8 +347,8 @@ The first step in this process is to assign taxonomy to the sequences in our `Fe
 We will initially perform the taxonomic classification by using [**classify-consensus-vsearch**](https://docs.qiime2.org/2019.1/plugins/available/feature-classifier/classify-consensus-vsearch/).
 ***Like the previous time-consuming step, we show you the used line, but we are just copying the pre-computed results.***  
 :stop_sign:  
-```
-qiime feature-classifier classify-consensus-vsearch \
+
+>qiime feature-classifier classify-consensus-vsearch \
   --i-query dada2-repseq_ITS.qza \
   --i-reference-reads ../ITSxpress_ITS_tutorial/unite.qza \
   --i-reference-taxonomy ../ITSxpress_ITS_tutorial/unite-taxonomy.qza \
@@ -356,7 +356,7 @@ qiime feature-classifier classify-consensus-vsearch \
   --p-perc-identity 0.9 \
   --p-threads 20 \
   --o-classification vsearch_taxonomy_ITS.qza
-```
+
 Now copy the produced data and generate visualization files:  
 :walking:  
 ```
@@ -375,12 +375,12 @@ qiime taxa barplot \
 
 Now we're also going to use the _sklearn_ classifier.  
 :stop_sign:  
-```
-qiime feature-classifier classify-sklearn \
+
+>qiime feature-classifier classify-sklearn \
   --i-classifier ../ITSxpress_ITS_tutorial/classifier.qza \
   --i-reads dada2-repseq_ITS.qza \
   --o-classification taxonomy_ITS_sklearn.qza 
-```
+
 Let's copy results and visualize them:  
 :walking:  
 ```

@@ -199,10 +199,6 @@ We now can download the outputted .html file and explore it on our own computers
 ![](../unix_short_tutorial/fastqc.png)
 *Illumina vs PacBio*  
 
-## FASTQ quality control <a name="FASTQ quality control"></a>
-List of tools for FASTQ Quality Control
-![](../unix_short_tutorial/qc_list.png)
-
 **FastQC** is a really useful tool but the main drawback is it generates a report for file for each analysed fastq file.  
 So it is not so simple to figure out what is overall the quality of our raw data.  
 A solution is to apply [**MultiQC**](https://multiqc.info/) a tool allowing to *aggregate results from bioinformatics analyses across many samples into a single report*.  
@@ -210,8 +206,6 @@ A solution is to apply [**MultiQC**](https://multiqc.info/) a tool allowing to *
 Create a folder that will contain all the FastQC reports:  
 :walking:  
 ```
-cd
-
 mkdir fastqc_reports 
 ```
 Execute FastQC on our raw data. In order to save time we're going to evaluate only `Baquedano`. In our test case, it is simple cause those file names start with `BAQ`.  
@@ -340,8 +334,8 @@ mkdir tax_import && cd tax_import
 So let's start with `qza` data download:  
 :stop_sign:  
 ```
-wget --no-check-certificate https://data.qiime2.org/2022.2/common/silva-138-99-seqs.qza
-wget --no-check-certificate https://data.qiime2.org/2022.2/common/silva-138-99-tax.qza
+wget --no-check-certificate https://data.qiime2.org/2022.11/common/silva-138-99-seqs.qza
+wget --no-check-certificate https://data.qiime2.org/2022.11/common/silva-138-99-tax.qza
 ```
 If you plan to use alignment based approaches for taxonomic assigment (i.e. BLAST or VSEARCH), that's enough. You may proceed with ASV classification.  
 Otherwise, if you would like to use the **sklearn** approach you need to train the classifier.  
@@ -351,14 +345,13 @@ In the **EXAMPLE** below we are extracting the V3-V4 hyper-variable regions from
 Both the following two steps are quite time-consuming so, we are just going to discuss how to do that.  
 Initially, we extract from our reference collection, only the regions in which we are interested:  
 :stop_sign:  
-```
-qiime feature-classifier extract-reads \
+
+>qiime feature-classifier extract-reads \
   --i-sequences silva-138-99-seqs.qza \
   --p-f-primer CCTACGGGNGGCWGCAG \
   --p-r-primer GGACTACNVGGGTWTCTAAT \
   --p-n-jobs 20 \
   --o-reads v3v4.ref-seqs.qza
-```
 
 There are some additional options you could consider:
  * `--p-min-length`: min amplicon length  
@@ -366,12 +359,12 @@ There are some additional options you could consider:
 
 Finally, we are ready to train a classifier specifically designed for the V3V4 region:  
 :stop_sign:  
-```
-qiime feature-classifier fit-classifier-naive-bayes  \
+
+>qiime feature-classifier fit-classifier-naive-bayes  \
     --i-reference-reads v3v4.ref-seqs.qza \
     --i-reference-taxonomy silva-138-99-tax.qza \
     --o-classifier v3v4.SILVA_138_NR_99_classifier.qza
-```
+
 
 ### Importing a reference collection in QIIME2 and train the classifier
 In some cases, you also need to import reference sequences and taxonomy in QIIME2.

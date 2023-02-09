@@ -371,21 +371,12 @@ In some cases, you also need to import reference sequences and taxonomy in QIIME
 Let's try to import MIDORI data in QIIME2:  
 :walking:  
 ```
-cd
-
 mkdir MIDORI_ref && cd MIDORI_ref 
 ```
 Download MIDORI data. It has been already properly formatted for QIIME2 import:  
 :walking:  
 ```
-wget --no-check-certificate https://www.reference-midori.info/download/Databases/GenBank249/QIIME/uniq/MIDORI_UNIQ_NUC_GB249_CO1_QIIME.fasta.gz
-wget --no-check-certificate https://www.reference-midori.info/download/Databases/GenBank249/QIIME/uniq/MIDORI_UNIQ_NUC_GB249_CO1_QIIME.taxon.gz
-```
-Then we need un unpack the downloaded data.  
-:walking:  
-```
-gzip -d MIDORI_UNIQ_NUC_GB249_CO1_QIIME.fasta.gz 
-gzip -d MIDORI_UNIQ_NUC_GB249_CO1_QIIME.taxon.gz
+cp ~/Share/tax_import/MIDORI_ref/{MIDORI_UNIQ_NUC_GB249_CO1_QIIME.fasta,MIDORI_UNIQ_NUC_GB249_CO1_QIIME.taxon} .
 ```
 
 Now we are ready to import the reference collection data. We begin by importing the fasta file:  
@@ -478,6 +469,7 @@ qiime taxa collapse \
 ```
 
 #### Filtering like a boss!!!
+![boss](https://gfycat.com/uglyadeptankolewatusi)
 Just to clarify the usage of the `--p-where` option below it is shown its caption:  
 `` 
 --p-where TEXT       SQLite WHERE clause specifying sample metadata criteria that must be met to be included in the

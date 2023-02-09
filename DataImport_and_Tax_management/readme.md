@@ -14,17 +14,17 @@ Some additional Tips
    1. [Filter the table according to a specific samples subset](#filter-the-table-according-to-a-specific-samples-subset)
    2. [Filter the table according to a specific feature](#filter-the-table-according-to-a-specific-samples-subset)
       1. [Filtering like a boss!!!](#filtering-like-a-boss)
-7. [Import ASV table obtaiend outside QIIME2 into it](#import-asv-table-obtaiend-outside-qiime2-into-it)  
+7. [Import ASV table obtained outside QIIME2 into it](#import-asv-table-obtained-outside-qiime2)  
 ​
 ---
 ***Always remember to active QIIME2 environment!!!***  
 :walking:  
 ```
-conda activate qiime2-2022.11
+source activate qiime2-2022.11
 ```
 ---
 ​
-In order to avoid confusion about different analyses we are going to first generate new folders.  
+In order to avoid confusion about different examples, we are going to first generate new folders.  
 First just get back in your `home` folder:  
 :walking:  
 ```
@@ -35,9 +35,18 @@ cd
 ## Importing demultiplexed data using a manifest file
 During the main tutorial we imported the PE fastq files by using:  
  - **type** `SampleData[PairedEndSequencesWithQuality]`: which means we are using PE fastq files;
- - **input-format** `CasavaOneEightSingleLanePerSampleDirFmt`: which means the file name are formatted by using the **CASAVA** file format.  
+ - **input-format** `CasavaOneEightSingleLanePerSampleDirFmt`: which means the file name are formatted by using the [**CASAVA**](https://www.illumina.com/content/dam/illumina-marketing/documents/products/technotes/technote_systems_software.pdf) file format.  
+ 
+CASAVA automatically creates files by following a defined [schema](https://support.illumina.com/help/BaseSpace_OLH_009008/Content/Source/Informatics/BS/NamingConvention_FASTQ-files-swBS.htm):
+ - Sample name: `Physalia`
+ - Sample number: `S1`
+ - Lane number:  `L001`
+ - Read Number: it can start with R (reads) or I (index)  `R1`
+ - the last segment is always *001*.  
+Finally, we obtain: Physalia_S1_L001_R1_001.fastq.gz.  
+
 ​
-Sometimes our data are not formatted according to **CASAVA** format but are independent fastq files, so we need to use an alternative way to import the data.  
+Sometimes our data are not formatted according to **CASAVA** format but are independent fastq files, so we need to use an alternative way to import it.  
 To import the data we need to generate a **manifest file**.
 ​
 A manifest file uses the following format:
@@ -224,6 +233,7 @@ mkdir denoising_alt && cd denoising_alt
 Now we re-perform the denoising step by modifying the **Expected Error (ee)** threshold.  
 Just remember **ee** is a way to measure the number of nucleotides that are probably wrong in our sequences:  
 ![](ee-2.png)  
+
 :stop_sign:  
 The option we introduce are `--p-max-ee-f` and `--p-max-ee-f`.
 ```

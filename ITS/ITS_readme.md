@@ -32,11 +32,11 @@ Usually, just the ITS1 or the ITS2 are amplified and sequenced.
 
 Before starting to analyse fungal ITS data just a couple of consideration:
 ![its](ITS_region_schema.png)  
-*[https://benjjneb.github.io/dada2/ITS_workflow.html](https://benjjneb.github.io/dada2/ITS_workflow.html)*  
+
 
 We could observe three different situations:  
 - The amplified ITS1 region is longer than the read lengths, the forward and reverse reads overlap to capture the full amplified ITS region, but do not read into the opposite primer;
-- The amplified ITS1 region is longer than the read lengths, the forward and reverse reads do not overlap to capture the full amplified ITS region. **This is the worst condition**; 
+- The amplified ITS1 region is longer than the read lengths, the forward and reverse reads do not overlap to capture the full amplified ITS region. **This is the worst condition**. _Actually it is quite unlike to happen with fungi_; 
 - The amplified ITS1 region is shorter than the read lengths, and the forward and reverse reads extend into the opposite primers which will appear in their reverse complement form towards the ends of those reads.    
 
 
@@ -193,30 +193,31 @@ We are going to use the Naive Bayes classifier that we've pre-trained by using t
 Following is listed the applied procedure on the files obtained from the UNITE repository and how the taxonomic classification was performed:  
 **DO NOT EXECUTE THE FOLLOWING CHUNK OF CODE**.  
 :stop_sign:    
-```
-tar xvfz C5547B97AAA979E45F79DC4C8C4B12113389343D7588716B5AD330F8BDB300C9.tgz
 
-qiime tools import \
+
+>tar xvfz C5547B97AAA979E45F79DC4C8C4B12113389343D7588716B5AD330F8BDB300C9.tgz
+
+>qiime tools import \
   --type 'FeatureData[Sequence]' \
   --input-path sh_qiime_release_10.05.2021/sh_refs_qiime_ver8_dynamic_10.05.2021.fasta \
   --output-path unite.qza
 
-qiime tools import \
+>qiime tools import \
   --type 'FeatureData[Taxonomy]' \
   --input-format HeaderlessTSVTaxonomyFormat \
   --input-path sh_qiime_release_10.05.2021/sh_taxonomy_qiime_ver8_dynamic_10.05.2021.txt \
   --output-path unite-taxonomy.qza
 
-qiime feature-classifier fit-classifier-naive-bayes \
+>qiime feature-classifier fit-classifier-naive-bayes \
   --i-reference-reads unite.qza \
   --i-reference-taxonomy unite-taxonomy.qza \
   --o-classifier classifier.qza
   
-qiime feature-classifier classify-sklearn \
+>qiime feature-classifier classify-sklearn \
   --i-classifier classifier.qza \
   --i-reads dada2out/representative_sequences.qza \
   --o-classification taxonomy.qza
-```
+
 
 No we are ready to copy the performed taxonomic classification and generate visualization files:  
 :walking:  

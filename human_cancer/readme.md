@@ -13,16 +13,17 @@ Human microbiome in gastric cancer
 
 
 ## Abstract
-Gastric Cancer (GC) is the fifth most prevalent cancer worldwide and the third leading cause of global cancer mortality.  
+Gastric Cancer (GC) is the 5th most prevalent cancer worldwide and the third leading cause of global cancer mortality.  
 Recently, the involvement of the microbiota in gastric carcinogenesis has been described.  
 To deepen this aspect [Ravegnini et al. IJMS 2021](https://www.mdpi.com/1422-0067/21/24/9735) compared microbiota 
-composition in **signet-ring cell carcinoma (SRCC)** and **adenocarcinoma (ADC)**. They used 40 FFPE samples corresponding to tumor and paired healty tissues. 
+composition in **signet-ring cell carcinoma (SRCC)** and **adenocarcinoma (ADC)**. They used 40 FFPE samples 
+corresponding to tumor and paired healthy tissues in both cancer subtypes. 
 
-## Data Analysis
+## Data Analysis: Precomputed data
 We are going to explain the analysis already performed on a subset of the paper data. In particular, we will analyse:  
-- 5 SRCC samples;  
-- 5 ADC samples;  
-The V3-V4 amplicon was amplified and sequenced by using the _Illumina MiSeq platform_ wuth a 2x300 layout.       
+- 5 SRCC samples from PPFE biopsies;  
+- 5 ADC samples from PPFE biopsies;  
+The V3-V4 amplicon was amplified and sequenced by using the _Illumina MiSeq platform_ with a 2x300 layout.       
 **Considering the available time, data were pre-computed. So start to copy the folder:**
 ```
 cd
@@ -118,11 +119,11 @@ Moreover, we increase the EE to 4 and 5.
    --m-sample-metadata-file ijms_metadata.tsv 
 
 
-## Taxonomic Classification  
+### Taxonomic Classification  
 Initially we need to extract the 16S regions corresponding to the amplified amplicon and then train the classifier on it.  
 The SILVA release was downloaded directly from [QIIME2 data resources page](https://docs.qiime2.org/2021.8/data-resources/).   
 
-### Training of the Classifier
+#### Classifier Training
 >qiime feature-classifier extract-reads \
   --i-sequences silva-138-99-seqs.qza \
   --p-f-primer CCTACGGGNGGCWGCAG \
@@ -153,7 +154,7 @@ Now we are ready to classify.
     --o-visualization taxa-bar-plots_16S_SKLEARN.qzv
 
 
-## Filter out mitochondrion and chloroplast
+### Filter out mitochondrion and chloroplast
 Because we notice that there are 16S labelled as mitochondrion and chloroplast we need to remove those ASVs from subsequent analysis.  
 
 >qiime taxa filter-seqs \
@@ -169,7 +170,7 @@ Because we notice that there are 16S labelled as mitochondrion and chloroplast w
   --o-filtered-table table-no-mitochondria-no-chloroplast.qza
 
 
-## Phylogenetic tree inference
+### Phylogenetic tree inference
 Now we are ready to generate a rooted tree and rarefaction curves.  
 
 >qiime phylogeny align-to-tree-mafft-fasttree \
@@ -180,7 +181,7 @@ Now we are ready to generate a rooted tree and rarefaction curves.
   --o-rooted-tree rooted-tree_16S.qza
 
 
-## Rarefaction
+### Rarefaction
 Let's perform rarefaction curves to decide the most appropriate rarefaction depth.    
 
 >qiime diversity alpha-rarefaction \

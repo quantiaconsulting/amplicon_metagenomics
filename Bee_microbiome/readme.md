@@ -134,14 +134,14 @@ You could run these tests on just a subset (i.e. just bee guts with no problems)
 
 ## Now your go!
 
-Use the diversity calculations and taxonomic plots to answer questions about your data. 
+Use the diversity calculations and taxonomic plots to answer questions about your data. Here are just some suggestions, but also use your own! You can analyse using qiime, phyloseq, deseq2, or any other R packages that you'd like to practice!
 
 *Choose either gut, brood, or Bee-Bread (collected pollen)*
 
 
 - Is there a significant difference in alpha diversity between Pristine and Agricultural environments?
 - Is there a difference in community structure using unifrac distance? Is it significant?
-- Are there any significantly associated ASVs? (using ANCOM to test)
+- Are there any significantly associated ASVs?
 - What effect are the samples labelled "problem" causing? Should they be removed?
 
 

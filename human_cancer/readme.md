@@ -204,7 +204,7 @@ the most appropriate sampling depth and retaining the largest number of samples.
 
 
 ## Task to complete
-![homework](https://tenor.com/bauIT.gif)
+![homework](https://media.giphy.com/media/ejKpjEfcPuYve/giphy-downsized-large.gif)
 
 Now you're ready to finalize the analysis. The idea is to answer the following questions:  
 1. Compare alpha diversity measures between ADC and SRC. Are you able to identify any relevant difference?

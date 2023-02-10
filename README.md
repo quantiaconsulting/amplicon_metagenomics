@@ -59,17 +59,17 @@ __LEARNING OUTCOMES__
 
 
 ## Day 5
-- [ ] [Lecture  - Multivariate Analysis of Ecological Communities](https://docs.google.com/presentation/d/1SEXLnsAk71ghWJFBjvnSL9-JIU5kHyYi/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true)  
-  - [ ] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  
-  - [ ] Multivariate Tests for differences in microbial community composition  
-- [ ] [Lab  - Multivariate Statistics](https://glcdn.githack.com/bfosso/physalia_metabarcoding_oct2021/raw/main/Day4_5_material/Physalia-Metabarcoding-Course-Oct21.html)  
-  - [ ] Data import & preparation (normalisations, transformations, metadata)  
-  - [ ] Multivariate tests for differences in community composition (PERMANOVA, PERMDISP)    
-- [ ] [Lecture - Differential Abundance Analysis of Microbial Communities](https://docs.google.com/presentation/d/1Z2F2_goIAuuKXQQ7ocClOgq8x6tbpClW/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true) 
-  - [ ] Lab: Differential Abundance Analysis with DESeq2
-- [ ] :arrow_right: _It's Case studies Time!!!_
-  - [ ] [Human microbiome data](human_cancer/readme.md)
-  - [ ] [Zoological(Bees bees bees!)](Bee_microbiome/readme.md)
-  - [ ] [Water-mosquito](water_mosquito/readme.md)
-- [ ] [Record your Case Study findings](https://drive.google.com/drive/folders/1jwEfH0Urm_TjR2lVEO03L1EStmCSWyoC?usp=sharing)
-- [ ] Beer Time :beers: :beers: :beers:
+- [X] [Lecture  - Multivariate Analysis of Ecological Communities](https://docs.google.com/presentation/d/1SEXLnsAk71ghWJFBjvnSL9-JIU5kHyYi/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true)  
+  - [X] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  
+  - [X] Multivariate Tests for differences in microbial community composition  
+- [X] [Lab  - Multivariate Statistics](https://glcdn.githack.com/bfosso/physalia_metabarcoding_oct2021/raw/main/Day4_5_material/Physalia-Metabarcoding-Course-Oct21.html)  
+  - [X] Data import & preparation (normalisations, transformations, metadata)  
+  - [X] Multivariate tests for differences in community composition (PERMANOVA, PERMDISP)    
+- [X] [Lecture - Differential Abundance Analysis of Microbial Communities](https://docs.google.com/presentation/d/1Z2F2_goIAuuKXQQ7ocClOgq8x6tbpClW/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true) 
+  - [X] Lab: Differential Abundance Analysis with DESeq2
+- [X] :arrow_right: _It's Case studies Time!!!_
+  - [X] [Human microbiome data](human_cancer/readme.md)
+  - [X] [Zoological(Bees bees bees!)](Bee_microbiome/readme.md)
+  - [X] [Water-mosquito](water_mosquito/readme.md)
+- [X] [Record your Case Study findings](https://drive.google.com/drive/folders/1jwEfH0Urm_TjR2lVEO03L1EStmCSWyoC?usp=sharing)
+- [X] Beer Time :beers: :beers: :beers:

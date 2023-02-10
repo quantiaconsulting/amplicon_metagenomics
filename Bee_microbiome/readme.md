@@ -14,13 +14,13 @@ Differences in honey bee bacterial diversity and composition in agricultural and
 Agrochemicals and biocides are suspected to cause a dysbiosis of honey bee microbiota,decreasing colonies ability to respond to the environment. As a first step to investigate agriculture andbeekeeping impact, hives bacteriomes from an anthropized environment (Agri-env) were compared tothat of pristine’s (Prist-env). 16S rRNA sequencing evidenced differences in richness and compositionbetween sample types (Gut (G), Brood (B), Bee-bread (collected pollen) (BB)) and environments. 
 Muñoz-Colmenero et. al, 2020
 
-https://link.springer.com/article/10.1007/s13592-020-00779-w
+- Publication link: https://link.springer.com/article/10.1007/s13592-020-00779-w
 
 ## Data Analysis
 We have a collection of samples to the following conditions, with 3x replicates per hive (some samples have failed sequencing and been filtered out). Note that in addition to the environment (clean vs agricultural) and sample types (Gut, Brood, Bee-Bread) there is also Hive internal air (not mentioned in the paper) and additional metadata regarding samples with detected infections. Think about how that could affect your results!
 
-Full raw data can be found at https://www.ebi.ac.uk/ena/browser/view/ERP107384. 
-It is also available as qiime objects from the qiita database: https://qiita.ucsd.edu/study/description/14084
+- Full raw data can be found at https://www.ebi.ac.uk/ena/browser/view/ERP107384. 
+- It is also available as qiime objects from the qiita database: https://qiita.ucsd.edu/study/description/14084
 
 
 ### Input data

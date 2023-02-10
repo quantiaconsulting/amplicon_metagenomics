@@ -209,7 +209,7 @@ the most appropriate sampling depth and retaining the largest number of samples.
 Now you're ready to finalize the analysis. The idea is to answer the following questions:  
 1. Compare alpha diversity measures between ADC and SRC. Are you able to identify any relevant difference?
 2. Compare beta diversity measures between ADC and SRC. Are you able to identify any relevant difference?
-3. We would like to know if there are any ASV, genus of family differentially abundant among the tested condition. 
+3. We would like to know if there are any ASV, and genus differentially abundant among the tested condition. 
 
 [Find here how to complete the tasks!!!](answer_to_questions.md)
 

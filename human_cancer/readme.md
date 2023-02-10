@@ -211,6 +211,32 @@ Now you're ready to finalize the analysis. The idea is to answer the following q
 2. Compare beta diversity measures between ADC and SRC. Are you able to identify any relevant difference?
 3. We would like to know if there are any ASV, and genus differentially abundant among the tested condition. 
 
+### Suggestion for point 3
+To execute Differential Abundance on this kind of data we can use ANCOM-BC:   
+1. First filter-out low prevalent asvs:
+```
+qiime feature-table filter-features \
+  --i-table table-no-mitochondria-no-chloroplast.qza \
+  --p-min-frequency 5 \
+  --p-min-samples 5 \
+  --o-filtered-table tasks/filtered_table_16S.qza
+```
+2. Apply ANCOM-BC:
+```
+qiime composition ancombc \
+  --i-table tasks/filtered_table_16S.qza \
+  --m-metadata-file ijms_metadata.tsv \
+  --p-formula type \
+  --o-differentials tasks/asv-ancom.qza
+```
+Finally, we generate a visualization file:
+```
+qiime composition tabulate \
+  --i-data tasks/asv-ancom.qza \
+  --o-visualization tasks/asv-ancom.qzv
+```
+
+
 [Find here how to complete the tasks!!!](answer_to_questions.md)
 
 [Back to the top](../README.md) 

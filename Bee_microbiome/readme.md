@@ -13,10 +13,15 @@ Differences in honey bee bacterial diversity and composition in agricultural and
 ## Abstract
 Agrochemicals and biocides are suspected to cause a dysbiosis of honey bee microbiota,decreasing colonies ability to respond to the environment. As a first step to investigate agriculture andbeekeeping impact, hives bacteriomes from an anthropized environment (Agri-env) were compared tothat of pristine’s (Prist-env). 16S rRNA sequencing evidenced differences in richness and compositionbetween sample types (Gut (G), Brood (B), Bee-bread (collected pollen) (BB)) and environments. 
 Muñoz-Colmenero et. al, 2020
-https://link.springer.com/article/10.1007/s13592-020-00779-w
+
+- Publication link: https://link.springer.com/article/10.1007/s13592-020-00779-w
 
 ## Data Analysis
 We have a collection of samples to the following conditions, with 3x replicates per hive (some samples have failed sequencing and been filtered out). Note that in addition to the environment (clean vs agricultural) and sample types (Gut, Brood, Bee-Bread) there is also Hive internal air (not mentioned in the paper) and additional metadata regarding samples with detected infections. Think about how that could affect your results!
+
+- Full raw data can be found at https://www.ebi.ac.uk/ena/browser/view/ERP107384. 
+- It is also available as qiime objects from the qiita database: https://qiita.ucsd.edu/study/description/14084
+
 
 ### Input data
 Number of hives included
@@ -38,7 +43,7 @@ Therefore you can copy these files to your local folder and begin your analysis
 ```
 mkdir BEE-analysis
 cd BEE-analysis
-cp /home/Share/BEE/* .
+cp /home/userX/Share/BEE/* .
 ```
 You should now have these files to use for your analysis:
 ```
@@ -48,6 +53,10 @@ rep-seqs99.qza
 rooted-tree.qza
 BEE-metadata.tsv
 ```
+Remember to activate the qiime environment before you can run qiime commands
+```
+source activate qiime2-2022.11
+``` 
 
 ## Visualise taxonomically 
 
@@ -134,14 +143,14 @@ You could run these tests on just a subset (i.e. just bee guts with no problems)
 
 ## Now your go!
 
-Use the diversity calculations and taxonomic plots to answer questions about your data. 
+Use the diversity calculations and taxonomic plots to answer questions about your data. Here are just some suggestions, but also use your own! You can analyse using qiime, phyloseq, deseq2, or any other R packages that you'd like to practice!
 
 *Choose either gut, brood, or Bee-Bread (collected pollen)*
 
 
 - Is there a significant difference in alpha diversity between Pristine and Agricultural environments?
 - Is there a difference in community structure using unifrac distance? Is it significant?
-- Are there any significantly associated ASVs? (using ANCOM to test)
+- Are there any significantly associated ASVs?
 - What effect are the samples labelled "problem" causing? Should they be removed?
 
 

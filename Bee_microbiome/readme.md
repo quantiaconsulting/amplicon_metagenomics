@@ -43,7 +43,7 @@ Therefore you can copy these files to your local folder and begin your analysis
 ```
 mkdir BEE-analysis
 cd BEE-analysis
-cp /home/Share/BEE/* .
+cp /home/userX/Share/BEE/* .
 ```
 You should now have these files to use for your analysis:
 ```

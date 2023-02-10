@@ -496,4 +496,7 @@ qiime composition ancom \
   --m-metadata-column transect-name \
   --o-visualization ancom_transect-name.qzv
 ```
+
+Recently also [**ANCOM-BC**](https://docs.qiime2.org/2022.11/plugins/available/composition/ancombc/) has been implemented in QIIME.
+
 [**Back to the program**](../README.md)  

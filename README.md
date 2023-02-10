@@ -52,10 +52,13 @@ __LEARNING OUTCOMES__
 
 ## Day 4
 - [X] [ITS sequence analysis](ITS/ITS_readme.md)
-- [ ] [Some additional processing Tips :volcano: ](DataImport_and_Tax_management/readme.md)
+- [X] [Some additional processing Tips :volcano: ](DataImport_and_Tax_management/readme.md)
   - [X] Alternative loading methods in Qiime
-  - [ ] Further, Understanding and Assessing your raw data
-- [ ] [Experimental Design part 2 and short introduction to R](https://docs.google.com/presentation/d/1ybw75VKyMK9vJ_yy2SpFYbn8SZMJ7_6yf-BC0gLJ5vg/edit?usp=sharing)
+  - [X] Further, Understanding and Assessing your raw data
+- [X] [Experimental Design part 2 and short introduction to R](https://docs.google.com/presentation/d/1ybw75VKyMK9vJ_yy2SpFYbn8SZMJ7_6yf-BC0gLJ5vg/edit?usp=sharing)
+
+
+## Day 5
 - [ ] [Lecture  - Multivariate Analysis of Ecological Communities](https://docs.google.com/presentation/d/1SEXLnsAk71ghWJFBjvnSL9-JIU5kHyYi/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true)  
   - [ ] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  
   - [ ] Multivariate Tests for differences in microbial community composition  
@@ -64,8 +67,6 @@ __LEARNING OUTCOMES__
   - [ ] Multivariate tests for differences in community composition (PERMANOVA, PERMDISP)    
 - [ ] [Lecture - Differential Abundance Analysis of Microbial Communities](https://docs.google.com/presentation/d/1Z2F2_goIAuuKXQQ7ocClOgq8x6tbpClW/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true) 
   - [ ] Lab: Differential Abundance Analysis with DESeq2
-
-## Day 5
 - [ ] :arrow_right: _It's Case studies Time!!!_
   - [ ] [Human microbiome data](human_cancer/readme.md)
   - [ ] [Zoological(Bees bees bees!)](Bee_microbiome/readme.md)

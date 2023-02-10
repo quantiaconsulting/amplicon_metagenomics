@@ -72,4 +72,4 @@ __LEARNING OUTCOMES__
   - [X] [Zoological(Bees bees bees!)](Bee_microbiome/readme.md)
   - [X] [Water-mosquito](water_mosquito/readme.md)
 - [X] [Record your Case Study findings](https://drive.google.com/drive/folders/1jwEfH0Urm_TjR2lVEO03L1EStmCSWyoC?usp=sharing)
-- [X] Beer Time :beers: :beers: :beers:
+- [X] Beer Time :beers: :beers: :beers: 

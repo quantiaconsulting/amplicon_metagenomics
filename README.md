@@ -22,7 +22,7 @@ __LEARNING OUTCOMES__
   
 
 ## Program
-[Physalia Welcome](https://drive.google.com/open?id=1zAqld5-NcofYez4QYsGGvX0ZtJGphRNQHCBVwUgYNVE)
+[Physalia Welcome]([https://drive.google.com/open?id=1zAqld5-NcofYez4QYsGGvX0ZtJGphRNQHCBVwUgYNVE](https://drive.google.com/drive/folders/1uPxEeD0vtEoArmq0zDKP7MnP6lmZ4-Nk))
 [Course participants introduction]
 ## Day 1
 - [X] [Introduction to the course idea and Instructors](Welcome.pptx):

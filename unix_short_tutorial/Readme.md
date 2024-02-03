@@ -123,7 +123,7 @@ You can also use `"glob patterns"` to select specific files:
 
 Use this to list all the files that begin "sub"
 
-
+## Copying & Moving files
 We are now going to copy some test files into our area and investigate. The file is in the /home/Share/Linux-exercises folder. 
 
 Copying and moving uses a standard format whether it’s within one server or between separate ones:
@@ -168,20 +168,7 @@ All bash commands have a manual page. By typing man [command] you can view it. W
 
 Now, open the manual page for the ls command. Note that some programs might use a different option for showing the manual i.e. -h or --help. It varys based on the coder that wrote the program!
 
-
----------------------------------------------------------------------------------------------------------------------
-### FASTQ format
-[FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) files are text files containing sequence data with a quality (Phred) score for each base, represented as an ASCII character.   
-The quality score is an integer (Q) which is typically in the range 2 - 40, but higher and lower values are sometimes used. In particular, versions 1.8 and later of the Illumina platform generate reads with Q scores up to 41.  
-![](fastq_fig.jpg)  
-*FASTQ read with 50nt in Illumina format (ASCII_BASE=33).*  
-There are always four lines per read:
-1. The first line starts with '@', followed by the label (read identifier);  
-2. The second line contains the observed sequence;
-3. The third line starts with '+'. In some variants, the '+' line contains a second copy of the label;
-4. The fourth line contains the Q scores represented as ASCII characters.
----------------------------------------------------------------------------------------------------------------------
-
+## Reading files
 To view what the fastq files look like, the edit command would open a file in a Text Editor, such as **gedit** (**NOT WORD OFFICE or any similar software!!!**).  
 With the abbreviated test files, it might work, but normal fastq files are too large.  
 We can, however, open a part of the file using the editor `less`.   
@@ -215,6 +202,7 @@ less tail50.txt
 ```
 Quit `less`.  
 
+## Grep to search files
 One of the most useful commands in the Terminal is `grep`. This command searches through a text for lines matching a given argument and prints out only the lines that contain the argument.  
 Try using grep to pull out any read that contains the sequence **CTCCTAC** from a fastq file:
 ```
@@ -256,7 +244,7 @@ sed -i -e 's/^--//g' example.fa
 sed -i -e '/^$/d' example.fa
 ```
 
-# Using text editors
+## Using text editors
 
 Plain text files are important, both as input to bioinformatics programs and as input or configuration files for system programs. We highly recommend that you learn to use a text editor to prepare and edit plain text files.
 

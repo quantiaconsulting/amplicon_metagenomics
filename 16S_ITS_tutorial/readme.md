@@ -66,13 +66,13 @@ Thus, it’s usually straightforward to manipulate QIIME 2 metadata using a soft
 You can find the [file](https://docs.google.com/spreadsheets/d/1a1NFqpBjwb8Ul0c4O68IVFb9JUn5BjLdyHr422LMfE0/edit#gid=1988763045) in the Lab folder of today or download it directly from QIIME2 to your working area by running the command:  
 :walking:  
 ```
-wget -O "sample-metadata.tsv" \
-  "https://data.qiime2.org/2022.2/tutorials/atacama-soils/sample_metadata.tsv"
+wget \
+  -O "sample-metadata.tsv" \
+  "https://data.qiime2.org/2023.9/tutorials/atacama-soils/sample_metadata.tsv"
 ```
 
 **If you would like to play around the sample-metadata.tsv file, please copy it into another folder and have fun with it.**  
 **Remember this *sample-metadata_16S.tsv* file will be used throughout the rest of the tutorial.**
-
 
 Since there is no universal standard for TSV files, it is important understand how QIIME2 will interpret the file’s contents to get the most out of your (meta)data!
 
@@ -89,10 +89,11 @@ be presented each time Keemei is run.
 ## Start QIIME2 session
 
 As we discussed during the introduction to UNIX-based environment, we take advantage of using *virtual environments* to avoid affecting the main OS.  
-So everytime we start a new session, we need to activate the virtual environment containing our QIIME2 installation.  
+
+Everytime we start a new session **(!!EVERY TIME!!)**, we need to activate the virtual environment containing our QIIME2 installation.  
 :walking:  
 ```
-source activate qiime2-2022.11
+source activate qiime2-amplicon-2023.9
 ```
 
 ### Pipeline Overview
@@ -100,14 +101,12 @@ Here is an overview of the general steps of the QIIME2 pipeline:
 ![](steps.png)
 
 
-# STEP1: Importing data, summarize the results, and examining quality of the reads.
-Usually, by applying a *paired ends* sequencing layout we obtain 2 *fastq* file per each processed sample.  
-Technically, it means that our data are already **demultiplexed**. *What does it mean?*.  
-It means we sequenced more samples in a single sequencing run and the machine have already seperated our data according to a specific indexing schema.  
+## STEP1: Importing data, summarize the results, and examining quality of the reads.
+When performing *paired end* sequencing we obtain 2 *fastq* file per each processed sample. It means that our data are already **demultiplexed**.  
+
+It means we sequenced multiple samples in a single sequencing run and the machine has already seperated our data according to a specific indexing schema.  
 
 ---
-
-Take a look as the sequences are (in the most cases) generated:  
 
 ![alt text](https://sfvideo.blob.core.windows.net/sitefinity/images/default-source/product-page-images/next-generation-sequencing/ngs_adapter_designs.png?sfvrsn=8ce20807_8)
 
@@ -117,21 +116,21 @@ For more details have a look here:
 
 ---
 
-As mentioned during the previous sections, QIIME2 works with specific files called **artifacts**.  
+QIIME2 works with files named **artifacts**.  
 A QIIME2 artifact contains both data and metadata.
 
 Since QIIME2 works with artifacts instead of data files (e.g. FASTA files), you must create a QIIME2 artifact by importing your data.  
 **In the next days we will see how to import and export different objects from QIIME2, and we are going always to use artifacts.**
 
-Artifacts enable QIIME 2 to track, in addition to the data itself, the provenance of how the data came to be.  
+Artifacts enable QIIME 2 to track, in addition to the data itself, the provenance of how the data came to be.
 With an artifact’s provenance, you can trace back to all previous analyses that were run to produce the artifact, including the input data used at each step.  
 
-So we need to import our demultiplexed raw data into a qiime artifact.    
+We need to import our demultiplexed raw data into a qiime artifact.
 :walking:  
 ```
 qiime tools import \
     --type 'SampleData[PairedEndSequencesWithQuality]' \
-    --input-path ~/Share/raw_data_tutorial \
+    --input-path ~/Shared_folder/raw_data_tutorial \
     --input-format CasavaOneEightSingleLanePerSampleDirFmt \
     --output-path demux-paired-end.qza
 ```
@@ -143,10 +142,15 @@ To obtain an almost complete list of importable formats type the following line:
 qiime tools import --show-importable-formats --help
 ```
 
+This is only one of the possible ways to import data into QIIME, and there are methods for multiplexed or different types of files.  
+[A look at different way to import fastq files in QIIME](../DataImport_and_Tax_management/readme.md#some-example-of-data-import)
+
+
 ## Explore QIIME2 Objects
 
 By importing the sequences you have generated your first object in QIIME2: `demux-paired-end.qza`.
-Following we are interested to visualize our data and obtain some specific statistics.
+
+Now lets visualize our data and obtain some specific statistics.
 :walking:  
 ```
 qiime demux summarize \
@@ -154,36 +158,24 @@ qiime demux summarize \
   --o-visualization demux-paired-end.qzv
 ```
 
-Actually this is only one of the possible ways to import data into QIIME.  For instance, we may import different type of files.  
-[Let's have a look on different way to import fastq files in QIIME](../DataImport_and_Tax_management/readme.md#some-example-of-data-import)
+With the command  `demux summarize` you've generated a new type of objet: a file with `.qzv` extension. *Visualizations* are another type of data generated by QIIME2.  
 
-
-With the command  `demux summarize` you've generated a new type of objet: a file with `.qzv` extension.
-*Visualizations* are another type of data generated by QIIME2.  
 Visualizations contain similar types of metadata as QIIME2 artifacts, including provenance information, 
-but they are designed to allow data showing.   
+but they are designed to show what is happening with the data.   
 
 Both files (`qza` and `qzv`) can be **extracted** with a Compression/Decompression software (ex. gzip or unzip).
 
-Let's look together, download on your PC and unzip it. **What's inside?**
-
 There are also different ways to [export QIIME2 objects](https://docs.qiime2.org/2022.11/tutorials/exporting/).
 But remember that all existing provenance will be lost after exporting the files.
-
---- 
-
-Actually this is only one of the possible ways to import data into QIIME.  For instance, we may import different type of files.  
-[Let's have a look on different way to import fastq files in QIIME](../DataImport_and_Tax_management/readme.md#some-example-of-data-import)
 
 ---
 
 ### Visualize with QIIME2 viewer
 
-You can use [https://view.qiime2.org](https://view.qiime2.org) to easily view QIIME2 artifacts and visualizations files (generally .qza and .qzv files (see later)) 
+You can use [https://view.qiime2.org](https://view.qiime2.org) to easily view QIIME2 artifacts and visualizations files 
 without requiring a QIIME installation.
 
-Open it and drag and drop your qza or qzv file.   
-*You need to download the `demux-paired-end.qzv` file on your computer and then upload it on the viewer.*  
+Download, then drag-and-drop your demux-paired-end.qzv.
 
 Automatically, the **Overview** tab is opened and some basic statistics about our data are available.  
 In the **Interactive quality plot** tab we can access to the quality distributions of our data. The plot on the left 
@@ -193,22 +185,25 @@ In this example we have **150-base forward and reverse reads**.
 We’ll use these plots to determine what trimming parameters we want to use for data denoising with DADA2 by using the **dada2 denoise-paired** plugin.
 
   
-# STEP2: Quality controlling sequences and building Feature Table and Feature Data
+## STEP2: Quality filtering sequences and building Feature Table and Feature Data
 [**Key concept: OTU or ASV**](https://docs.google.com/presentation/d/1XHQGInyWt9SGmyH6C4UA2-flloR3vQghIzJ2MDAKsqY/edit?usp=sharing)  
-After importing the reads, we have inspected the sequence quality based on randomly selected samples.  
-What we now need is to remove the noise introduced during amplification and sequencing.
+After importing the reads we inspected the sequence quality based on randomly selected samples.  
+What we now need is to remove the "noise" introduced during amplification and sequencing which is specific to this methodology.
 
-## Quality filter of 16S
-Since we need the reads to be long enough to overlap when joining paired ends, we are just going to remove the first 13 bases of both forward and reverse reads, 
-but no trimming is applied with reads 3' end.
+### Quality filter of 16S
+Since we need the reads to be long enough to overlap when joining paired ends, we are just going to remove the first 13 bases of both forward and reverse reads,
+but no trimming is applied with reads 3' end. 
+
+This step is very subjective to your personal data!
 
 In this example, the same values are provided for `--p-trim-left-f` and `--p-trim-left-r`.  
 We are also setting the same values to `--p-trunc-len-f` and `--p-trunc-len-r` options. Actually, it is not strictly necessary considering we are not applying any trimming with reads 3' ends.  
 We're also using a multi-threading command to split the processing across multiple CPUs, which will be very useful when performing your own analysis with larger datasets.  
 
-Following are listed the lines to perform denoising. But considering it takes a while to complete we are going to use pre-computed data.  
+Following are listed the lines to perform denoising. HOWEVER, considering it takes a while to complete we have completed this step for you, rather than wait. 
 :stop_sign:  
- 
+```
+# DO NOT RUN THIS COMMAND
 >qiime dada2 denoise-paired \
   --i-demultiplexed-seqs demux-paired-end.qza \
   --p-trim-left-f 13 \
@@ -219,7 +214,7 @@ Following are listed the lines to perform denoising. But considering it takes a 
   --o-table table_16S.qza \
   --o-representative-sequences rep-seqs_16S.qza \
   --o-denoising-stats denoising-stats_16S.qza
-
+```
 
 Let's import our already done data.  
 :walking:
@@ -227,7 +222,7 @@ Let's import our already done data.
 cp ~/Share/qiime2-atacama-tutorial/{table_16S.qza,rep-seqs_16S.qza,denoising-stats_16S.qza}  . 
 ```
 
-Following we need to generate a qzv file containing the table summarizing the denoising process, so we can discuss the effect it had on the data.
+We can now generate a qzv file with a table summarizing the denoising process, so we can discuss the effect it had on the data.
 :walking:  
 ```
 qiime metadata tabulate \
@@ -237,15 +232,16 @@ qiime metadata tabulate \
 
 ---
 #### 454 and Ion Torrent data
-To whom it may be interested at this [**link**](https://benjjneb.github.io/dada2/faq.html#can-i-use-dada2-with-my-454-or-ion-torrent-data) you may find some suggestion to apply **DADA2** on 454 and Ion Torrent data.
+You may be interested in this background if you are working with 454 or Ion Torrent data [**link**](https://benjjneb.github.io/dada2/faq.html#can-i-use-dada2-with-my-454-or-ion-torrent-data).
 
 ---
 
-# STEP3: Summarizing Feature Table and Feature Data
+## STEP3: Summarizing Feature Table and Feature Data
 
 ## Summarize 16S data
-You have also produced two artifacts containing the feature table and corresponding feature sequences.  
-You can generate summaries also for those as follows.
+You have produced two artifacts containing the feature table and corresponding feature sequences.  
+
+Lets generate summaries for those, so that we can better understand what data they contain.
 :walking:
 ```
 qiime feature-table summarize \
@@ -260,53 +256,44 @@ qiime feature-table tabulate-seqs \
   --o-visualization rep-seqs.qzv
 ```
 
-# STEP4: Taxonomy assignment 
-<details>
-  <summary markdown="span">Please remember to access the qiime2-atacama-tutorial folder and activate QIIME2</summary>
+## STEP4: Taxonomy assignment 
 
-    cd ~/qiime2-atacama-tutorial  
-
-    source activate qiime2-2022.11
-</details>
-
-
-## 16S taxonomy assignment 
-The QIIME 2 plugin [feature-classifier](https://docs.qiime2.org/2021.8/plugins/available/feature-classifier/) supports taxonomic classification of features using a variety of methods, including:  
+### 16S taxonomy assignment 
+The QIIME 2 plugin [feature-classifier](https://docs.qiime2.org/2023.9/plugins/available/feature-classifier/) supports taxonomic classification of features using a variety of methods, including:  
  1. **Naive Bayes**;  
  2. **vsearch**; 
  3. **BLAST+**.  
 
 The `q2-feature-classifier` contains three different classification methods. **classify-consensus-blast** and **classify-consensus-vsearch** are both *alignment-based methods*, that find a consensus assignment across N top hits.  
 These methods take reference database `FeatureData[Taxonomy]` and `FeatureData[Sequence]` files directly, and do not need to be pre-trained.
+
 In our tutorial we are going to use the **q2-feature-classifier plugin** by using a pre-trained ***Naive Bayes classifier***.  
 This classifier was trained on the *SILVA 138 NR99 collection*, where the sequences have been trimmed to only include 300 bases from the region of the 16S that was sequenced in this analysis (the V4 region, bound by the 515F/806R primer pair).  
-We’ll apply this classifier to our sequences, and we can generate a visualization of the resulting mapping from sequence to taxonomy.
 
-Initially, we need to download the pre-computed classifier:  
+
+Initially, we need to download the pre-computed classifier, and then assign taxonomy to the sequences in our `FeatureData[Sequence]` QIIME2 artifact.
+
+**!!Again, this step is quite long, and we are not interested in waiting it to complete, so we have already classified our ASVs.** 
 :stop_sign:  
 
 ```
+# DO NOT RUN THIS COMMAND
 wget \
   -O "silva-138-99-515-806-nb-classifier.qza" \
-  "https://data.qiime2.org/2022.11/common/silva-138-99-515-806-nb-classifier.qza"
-```
+  "https://data.qiime2.org/2023.9/common/silva-138-99-515-806-nb-classifier.qza"
 
-The first step in this process is to assign taxonomy to the sequences in our `FeatureData[Sequence]` QIIME 2 artifact.
-**Now considering this step is quite long, and we are not interested in waiting it to complete, we have already classified our ASVs.**  
-
-:walking:  
-```
-cp ~/Share/qiime2-atacama-tutorial/taxonomy_16S_SKLEARN.qza  . 
-```
-
-By the way the line we've used to taxonomically annotated our ASV are the following.   
-:stop_sign:  
-
->qiime feature-classifier classify-sklearn \
+# DO NOT RUN THIS COMMAND
+qiime feature-classifier classify-sklearn \
    --i-classifier silva-138-99-515-806-nb-classifier.qza \
    --i-reads rep-seqs_16S.qza \
    --o-classification taxonomy_16S_SKLEARN.qza
+```
 
+Copy the prepared output to your folder
+:walking:  
+```
+cp ~/Shared_folder/qiime2-atacama-tutorial/taxonomy_16S_SKLEARN.qza  . 
+```
 
 Once the classification is done we can generate the barplot for data visualization:  
 :walking:  
@@ -331,8 +318,8 @@ qiime taxa barplot \
   --o-visualization taxa-bar-plots_16S_SKLEARN.qzv
 ```
 
-# STEP5: Generating a phylogenetic tree
-We have to generate phylogenetic tree because QIIME2 support different phylogenetic diversity metrics, including Faith’s Phylogenetic Diversity and weighted and unweighted UniFrac. 
+## STEP5: Generating a phylogenetic tree
+While a phylogenetic tree of your microbiome may not be useful to interpret, we generate it because QIIME2 supports different phylogenetic diversity metrics including Faith’s Phylogenetic Diversity and weighted and unweighted UniFrac.
 
 In addition to counts of features per sample (i.e., the data in the `FeatureTable[Frequency]` QIIME 2 artifact), these metrics require a rooted phylogenetic tree relating the features to one another. This information will be stored in a `Phylogeny[Rooted]` QIIME 2 artifact. To generate a phylogenetic tree we will use **align-to-tree-mafft-fasttree** pipeline from the q2-phylogeny plugin`.
 
@@ -354,7 +341,7 @@ qiime phylogeny align-to-tree-mafft-fasttree \
   --o-rooted-tree rooted-tree_16S.qza
 ```
 
-# STEP6: Analyzing Alpha and Beta diversities
+## STEP6: Analyzing Alpha and Beta diversities
 
 First, lets look at alpha diversity as a function of sequencing depth, as a test of our sequencing run.  
 :walking:  
@@ -367,7 +354,7 @@ qiime diversity alpha-rarefaction \
   --o-visualization alpha-rarefaction.qzv
 ```
 
-QIIME 2’s diversity analyses are available through the [`q2-diversity plugin`](https://docs.qiime2.org/2020.2/plugins/available/diversity/), which supports computing alpha and beta diversity metrics, applying related statistical tests, and generating interactive visualizations. We’ll first apply the core-metrics-phylogenetic method, which rarefies a `FeatureTable[Frequency]` to a user-specified depth, computes several alpha and beta diversity metrics, and generates **Principle Coordinates Analysis (PCoA)** plots using Emperor for each of the beta diversity metrics. The metrics computed by default are:
+QIIME 2’s diversity analyses are available through the [`q2-diversity plugin`](https://docs.qiime2.org/2023.9/plugins/available/diversity/), which supports computing alpha and beta diversity metrics, applying related statistical tests, and generating interactive visualizations. We’ll first apply the core-metrics-phylogenetic method, which rarefies a `FeatureTable[Frequency]` to a user-specified depth, computes several alpha and beta diversity metrics, and generates **Principle Coordinates Analysis (PCoA)** plots using Emperor for each of the beta diversity metrics. The metrics computed by default are:
 
 **Alpha diversity**
 * Shannon’s diversity index (a quantitative measure of community richness)

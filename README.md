@@ -8,10 +8,14 @@ This course will provide a thorough introduction to the application of metabarco
 The topics covered by the course range from *bioinformatic* processing of next-generation sequencing data to the most important approaches in multivariate statistics. Using a combination of theoretical lectures and hands-on exercises, the participants will learn the most critical computational steps of a metabarcoding study from the processing of raw sequencing reads down to the final statistical evaluations. After completing the course, the participants should be able to understand the potential and limitations of metabarcoding techniques as well as to process their own datasets to answer the questions under investigation.  
 __FORMAT__  
 This course is designed for researchers and students with strong interests in applying novel high-throughput DNA sequencing technologies to answer questions in the area of community ecology and biodiversity.  
-The course will mainly focus on the analysis of phylogenetic markers to study bacterial, archaeal and fungal assemblages in the environment, but the theoretical concepts and computational procedures can be equally applied to any taxonomic group or gene of interest.  
+The course will mainly focus on the analysis of phylogenetic markers to study bacterial, archaeal and fungal assemblages in the environment, but the theoretical concepts and computational procedures can be equally applied to any taxonomic group or gene of interest. 
+
 __ASSUMED BACKGROUND__  
-The participants should have some basic background in biology and understand the central role of DNA for biodiversity studies. No programming or scripting expertise is required and some basic introduction to UNIX-based command line applications will be provided on the first day. However, some basic experience with using command line and/or R is clearly an advantage as not all the basics can be thoroughly covered in that short amount of time.  
-All the hands-on exercises will be carried out using [**QIIME2**](https://qiime2.org/) platform . No previous knowledge of computer science is required but a basic knowledge of “bash” would allow to focus more on the microbial analysis.  
+The participants should have some basic background in biology and understand the central role of DNA for biodiversity studies. No programming or scripting expertise is required but completing the preparation materials to be comfortable with linux basics (i.e. making directories & copying files) is important. 
+
+!! **See the [Unix short tutorial](unix_short_dir/Readme.md) if you need a reminder/refresher.**
+
+All the hands-on exercises will be carried out using [**QIIME2**](https://qiime2.org/) platform . No previous knowledge of computer science is required but a basic knowledge of “bash” would allow to focus more on the microbial analysis.
 __LEARNING OUTCOMES__  
 1) Understanding the concept, potential and limitation of microbial metabarcoding techniques.
 2) Learning how to process raw sequencing reads to obtain meaningful information.
@@ -26,21 +30,20 @@ __LEARNING OUTCOMES__
 [Course participants introduction]
 ## Day 1
 - [X] [Introduction to the course idea and Instructors](Welcome.pptx):
-    - [Daniel Antony Pass](https://scholar.google.com/citations?user=XQml0DQAAAAJ&hl=en)  
+    - [Daniel Antony Pass](https://www.compassbioinformatics.co.uk/about-us)  
     - [Anna Sandionigi](https://scholar.google.com/citations?hl=it&user=DLDuk_EAAAAJ)  
     - [Bruno Fosso](https://scholar.google.com/citations?user=TBeT9pIAAAAJ&hl=it)  
-- [X] [**Brief introduction** about __Metagenomics__ concepts. *What are we going to talk about?*](https://docs.google.com/presentation/d/1Pei27F-JkJUiJXL7nCe5WaWffws7EHWk5EA3AfyrV-Q/edit?usp=share_link)
-- [X] [**Experimental design part 1**  - Presentation](https://docs.google.com/presentation/d/1BGdfq3lH9avWzLAmXq6RMiOr_F5GEy9i9gyphj6JaYk/edit?usp=sharing)
-- [X] [Laptop setting: - connecting to the server in Posit (formerly known as RStudio)](https://docs.google.com/presentation/d/1yA5ytQFu-npecFNrh3KDEk6IzHjG4KLotiGIXSruMuo/edit?usp=share_link)  
-- [X] [Introduction to the **BASH** shell](unix_short_tutorial/Readme.md)
+- [X] Presentation - [**Brief introduction** about __Metagenomics__ concepts. *What are we going to talk about?*](https://docs.google.com/presentation/d/1Pei27F-JkJUiJXL7nCe5WaWffws7EHWk5EA3AfyrV-Q/edit?usp=share_link)
+- [X] Practical - [Connecting to the server via SSH](https://drive.google.com/drive/folders/1fVMLKcCI3SME7hS-S29DfkOQhiEfM6wF)  
+- [X] Presentation - [Introduction to the **FASTQ** format and QIIME objects](https://docs.google.com/presentation/d/1RowyRGCLqAgt6Oxa_h3c33r4SI9reZlq6ZheRv-HAks/edit?usp=share_link)
+- [X] Practical - [First hands on data (& linux review)](main_data_dir/Session1_Fastq_linux.md)
+- [X] Presentation-  [**Experimental design part 1** ](https://docs.google.com/presentation/d/1BGdfq3lH9avWzLAmXq6RMiOr_F5GEy9i9gyphj6JaYk/edit?usp=sharing)
 
 ## Day 2
-- [X] [Few concepts about Negative and Positive controls](unix_short_tutorial/controls.md)
-- [X] [Introduction to the **FASTQ** format and QIIME objects](https://docs.google.com/presentation/d/1RowyRGCLqAgt6Oxa_h3c33r4SI9reZlq6ZheRv-HAks/edit?usp=share_link)
-- [X] [Atacama Soil Experiment and Loading data](16S_ITS_tutorial/readme.md) 
+- [X] Presentation - [Concepts on Negative and Positive controls](main_data_dir/controls.md)
+- [X] Practical - [Atacama Soil Experiment and Loading data](16S_ITS_tutorial/readme.md) 
 - [X] [**Key concept: OTU or ASV**;](https://docs.google.com/presentation/d/1XHQGInyWt9SGmyH6C4UA2-flloR3vQghIzJ2MDAKsqY/edit?usp=sharing)
   - Different Sequencing Technologies and different denoising approaches
-- [X] [Lets review](unix_short_tutorial/Readme.md)
 - [X] [Denoising and **DADA2**](16S_ITS_tutorial/readme.md#step2-quality-controlling-sequences-and-building-feature-table-and-feature-data);
   - DADA2 - in Qiime, in R
 

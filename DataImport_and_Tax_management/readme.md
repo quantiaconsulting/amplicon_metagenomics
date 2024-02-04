@@ -20,7 +20,7 @@ Some additional Tips
 ***Always remember to active QIIME2 environment!!!***  
 :walking:  
 ```
-source activate qiime2-2022.11
+source activate qiime2-2023.9
 ```
 ---
 ​
@@ -125,13 +125,13 @@ Let's download the required files:
 :walking:  
 ```
 wget -O "emp-paired-end-sequences/forward.fastq.gz" \
-  "https://data.qiime2.org/2022.2/tutorials/atacama-soils/10p/forward.fastq.gz"
+  "https://data.qiime2.org/2023.9/tutorials/atacama-soils/10p/forward.fastq.gz"
 ​
 wget -O "emp-paired-end-sequences/reverse.fastq.gz" \
-  "https://data.qiime2.org/2022.2/tutorials/atacama-soils/10p/reverse.fastq.gz"
+  "https://data.qiime2.org/2023.9/tutorials/atacama-soils/10p/reverse.fastq.gz"
 ​
 wget -O "emp-paired-end-sequences/barcodes.fastq.gz" \
-  "https://data.qiime2.org/2022.2/tutorials/atacama-soils/10p/barcodes.fastq.gz"
+  "https://data.qiime2.org/2023.9/tutorials/atacama-soils/10p/barcodes.fastq.gz"
 ```  
 We are also going to reuse the ``sample-metadata.tsv`` file used during the QIIME2 tutorial:  
 :walking:  
@@ -182,7 +182,7 @@ But even with its flaws, FASTQC is still by far the best FASTQ quality visualiza
 
 Always remember to activate the virtual environment:
 ```
-source activate qiime2-2022.11 
+source activate qiime2-2023.9 
 ```
 Fastq quality evaluation:
 ```
@@ -334,8 +334,8 @@ mkdir tax_import && cd tax_import
 So let's start with `qza` data download:  
 :stop_sign:  
 ```
-wget --no-check-certificate https://data.qiime2.org/2022.11/common/silva-138-99-seqs.qza
-wget --no-check-certificate https://data.qiime2.org/2022.11/common/silva-138-99-tax.qza
+wget --no-check-certificate https://data.qiime2.org/2023.9/common/silva-138-99-seqs.qza
+wget --no-check-certificate https://data.qiime2.org/2023.9/common/silva-138-99-tax.qza
 ```
 If you plan to use alignment based approaches for taxonomic assigment (i.e. BLAST or VSEARCH), that's enough. You may proceed with ASV classification.  
 Otherwise, if you would like to use the **sklearn** approach you need to train the classifier.  

@@ -74,7 +74,7 @@ mkdir ITSxpress_ITS_tutorial && cd ITSxpress_ITS_tutorial
 If not already active, remember to activate the QIIME2 environment:  
 :walking:  
 ```
-source activate qiime2-2022.11
+source activate qiime2-2023.9
 ```
  
 ## Step1: Import ITS data

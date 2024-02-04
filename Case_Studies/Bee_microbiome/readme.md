@@ -55,7 +55,7 @@ BEE-metadata.tsv
 ```
 Remember to activate the qiime environment before you can run qiime commands
 ```
-source activate qiime2-2022.11
+source activate qiime2-2023.9
 ``` 
 
 ## Visualise taxonomically 

@@ -48,17 +48,20 @@ __LEARNING OUTCOMES__
   - DADA2 - in Qiime, in R
 
 ## Day 3
-- [X] [Diversity Analysis](https://docs.google.com/presentation/d/1wvxFCYMiQW-RH669eK1l6EcmcBqd0q7l2oF4do7okI8/edit?usp=share_link)
-- [X] [Running Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step6-analyzing-alpha-and-beta-diversities)
 - [X] [Taxonomic assignment](https://drive.google.com/open?id=1oHTCBiJ1HoHAREZIN2NVSHnC63QphDUJr_cPbgqgDs4)
 - [X] [Taxonomy assignment:**classify-sklearn**](16S_ITS_tutorial/readme.md#step3-summarizing-feature-table-and-feature-data)
-- [X] [ITS sequence analysis](ITS/ITS_readme.md)
-
+- [X] [Diversity Analysis](https://docs.google.com/presentation/d/1wvxFCYMiQW-RH669eK1l6EcmcBqd0q7l2oF4do7okI8/edit?usp=share_link)
+- [X] [Running Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step6-analyzing-alpha-and-beta-diversities)
 
 ## Day 4
-
-
+- [X] [ITS sequence analysis](ITS/ITS_readme.md)
+- [X] [Some additional processing Tips :volcano: ](DataImport_and_Tax_management/readme.md)
+  - [X] Alternative loading methods in Qiime
+  - [X] Further, Understanding and Assessing your raw data
 - [X] [Experimental Design part 2 and short introduction to R](https://docs.google.com/presentation/d/1ybw75VKyMK9vJ_yy2SpFYbn8SZMJ7_6yf-BC0gLJ5vg/edit?usp=sharing)
+
+
+## Day 5
 - [X] [Lecture  - Multivariate Analysis of Ecological Communities](https://docs.google.com/presentation/d/1SEXLnsAk71ghWJFBjvnSL9-JIU5kHyYi/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true)  
   - [X] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  
   - [X] Multivariate Tests for differences in microbial community composition  
@@ -67,15 +70,9 @@ __LEARNING OUTCOMES__
   - [X] Multivariate tests for differences in community composition (PERMANOVA, PERMDISP)    
 - [X] [Lecture - Differential Abundance Analysis of Microbial Communities](https://docs.google.com/presentation/d/1Z2F2_goIAuuKXQQ7ocClOgq8x6tbpClW/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true) 
   - [X] Lab: Differential Abundance Analysis with DESeq2
-
-## Day 5
-
 - [X] :arrow_right: _It's Case studies Time!!!_
   - [X] [Human microbiome data](human_cancer/readme.md)
   - [X] [Zoological(Bees bees bees!)](Bee_microbiome/readme.md)
   - [X] [Water-mosquito](water_mosquito/readme.md)
 - [X] [Record your Case Study findings](https://drive.google.com/drive/folders/1jwEfH0Urm_TjR2lVEO03L1EStmCSWyoC?usp=sharing)
 - [X] Beer Time :beers: :beers: :beers: 
-- [X] [Some additional processing Tips :volcano: ](DataImport_and_Tax_management/readme.md)
-  - [X] Alternative loading methods in Qiime
-  - [X] Further, Understanding and Assessing your raw data

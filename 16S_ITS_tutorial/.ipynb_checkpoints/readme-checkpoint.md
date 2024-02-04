@@ -213,18 +213,13 @@ Following are listed the lines to perform denoising. HOWEVER, considering it tak
   --p-n-threads 2 \
   --o-table table_16S.qza \
   --o-representative-sequences rep-seqs_16S.qza \
-  --o-denoising-stats denoising-stats_16S.qza \
-  --p-n-reads-learn 50000 \
-  --verbose \
-  --p-max-ee-f 2 \                       
-  --p-max-ee-r 2  
-
+  --o-denoising-stats denoising-stats_16S.qza
 ```
 
 Let's import our already done data.  
 :walking:
 ```
-cp ~/Share_folder/{table_16S.qza,rep-seqs_16S.qza,denoising-stats_16S.qza}  . 
+cp ~/Share/qiime2-atacama-tutorial/{table_16S.qza,rep-seqs_16S.qza,denoising-stats_16S.qza}  . 
 ```
 
 We can now generate a qzv file with a table summarizing the denoising process, so we can discuss the effect it had on the data.

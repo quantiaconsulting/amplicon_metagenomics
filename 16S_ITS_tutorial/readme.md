@@ -63,12 +63,12 @@ though it does not matter to QIIME2 what file extension is used.
 TSV files are simple text files used to store `tabular data`, and the format is supported by many types of software, such as editing, importing, and exporting from spreadsheet programs and databases. 
 Thus, it’s usually straightforward to manipulate QIIME 2 metadata using a software like Microsoft Excel or (better) Google Sheets to edit and export your metadata files.
 
-You can find the [file](https://docs.google.com/spreadsheets/d/1a1NFqpBjwb8Ul0c4O68IVFb9JUn5BjLdyHr422LMfE0/edit#gid=1988763045) in the folder for today or download it [directly from QIIME2](https://data.qiime2.org/2023.9/tutorials/atacama-soils/sample_metadata.tsv). 
-
-However, we have it available in the Shared_folder already, so lets copy it to our new folder:
+You can find the [file](https://docs.google.com/spreadsheets/d/1a1NFqpBjwb8Ul0c4O68IVFb9JUn5BjLdyHr422LMfE0/edit#gid=1988763045) in the Lab folder of today or download it directly from QIIME2 to your working area by running the command:  
 :walking:  
 ```
-cp ~/Shared_folder/sample-metadata.tsv .
+wget \
+  -O "sample-metadata.tsv" \
+  "https://data.qiime2.org/2023.9/tutorials/atacama-soils/sample_metadata.tsv"
 ```
 
 **If you would like to play around the sample-metadata.tsv file, please copy it into another folder and have fun with it.**  
@@ -130,23 +130,20 @@ We need to import our demultiplexed raw data into a qiime artifact.
 ```
 qiime tools import \
     --type 'SampleData[PairedEndSequencesWithQuality]' \
-    --input-path ~/Shared_folder/raw_data \
+    --input-path ~/Shared_folder/raw_data_tutorial \
     --input-format CasavaOneEightSingleLanePerSampleDirFmt \
     --output-path demux-paired-end.qza
 ```
 
-We used the QIIME2 plugin *tools* and the function *import*, to embed our data into a ``qza`` artifact. This is only one of the possible ways to import data into QIIME, and there are methods for multiplexed or different types of files. 
-
+We used the QIIME2 plugin *tools* and the function *import*, to embed our data into a ``qza`` artifact.  
 To obtain an almost complete list of importable formats type the following line:  
 :walking:  
 ```
-qiime tools list-formats --help
-
-qiime tools list-formats --importable --tsv
+qiime tools import --show-importable-formats --help
 ```
 
-
-We will look at alternative methods later in the course ([Different way to import fastq files in QIIME](../DataImport_and_Tax_management/readme.md#some-example-of-data-import))
+This is only one of the possible ways to import data into QIIME, and there are methods for multiplexed or different types of files.  
+[A look at different way to import fastq files in QIIME](../DataImport_and_Tax_management/readme.md#some-example-of-data-import)
 
 
 ## Explore QIIME2 Objects
@@ -168,7 +165,7 @@ but they are designed to show what is happening with the data.
 
 Both files (`qza` and `qzv`) can be **extracted** with a Compression/Decompression software (ex. gzip or unzip).
 
-There are also different ways to [export QIIME2 objects](https://docs.qiime2.org/2023.9/tutorials/exporting/).
+There are also different ways to [export QIIME2 objects](https://docs.qiime2.org/2022.11/tutorials/exporting/).
 But remember that all existing provenance will be lost after exporting the files.
 
 ---
@@ -227,7 +224,7 @@ Following are listed the lines to perform denoising. HOWEVER, considering it tak
 Let's import our already done data.  
 :walking:
 ```
-cp ~/Shared_folder/{table_16S.qza,rep-seqs_16S.qza,denoising-stats_16S.qza}  . 
+cp ~/Share_folder/{table_16S.qza,rep-seqs_16S.qza,denoising-stats_16S.qza}  . 
 ```
 
 We can now generate a qzv file with a table summarizing the denoising process, so we can discuss the effect it had on the data.
@@ -267,7 +264,7 @@ qiime feature-table tabulate-seqs \
 ## STEP4: Taxonomy assignment 
 
 ### 16S taxonomy assignment 
-The QIIME 2 plugin [feature-classifier](https://docs.qiime2.org/2023.9/plugins/available/feature-classifier/) ([Ref](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-018-0470-z)) supports taxonomic classification of features using a variety of methods, including:  
+The QIIME 2 plugin [feature-classifier](https://docs.qiime2.org/2023.9/plugins/available/feature-classifier/) supports taxonomic classification of features using a variety of methods, including:  
  1. **Naive Bayes**;  
  2. **vsearch**; 
  3. **BLAST+**.  
@@ -300,7 +297,7 @@ qiime feature-classifier classify-sklearn \
 Copy the prepared output to your folder
 :walking:  
 ```
-cp ~/Shared_folder/taxonomy_16S_SKLEARN.qza  . 
+cp ~/Shared_folder/qiime2-atacama-tutorial/taxonomy_16S_SKLEARN.qza  . 
 ```
 
 Once the classification is done we can generate the barplot for data visualization:  
@@ -480,7 +477,7 @@ qiime composition add-pseudocount \
   --o-composition-table filtered_table_16S_pc.qza
 ```
 
-The ANCOM visualization is a volcano plot showing the ANCOM W statistic to the CLR (center log transform) for the groups.  
+The ANCOM visualizations is a volcano plot showing the ANCOM W statistic to the CLR (center log transform) for the groups.  
 The W statistic is the number of ANCOM sub-hypotheses that have passed for each individual taxon, indicating that the ratios of that taxon’s relative abundance to the relative abundances of W other taxa were detected to be significantly different (typically FDR-adjusted p < 0.05).  
 Because differential abundance in ANCOM is based on the ratio between tests, it does not produce a traditional p-value.  
 :walking:  
@@ -492,43 +489,6 @@ qiime composition ancom \
   --o-visualization ancom_transect-name.qzv
 ```
 
-Recently also [**ANCOM-BC**](https://docs.qiime2.org/2023.9/plugins/available/composition/ancombc/) has been implemented in QIIME. This is an improved version that implements Bias Correction on the feature table, and a more easily interpretable visualisation.
+Recently also [**ANCOM-BC**](https://docs.qiime2.org/2022.11/plugins/available/composition/ancombc/) has been implemented in QIIME.
 
-Because it is new, there are couple of issues. One is that it won't accept ```-``` hyphens in the sample metadata. I've prepared a version where transect_name is changed to transectName which solves this!
-
-```
-qiime composition ancombc   \
-  --i-table filtered_table_16S.qza \
-  --m-metadata-file ~/Shared_folder/sample-metadata_us.tsv \
-  --p-formula transectName \
-  --o-differentials ancombc_transect-name.qza
-
-qiime composition da-barplot \
-  --i-data ancombc_transect-name.qza \
-  --o-visualization ancombc_transect-name_barplot.qzv
-```
-
-Frustratingly, this visualisation is only able to annotate with the ASV ID (which you could search back against your reference taxonomy). We could instead collapse the feature table at the genus level, and test on that, but remember that this isn't ASV specific testing:
-
-```
-qiime taxa collapse \
- --i-table filtered_table_16S.qza \
- --i-taxonomy taxonomy_16S_SKLEARN.qza \
- --p-level 6 \
- --o-collapsed-table filtered_table_genus.qza
-```
-And then run the analysis again. We can also include two parameters in the testing formula, and set the default:
-```
-qiime composition ancombc   \
-  --i-table filtered_table_genus.qza \
-  --m-metadata-file ~/Shared_folder/sample-metadata_us.tsv \
-  --p-formula 'transectName + vegetation' \
-  --p-reference-levels transectName::Yungay vegetation::yes \
-  --o-differentials ancombc_tran_veg_genus.qza
-
-qiime composition da-barplot \
-  --i-data ancombc_tran_veg_genus.qza \
-  --p-level-delimiter ';' \
-  --o-visualization ancombc_tran_veg_barplot_genus.qzv
-```
 [**Back to the program**](../README.md)  

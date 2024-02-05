@@ -32,7 +32,7 @@ __LEARNING OUTCOMES__
 - [X] [Introduction to the course and Instructors](Welcome.pptx):
     - [Daniel Antony Pass](https://www.compassbioinformatics.co.uk/about-us)  
     - [Anna Sandionigi](https://scholar.google.com/citations?hl=it&user=DLDuk_EAAAAJ)  
-    - [Bruno Fosso](https://scholar.google.com/citations?user=TBeT9pIAAAAJ&hl=it)  
+    - [Luigimaria Borruso](https://scholar.google.it/citations?user=ifNJPJEAAAAJ&hl=it)  
 - [X] Presentation - [**Brief introduction** about __Metagenomics__ concepts. *What are we going to learn?*](https://docs.google.com/presentation/d/1PuWRR79bvv95SmIo7fnfNiFkjl28xDr3/edit?usp=drive_link&ouid=112247165444752408285&rtpof=true&sd=true)
 - [X] Practical - [Connecting to the server via SSH](https://drive.google.com/drive/folders/197xymf3ZAncksVOew1CLLEp--G7MMIMc?usp=sharing)  
 - [X] Presentation - [Introduction to the **FASTQ** format and QIIME objects](https://docs.google.com/presentation/d/1RowyRGCLqAgt6Oxa_h3c33r4SI9reZlq6ZheRv-HAks/edit?usp=share_link)

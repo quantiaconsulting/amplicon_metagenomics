@@ -37,7 +37,7 @@ __LEARNING OUTCOMES__
 - [X] Practical - [Connecting to the server via SSH](https://drive.google.com/drive/folders/197xymf3ZAncksVOew1CLLEp--G7MMIMc?usp=sharing)  
 - [X] Presentation - [Introduction to the **FASTQ** format and QIIME objects](https://docs.google.com/presentation/d/1RowyRGCLqAgt6Oxa_h3c33r4SI9reZlq6ZheRv-HAks/edit?usp=share_link)
 - [X] Practical - [First hands on data (& linux review)](main_data_dir/Session1_Fastq_linux.md)
-- [X] Presentation-  [**Experimental design part 1** ](https://docs.google.com/presentation/d/1BGdfq3lH9avWzLAmXq6RMiOr_F5GEy9i9gyphj6JaYk/edit?usp=sharing)
+- [X] Presentation-  [**Experimental design part 1** ](https://docs.google.com/presentation/d/1X-9Es3FmfddDbzkanMiRPvwEEoj2bPbG/edit#slide=id.p28)
 
 ## Day 2
 - [X] Practical - [Let's begin! Atacama Soil Experiment and Loading data in Qiime](16S_ITS_tutorial/readme.md) 

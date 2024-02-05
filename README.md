@@ -22,7 +22,7 @@ __LEARNING OUTCOMES__
 3) Obtaining experience on how to statistically evaluate and visualize your data.
 4) Being able to make informed decisions on best practices for your own data.  
   
-:exclamation: :exclamation: :exclamation: **All the papers discussed during the course are available in this [Google Drive Folder](https://drive.google.com/drive/folders/1pld02nU8v6APTbysmT_iQdGw8tKToByr?usp=share_link)** :exclamation: :exclamation: :exclamation:
+:exclamation: :exclamation: :exclamation: **All the papers discussed during the course are available in this [Google Drive Folder](https://drive.google.com/drive/u/0/folders/1uPxEeD0vtEoArmq0zDKP7MnP6lmZ4-Nk)** :exclamation: :exclamation: :exclamation:
   
 
 ## Program

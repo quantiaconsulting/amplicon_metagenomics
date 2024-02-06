@@ -42,7 +42,7 @@ __LEARNING OUTCOMES__
 ## Day 2
 - [X] Practical - [Let's begin! Atacama Soil Experiment and Loading data in Qiime](16S_ITS_tutorial/readme.md) 
 - [X] Presentation - [Concepts on Negative and Positive controls](main_data_dir/controls.md)
-- [X] Presentation - [**Key concept: OTU or ASV**;](https://docs.google.com/presentation/d/1XHQGInyWt9SGmyH6C4UA2-flloR3vQghIzJ2MDAKsqY/edit?usp=sharing)
+- [X] Presentation - [**Key concept: OTU or ASV**;](https://docs.google.com/presentation/d/1Kh_RCdJ2CuojAJCLeEj7-T3Qav-tncSS/edit?usp=drive_link&ouid=103395187960487769781&rtpof=true&sd=true)
   - Different Sequencing Technologies and different denoising approaches
 - [X] Practical - [Denoising and **DADA2**](16S_ITS_tutorial/readme.md#step2-quality-controlling-sequences-and-building-feature-table-and-feature-data)
 ## Day 3

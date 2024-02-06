@@ -194,37 +194,34 @@ After importing the reads we inspected the sequence quality based on randomly se
 What we now need is to remove the "noise" introduced during amplification and sequencing which is specific to this methodology.
 
 ### Quality filter of 16S
-Since we need the reads to be long enough to overlap when joining paired ends, we are just going to remove the first 13 bases of both forward and reverse reads,
-but no trimming is applied with reads 3' end. 
+Since we need the reads to be long enough to overlap when joining paired ends, we are just going to remove the first 5 bases of both forward and reverse reads,
+but no trimming is applied with reads 3' end (full 150 length). 
 
-This step is very subjective to your personal data!
+This step is very subjective to your personal data! There are paremters chosen below as examples, but some may or may not be relevant to you! See the full parameter descriptsions in the [Qiime2 manual](https://docs.qiime2.org/2023.9/plugins/available/dada2/denoise-paired/).
 
-In this example, the same values are provided for `--p-trim-left-f` and `--p-trim-left-r`.  
-We are also setting the same values to `--p-trunc-len-f` and `--p-trunc-len-r` options. Actually, it is not strictly necessary considering we are not applying any trimming with reads 3' ends.  
-We're also using a multi-threading command to split the processing across multiple CPUs, which will be very useful when performing your own analysis with larger datasets.  
+Following are listed the lines to perform denoising. HOWEVER, considering it takes a while to complete we have completed this step for you, rather than wait.
 
-Following are listed the lines to perform denoising. HOWEVER, considering it takes a while to complete we have completed this step for you, rather than wait. 
 :stop_sign:  
 ```
 # DO NOT RUN THIS COMMAND
 >qiime dada2 denoise-paired \
   --i-demultiplexed-seqs demux-paired-end.qza \
-  --p-trim-left-f 13 \
-  --p-trim-left-r 13 \
+  --p-trim-left-f 5 \
+  --p-trim-left-r 5 \
   --p-trunc-len-f 150 \
   --p-trunc-len-r 150 \
   --p-n-threads 2 \
+  --p-min-overlap 10 \
+  --p-max-ee-f 2 \                       
+  --p-max-ee-r 2  \
+  --p-n-reads-learn 50000 \
   --o-table table_16S.qza \
   --o-representative-sequences rep-seqs_16S.qza \
   --o-denoising-stats denoising-stats_16S.qza \
-  --p-n-reads-learn 50000 \
-  --verbose \
-  --p-max-ee-f 2 \                       
-  --p-max-ee-r 2  
-
+  --verbose
 ```
 
-Let's import our already done data.  
+Let's import our already processed data.  
 :walking:
 ```
 cp ~/Shared_folder/{table_16S.qza,rep-seqs_16S.qza,denoising-stats_16S.qza}  . 
@@ -263,6 +260,30 @@ qiime feature-table tabulate-seqs \
   --i-data rep-seqs_16S.qza \
   --o-visualization rep-seqs.qzv
 ```
+
+As we can see in these outputs, some samples have very few reads remaining. Let's remove any samples that have <1000 reads from our files so we don't have blank columns or misrepresented data.
+:walking:
+```
+qiime feature-table filter-samples \
+  --i-table table_16S.qza \
+  --p-min-frequency 1000 \
+  --o-output table_16S_gt1k.qza
+```
+There are A LOT of ways to filter your data. You can read more [here](https://docs.qiime2.org/2023.9/tutorials/filtering/)
+
+## Optional: Step 3.5
+You may also wish to cluster your data into OTUs after performing the denoising with DADA2 (which outputs ASVs). That can be done with a simple vsearch command:
+```
+qiime vsearch cluster-features-de-novo \
+  --i-table table_16S.qza \
+  --i-sequences rep-seqs_16S.qza \
+  --p-perc-identity 0.97 \
+  --o-clustered-table table-16S-dn-97.qza \
+  --o-clustered-sequences rep-seqs-16S-dn-97.qza
+```
+Then you can use the ```feature-table``` summarize and tabulate-seqs command again to visualise the results.
+
+
 
 ## STEP4: Taxonomy assignment 
 
@@ -320,7 +341,7 @@ qiime metadata tabulate \
 
 ```
 qiime taxa barplot \
-  --i-table table_16S.qza \
+  --i-table table_16S_gt1k.qza \
   --i-taxonomy taxonomy_16S_SKLEARN.qza \
   --m-metadata-file sample-metadata.tsv \
   --o-visualization taxa-bar-plots_16S_SKLEARN.qzv
@@ -355,7 +376,7 @@ First, lets look at alpha diversity as a function of sequencing depth, as a test
 :walking:  
 ```
 qiime diversity alpha-rarefaction \
-  --i-table table_16S.qza \
+  --i-table table_16S_gt1k.qza \
   --i-phylogeny rooted-tree_16S.qza \
   --p-max-depth 8000 \
   --m-metadata-file sample-metadata.tsv \
@@ -381,7 +402,7 @@ An important parameter that needs to be provided to this script is **--p-samplin
 ```
 qiime diversity core-metrics-phylogenetic \
   --i-phylogeny rooted-tree_16S.qza \
-  --i-table table_16S.qza \
+  --i-table table_16S_gt1k.qza \
   --p-sampling-depth 1000 \
   --p-n-jobs-or-threads 1 \
   --m-metadata-file sample-metadata.tsv \
@@ -466,7 +487,7 @@ Next, we will retain feature observed in at least the 10% of our samples.
 :walking:  
 ```
 qiime feature-table filter-features \
-  --i-table table_16S.qza \
+  --i-table table_16S_gt1k.qza \
   --p-min-frequency 5 \
   --p-min-samples 10 \
   --o-filtered-table filtered_table_16S.qza

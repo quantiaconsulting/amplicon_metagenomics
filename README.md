@@ -49,7 +49,7 @@ __LEARNING OUTCOMES__
 - [X] [Experimental Design part 2 ](https://docs.google.com/presentation/d/1jkHVJ7l-lWs-Gi0rbFr74giZv8JhOpneiFmUqnFk1Nk/edit#slide=id.g2b75b176bc2_0_489)
 - [X] [Diversity Analysis](https://docs.google.com/presentation/d/1Wjf5QibYwf6lTYIpQTEUVO4HNxc0nYUy/edit#slide=id.g2b75d256dc1_0_564)
 - [X] [Running Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step6-analyzing-alpha-and-beta-diversities)
-- [X] [Taxonomic assignment](https://drive.google.com/open?id=1oHTCBiJ1HoHAREZIN2NVSHnC63QphDUJr_cPbgqgDs4)
+- [X] [Taxonomic assignment](https://docs.google.com/presentation/d/1YdX9hS4BQfj2qfSf79CKtYAHMIXTbI0hIWiemDmmh1s/edit#slide=id.p)
 - [X] [Taxonomy assignment:**classify-sklearn**](16S_ITS_tutorial/readme.md#step3-summarizing-feature-table-and-feature-data)
 
 

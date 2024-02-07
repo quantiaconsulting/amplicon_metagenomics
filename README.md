@@ -55,7 +55,7 @@ __LEARNING OUTCOMES__
 
 
 ## Day 4
-- [X] [Fungi and ITS best practices!]()
+- [X] [Fungi and ITS best practices!](https://docs.google.com/presentation/d/14k4cnKy7ZT_b4vvvo2UREiyhZ1HUn5P0/edit?usp=drive_link&ouid=103395187960487769781&rtpof=true&sd=true)
 - [X] [Lecture  - Multivariate Analysis of Ecological Communities](https://docs.google.com/presentation/d/1SEXLnsAk71ghWJFBjvnSL9-JIU5kHyYi/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true)  
   - [X] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  
   - [X] Multivariate Tests for differences in microbial community composition  

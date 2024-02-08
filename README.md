@@ -35,22 +35,23 @@ __LEARNING OUTCOMES__
     - [Luigimaria Borruso](https://scholar.google.it/citations?user=ifNJPJEAAAAJ&hl=it)  
 - [X] Presentation - [**Brief introduction** about __Metagenomics__ concepts. *What are we going to learn?*](https://docs.google.com/presentation/d/1PuWRR79bvv95SmIo7fnfNiFkjl28xDr3/edit?usp=drive_link&ouid=112247165444752408285&rtpof=true&sd=true)
 - [X] Practical - [Connecting to the server via SSH](https://drive.google.com/drive/folders/197xymf3ZAncksVOew1CLLEp--G7MMIMc?usp=sharing)  
-- [X] Presentation - [Introduction to the **FASTQ** format and QIIME objects](https://docs.google.com/presentation/d/1RowyRGCLqAgt6Oxa_h3c33r4SI9reZlq6ZheRv-HAks/edit?usp=share_link)
+- [X] Presentation - [Sequence data in the **FASTQ** format and Quality Filtering](https://docs.google.com/presentation/d/1RowyRGCLqAgt6Oxa_h3c33r4SI9reZlq6ZheRv-HAks/edit?usp=share_link)
 - [X] Practical - [First hands on data (& linux review)](main_data_dir/Session1_Fastq_linux.md)
 - [X] Presentation-  [**Experimental design part 1** ](https://docs.google.com/presentation/d/1X-9Es3FmfddDbzkanMiRPvwEEoj2bPbG/edit#slide=id.p28)
 
 ## Day 2
+- [X] Presentation - [Qiime2 & Qiime objects](https://docs.google.com/presentation/d/1IP9xpPLkFUMJgGEURxXN97nxJFSej3lx/edit?usp=sharing&ouid=112247165444752408285&rtpof=true&sd=true)
 - [X] Practical - [Let's begin! Atacama Soil Experiment and Loading data in Qiime](16S_ITS_tutorial/readme.md) 
 - [X] Presentation - [Concepts on Negative and Positive controls](main_data_dir/controls.md)
 - [X] Presentation - [**Key concept: OTU or ASV**;](https://docs.google.com/presentation/d/1Kh_RCdJ2CuojAJCLeEj7-T3Qav-tncSS/edit?usp=drive_link&ouid=103395187960487769781&rtpof=true&sd=true)
   - Different Sequencing Technologies and different denoising approaches
 - [X] Practical - [Denoising and **DADA2**](16S_ITS_tutorial/readme.md#step2-quality-controlling-sequences-and-building-feature-table-and-feature-data)
 ## Day 3
-- [X] [Experimental Design part 2 ](https://docs.google.com/presentation/d/1jkHVJ7l-lWs-Gi0rbFr74giZv8JhOpneiFmUqnFk1Nk/edit#slide=id.g2b75b176bc2_0_489)
-- [X] [Diversity Analysis](https://docs.google.com/presentation/d/1Wjf5QibYwf6lTYIpQTEUVO4HNxc0nYUy/edit#slide=id.g2b75d256dc1_0_564)
-- [X] [Running Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step6-analyzing-alpha-and-beta-diversities)
-- [X] [Taxonomic assignment](https://docs.google.com/presentation/d/1YdX9hS4BQfj2qfSf79CKtYAHMIXTbI0hIWiemDmmh1s/edit#slide=id.p)
-- [X] [Taxonomy assignment:**classify-sklearn**](16S_ITS_tutorial/readme.md#step3-summarizing-feature-table-and-feature-data)
+- [X] Presentation - [Experimental Design part 2 ](https://docs.google.com/presentation/d/1jkHVJ7l-lWs-Gi0rbFr74giZv8JhOpneiFmUqnFk1Nk/edit#slide=id.g2b75b176bc2_0_489)
+- [X] Presentation - [Diversity Analysis in Qiime](https://docs.google.com/presentation/d/1Wjf5QibYwf6lTYIpQTEUVO4HNxc0nYUy/edit#slide=id.g2b75d256dc1_0_564)
+- [X] Practical - [Running Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step6-analyzing-alpha-and-beta-diversities)
+- [X]  Presentation - [Taxonomic assignment](https://docs.google.com/presentation/d/1YdX9hS4BQfj2qfSf79CKtYAHMIXTbI0hIWiemDmmh1s/edit#slide=id.p)
+- [X] Practical - [Taxonomy assignment:**classify-sklearn**](16S_ITS_tutorial/readme.md#step3-summarizing-feature-table-and-feature-data)
 
 
 
@@ -68,11 +69,12 @@ __LEARNING OUTCOMES__
 ## Day 5
 
 - [X] :arrow_right: _It's Case studies Time!!!_
-  - [X] [Human microbiome data](human_cancer/readme.md)
-  - [X] [Zoological(Bees bees bees!)](Bee_microbiome/readme.md)
-  - [X] [Water-mosquito](water_mosquito/readme.md)
-- [X] [Record your Case Study findings](https://drive.google.com/drive/folders/1jwEfH0Urm_TjR2lVEO03L1EStmCSWyoC?usp=sharing)
-- [X] Beer Time :beers: :beers: :beers: 
-- [X] [Some additional processing Tips :volcano: ](DataImport_and_Tax_management/readme.md)
+  - [X] Practical - [Human microbiome data](human_cancer/readme.md)
+  - [X] Practical - [Zoological(Bees bees bees!)](Bee_microbiome/readme.md)
+  - [X] Practical - [Water-mosquito](water_mosquito/readme.md)
+  - [X] [Record your Case Study findings](https://drive.google.com/drive/folders/1jwEfH0Urm_TjR2lVEO03L1EStmCSWyoC?usp=sharing)
+- [X] [Some additional Tips :volcano: ](DataImport_and_Tax_management/readme.md)
   - [X] Alternative loading methods in Qiime
+  - [X] What computer to get, and how to install Qiime
   - [X] Further, Understanding and Assessing your raw data
+- [X] Beer Time :beers: :beers: :beers: 

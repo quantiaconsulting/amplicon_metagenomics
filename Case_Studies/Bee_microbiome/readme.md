@@ -41,9 +41,8 @@ The following steps have already been performed for you to save time:
 
 Therefore you can copy these files to your local folder and begin your analysis
 ```
-mkdir BEE-analysis
-cd BEE-analysis
-cp /home/userX/Share/BEE/* .
+cp -r ~/Shared_folder/BEE .
+cd BEE
 ```
 You should now have these files to use for your analysis:
 ```
@@ -60,26 +59,22 @@ source activate qiime2-2023.9
 
 ## Visualise taxonomically 
 
-### Create taxonomic bar plot visuals
-Use this to get a view of the taxonomic make up of your range of samples
-```
-qiime taxa barplot \
-  --i-table table99.qza \
-  --i-taxonomy taxonomy99.qza \
-  --m-metadata-file BEE-metadata.txt \
-  --o-visualization taxa_bar_plots.qzv
-```
-### Filter out chloroplast and mitochondria
+### 1. Create taxonomic bar plot visuals
+Use the function ```qiime taxa barplot``` to get a view of the taxonomic make up of your range of samples. I've left this section empty on purpose! Try to use the tutorial notes and/or the qiime manual to build the command!
+
+Q - What are some major taxonomic groups that seem distinctly associated with one environment? What are some tests that we should run to investigate?
+
+### 2. Filter out chloroplast and mitochondria
 Because we notice that there are 16S labelled as chloroplast we need to remove those ASVs from subsequent analysis.  
 ```
+# From the rep-seqs
 qiime taxa filter-seqs \
   --i-sequences rep-seqs99.qza \
   --i-taxonomy taxonomy99.qza \
   --p-exclude mitochondria,chloroplast \
   --o-filtered-sequences rep-seqs-mitochondria-no-chloroplast.qza
-```
 
-```
+# From the table
 qiime taxa filter-table \
   --i-table table99.qza \
   --i-taxonomy  taxonomy99.qza \
@@ -87,8 +82,8 @@ qiime taxa filter-table \
   --o-filtered-table table-no-mitochondria-no-chloroplast.qza
 ```
 
-### Create a subset of your data
-If you are interested in just one aspect of your data you can select just those samples
+### 3. Target just one comparison
+If you are interested in just one aspect of your data you can select just those samples. Create a subset of your data with the filter-samples command:
 ```
 qiime feature-table filter-samples \
   --i-table table-no-mitochondria-no-chloroplast.qza \
@@ -98,28 +93,21 @@ qiime feature-table filter-samples \
 ```
 You could re-make your taxa barplots after this if you wanted.
 
-```
-qiime taxa barplot \
-  --i-table gut-only-table.qza \
-  --i-taxonomy taxonomy99.qza \
-  --m-metadata-file BEE-metadata.txt \
-  --o-visualization gut-only_taxa_bar_plots.qzv
-```
 Q -  What is causing the large variation within the Agricultural gut samples?
 
 ## Diversity
 Lets use all our samples for now
 ### Rarefaction
-Let's perform rarefaction curves to decide the most appropriate rarefaction depth.    
+Let's perform rarefaction curves to decide the most appropriate rarefaction depth. What number should go in the ```--p-max-depth```
 ```
 qiime diversity alpha-rarefaction \
     --i-table table-no-mitochondria-no-chloroplast.qza \
     --i-phylogeny rooted-tree.qza \
-    --p-max-depth 50000 \
+    --p-max-depth ............. \
     --m-metadata-file BEE-metadata.txt \
     --o-visualization alpha-rarefaction.qzv
 ```
-Q - What is a good value to set sampling depth for? Would it be different based on which conditions you're testing?
+Q - What is a good value to use for minimum rarefaction for diversity testing? Would it be different based on which conditions you're testing?
 
 ### Diversity calculations
 First off lets run the core diversity metrics, then you can test the outputs!
@@ -141,12 +129,14 @@ qiime diversity beta-correlation
 ```
 You could run these tests on just a subset (i.e. just bee guts with no problems)
 
+## Test differntial abundance of taxonomic groups
+Using either ancombc (in qiime) or phyloseq (in R) see what ASVs/OTUs or taxonomic groups are differentially abundant.
+
 ## Now your go!
 
 Use the diversity calculations and taxonomic plots to answer questions about your data. Here are just some suggestions, but also use your own! You can analyse using qiime, phyloseq, deseq2, or any other R packages that you'd like to practice!
 
 *Choose either gut, brood, or Bee-Bread (collected pollen)*
-
 
 - Is there a significant difference in alpha diversity between Pristine and Agricultural environments?
 - Is there a difference in community structure using unifrac distance? Is it significant?

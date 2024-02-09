@@ -68,10 +68,10 @@ __LEARNING OUTCOMES__
 ## Day 5
 
 - [X] :arrow_right: _It's Case studies Time!!!_
-  - [X] [Human microbiome data](human_cancer/readme.md)
-  - [X] [Zoological(Bees bees bees!)](Bee_microbiome/readme.md)
-  - [X] [Water-mosquito](water_mosquito/readme.md)
-- [X] [Record your Case Study findings](https://drive.google.com/drive/folders/1jwEfH0Urm_TjR2lVEO03L1EStmCSWyoC?usp=sharing)
+  - [X] [Human microbiome data](Case_Studies/human_cancer/readme.md)
+  - [X] [Zoological(Bees bees bees!)](Case_Studies/Bee_microbiome/readme.md)
+  - [X] [Water-mosquito](Case_Studies/water_mosquito/readme.md)
+- [X] [Record your Case Study findings](https://drive.google.com/drive/folders/1BAdmWaNh3kvZMjGR-efPyd4ZVv8bUkon?usp=drive_link)
 - [X] Beer Time :beers: :beers: :beers: 
 - [X] [Some additional processing Tips :volcano: ](DataImport_and_Tax_management/readme.md)
   - [X] Alternative loading methods in Qiime

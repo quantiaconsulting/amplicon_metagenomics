@@ -264,7 +264,7 @@ As we can see in these outputs, some samples have very few reads remaining. Let'
 qiime feature-table filter-samples \
   --i-table table_16S.qza \
   --p-min-frequency 1000 \
-  --o-output table_16S_gt1k.qza
+  --o-filtered-table table_16S_gt1k.qza
 ```
 There are A LOT of ways to filter your data. You can read more [here](https://docs.qiime2.org/2023.9/tutorials/filtering/)
 
@@ -318,7 +318,7 @@ qiime feature-classifier classify-sklearn \
 Copy the prepared output to your folder
 :walking:  
 ```
-cp ~/Shared_folder/qiime2-atacama-tutorial/taxonomy_16S_SKLEARN.qza  . 
+cp ~/Shared_folder/taxonomy_16S_SKLEARN.qza  . 
 ```
 
 Once the classification is done we can generate the barplot for data visualization:  

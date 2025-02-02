@@ -76,7 +76,7 @@ Let's try
 
 ```
 fastqc *.fastq
-
+``
 
 
 ### 7. Run MultiQC on a Directory

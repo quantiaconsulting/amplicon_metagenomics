@@ -29,7 +29,7 @@ The -p flag ensures that the command does not return an error if the directory a
 Next, we'll copy a FASTQ file from the shared directory to the folder you just created.
 
 ```
-cp ~/Shared_folder/Illumina_1.fastq ~/Analysis/
+cp ~/Shared/raw_data ~/Analysis/
 ```
 Here we specify ```~/``` before the folder name to be explicit that it's in the home folder, although not technically required in this moment.
 
@@ -45,18 +45,47 @@ Enter the folder, and check that the file is there, and how large it is
   
 </details>
 
-### 3. Run FastQC
+
+### 3. Extract all .gz Files 
+
+As our .gz file contains only one compressed file, we use (To run this command, you must ensure that you are in the file's directory! **IF not you have to specify the path**):
+
+```
+gunzip *.gz
+```
+
+### 4. Run FastQC on a single file
 Now let's run FastQC on the FASTQ file to assess its quality. FastQC provides a comprehensive overview of data quality, including basic statistics, per-base quality scores, sequence content, and GC content.
 
-The command is pretty simple!
+The command is pretty simple (we just pick up the first one)!
 ```
-fastqc Illumina_1.fastq
+fastqc BAQ895.2_54_L001_R1_001.fastq
 ```
 You can also use the -o option specifying the output directory for the results to be more organised of if you have many files.
 
 Use ```ls``` to check that some output has been generated!
 
-### 4. View the file
+### 5. View the file
 Use filezilla (or a different transfer programme) to download the html you just made, and open it on your local computer to inspect the outputs.
 
-![](fastqc.png)
+### 6. What to do when there are many files?
+
+ It's commonly in genomics workflows summarize quality control metrics from tools like FastQC, STAR, HISAT2, Bowtie2, SAMtools, and more.
+
+Let's try
+
+```
+fastqc *.fastq
+
+
+
+### 7. Run MultiQC on a Directory
+
+Stay into the directory containing the raw fastq  files, then run:
+
+```
+multiqc .
+```
+🔹 The . tells MultiQC to scan the current directory.
+🔹 It automatically detects supported logs and generates a summary report.
+

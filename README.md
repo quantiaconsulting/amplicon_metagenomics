@@ -13,7 +13,7 @@ The course will mainly focus on the analysis of phylogenetic markers to study ba
 __ASSUMED BACKGROUND__  
 The participants should have some basic background in biology and understand the central role of DNA for biodiversity studies. No programming or scripting expertise is required but completing the preparation materials to be comfortable with linux basics (i.e. making directories & copying files) is important. 
 
-!! **See the [Unix short tutorial](unix_short_dir/Readme.md) if you need a reminder/refresher.**
+!! **See the [Unix short tutorial](unix_short_tutorial/Readme.md) if you need a reminder/refresher.**
 
 All the hands-on exercises will be carried out using [**QIIME2**](https://qiime2.org/) platform . No previous knowledge of computer science is required but a basic knowledge of “bash” would allow to focus more on the microbial analysis.
 __LEARNING OUTCOMES__  
@@ -22,22 +22,23 @@ __LEARNING OUTCOMES__
 3) Obtaining experience on how to statistically evaluate and visualize your data.
 4) Being able to make informed decisions on best practices for your own data.  
   
-:exclamation: :exclamation: :exclamation: **All the papers discussed during the course are available in this [Google Drive Folder](https://drive.google.com/drive/u/0/folders/1uPxEeD0vtEoArmq0zDKP7MnP6lmZ4-Nk)** :exclamation: :exclamation: :exclamation:
+:exclamation: :exclamation: :exclamation: **All the papers discussed during the course are available in this [Google Drive Folder](https://drive.google.com/drive/u/1/folders/1-xCnyNCXgHnnArDjwU1jx3o2PmLV_a3V)** :exclamation: :exclamation: :exclamation:
   
 
 ## Program
-[Physalia Welcome]([https://drive.google.com/open?id=1zAqld5-NcofYez4QYsGGvX0ZtJGphRNQHCBVwUgYNVE](https://drive.google.com/drive/folders/1uPxEeD0vtEoArmq0zDKP7MnP6lmZ4-Nk))
+[Physalia Welcome](https://docs.google.com/presentation/d/1kzrlgopqXGkwVBoc_og4AOpFx8ULoJFL/edit?usp=sharing&ouid=114200662110058699819&rtpof=true&sd=true)
 [Course participants introduction]
 ## Day 1
-- [X] [Introduction to the course and Instructors](Welcome.pptx):
-    - [Daniel Antony Pass](https://www.compassbioinformatics.co.uk/about-us)  
+- [X] [Introduction to the course and Instructors](https://docs.google.com/presentation/d/1kzrlgopqXGkwVBoc_og4AOpFx8ULoJFL/edit?usp=drive_link&ouid=114200662110058699819&rtpof=true&sd=true):
+    - [Javier del Campo](https://scholar.google.it/citations?user=Mty5iQYAAAAJ&hl=en&oi=ao)  
     - [Anna Sandionigi](https://scholar.google.com/citations?hl=it&user=DLDuk_EAAAAJ)  
     - [Luigimaria Borruso](https://scholar.google.it/citations?user=ifNJPJEAAAAJ&hl=it)  
-- [X] Presentation - [**Brief introduction** about __Metagenomics__ concepts. *What are we going to learn?*](https://docs.google.com/presentation/d/1PuWRR79bvv95SmIo7fnfNiFkjl28xDr3/edit?usp=drive_link&ouid=112247165444752408285&rtpof=true&sd=true)
-- [X] Practical - [Connecting to the server via SSH](https://drive.google.com/drive/folders/197xymf3ZAncksVOew1CLLEp--G7MMIMc?usp=sharing)  
-- [X] Presentation - [Introduction to the **FASTQ** format and QIIME objects](https://docs.google.com/presentation/d/1RowyRGCLqAgt6Oxa_h3c33r4SI9reZlq6ZheRv-HAks/edit?usp=share_link)
-- [X] Practical - [First hands on data (& linux review)](main_data_dir/Session1_Fastq_linux.md)
+- [X] Presentation - [**Brief introduction** about __Metagenomics__ concepts. *What are we going to learn?*](https://docs.google.com/presentation/d/1sCTgVcsVUt4aZA2B4Oz4PoKpJ6u8ZNa2/edit?usp=drive_link&ouid=114200662110058699819&rtpof=true&sd=true)
 - [X] Presentation-  [**Experimental design part 1** ](https://docs.google.com/presentation/d/1X-9Es3FmfddDbzkanMiRPvwEEoj2bPbG/edit#slide=id.p28)
+- [X] Practical - [Connecting to the server via SSH](https://drive.google.com/file/d/18l2-7lqNTg5cwf_KJQWOkKWR-C3xYQkn/view?usp=drive_link)  
+- [X] Presentation - [Introduction to the **FASTQ** format](https://docs.google.com/presentation/d/1wfZsurKewWp0ToKb5PAfUTWHEh1bLBHA/edit?usp=drive_link&ouid=114200662110058699819&rtpof=true&sd=true)
+- [X] Practical - [First hands on data (& linux review)](main_data_dir/Session1_Fastq_linux.md)
+
 
 ## Day 2
 - [X] Practical - [Let's begin! Atacama Soil Experiment and Loading data in Qiime](16S_ITS_tutorial/readme.md) 

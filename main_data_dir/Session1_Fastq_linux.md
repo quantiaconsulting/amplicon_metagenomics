@@ -76,7 +76,7 @@ Let's try
 
 ```
 fastqc *.fastq
-``
+```
 
 
 ### 7. Run MultiQC on a Directory
@@ -88,4 +88,28 @@ multiqc .
 ```
 🔹 The . tells MultiQC to scan the current directory.
 🔹 It automatically detects supported logs and generates a summary report.
+
+### 8. Explore...
+
+type:
+
+```
+ls -la
+```
+Now Download the **multiqc_report.html** and the **multiqc_data** folder and put in the same directory.
+Open the  **multiqc_report.html** with a browser
+
+### 9. ...and Clean
+Put some order in your folder. 
+* Group the zip files in a new folder caled ```fastqc_output```
+* Do the same for the ```html```files except **multiqc_report.html**
+
+<details>
+
+```
+mkdir fastqc_output
+mv *fastqc.zip fastqc_output
+mv *_fastqc.html fastqc_output 
+```
+
 

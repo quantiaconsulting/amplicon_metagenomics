@@ -26,7 +26,7 @@ __LEARNING OUTCOMES__
   
 
 ## Program
-[Physalia Welcome](https://docs.google.com/presentation/d/1kzrlgopqXGkwVBoc_og4AOpFx8ULoJFL/edit?usp=sharing&ouid=114200662110058699819&rtpof=true&sd=true)
+[Program day by day](https://docs.google.com/presentation/d/1kzrlgopqXGkwVBoc_og4AOpFx8ULoJFL/edit#slide=id.p1)
 
 ## Day 1
 - [X] [The Instructors]():
@@ -35,7 +35,9 @@ __LEARNING OUTCOMES__
     - [Luigimaria Borruso](https://scholar.google.it/citations?user=ifNJPJEAAAAJ&hl=it)  
 - [X] Presentation - [**Brief introduction** about __Metagenomics__ concepts. *What are we going to learn?*](https://docs.google.com/presentation/d/1sv9m6DGiWOAWHNO0CHFBXDUsSUOhb20h/edit?usp=drive_link&ouid=114200662110058699819&rtpof=true&sd=true)
 - [X] Presentation-  [**Experimental design part 1** ](https://docs.google.com/presentation/d/1H6ATnhWfvrl5IrjsF68llsJH_uKH4AHl/edit?usp=drive_link&ouid=114200662110058699819&rtpof=true&sd=true)
-- [X] Practical - [Connecting to the server](https://drive.google.com/file/d/18l2-7lqNTg5cwf_KJQWOkKWR-C3xYQkn/view?usp=drive_link)  
+- [X] Presentation-  [**Experimental design part 1 - Computer set up** ](https://docs.google.com/presentation/d/1H6ATnhWfvrl5IrjsF68llsJH_uKH4AHl/edit#slide=id.g32c66d1f86a_0_0)
+- [X] Practical - [Connecting to the server with Rstudio](https://docs.google.com/presentation/d/1H6ATnhWfvrl5IrjsF68llsJH_uKH4AHl/edit#slide=id.g32c704bc1a0_0_7)  
+- [X] Practical - [Connecting to the server SSH](https://drive.google.com/file/d/18l2-7lqNTg5cwf_KJQWOkKWR-C3xYQkn/view?usp=drive_link)
 - [X] Presentation - [Introduction to the **FASTQ** format](https://docs.google.com/presentation/d/1wfZsurKewWp0ToKb5PAfUTWHEh1bLBHA/edit?usp=drive_link&ouid=114200662110058699819&rtpof=true&sd=true)
 - [X] Practical - [First hands on data (& linux review)](main_data_dir/Session1_Fastq_linux.md)
 

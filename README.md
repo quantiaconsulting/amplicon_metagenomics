@@ -27,15 +27,15 @@ __LEARNING OUTCOMES__
 
 ## Program
 [Physalia Welcome](https://docs.google.com/presentation/d/1kzrlgopqXGkwVBoc_og4AOpFx8ULoJFL/edit?usp=sharing&ouid=114200662110058699819&rtpof=true&sd=true)
-[Course participants introduction]
+
 ## Day 1
-- [X] [Introduction to the course and Instructors](https://docs.google.com/presentation/d/1kzrlgopqXGkwVBoc_og4AOpFx8ULoJFL/edit?usp=drive_link&ouid=114200662110058699819&rtpof=true&sd=true):
+- [X] [The Instructors]():
     - [Javier del Campo](https://scholar.google.it/citations?user=Mty5iQYAAAAJ&hl=en&oi=ao)  
     - [Anna Sandionigi](https://scholar.google.com/citations?hl=it&user=DLDuk_EAAAAJ)  
     - [Luigimaria Borruso](https://scholar.google.it/citations?user=ifNJPJEAAAAJ&hl=it)  
-- [X] Presentation - [**Brief introduction** about __Metagenomics__ concepts. *What are we going to learn?*](https://docs.google.com/presentation/d/1sCTgVcsVUt4aZA2B4Oz4PoKpJ6u8ZNa2/edit?usp=drive_link&ouid=114200662110058699819&rtpof=true&sd=true)
-- [X] Presentation-  [**Experimental design part 1** ](https://docs.google.com/presentation/d/1X-9Es3FmfddDbzkanMiRPvwEEoj2bPbG/edit#slide=id.p28)
-- [X] Practical - [Connecting to the server via SSH](https://drive.google.com/file/d/18l2-7lqNTg5cwf_KJQWOkKWR-C3xYQkn/view?usp=drive_link)  
+- [X] Presentation - [**Brief introduction** about __Metagenomics__ concepts. *What are we going to learn?*](https://docs.google.com/presentation/d/1sv9m6DGiWOAWHNO0CHFBXDUsSUOhb20h/edit?usp=drive_link&ouid=114200662110058699819&rtpof=true&sd=true)
+- [X] Presentation-  [**Experimental design part 1** ](https://docs.google.com/presentation/d/1H6ATnhWfvrl5IrjsF68llsJH_uKH4AHl/edit?usp=drive_link&ouid=114200662110058699819&rtpof=true&sd=true)
+- [X] Practical - [Connecting to the server](https://drive.google.com/file/d/18l2-7lqNTg5cwf_KJQWOkKWR-C3xYQkn/view?usp=drive_link)  
 - [X] Presentation - [Introduction to the **FASTQ** format](https://docs.google.com/presentation/d/1wfZsurKewWp0ToKb5PAfUTWHEh1bLBHA/edit?usp=drive_link&ouid=114200662110058699819&rtpof=true&sd=true)
 - [X] Practical - [First hands on data (& linux review)](main_data_dir/Session1_Fastq_linux.md)
 

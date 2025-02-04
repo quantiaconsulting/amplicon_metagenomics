@@ -48,17 +48,21 @@ __LEARNING OUTCOMES__
 - [X] Presentation - [**Key concept: OTU or ASV**;](https://docs.google.com/presentation/d/1Kh_RCdJ2CuojAJCLeEj7-T3Qav-tncSS/edit?usp=drive_link&ouid=103395187960487769781&rtpof=true&sd=true)
   - Different Sequencing Technologies and different denoising approaches
 - [X] Practical - [Denoising and **DADA2**](16S_ITS_tutorial/readme.md#step2-quality-controlling-sequences-and-building-feature-table-and-feature-data)
+- [X] [Taxonomic assignment](https://docs.google.com/presentation/d/10ExRGzgoCzC_ZKWv1lGKBGesChWdLcq1/edit?usp=drive_link&ouid=103395187960487769781&rtpof=true&sd=true)
 ## Day 3
-- [X] [Experimental Design part 2 ](https://docs.google.com/presentation/d/1jkHVJ7l-lWs-Gi0rbFr74giZv8JhOpneiFmUqnFk1Nk/edit#slide=id.g2b75b176bc2_0_489)
+- [X] [Taxonomy assignment:**classify-sklearn**](16S_ITS_tutorial/readme.md#step3-summarizing-feature-table-and-feature-data)
+- [X] [Fungi and ITS best practices!](https://docs.google.com/presentation/d/14k4cnKy7ZT_b4vvvo2UREiyhZ1HUn5P0/edit?usp=drive_link&ouid=103395187960487769781&rtpof=true&sd=true)
+
 - [X] [Diversity Analysis](https://docs.google.com/presentation/d/1Wjf5QibYwf6lTYIpQTEUVO4HNxc0nYUy/edit#slide=id.g2b75d256dc1_0_564)
 - [X] [Running Alpha and Beta Diversity in QIIME2](16S_ITS_tutorial/readme.md#step6-analyzing-alpha-and-beta-diversities)
-- [X] [Taxonomic assignment](https://docs.google.com/presentation/d/1YdX9hS4BQfj2qfSf79CKtYAHMIXTbI0hIWiemDmmh1s/edit#slide=id.p)
-- [X] [Taxonomy assignment:**classify-sklearn**](16S_ITS_tutorial/readme.md#step3-summarizing-feature-table-and-feature-data)
+
+
 
 
 
 ## Day 4
-- [X] [Fungi and ITS best practices!](https://docs.google.com/presentation/d/14k4cnKy7ZT_b4vvvo2UREiyhZ1HUn5P0/edit?usp=drive_link&ouid=103395187960487769781&rtpof=true&sd=true)
+- [X] [Experimental Design part 2 ](https://docs.google.com/presentation/d/1jkHVJ7l-lWs-Gi0rbFr74giZv8JhOpneiFmUqnFk1Nk/edit#slide=id.g2b75b176bc2_0_489)
+
 - [X] [Lecture  - Multivariate Analysis of Ecological Communities](https://docs.google.com/presentation/d/1SEXLnsAk71ghWJFBjvnSL9-JIU5kHyYi/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true)  
   - [X] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  
   - [X] Multivariate Tests for differences in microbial community composition  

@@ -14,7 +14,7 @@ There are always four lines per read:
 
 ## Steps
 
-### 1. Create Analysis Directory
+### 1. Create "Analysis" Directory
 
 First lets create a directory where the analysis will be conducted. We can use cd to ensure we're in the home folder
 
@@ -45,7 +45,11 @@ Enter the folder, and check that the file is there, and how large it is
   
 </details>
 
-### 3. Move in to the folder
+### 3. Activate the conda environment
+
+```
+conda activate /home/ubuntu/miniconda3/envs/multiqc
+``
 
 
 ### 4. Run FastQC on a single file

@@ -42,11 +42,12 @@ Along these transects, pits were dug at each site and soil samples were collecte
 
 You can find the paper [here](https://msystems.asm.org/content/2/3/e00195-16.abstract) or in the course Reference folder.  
 
-## Obtain Data
-Start by creating a directory to work in. We will call it **qiime2-atacama-tutorial**.  
+## Start the Analysis
+Start renaming the work directory in  **qiime2-atacama-tutorial**.  
 :walking:  
 ```
-mkdir qiime2-atacama-tutorial
+cd Analysis/
+mv AttacamaAllOutputs/ qiime2-atacama-tutorial
 ```
 
 ```
@@ -93,7 +94,7 @@ As we discussed during the introduction to UNIX-based environment, we take advan
 Everytime we start a new session **(!!EVERY TIME!!)**, we need to activate the virtual environment containing our QIIME2 installation.  
 :walking:  
 ```
-source activate qiime2-amplicon-2023.9
+conda activate /opt/shared_qiime2
 ```
 
 ### Pipeline Overview

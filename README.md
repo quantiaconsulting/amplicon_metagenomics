@@ -66,7 +66,7 @@ __LEARNING OUTCOMES__
 - [X] [Lecture  - Multivariate Analysis of Ecological Communities](https://docs.google.com/presentation/d/1SEXLnsAk71ghWJFBjvnSL9-JIU5kHyYi/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true)  
   - [X] Traits of Alpha and Beta Diversity (richness, evenness, dispersion)  
   - [X] Multivariate Tests for differences in microbial community composition  
-- [X] [Lab  - Multivariate Statistics](https://glcdn.githack.com/bfosso/physalia_metabarcoding_oct2021/raw/main/Day4_5_material/Physalia-Metabarcoding-Course-Oct21.html)  
+- [X] [Lab  - Multivariate Statistics](https://drive.google.com/file/d/1T5eGn6qxykXKpbfsEHekV8wB4LBPF-Qf/view?usp=drive_link)  
   - [X] Data import & preparation (normalisations, transformations, metadata)  
   - [X] Multivariate tests for differences in community composition (PERMANOVA, PERMDISP)    
 - [X] [Lecture - Differential Abundance Analysis of Microbial Communities](https://docs.google.com/presentation/d/1Z2F2_goIAuuKXQQ7ocClOgq8x6tbpClW/edit?usp=sharing&ouid=113644278417838041864&rtpof=true&sd=true) 
@@ -75,10 +75,8 @@ __LEARNING OUTCOMES__
 ## Day 5
 
 - [X] :arrow_right: _It's Case studies Time!!!_
-  - [X] [Human microbiome data](Case_Studies/human_cancer/readme.md)
-  - [X] [Zoological(Bees bees bees!)](Case_Studies/Bee_microbiome/readme.md)
   - [X] [Water-mosquito](Case_Studies/water_mosquito/readme.md)
-- [X] [Record your Case Study findings](https://drive.google.com/drive/folders/1BAdmWaNh3kvZMjGR-efPyd4ZVv8bUkon?usp=drive_link)
+- [X] [Record your Case Study findings](https://drive.google.com/drive/u/0/folders/1LvRyxTsLQSDU8W9g0RQQUYDGSDly6xfs)
 - [X] Beer Time :beers: :beers: :beers: 
 - [X] [Some additional processing Tips :volcano: ](DataImport_and_Tax_management/readme.md)
   - [X] Alternative loading methods in Qiime

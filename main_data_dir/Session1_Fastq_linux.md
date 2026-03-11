@@ -31,7 +31,7 @@ Next, we'll copy a FASTQ file from the shared directory to the folder you just c
 ```
 cp -r ~/Shared/AttacamaAllOutputs ~/Analysis/
 ```
-Here we specify ```~/``` before the folder name to be explicit that it's in the home folder, although not technically required in this moment.
+Here we specify ```~/``` before the folder name to be explicit that it's in the home folder, although not technically required at this moment.
 
 Enter the folder, and check that the file is there, and how large it is 
 <details>
@@ -55,7 +55,13 @@ conda activate /home/ubuntu/miniconda3/envs/multiqc
 ### 4. Run FastQC on a single file
 Now let's run FastQC on the FASTQ file to assess its quality. FastQC provides a comprehensive overview of data quality, including basic statistics, per-base quality scores, sequence content, and GC content.
 
-The command is pretty simple (we just pick up the first one) and can be applied to one file or to multiple files! Let's start with one:
+First of all, we need to activate the conda environment multiqc
+
+```
+conda activate /home/ubuntu/miniconda3/envs/multiqc
+```
+
+The command is pretty simple (we just pick up the first one)!
 ```
 fastqc BAQ895.2_54_L001_R1_001.fastq
 ```

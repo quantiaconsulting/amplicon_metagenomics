@@ -38,6 +38,7 @@ Enter the folder, and check that the file is there, and how large it is
   <summary>Commands here (try to remember yourself first!)</summary>
   
   use ```cd``` to enter the folder, and then ```ls -l``` to list the contents of the folder, and it's details
+  
   ```
   cd Analysis
   ls -l
@@ -49,7 +50,7 @@ Enter the folder, and check that the file is there, and how large it is
 
 ```
 conda activate /home/ubuntu/miniconda3/envs/multiqc
-``
+```
 
 
 ### 4. Run FastQC on a single file
@@ -62,6 +63,7 @@ conda activate /home/ubuntu/miniconda3/envs/multiqc
 ```
 
 The command is pretty simple (we just pick up the first one)!
+
 ```
 fastqc BAQ895.2_54_L001_R1_001.fastq
 ```
@@ -74,7 +76,7 @@ Use filezilla (or a different transfer programme) to download the html you just 
 
 ### 6. What to do when there are many files?
 
- It's commonly in genomics workflows summarize quality control metrics from tools like FastQC, STAR, HISAT2, Bowtie2, SAMtools, and more.
+It's commonly in genomics workflows summarize quality control metrics from tools like FastQC, STAR, HISAT2, Bowtie2, SAMtools, and more.
 
 Let's try
 
